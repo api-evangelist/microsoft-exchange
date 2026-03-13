@@ -1,0 +1,429 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/microsoft-exchange/json-schema/microsoft-exchange-event-schema.json",
+  "title": "Microsoft Exchange Calendar Event",
+  "description": "Represents a calendar event in a user calendar or the default calendar of a Microsoft 365 group as exposed through the Microsoft Graph Calendar API. Supports single-instance events, recurring events, meetings with attendees, and online meetings.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the event",
+      "readOnly": true
+    },
+    "subject": {
+      "type": "string",
+      "description": "The text of the event's subject line"
+    },
+    "body": {
+      "$ref": "#/$defs/itemBody",
+      "description": "The body of the message associated with the event"
+    },
+    "bodyPreview": {
+      "type": "string",
+      "description": "The preview of the event body in text format",
+      "readOnly": true
+    },
+    "start": {
+      "$ref": "#/$defs/dateTimeTimeZone",
+      "description": "The start date, time, and time zone of the event"
+    },
+    "end": {
+      "$ref": "#/$defs/dateTimeTimeZone",
+      "description": "The end date, time, and time zone of the event"
+    },
+    "location": {
+      "$ref": "#/$defs/location",
+      "description": "The location of the event"
+    },
+    "locations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/location"
+      },
+      "description": "The locations where the event is held or attended from"
+    },
+    "attendees": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/attendee"
+      },
+      "description": "The collection of attendees for the event"
+    },
+    "organizer": {
+      "$ref": "#/$defs/recipient",
+      "description": "The organizer of the event"
+    },
+    "isAllDay": {
+      "type": "boolean",
+      "description": "Whether the event lasts all day"
+    },
+    "isCancelled": {
+      "type": "boolean",
+      "description": "Whether the event has been canceled",
+      "readOnly": true
+    },
+    "isDraft": {
+      "type": "boolean",
+      "description": "Whether updates have been sent to attendees",
+      "readOnly": true
+    },
+    "isOnlineMeeting": {
+      "type": "boolean",
+      "description": "Whether this event has online meeting information"
+    },
+    "isOrganizer": {
+      "type": "boolean",
+      "description": "Whether the calendar owner is the organizer",
+      "readOnly": true
+    },
+    "isReminderOn": {
+      "type": "boolean",
+      "description": "Whether a reminder alert is set"
+    },
+    "onlineMeeting": {
+      "$ref": "#/$defs/onlineMeetingInfo",
+      "description": "Details for joining the meeting online"
+    },
+    "onlineMeetingProvider": {
+      "type": "string",
+      "enum": ["unknown", "teamsForBusiness", "skypeForBusiness", "skypeForConsumer"],
+      "description": "The online meeting service provider"
+    },
+    "onlineMeetingUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL for an online meeting",
+      "readOnly": true
+    },
+    "recurrence": {
+      "$ref": "#/$defs/patternedRecurrence",
+      "description": "The recurrence pattern for the event"
+    },
+    "reminderMinutesBeforeStart": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Minutes before start that the reminder alert occurs"
+    },
+    "responseRequested": {
+      "type": "boolean",
+      "description": "Whether the organizer requests a response from invitees"
+    },
+    "responseStatus": {
+      "$ref": "#/$defs/responseStatus",
+      "description": "The response status of the event"
+    },
+    "sensitivity": {
+      "type": "string",
+      "enum": ["normal", "personal", "private", "confidential"],
+      "description": "The event sensitivity level"
+    },
+    "seriesMasterId": {
+      "type": "string",
+      "description": "ID for the recurring series master",
+      "readOnly": true
+    },
+    "showAs": {
+      "type": "string",
+      "enum": ["free", "tentative", "busy", "oof", "workingElsewhere", "unknown"],
+      "description": "The status to show during the event"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["singleInstance", "occurrence", "exception", "seriesMaster"],
+      "description": "The event type",
+      "readOnly": true
+    },
+    "importance": {
+      "type": "string",
+      "enum": ["low", "normal", "high"],
+      "description": "The importance of the event"
+    },
+    "hasAttachments": {
+      "type": "boolean",
+      "description": "Whether the event has attachments",
+      "readOnly": true
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The categories associated with the event"
+    },
+    "allowNewTimeProposals": {
+      "type": "boolean",
+      "description": "Whether the organizer allows invitees to propose new times"
+    },
+    "iCalUId": {
+      "type": "string",
+      "description": "A unique identifier for the event across calendars",
+      "readOnly": true
+    },
+    "changeKey": {
+      "type": "string",
+      "description": "Identifies the version of the event",
+      "readOnly": true
+    },
+    "createdDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the event was created",
+      "readOnly": true
+    },
+    "lastModifiedDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the event was last changed",
+      "readOnly": true
+    },
+    "webLink": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to open the event in Outlook on the web",
+      "readOnly": true
+    },
+    "transactionId": {
+      "type": "string",
+      "description": "Custom identifier to avoid duplicate event creation on retries"
+    },
+    "hideAttendees": {
+      "type": "boolean",
+      "description": "When true, each attendee only sees themselves in the meeting request"
+    },
+    "originalStartTimeZone": {
+      "type": "string",
+      "description": "The start time zone set when the event was created"
+    },
+    "originalEndTimeZone": {
+      "type": "string",
+      "description": "The end time zone set when the event was created"
+    }
+  },
+  "required": ["subject", "start", "end"],
+  "$defs": {
+    "attendee": {
+      "type": "object",
+      "description": "An event attendee with response status",
+      "properties": {
+        "emailAddress": {
+          "$ref": "#/$defs/emailAddress"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["required", "optional", "resource"],
+          "description": "The type of attendee"
+        },
+        "status": {
+          "$ref": "#/$defs/responseStatus"
+        }
+      }
+    },
+    "recipient": {
+      "type": "object",
+      "properties": {
+        "emailAddress": {
+          "$ref": "#/$defs/emailAddress"
+        }
+      }
+    },
+    "emailAddress": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The display name"
+        },
+        "address": {
+          "type": "string",
+          "format": "email",
+          "description": "The email address"
+        }
+      }
+    },
+    "itemBody": {
+      "type": "object",
+      "properties": {
+        "contentType": {
+          "type": "string",
+          "enum": ["text", "html"]
+        },
+        "content": {
+          "type": "string"
+        }
+      }
+    },
+    "dateTimeTimeZone": {
+      "type": "object",
+      "description": "Describes a date, time, and time zone",
+      "properties": {
+        "dateTime": {
+          "type": "string",
+          "description": "A date and time in ISO 8601 format"
+        },
+        "timeZone": {
+          "type": "string",
+          "description": "A time zone name"
+        }
+      },
+      "required": ["dateTime", "timeZone"]
+    },
+    "location": {
+      "type": "object",
+      "description": "Represents location information",
+      "properties": {
+        "displayName": {
+          "type": "string",
+          "description": "The name of the location"
+        },
+        "locationType": {
+          "type": "string",
+          "enum": ["default", "conferenceRoom", "homeAddress", "businessAddress", "geoCoordinates", "streetAddress", "hotel", "restaurant", "localBusiness", "postalAddress"]
+        },
+        "locationUri": {
+          "type": "string"
+        },
+        "locationEmailAddress": {
+          "type": "string",
+          "format": "email"
+        },
+        "address": {
+          "$ref": "#/$defs/physicalAddress"
+        },
+        "coordinates": {
+          "$ref": "#/$defs/geoCoordinates"
+        }
+      }
+    },
+    "physicalAddress": {
+      "type": "object",
+      "properties": {
+        "street": { "type": "string" },
+        "city": { "type": "string" },
+        "state": { "type": "string" },
+        "countryOrRegion": { "type": "string" },
+        "postalCode": { "type": "string" }
+      }
+    },
+    "geoCoordinates": {
+      "type": "object",
+      "properties": {
+        "latitude": { "type": "number" },
+        "longitude": { "type": "number" },
+        "accuracy": { "type": "number" },
+        "altitude": { "type": "number" },
+        "altitudeAccuracy": { "type": "number" }
+      }
+    },
+    "onlineMeetingInfo": {
+      "type": "object",
+      "description": "Details for joining an online meeting",
+      "properties": {
+        "joinUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to join the online meeting"
+        },
+        "conferenceId": {
+          "type": "string"
+        },
+        "tollNumber": {
+          "type": "string"
+        },
+        "tollFreeNumbers": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "quickDial": {
+          "type": "string"
+        }
+      }
+    },
+    "responseStatus": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "type": "string",
+          "enum": ["none", "organizer", "tentativelyAccepted", "accepted", "declined", "notResponded"]
+        },
+        "time": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "patternedRecurrence": {
+      "type": "object",
+      "description": "The recurrence pattern and range",
+      "properties": {
+        "pattern": {
+          "$ref": "#/$defs/recurrencePattern"
+        },
+        "range": {
+          "$ref": "#/$defs/recurrenceRange"
+        }
+      }
+    },
+    "recurrencePattern": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["daily", "weekly", "absoluteMonthly", "relativeMonthly", "absoluteYearly", "relativeYearly"]
+        },
+        "interval": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "month": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 12
+        },
+        "dayOfMonth": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 31
+        },
+        "daysOfWeek": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
+          }
+        },
+        "firstDayOfWeek": {
+          "type": "string",
+          "enum": ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
+        },
+        "index": {
+          "type": "string",
+          "enum": ["first", "second", "third", "fourth", "last"]
+        }
+      }
+    },
+    "recurrenceRange": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["endDate", "noEnd", "numbered"]
+        },
+        "startDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "recurrenceTimeZone": {
+          "type": "string"
+        },
+        "numberOfOccurrences": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    }
+  }
+}

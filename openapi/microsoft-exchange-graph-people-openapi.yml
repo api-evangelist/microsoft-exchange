@@ -1,0 +1,377 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Graph People API
+  description: >-
+    Retrieve people most relevant to a user based on communication and
+    collaboration patterns, business relationships, and contacts. The People
+    API returns person objects ordered by their relevance to the user, which
+    is determined by the user's communication and collaboration patterns.
+    Useful for people-picking scenarios and social intelligence features.
+  version: 1.0.0
+  contact:
+    name: Microsoft Support
+    url: https://support.microsoft.com
+    email: support@microsoft.com
+  license:
+    name: Microsoft API License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+  x-date-modified: '2026-03-04'
+servers:
+  - url: https://graph.microsoft.com/v1.0
+    description: Microsoft Graph v1.0 production endpoint
+security:
+  - oauth2: []
+tags:
+  - name: People
+    description: Operations for retrieving relevant people
+paths:
+  /me/people:
+    get:
+      operationId: listPeople
+      summary: List people
+      description: >-
+        Retrieve a collection of person objects ordered by their relevance to
+        the signed-in user, which is determined by the user's communication
+        and collaboration patterns, and business relationships. People can be
+        local contacts, contacts from social networking or the organization's
+        directory, and people from recent communications such as email.
+      tags:
+        - People
+      parameters:
+        - $ref: '#/components/parameters/TopParam'
+        - $ref: '#/components/parameters/SkipParam'
+        - $ref: '#/components/parameters/SelectParam'
+        - $ref: '#/components/parameters/FilterParam'
+        - $ref: '#/components/parameters/OrderByParam'
+        - name: $search
+          in: query
+          description: >-
+            Search for people by name or alias. Supports fuzzy matching and
+            the topic keyword to find people based on topics extracted from
+            email conversations.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved people
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonCollectionResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /users/{user-id}/people:
+    get:
+      operationId: listUserPeople
+      summary: List user's people
+      description: >-
+        Retrieve a collection of person objects ordered by their relevance
+        to the specified user. Requires People.Read.All permission. Useful
+        for scenarios where an application needs to retrieve relevant people
+        for a user other than the signed-in user.
+      tags:
+        - People
+      parameters:
+        - name: user-id
+          in: path
+          required: true
+          description: The unique identifier or user principal name of the user
+          schema:
+            type: string
+        - $ref: '#/components/parameters/TopParam'
+        - $ref: '#/components/parameters/SkipParam'
+        - $ref: '#/components/parameters/SelectParam'
+        - $ref: '#/components/parameters/FilterParam'
+      responses:
+        '200':
+          description: Successfully retrieved people for user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonCollectionResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authorization with Microsoft identity platform
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes:
+            People.Read: Read user's relevant people list
+            People.Read.All: Read all users' relevant people lists
+  parameters:
+    TopParam:
+      name: $top
+      in: query
+      description: Maximum number of results to return
+      schema:
+        type: integer
+        minimum: 1
+    SkipParam:
+      name: $skip
+      in: query
+      description: Number of results to skip (not supported with $search)
+      schema:
+        type: integer
+        minimum: 0
+    SelectParam:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include
+      schema:
+        type: string
+    FilterParam:
+      name: $filter
+      in: query
+      description: OData filter expression
+      schema:
+        type: string
+    OrderByParam:
+      name: $orderby
+      in: query
+      description: Property to sort by (default is relevance)
+      schema:
+        type: string
+  schemas:
+    Person:
+      type: object
+      description: >-
+        Represents an aggregation of information about a person from across
+        mail, contacts, and social networks. People can be local contacts,
+        contacts from social networking, the organization's directory, and
+        people from recent communications.
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: The person's unique identifier
+        displayName:
+          type: string
+          description: The person's display name
+        givenName:
+          type: string
+          description: The person's given name
+        surname:
+          type: string
+          description: The person's surname
+        birthday:
+          type: string
+          description: The person's birthday
+        personNotes:
+          type: string
+          description: Free-form notes about this person
+        isFavorite:
+          type: boolean
+          description: Whether the user has flagged this person as a favorite
+        jobTitle:
+          type: string
+          description: The person's job title
+        companyName:
+          type: string
+          description: The name of the person's company
+        department:
+          type: string
+          description: The person's department
+        officeLocation:
+          type: string
+          description: The location of the person's office
+        profession:
+          type: string
+          description: The person's profession
+        userPrincipalName:
+          type: string
+          description: >-
+            The user principal name (UPN) of the person based on RFC 822
+            in the format alias@domain
+        imAddress:
+          type: string
+          readOnly: true
+          description: The SIP address for VOIP instant messaging
+        scoredEmailAddresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScoredEmailAddress'
+          description: The person's email addresses with relevance scores
+        phones:
+          type: array
+          items:
+            $ref: '#/components/schemas/Phone'
+          description: The person's phone numbers
+        postalAddresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/Location'
+          description: The person's addresses
+        websites:
+          type: array
+          items:
+            $ref: '#/components/schemas/Website'
+          description: The person's websites
+        personType:
+          $ref: '#/components/schemas/PersonType'
+        yomiCompany:
+          type: string
+          description: Phonetic Japanese company name
+    ScoredEmailAddress:
+      type: object
+      description: An email address with a relevance score
+      properties:
+        address:
+          type: string
+          format: email
+          description: The email address
+        relevanceScore:
+          type: number
+          format: double
+          description: The relevance score of the email address (0.0 to 100.0)
+        selectionLikelihood:
+          type: string
+          enum:
+            - notSpecified
+            - high
+          description: The likelihood that the email address would be selected
+    Phone:
+      type: object
+      description: A phone number
+      properties:
+        type:
+          type: string
+          enum:
+            - home
+            - business
+            - mobile
+            - other
+            - assistant
+            - homeFax
+            - businessFax
+            - otherFax
+            - pager
+            - radio
+          description: The type of phone number
+        number:
+          type: string
+          description: The phone number
+    Location:
+      type: object
+      description: Location information
+      properties:
+        displayName:
+          type: string
+          description: The name of the location
+        locationType:
+          type: string
+          description: The type of location
+        locationUri:
+          type: string
+          description: URI for the location
+        address:
+          $ref: '#/components/schemas/PhysicalAddress'
+    PhysicalAddress:
+      type: object
+      description: Physical street address
+      properties:
+        street:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        countryOrRegion:
+          type: string
+        postalCode:
+          type: string
+    Website:
+      type: object
+      description: A website
+      properties:
+        type:
+          type: string
+          enum:
+            - other
+            - home
+            - work
+            - blog
+            - profile
+          description: The type of website
+        address:
+          type: string
+          format: uri
+          description: The URL of the website
+        displayName:
+          type: string
+          description: The display name of the website
+    PersonType:
+      type: object
+      description: The type of person
+      properties:
+        class:
+          type: string
+          description: >-
+            The type of data source such as Person (for directory data) or
+            Group (for unified groups)
+        subclass:
+          type: string
+          description: >-
+            The sub-type such as OrganizationUser, PersonalContact,
+            ExternalContact, or UnifiedGroup
+    PersonCollectionResponse:
+      type: object
+      description: Collection of person objects
+      properties:
+        '@odata.context':
+          type: string
+        '@odata.nextLink':
+          type: string
+          format: uri
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Person'
+    ODataError:
+      type: object
+      description: OData error response
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            innerError:
+              type: object
+              properties:
+                request-id:
+                  type: string
+                date:
+                  type: string
+                  format: date-time
+  responses:
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Forbidden:
+      description: Forbidden - insufficient permissions
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'

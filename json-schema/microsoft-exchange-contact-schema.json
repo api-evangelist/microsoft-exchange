@@ -1,0 +1,231 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/microsoft-exchange/json-schema/microsoft-exchange-contact-schema.json",
+  "title": "Microsoft Exchange Contact",
+  "description": "Represents an Outlook contact in a user's mailbox as exposed through the Microsoft Graph Contacts API. A contact is an item where you can organize and save information about people and organizations you communicate with. Contacts are contained in contact folders.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The contact's unique identifier. By default changes when moved to a different container.",
+      "readOnly": true
+    },
+    "displayName": {
+      "type": "string",
+      "description": "The contact's display name"
+    },
+    "givenName": {
+      "type": "string",
+      "description": "The contact's given name (first name)"
+    },
+    "surname": {
+      "type": "string",
+      "description": "The contact's surname (last name)"
+    },
+    "middleName": {
+      "type": "string",
+      "description": "The contact's middle name"
+    },
+    "nickName": {
+      "type": "string",
+      "description": "The contact's nickname"
+    },
+    "title": {
+      "type": "string",
+      "description": "The contact's title (e.g. Mr., Mrs., Dr.)"
+    },
+    "initials": {
+      "type": "string",
+      "description": "The contact's initials"
+    },
+    "generation": {
+      "type": "string",
+      "description": "The contact's suffix (e.g. Jr., Sr., III)"
+    },
+    "emailAddresses": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/emailAddress"
+      },
+      "description": "The contact's email addresses"
+    },
+    "businessPhones": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The contact's business phone numbers"
+    },
+    "homePhones": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The contact's home phone numbers"
+    },
+    "mobilePhone": {
+      "type": ["string", "null"],
+      "description": "The contact's mobile phone number"
+    },
+    "imAddresses": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The contact's instant messaging addresses"
+    },
+    "jobTitle": {
+      "type": "string",
+      "description": "The contact's job title"
+    },
+    "companyName": {
+      "type": "string",
+      "description": "The name of the contact's company"
+    },
+    "department": {
+      "type": "string",
+      "description": "The contact's department"
+    },
+    "officeLocation": {
+      "type": "string",
+      "description": "The location of the contact's office"
+    },
+    "profession": {
+      "type": "string",
+      "description": "The contact's profession"
+    },
+    "manager": {
+      "type": "string",
+      "description": "The name of the contact's manager"
+    },
+    "assistantName": {
+      "type": "string",
+      "description": "The name of the contact's assistant"
+    },
+    "businessHomePage": {
+      "type": "string",
+      "format": "uri",
+      "description": "The business home page of the contact"
+    },
+    "businessAddress": {
+      "$ref": "#/$defs/physicalAddress",
+      "description": "The contact's business address"
+    },
+    "homeAddress": {
+      "$ref": "#/$defs/physicalAddress",
+      "description": "The contact's home address"
+    },
+    "otherAddress": {
+      "$ref": "#/$defs/physicalAddress",
+      "description": "Other addresses for the contact"
+    },
+    "spouseName": {
+      "type": "string",
+      "description": "The name of the contact's spouse or partner"
+    },
+    "birthday": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The contact's birthday in ISO 8601 format (always UTC)"
+    },
+    "children": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The names of the contact's children"
+    },
+    "personalNotes": {
+      "type": "string",
+      "description": "The user's notes about the contact"
+    },
+    "fileAs": {
+      "type": "string",
+      "description": "The name the contact is filed under"
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The categories associated with the contact"
+    },
+    "parentFolderId": {
+      "type": "string",
+      "description": "The ID of the contact's parent folder",
+      "readOnly": true
+    },
+    "changeKey": {
+      "type": "string",
+      "description": "Identifies the version of the contact",
+      "readOnly": true
+    },
+    "createdDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The time the contact was created",
+      "readOnly": true
+    },
+    "lastModifiedDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The time the contact was last modified",
+      "readOnly": true
+    },
+    "yomiGivenName": {
+      "type": "string",
+      "description": "Phonetic Japanese given name"
+    },
+    "yomiSurname": {
+      "type": "string",
+      "description": "Phonetic Japanese surname"
+    },
+    "yomiCompanyName": {
+      "type": "string",
+      "description": "Phonetic Japanese company name"
+    }
+  },
+  "$defs": {
+    "emailAddress": {
+      "type": "object",
+      "description": "Email address of a person or entity",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The display name"
+        },
+        "address": {
+          "type": "string",
+          "format": "email",
+          "description": "The email address"
+        }
+      }
+    },
+    "physicalAddress": {
+      "type": "object",
+      "description": "Physical street address",
+      "properties": {
+        "street": {
+          "type": "string",
+          "description": "The street address"
+        },
+        "city": {
+          "type": "string",
+          "description": "The city"
+        },
+        "state": {
+          "type": "string",
+          "description": "The state or province"
+        },
+        "countryOrRegion": {
+          "type": "string",
+          "description": "The country or region"
+        },
+        "postalCode": {
+          "type": "string",
+          "description": "The postal code"
+        }
+      }
+    }
+  }
+}

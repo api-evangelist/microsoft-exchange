@@ -1,0 +1,181 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "graph": "https://graph.microsoft.com/v1.0/",
+    "exchange": "https://learn.microsoft.com/en-us/graph/api/resources/",
+    "Message": {
+      "@id": "schema:EmailMessage",
+      "@context": {
+        "id": "@id",
+        "subject": "schema:name",
+        "body": "schema:text",
+        "from": "schema:sender",
+        "toRecipients": "schema:recipient",
+        "ccRecipients": "schema:ccRecipient",
+        "bccRecipients": "schema:bccRecipient",
+        "sentDateTime": "schema:dateSent",
+        "receivedDateTime": "schema:dateReceived",
+        "createdDateTime": "schema:dateCreated",
+        "lastModifiedDateTime": "schema:dateModified",
+        "hasAttachments": "schema:associatedMedia",
+        "importance": "schema:interactionStatistic",
+        "internetMessageId": "schema:identifier",
+        "conversationId": "schema:isPartOf",
+        "webLink": "schema:url",
+        "isRead": "schema:status",
+        "isDraft": "schema:creativeWorkStatus",
+        "categories": "schema:keywords"
+      }
+    },
+    "Event": {
+      "@id": "schema:Event",
+      "@context": {
+        "id": "@id",
+        "subject": "schema:name",
+        "body": "schema:description",
+        "start": "schema:startDate",
+        "end": "schema:endDate",
+        "location": "schema:location",
+        "locations": "schema:location",
+        "attendees": "schema:attendee",
+        "organizer": "schema:organizer",
+        "isAllDay": "schema:eventSchedule",
+        "recurrence": "schema:repeatFrequency",
+        "createdDateTime": "schema:dateCreated",
+        "lastModifiedDateTime": "schema:dateModified",
+        "webLink": "schema:url",
+        "onlineMeetingUrl": "schema:url",
+        "sensitivity": "schema:accessMode",
+        "categories": "schema:keywords",
+        "importance": "schema:interactionStatistic",
+        "showAs": "schema:eventStatus"
+      }
+    },
+    "Calendar": {
+      "@id": "schema:Schedule",
+      "@context": {
+        "id": "@id",
+        "name": "schema:name",
+        "owner": "schema:creator",
+        "color": "schema:color"
+      }
+    },
+    "Contact": {
+      "@id": "schema:Person",
+      "@context": {
+        "id": "@id",
+        "displayName": "schema:name",
+        "givenName": "schema:givenName",
+        "surname": "schema:familyName",
+        "middleName": "schema:additionalName",
+        "emailAddresses": "schema:email",
+        "businessPhones": "schema:telephone",
+        "homePhones": "schema:telephone",
+        "mobilePhone": "schema:telephone",
+        "jobTitle": "schema:jobTitle",
+        "companyName": "schema:worksFor",
+        "department": "schema:department",
+        "officeLocation": "schema:workLocation",
+        "businessAddress": "schema:address",
+        "homeAddress": "schema:homeLocation",
+        "birthday": "schema:birthDate",
+        "children": "schema:children",
+        "spouseName": "schema:spouse",
+        "profession": "schema:hasOccupation",
+        "businessHomePage": "schema:url",
+        "categories": "schema:keywords",
+        "createdDateTime": "schema:dateCreated",
+        "lastModifiedDateTime": "schema:dateModified"
+      }
+    },
+    "Person": {
+      "@id": "schema:Person",
+      "@context": {
+        "id": "@id",
+        "displayName": "schema:name",
+        "givenName": "schema:givenName",
+        "surname": "schema:familyName",
+        "jobTitle": "schema:jobTitle",
+        "companyName": "schema:worksFor",
+        "department": "schema:department",
+        "officeLocation": "schema:workLocation",
+        "profession": "schema:hasOccupation",
+        "scoredEmailAddresses": "schema:email",
+        "phones": "schema:telephone",
+        "postalAddresses": "schema:address",
+        "websites": "schema:url",
+        "isFavorite": "schema:interactionStatistic",
+        "userPrincipalName": "schema:identifier"
+      }
+    },
+    "MailFolder": {
+      "@id": "schema:DataCatalog",
+      "@context": {
+        "id": "@id",
+        "displayName": "schema:name",
+        "totalItemCount": "schema:size",
+        "unreadItemCount": "schema:interactionStatistic",
+        "childFolderCount": "schema:numberOfItems"
+      }
+    },
+    "ContactFolder": {
+      "@id": "schema:DataCatalog",
+      "@context": {
+        "id": "@id",
+        "displayName": "schema:name"
+      }
+    },
+    "Attachment": {
+      "@id": "schema:MediaObject",
+      "@context": {
+        "id": "@id",
+        "name": "schema:name",
+        "contentType": "schema:encodingFormat",
+        "size": "schema:contentSize",
+        "contentBytes": "schema:contentUrl",
+        "lastModifiedDateTime": "schema:dateModified"
+      }
+    },
+    "EmailAddress": {
+      "@id": "schema:ContactPoint",
+      "@context": {
+        "name": "schema:name",
+        "address": "schema:email"
+      }
+    },
+    "PhysicalAddress": {
+      "@id": "schema:PostalAddress",
+      "@context": {
+        "street": "schema:streetAddress",
+        "city": "schema:addressLocality",
+        "state": "schema:addressRegion",
+        "countryOrRegion": "schema:addressCountry",
+        "postalCode": "schema:postalCode"
+      }
+    },
+    "Location": {
+      "@id": "schema:Place",
+      "@context": {
+        "displayName": "schema:name",
+        "address": "schema:address",
+        "coordinates": "schema:geo",
+        "locationUri": "schema:url"
+      }
+    },
+    "Recipient": {
+      "@id": "schema:ContactPoint",
+      "@context": {
+        "emailAddress": "schema:email"
+      }
+    },
+    "OnlineMeetingInfo": {
+      "@id": "schema:VirtualLocation",
+      "@context": {
+        "joinUrl": "schema:url",
+        "conferenceId": "schema:identifier",
+        "tollNumber": "schema:telephone",
+        "tollFreeNumbers": "schema:telephone"
+      }
+    }
+  }
+}

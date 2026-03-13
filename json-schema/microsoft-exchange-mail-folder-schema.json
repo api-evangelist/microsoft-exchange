@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/microsoft-exchange/json-schema/microsoft-exchange-mail-folder-schema.json",
+  "title": "Microsoft Exchange Mail Folder",
+  "description": "Represents a mail folder in a user's mailbox as exposed through the Microsoft Graph Mail API. Mail folders such as Inbox, Drafts, and Sent Items can contain messages, other Outlook items, and child mail folders. Well-known folder names like inbox, drafts, sentitems, and deleteditems can be used in place of folder IDs.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The mail folder's unique identifier",
+      "readOnly": true
+    },
+    "displayName": {
+      "type": "string",
+      "description": "The mail folder's display name"
+    },
+    "parentFolderId": {
+      "type": "string",
+      "description": "The unique identifier for the parent mail folder",
+      "readOnly": true
+    },
+    "childFolderCount": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The number of immediate child mail folders",
+      "readOnly": true
+    },
+    "totalItemCount": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The number of items in the mail folder (includes all item types)",
+      "readOnly": true
+    },
+    "unreadItemCount": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The number of items in the mail folder marked as unread",
+      "readOnly": true
+    },
+    "isHidden": {
+      "type": "boolean",
+      "description": "Indicates whether the mail folder is hidden. Can only be set when creating the folder.",
+      "default": false
+    }
+  },
+  "required": ["displayName"]
+}

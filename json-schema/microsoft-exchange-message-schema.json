@@ -1,0 +1,262 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/microsoft-exchange/json-schema/microsoft-exchange-message-schema.json",
+  "title": "Microsoft Exchange Message",
+  "description": "Represents an email message in a user's mailbox as exposed through the Microsoft Graph Mail API. A message is contained within a mail folder and supports operations such as send, reply, forward, and delete.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the message. By default, this value changes when the item is moved from one container to another.",
+      "readOnly": true
+    },
+    "subject": {
+      "type": "string",
+      "description": "The subject of the message"
+    },
+    "body": {
+      "$ref": "#/$defs/itemBody",
+      "description": "The body of the message in HTML or text format"
+    },
+    "bodyPreview": {
+      "type": "string",
+      "description": "The first 255 characters of the message body in text format",
+      "maxLength": 255,
+      "readOnly": true
+    },
+    "from": {
+      "$ref": "#/$defs/recipient",
+      "description": "The owner of the mailbox from which the message is sent"
+    },
+    "sender": {
+      "$ref": "#/$defs/recipient",
+      "description": "The account used to generate the message"
+    },
+    "toRecipients": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/recipient"
+      },
+      "description": "The To: recipients for the message"
+    },
+    "ccRecipients": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/recipient"
+      },
+      "description": "The Cc: recipients for the message"
+    },
+    "bccRecipients": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/recipient"
+      },
+      "description": "The Bcc: recipients for the message"
+    },
+    "replyTo": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/recipient"
+      },
+      "description": "The email addresses to use when replying"
+    },
+    "conversationId": {
+      "type": "string",
+      "description": "The ID of the conversation the email belongs to"
+    },
+    "conversationIndex": {
+      "type": "string",
+      "contentEncoding": "base64",
+      "description": "Indicates the position of the message within the conversation"
+    },
+    "createdDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time the message was created in ISO 8601 UTC format",
+      "readOnly": true
+    },
+    "lastModifiedDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time the message was last changed",
+      "readOnly": true
+    },
+    "receivedDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time the message was received",
+      "readOnly": true
+    },
+    "sentDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time the message was sent",
+      "readOnly": true
+    },
+    "hasAttachments": {
+      "type": "boolean",
+      "description": "Indicates whether the message has attachments (excludes inline attachments)",
+      "readOnly": true
+    },
+    "importance": {
+      "type": "string",
+      "enum": ["low", "normal", "high"],
+      "description": "The importance of the message"
+    },
+    "inferenceClassification": {
+      "type": "string",
+      "enum": ["focused", "other"],
+      "description": "The classification of the message based on inferred relevance or importance"
+    },
+    "internetMessageId": {
+      "type": "string",
+      "description": "The message ID in the format specified by RFC2822"
+    },
+    "internetMessageHeaders": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/internetMessageHeader"
+      },
+      "description": "A collection of message headers defined by RFC5322",
+      "readOnly": true
+    },
+    "isDeliveryReceiptRequested": {
+      "type": "boolean",
+      "description": "Indicates whether a delivery receipt is requested"
+    },
+    "isDraft": {
+      "type": "boolean",
+      "description": "Indicates whether the message is a draft",
+      "readOnly": true
+    },
+    "isRead": {
+      "type": "boolean",
+      "description": "Indicates whether the message has been read"
+    },
+    "isReadReceiptRequested": {
+      "type": "boolean",
+      "description": "Indicates whether a read receipt is requested"
+    },
+    "parentFolderId": {
+      "type": "string",
+      "description": "The unique identifier for the message's parent mailFolder",
+      "readOnly": true
+    },
+    "webLink": {
+      "type": "string",
+      "format": "uri",
+      "description": "The URL to open the message in Outlook on the web",
+      "readOnly": true
+    },
+    "flag": {
+      "$ref": "#/$defs/followupFlag",
+      "description": "The follow-up flag status for the message"
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The categories associated with the message"
+    },
+    "changeKey": {
+      "type": "string",
+      "description": "The version of the message",
+      "readOnly": true
+    },
+    "uniqueBody": {
+      "$ref": "#/$defs/itemBody",
+      "description": "The part of the body unique to the current message"
+    }
+  },
+  "required": ["subject"],
+  "$defs": {
+    "recipient": {
+      "type": "object",
+      "description": "Represents an email recipient",
+      "properties": {
+        "emailAddress": {
+          "$ref": "#/$defs/emailAddress"
+        }
+      }
+    },
+    "emailAddress": {
+      "type": "object",
+      "description": "The name and email address of a person or entity",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The display name of the person or entity"
+        },
+        "address": {
+          "type": "string",
+          "format": "email",
+          "description": "The email address"
+        }
+      }
+    },
+    "itemBody": {
+      "type": "object",
+      "description": "Represents the body content",
+      "properties": {
+        "contentType": {
+          "type": "string",
+          "enum": ["text", "html"],
+          "description": "The type of the content"
+        },
+        "content": {
+          "type": "string",
+          "description": "The content of the body"
+        }
+      }
+    },
+    "internetMessageHeader": {
+      "type": "object",
+      "description": "A key-value pair representing an Internet message header defined by RFC5322",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the message header"
+        },
+        "value": {
+          "type": "string",
+          "description": "The value of the message header"
+        }
+      }
+    },
+    "followupFlag": {
+      "type": "object",
+      "description": "Follow-up flag on a message",
+      "properties": {
+        "completedDateTime": {
+          "$ref": "#/$defs/dateTimeTimeZone"
+        },
+        "dueDateTime": {
+          "$ref": "#/$defs/dateTimeTimeZone"
+        },
+        "startDateTime": {
+          "$ref": "#/$defs/dateTimeTimeZone"
+        },
+        "flagStatus": {
+          "type": "string",
+          "enum": ["notFlagged", "complete", "flagged"],
+          "description": "The status of the follow-up flag"
+        }
+      }
+    },
+    "dateTimeTimeZone": {
+      "type": "object",
+      "description": "Describes a date, time, and time zone",
+      "properties": {
+        "dateTime": {
+          "type": "string",
+          "description": "A date and time combined in ISO 8601 format"
+        },
+        "timeZone": {
+          "type": "string",
+          "description": "A time zone name (e.g. Pacific Standard Time)"
+        }
+      }
+    }
+  }
+}

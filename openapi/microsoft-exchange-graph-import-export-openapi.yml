@@ -1,0 +1,404 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Graph Mailbox Import Export API
+  description: >-
+    APIs for discovering, importing, and exporting content from Exchange Online
+    mailboxes in full fidelity through the Microsoft Graph beta endpoint.
+    Enables mailbox migration scenarios and content copying as a replacement
+    for EWS-based approaches. Supports importing and exporting mailbox content
+    including messages, calendar events, and contacts while preserving all
+    metadata and properties.
+  version: 0.1.0-beta
+  contact:
+    name: Microsoft Support
+    url: https://support.microsoft.com
+    email: support@microsoft.com
+  license:
+    name: Microsoft API License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+  x-date-modified: '2026-03-04'
+servers:
+  - url: https://graph.microsoft.com/beta
+    description: Microsoft Graph beta endpoint (preview)
+security:
+  - oauth2: []
+tags:
+  - name: Mailbox Discovery
+    description: Operations for discovering mailbox structure and content
+  - name: Mailbox Import
+    description: Operations for importing content into mailboxes
+  - name: Mailbox Export
+    description: Operations for exporting content from mailboxes
+paths:
+  /users/{user-id}/mailboxes:
+    get:
+      operationId: listMailboxes
+      summary: List mailboxes
+      description: >-
+        Discover the mailboxes associated with a user, including primary
+        mailbox and archive mailbox information. Returns mailbox metadata
+        needed for import and export operations.
+      tags:
+        - Mailbox Discovery
+      parameters:
+        - $ref: '#/components/parameters/UserIdParam'
+      responses:
+        '200':
+          description: Successfully retrieved mailbox information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  '@odata.context':
+                    type: string
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Mailbox'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /users/{user-id}/mailboxes/{mailbox-id}/folders:
+    get:
+      operationId: listMailboxFolders
+      summary: List mailbox folders
+      description: >-
+        List all folders in the specified mailbox for content discovery.
+        Returns folder hierarchy with metadata needed for targeted import
+        and export operations.
+      tags:
+        - Mailbox Discovery
+      parameters:
+        - $ref: '#/components/parameters/UserIdParam'
+        - $ref: '#/components/parameters/MailboxIdParam'
+        - $ref: '#/components/parameters/TopParam'
+        - $ref: '#/components/parameters/SkipParam'
+      responses:
+        '200':
+          description: Successfully retrieved mailbox folders
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  '@odata.context':
+                    type: string
+                  '@odata.nextLink':
+                    type: string
+                    format: uri
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/MailboxFolder'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /users/{user-id}/mailboxes/{mailbox-id}/folders/{folder-id}/items:
+    get:
+      operationId: listMailboxFolderItems
+      summary: List folder items
+      description: >-
+        List items in a specific mailbox folder for export. Returns items
+        with their metadata for batch export processing. Supports pagination
+        for large folders.
+      tags:
+        - Mailbox Export
+      parameters:
+        - $ref: '#/components/parameters/UserIdParam'
+        - $ref: '#/components/parameters/MailboxIdParam'
+        - $ref: '#/components/parameters/FolderIdParam'
+        - $ref: '#/components/parameters/TopParam'
+        - $ref: '#/components/parameters/SkipParam'
+        - $ref: '#/components/parameters/SelectParam'
+      responses:
+        '200':
+          description: Successfully retrieved folder items
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  '@odata.context':
+                    type: string
+                  '@odata.nextLink':
+                    type: string
+                    format: uri
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/MailboxItem'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /users/{user-id}/mailboxes/{mailbox-id}/folders/{folder-id}/items/{item-id}/content:
+    get:
+      operationId: exportMailboxItemContent
+      summary: Export item content
+      description: >-
+        Export the full-fidelity content of a specific mailbox item in MIME
+        format. Returns the complete item with all properties, headers, and
+        attachments preserved for migration scenarios.
+      tags:
+        - Mailbox Export
+      parameters:
+        - $ref: '#/components/parameters/UserIdParam'
+        - $ref: '#/components/parameters/MailboxIdParam'
+        - $ref: '#/components/parameters/FolderIdParam'
+        - $ref: '#/components/parameters/ItemIdParam'
+      responses:
+        '200':
+          description: Successfully exported item content
+          content:
+            message/rfc822:
+              schema:
+                type: string
+                format: binary
+                description: The MIME content of the item
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /users/{user-id}/mailboxes/{mailbox-id}/folders/{folder-id}/items/import:
+    post:
+      operationId: importMailboxItem
+      summary: Import item into folder
+      description: >-
+        Import a full-fidelity item into the specified mailbox folder. Accepts
+        MIME content and creates the item preserving all properties and
+        metadata. Used for mailbox migration and content copying scenarios.
+      tags:
+        - Mailbox Import
+      parameters:
+        - $ref: '#/components/parameters/UserIdParam'
+        - $ref: '#/components/parameters/MailboxIdParam'
+        - $ref: '#/components/parameters/FolderIdParam'
+      requestBody:
+        required: true
+        content:
+          message/rfc822:
+            schema:
+              type: string
+              format: binary
+              description: The MIME content of the item to import
+      responses:
+        '201':
+          description: Successfully imported item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MailboxItem'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authorization with Microsoft identity platform
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
+          scopes:
+            Mailbox.Import: Import content into mailboxes
+            Mailbox.Export: Export content from mailboxes
+            MailboxFolder.Read: Read mailbox folder information
+  parameters:
+    UserIdParam:
+      name: user-id
+      in: path
+      required: true
+      description: The unique identifier or user principal name
+      schema:
+        type: string
+    MailboxIdParam:
+      name: mailbox-id
+      in: path
+      required: true
+      description: The unique identifier of the mailbox
+      schema:
+        type: string
+    FolderIdParam:
+      name: folder-id
+      in: path
+      required: true
+      description: The unique identifier of the folder
+      schema:
+        type: string
+    ItemIdParam:
+      name: item-id
+      in: path
+      required: true
+      description: The unique identifier of the item
+      schema:
+        type: string
+    TopParam:
+      name: $top
+      in: query
+      description: Number of items to return
+      schema:
+        type: integer
+        minimum: 1
+    SkipParam:
+      name: $skip
+      in: query
+      description: Number of items to skip
+      schema:
+        type: integer
+        minimum: 0
+    SelectParam:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include
+      schema:
+        type: string
+  schemas:
+    Mailbox:
+      type: object
+      description: Represents a user's mailbox
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: The mailbox unique identifier
+        mailboxType:
+          type: string
+          enum:
+            - primary
+            - archive
+          description: The type of mailbox
+        displayName:
+          type: string
+          description: Display name of the mailbox
+        primarySmtpAddress:
+          type: string
+          format: email
+          description: The primary SMTP address of the mailbox
+        totalItemCount:
+          type: integer
+          description: Total number of items in the mailbox
+        totalItemSize:
+          type: integer
+          description: Total size of all items in bytes
+    MailboxFolder:
+      type: object
+      description: A folder in a mailbox
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: The folder unique identifier
+        displayName:
+          type: string
+          description: Display name of the folder
+        parentFolderId:
+          type: string
+          description: The ID of the parent folder
+        folderType:
+          type: string
+          description: The type of folder (e.g. inbox, calendar, contacts)
+        childFolderCount:
+          type: integer
+          description: Number of child folders
+        totalItemCount:
+          type: integer
+          description: Total items in the folder
+        unreadItemCount:
+          type: integer
+          description: Number of unread items
+    MailboxItem:
+      type: object
+      description: An item in a mailbox folder
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: The item unique identifier
+        itemType:
+          type: string
+          enum:
+            - message
+            - event
+            - contact
+            - task
+          description: The type of mailbox item
+        subject:
+          type: string
+          description: The subject of the item
+        createdDateTime:
+          type: string
+          format: date-time
+          description: When the item was created
+        lastModifiedDateTime:
+          type: string
+          format: date-time
+          description: When the item was last modified
+        size:
+          type: integer
+          description: Size of the item in bytes
+        internetMessageId:
+          type: string
+          description: The Internet message ID (for messages)
+        hasAttachments:
+          type: boolean
+          description: Whether the item has attachments
+    ODataError:
+      type: object
+      description: OData error response
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            innerError:
+              type: object
+              properties:
+                request-id:
+                  type: string
+                date:
+                  type: string
+                  format: date-time
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'

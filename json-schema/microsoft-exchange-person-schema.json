@@ -1,0 +1,202 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/microsoft-exchange/json-schema/microsoft-exchange-person-schema.json",
+  "title": "Microsoft Exchange Person",
+  "description": "Represents an aggregation of information about a person from across mail, contacts, and social networks as exposed through the Microsoft Graph People API. People can be local contacts, contacts from social networking, the organization's directory, and people from recent communications.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The person's unique identifier",
+      "readOnly": true
+    },
+    "displayName": {
+      "type": "string",
+      "description": "The person's display name"
+    },
+    "givenName": {
+      "type": "string",
+      "description": "The person's given name"
+    },
+    "surname": {
+      "type": "string",
+      "description": "The person's surname"
+    },
+    "birthday": {
+      "type": "string",
+      "description": "The person's birthday"
+    },
+    "personNotes": {
+      "type": "string",
+      "description": "Free-form notes about this person"
+    },
+    "isFavorite": {
+      "type": "boolean",
+      "description": "Whether the user has flagged this person as a favorite"
+    },
+    "jobTitle": {
+      "type": "string",
+      "description": "The person's job title"
+    },
+    "companyName": {
+      "type": "string",
+      "description": "The name of the person's company"
+    },
+    "department": {
+      "type": "string",
+      "description": "The person's department"
+    },
+    "officeLocation": {
+      "type": "string",
+      "description": "The location of the person's office"
+    },
+    "profession": {
+      "type": "string",
+      "description": "The person's profession"
+    },
+    "userPrincipalName": {
+      "type": "string",
+      "description": "The user principal name (UPN) in alias@domain format per RFC 822"
+    },
+    "imAddress": {
+      "type": "string",
+      "description": "The SIP address for VOIP instant messaging",
+      "readOnly": true
+    },
+    "scoredEmailAddresses": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/scoredEmailAddress"
+      },
+      "description": "The person's email addresses with relevance scores"
+    },
+    "phones": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/phone"
+      },
+      "description": "The person's phone numbers"
+    },
+    "postalAddresses": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/location"
+      },
+      "description": "The person's addresses"
+    },
+    "websites": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/website"
+      },
+      "description": "The person's websites"
+    },
+    "personType": {
+      "$ref": "#/$defs/personType",
+      "description": "The type of person"
+    },
+    "yomiCompany": {
+      "type": "string",
+      "description": "Phonetic Japanese company name"
+    }
+  },
+  "$defs": {
+    "scoredEmailAddress": {
+      "type": "object",
+      "description": "An email address with a relevance score",
+      "properties": {
+        "address": {
+          "type": "string",
+          "format": "email",
+          "description": "The email address"
+        },
+        "relevanceScore": {
+          "type": "number",
+          "description": "The relevance score (0.0 to 100.0)"
+        },
+        "selectionLikelihood": {
+          "type": "string",
+          "enum": ["notSpecified", "high"],
+          "description": "The likelihood the email would be selected"
+        }
+      }
+    },
+    "phone": {
+      "type": "object",
+      "description": "A phone number",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["home", "business", "mobile", "other", "assistant", "homeFax", "businessFax", "otherFax", "pager", "radio"],
+          "description": "The type of phone number"
+        },
+        "number": {
+          "type": "string",
+          "description": "The phone number"
+        }
+      }
+    },
+    "location": {
+      "type": "object",
+      "description": "Location information",
+      "properties": {
+        "displayName": {
+          "type": "string"
+        },
+        "locationType": {
+          "type": "string"
+        },
+        "locationUri": {
+          "type": "string"
+        },
+        "address": {
+          "$ref": "#/$defs/physicalAddress"
+        }
+      }
+    },
+    "physicalAddress": {
+      "type": "object",
+      "properties": {
+        "street": { "type": "string" },
+        "city": { "type": "string" },
+        "state": { "type": "string" },
+        "countryOrRegion": { "type": "string" },
+        "postalCode": { "type": "string" }
+      }
+    },
+    "website": {
+      "type": "object",
+      "description": "A website",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["other", "home", "work", "blog", "profile"],
+          "description": "The type of website"
+        },
+        "address": {
+          "type": "string",
+          "format": "uri",
+          "description": "The URL of the website"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "The display name of the website"
+        }
+      }
+    },
+    "personType": {
+      "type": "object",
+      "description": "The type of person",
+      "properties": {
+        "class": {
+          "type": "string",
+          "description": "The data source type (e.g. Person, Group)"
+        },
+        "subclass": {
+          "type": "string",
+          "description": "The sub-type (e.g. OrganizationUser, PersonalContact, UnifiedGroup)"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,724 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Graph Contacts API
+  description: >-
+    Manage Outlook personal contacts and contact folders for Exchange Online
+    users through the Microsoft Graph API. Supports creating, reading, updating,
+    and deleting contacts, organizing them into folders, and assigning
+    categories. Contacts can be organized into a hierarchy of contact folders.
+  version: 1.0.0
+  contact:
+    name: Microsoft Support
+    url: https://support.microsoft.com
+    email: support@microsoft.com
+  license:
+    name: Microsoft API License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+  x-date-modified: '2026-03-04'
+servers:
+  - url: https://graph.microsoft.com/v1.0
+    description: Microsoft Graph v1.0 production endpoint
+security:
+  - oauth2: []
+tags:
+  - name: Contacts
+    description: Operations for managing personal contacts
+  - name: Contact Folders
+    description: Operations for managing contact folders
+paths:
+  /me/contacts:
+    get:
+      operationId: listContacts
+      summary: List contacts
+      description: >-
+        Get a contact collection from the default contacts folder of the
+        signed-in user. Returns all contacts in the user's mailbox.
+      tags:
+        - Contacts
+      parameters:
+        - $ref: '#/components/parameters/TopParam'
+        - $ref: '#/components/parameters/SkipParam'
+        - $ref: '#/components/parameters/SelectParam'
+        - $ref: '#/components/parameters/FilterParam'
+        - $ref: '#/components/parameters/OrderByParam'
+        - $ref: '#/components/parameters/SearchParam'
+      responses:
+        '200':
+          description: Successfully retrieved contacts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactCollectionResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createContact
+      summary: Create contact
+      description: >-
+        Add a contact to the root contacts folder or the contacts endpoint
+        of another contact folder.
+      tags:
+        - Contacts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Contact'
+      responses:
+        '201':
+          description: Successfully created contact
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /me/contacts/{contact-id}:
+    get:
+      operationId: getContact
+      summary: Get contact
+      description: >-
+        Read properties and relationships of a contact object.
+      tags:
+        - Contacts
+      parameters:
+        - $ref: '#/components/parameters/ContactIdParam'
+        - $ref: '#/components/parameters/SelectParam'
+      responses:
+        '200':
+          description: Successfully retrieved contact
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateContact
+      summary: Update contact
+      description: >-
+        Update the properties of a contact object.
+      tags:
+        - Contacts
+      parameters:
+        - $ref: '#/components/parameters/ContactIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Contact'
+      responses:
+        '200':
+          description: Successfully updated contact
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteContact
+      summary: Delete contact
+      description: >-
+        Delete a contact object. The contact is moved to the Deleted Items folder.
+      tags:
+        - Contacts
+      parameters:
+        - $ref: '#/components/parameters/ContactIdParam'
+      responses:
+        '204':
+          description: Successfully deleted contact
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /me/contacts/delta:
+    get:
+      operationId: getContactDelta
+      summary: Get contact delta
+      description: >-
+        Get a set of contacts that have been added, deleted, or updated
+        in the user's mailbox. A delta function call for contacts is similar
+        to a GET request, except that by applying state tokens, you can
+        query for incremental changes.
+      tags:
+        - Contacts
+      parameters:
+        - $ref: '#/components/parameters/SelectParam'
+        - name: $deltatoken
+          in: query
+          description: The delta token returned from a previous delta call
+          schema:
+            type: string
+        - name: $skiptoken
+          in: query
+          description: The skip token for paging through results
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved contact delta
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactDeltaResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /me/contactFolders:
+    get:
+      operationId: listContactFolders
+      summary: List contact folders
+      description: >-
+        Get the contact folder collection in the default contacts folder
+        of the signed-in user.
+      tags:
+        - Contact Folders
+      parameters:
+        - $ref: '#/components/parameters/TopParam'
+        - $ref: '#/components/parameters/SkipParam'
+        - $ref: '#/components/parameters/SelectParam'
+      responses:
+        '200':
+          description: Successfully retrieved contact folders
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactFolderCollectionResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createContactFolder
+      summary: Create contact folder
+      description: >-
+        Create a new contact folder as a child of a specified folder or as
+        a top-level folder.
+      tags:
+        - Contact Folders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactFolder'
+      responses:
+        '201':
+          description: Successfully created contact folder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactFolder'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /me/contactFolders/{contactFolder-id}:
+    get:
+      operationId: getContactFolder
+      summary: Get contact folder
+      description: >-
+        Get a contact folder by using the contact folder ID.
+      tags:
+        - Contact Folders
+      parameters:
+        - $ref: '#/components/parameters/ContactFolderIdParam'
+        - $ref: '#/components/parameters/SelectParam'
+      responses:
+        '200':
+          description: Successfully retrieved contact folder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactFolder'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateContactFolder
+      summary: Update contact folder
+      description: >-
+        Update the properties of a contact folder object.
+      tags:
+        - Contact Folders
+      parameters:
+        - $ref: '#/components/parameters/ContactFolderIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactFolder'
+      responses:
+        '200':
+          description: Successfully updated contact folder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactFolder'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteContactFolder
+      summary: Delete contact folder
+      description: >-
+        Delete a contact folder. The folder is moved to the Deleted Items folder.
+      tags:
+        - Contact Folders
+      parameters:
+        - $ref: '#/components/parameters/ContactFolderIdParam'
+      responses:
+        '204':
+          description: Successfully deleted contact folder
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /me/contactFolders/{contactFolder-id}/contacts:
+    get:
+      operationId: listContactsInFolder
+      summary: List contacts in folder
+      description: >-
+        Get a contact collection from the specified contact folder.
+      tags:
+        - Contacts
+        - Contact Folders
+      parameters:
+        - $ref: '#/components/parameters/ContactFolderIdParam'
+        - $ref: '#/components/parameters/TopParam'
+        - $ref: '#/components/parameters/SkipParam'
+        - $ref: '#/components/parameters/SelectParam'
+        - $ref: '#/components/parameters/FilterParam'
+        - $ref: '#/components/parameters/OrderByParam'
+      responses:
+        '200':
+          description: Successfully retrieved contacts in folder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactCollectionResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: createContactInFolder
+      summary: Create contact in folder
+      description: >-
+        Add a contact to the specified contact folder.
+      tags:
+        - Contacts
+        - Contact Folders
+      parameters:
+        - $ref: '#/components/parameters/ContactFolderIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Contact'
+      responses:
+        '201':
+          description: Successfully created contact in folder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /me/contactFolders/{contactFolder-id}/childFolders:
+    get:
+      operationId: listContactChildFolders
+      summary: List child contact folders
+      description: >-
+        Get a collection of child folders under the specified contact folder.
+      tags:
+        - Contact Folders
+      parameters:
+        - $ref: '#/components/parameters/ContactFolderIdParam'
+        - $ref: '#/components/parameters/TopParam'
+        - $ref: '#/components/parameters/SkipParam'
+      responses:
+        '200':
+          description: Successfully retrieved child folders
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactFolderCollectionResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: createContactChildFolder
+      summary: Create child contact folder
+      description: >-
+        Create a new contact folder as a child of the specified folder.
+      tags:
+        - Contact Folders
+      parameters:
+        - $ref: '#/components/parameters/ContactFolderIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactFolder'
+      responses:
+        '201':
+          description: Successfully created child folder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactFolder'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authorization with Microsoft identity platform
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes:
+            Contacts.Read: Read user contacts
+            Contacts.ReadWrite: Read and write user contacts
+            Contacts.Read.Shared: Read shared contacts
+            Contacts.ReadWrite.Shared: Read and write shared contacts
+  parameters:
+    ContactIdParam:
+      name: contact-id
+      in: path
+      required: true
+      description: The unique identifier of the contact
+      schema:
+        type: string
+    ContactFolderIdParam:
+      name: contactFolder-id
+      in: path
+      required: true
+      description: The unique identifier of the contact folder
+      schema:
+        type: string
+    TopParam:
+      name: $top
+      in: query
+      description: The number of items to return
+      schema:
+        type: integer
+        minimum: 1
+    SkipParam:
+      name: $skip
+      in: query
+      description: The number of items to skip
+      schema:
+        type: integer
+        minimum: 0
+    SelectParam:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include
+      schema:
+        type: string
+    FilterParam:
+      name: $filter
+      in: query
+      description: OData filter expression
+      schema:
+        type: string
+    OrderByParam:
+      name: $orderby
+      in: query
+      description: Comma-separated list of properties to sort by
+      schema:
+        type: string
+    SearchParam:
+      name: $search
+      in: query
+      description: Search string to filter results
+      schema:
+        type: string
+  schemas:
+    Contact:
+      type: object
+      description: >-
+        A contact is an item in Outlook where you can organize and save
+        information about people and organizations you communicate with.
+        Contacts are contained in contact folders.
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: The contact's unique identifier
+        displayName:
+          type: string
+          description: The contact's display name
+        givenName:
+          type: string
+          description: The contact's given name (first name)
+        surname:
+          type: string
+          description: The contact's surname (last name)
+        middleName:
+          type: string
+          description: The contact's middle name
+        nickName:
+          type: string
+          description: The contact's nickname
+        title:
+          type: string
+          description: The contact's title
+        initials:
+          type: string
+          description: The contact's initials
+        generation:
+          type: string
+          description: The contact's suffix
+        emailAddresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailAddress'
+          description: The contact's email addresses
+        businessPhones:
+          type: array
+          items:
+            type: string
+          description: The contact's business phone numbers
+        homePhones:
+          type: array
+          items:
+            type: string
+          description: The contact's home phone numbers
+        mobilePhone:
+          type: string
+          description: The contact's mobile phone number
+        imAddresses:
+          type: array
+          items:
+            type: string
+          description: The contact's instant messaging addresses
+        jobTitle:
+          type: string
+          description: The contact's job title
+        companyName:
+          type: string
+          description: The name of the contact's company
+        department:
+          type: string
+          description: The contact's department
+        officeLocation:
+          type: string
+          description: The location of the contact's office
+        profession:
+          type: string
+          description: The contact's profession
+        manager:
+          type: string
+          description: The name of the contact's manager
+        assistantName:
+          type: string
+          description: The name of the contact's assistant
+        businessHomePage:
+          type: string
+          description: The business home page of the contact
+        businessAddress:
+          $ref: '#/components/schemas/PhysicalAddress'
+        homeAddress:
+          $ref: '#/components/schemas/PhysicalAddress'
+        otherAddress:
+          $ref: '#/components/schemas/PhysicalAddress'
+        spouseName:
+          type: string
+          description: The name of the contact's spouse or partner
+        birthday:
+          type: string
+          format: date-time
+          description: The contact's birthday in ISO 8601 format (always UTC)
+        children:
+          type: array
+          items:
+            type: string
+          description: The names of the contact's children
+        personalNotes:
+          type: string
+          description: The user's notes about the contact
+        fileAs:
+          type: string
+          description: The name the contact is filed under
+        categories:
+          type: array
+          items:
+            type: string
+          description: The categories associated with the contact
+        parentFolderId:
+          type: string
+          readOnly: true
+          description: The ID of the contact's parent folder
+        changeKey:
+          type: string
+          readOnly: true
+          description: Identifies the version of the contact
+        createdDateTime:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The time the contact was created
+        lastModifiedDateTime:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The time the contact was last modified
+        yomiGivenName:
+          type: string
+          description: Phonetic Japanese given name
+        yomiSurname:
+          type: string
+          description: Phonetic Japanese surname
+        yomiCompanyName:
+          type: string
+          description: Phonetic Japanese company name
+    ContactFolder:
+      type: object
+      description: A folder that contains contacts
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: The contact folder's unique identifier
+        displayName:
+          type: string
+          description: The folder's display name
+        parentFolderId:
+          type: string
+          readOnly: true
+          description: The ID of the folder's parent folder
+    EmailAddress:
+      type: object
+      description: Email address of a contact
+      properties:
+        name:
+          type: string
+          description: The display name
+        address:
+          type: string
+          format: email
+          description: The email address
+    PhysicalAddress:
+      type: object
+      description: Physical street address
+      properties:
+        street:
+          type: string
+          description: The street address
+        city:
+          type: string
+          description: The city
+        state:
+          type: string
+          description: The state or province
+        countryOrRegion:
+          type: string
+          description: The country or region
+        postalCode:
+          type: string
+          description: The postal code
+    ContactCollectionResponse:
+      type: object
+      description: Collection of contacts
+      properties:
+        '@odata.context':
+          type: string
+        '@odata.nextLink':
+          type: string
+          format: uri
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+    ContactDeltaResponse:
+      type: object
+      description: Delta response for contacts
+      properties:
+        '@odata.context':
+          type: string
+        '@odata.nextLink':
+          type: string
+          format: uri
+        '@odata.deltaLink':
+          type: string
+          format: uri
+          description: URL to get the next set of changes
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+    ContactFolderCollectionResponse:
+      type: object
+      description: Collection of contact folders
+      properties:
+        '@odata.context':
+          type: string
+        '@odata.nextLink':
+          type: string
+          format: uri
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactFolder'
+    ODataError:
+      type: object
+      description: OData error response
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            innerError:
+              type: object
+              properties:
+                request-id:
+                  type: string
+                date:
+                  type: string
+                  format: date-time
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'

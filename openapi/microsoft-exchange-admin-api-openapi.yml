@@ -1,0 +1,369 @@
+openapi: 3.1.0
+info:
+  title: Exchange Online Admin API
+  description: >-
+    REST-based administrative API that enables a focused set of Exchange
+    cmdlets and parameters as POST-only endpoints. Provides access to key
+    tasks previously available through Exchange Web Services (EWS), including
+    organization configuration, accepted domains, mailbox properties, mailbox
+    folder permissions, and distribution group membership. Built as a
+    complementary REST-first surface for specific administrative tasks caused
+    by the EWS deprecation planned for October 2026.
+  version: 2.0.0
+  contact:
+    name: Microsoft Support
+    url: https://support.microsoft.com
+    email: support@microsoft.com
+  license:
+    name: Microsoft API License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+  x-date-modified: '2026-03-04'
+servers:
+  - url: https://outlook.office365.com/adminapi/v2.0
+    description: Exchange Online Admin API v2.0 endpoint
+security:
+  - oauth2: []
+tags:
+  - name: Organization Configuration
+    description: Retrieve organization-level Exchange configuration
+  - name: Accepted Domains
+    description: View accepted domains and their configurations
+  - name: Mailboxes
+    description: View and update mailbox properties and delegation
+  - name: Mailbox Folder Permissions
+    description: View and manage mailbox folder permissions
+  - name: Distribution Groups
+    description: Retrieve distribution group and dynamic distribution group membership
+paths:
+  /OrganizationConfig:
+    post:
+      operationId: getOrganizationConfig
+      summary: Get organization configuration
+      description: >-
+        Retrieve organization-level Exchange configuration related to MailTips
+        settings. Returns organization settings such as accepted domains,
+        MailTips configuration, and mailbox limits including MaxSendSize.
+        Replaces the GetServiceConfiguration EWS operation.
+      tags:
+        - Organization Configuration
+      parameters:
+        - $ref: '#/components/parameters/AnchorMailboxHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                CmdletInput:
+                  type: object
+                  properties:
+                    CmdletName:
+                      type: string
+                      description: The Exchange cmdlet name to execute
+                      example: Get-OrganizationConfig
+                    Parameters:
+                      type: object
+                      description: Parameters for the cmdlet
+                      additionalProperties: true
+      responses:
+        '200':
+          description: Successfully retrieved organization configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdminApiResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /AcceptedDomain:
+    post:
+      operationId: getAcceptedDomains
+      summary: Get accepted domains
+      description: >-
+        View accepted domains and their configurations for the organization.
+        Returns the list of domains that are configured for the Exchange
+        Online organization. Replaces the GetServiceConfiguration EWS operation.
+      tags:
+        - Accepted Domains
+      parameters:
+        - $ref: '#/components/parameters/AnchorMailboxHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                CmdletInput:
+                  type: object
+                  properties:
+                    CmdletName:
+                      type: string
+                      example: Get-AcceptedDomain
+                    Parameters:
+                      type: object
+                      additionalProperties: true
+      responses:
+        '200':
+          description: Successfully retrieved accepted domains
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdminApiResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /Mailbox:
+    post:
+      operationId: manageMailbox
+      summary: Manage mailbox
+      description: >-
+        View mailbox properties or update Send on Behalf (delegation) for
+        mailboxes. Supports Get-Mailbox to retrieve properties such as display
+        name, primary SMTP address, size limits, and delegate information, and
+        Set-Mailbox to update delegation settings. Replaces the AddDelegate
+        and RemoveDelegate EWS operations.
+      tags:
+        - Mailboxes
+      parameters:
+        - $ref: '#/components/parameters/AnchorMailboxHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                CmdletInput:
+                  type: object
+                  properties:
+                    CmdletName:
+                      type: string
+                      description: The mailbox cmdlet to execute (Get-Mailbox or Set-Mailbox)
+                      example: Get-Mailbox
+                    Parameters:
+                      type: object
+                      description: Parameters for the cmdlet
+                      additionalProperties: true
+      responses:
+        '200':
+          description: Successfully executed mailbox operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdminApiResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /MailboxFolderPermission:
+    post:
+      operationId: manageMailboxFolderPermission
+      summary: Manage mailbox folder permissions
+      description: >-
+        View and manage permissions on mailbox folders. Supports Get, Add, Set,
+        and Remove operations for mailbox folder permissions. Replaces the
+        GetFolder, UpdateFolder, and CreateFolder EWS operations for permission
+        management.
+      tags:
+        - Mailbox Folder Permissions
+      parameters:
+        - $ref: '#/components/parameters/AnchorMailboxHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                CmdletInput:
+                  type: object
+                  properties:
+                    CmdletName:
+                      type: string
+                      description: >-
+                        The permission cmdlet to execute
+                        (Get-MailboxFolderPermission, Add-MailboxFolderPermission,
+                        Set-MailboxFolderPermission, or Remove-MailboxFolderPermission)
+                      example: Get-MailboxFolderPermission
+                    Parameters:
+                      type: object
+                      description: >-
+                        Parameters for the cmdlet. For Get, specify Identity.
+                        For Add, specify Identity, User, and AccessRights.
+                        For Set, specify Identity, User, and AccessRights.
+                        For Remove, specify Identity and User.
+                      additionalProperties: true
+      responses:
+        '200':
+          description: Successfully executed folder permission operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdminApiResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /DistributionGroupMember:
+    post:
+      operationId: getDistributionGroupMembers
+      summary: Get distribution group members
+      description: >-
+        Retrieve membership details for distribution groups. Returns the
+        list of members for the specified distribution group. Replaces the
+        ExpandDL EWS operation.
+      tags:
+        - Distribution Groups
+      parameters:
+        - $ref: '#/components/parameters/AnchorMailboxHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                CmdletInput:
+                  type: object
+                  properties:
+                    CmdletName:
+                      type: string
+                      example: Get-DistributionGroupMember
+                    Parameters:
+                      type: object
+                      description: Parameters including Identity for the group
+                      additionalProperties: true
+      responses:
+        '200':
+          description: Successfully retrieved distribution group members
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdminApiResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /DynamicDistributionGroupMember:
+    post:
+      operationId: getDynamicDistributionGroupMembers
+      summary: Get dynamic distribution group members
+      description: >-
+        Retrieve membership details for dynamic distribution groups. Returns
+        the dynamically computed members for the specified group. Replaces
+        the ExpandDL EWS operation for dynamic groups.
+      tags:
+        - Distribution Groups
+      parameters:
+        - $ref: '#/components/parameters/AnchorMailboxHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                CmdletInput:
+                  type: object
+                  properties:
+                    CmdletName:
+                      type: string
+                      example: Get-DynamicDistributionGroupMember
+                    Parameters:
+                      type: object
+                      description: Parameters including Identity for the group
+                      additionalProperties: true
+      responses:
+        '200':
+          description: Successfully retrieved dynamic distribution group members
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdminApiResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authorization with Microsoft identity platform
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
+          scopes:
+            https://outlook.office365.com/.default: Default scope for Exchange Online Admin API
+  parameters:
+    AnchorMailboxHeader:
+      name: X-AnchorMailbox
+      in: header
+      required: true
+      description: >-
+        Routing hint header used to route the request to the correct backend
+        server. Specify the UPN or primary SMTP address of a mailbox in
+        the target tenant.
+      schema:
+        type: string
+  schemas:
+    AdminApiResponse:
+      type: object
+      description: Response from the Exchange Online Admin API
+      properties:
+        '@odata.context':
+          type: string
+          description: OData context URL
+        value:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+          description: Array of result objects returned by the cmdlet
+        '@odata.nextLink':
+          type: string
+          format: uri
+          description: URL to retrieve the next page of results
+    ODataError:
+      type: object
+      description: OData error response
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code
+            message:
+              type: string
+              description: The error message
+  responses:
+    Unauthorized:
+      description: Unauthorized - authentication token is missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Forbidden:
+      description: Forbidden - insufficient Exchange RBAC permissions
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    NotFound:
+      description: Not found - the specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
