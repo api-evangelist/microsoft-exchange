@@ -24,16 +24,16 @@ servers:
 security:
   - oauth2: []
 tags:
-  - name: Organization Configuration
-    description: Retrieve organization-level Exchange configuration
   - name: Accepted Domains
     description: View accepted domains and their configurations
-  - name: Mailboxes
-    description: View and update mailbox properties and delegation
-  - name: Mailbox Folder Permissions
-    description: View and manage mailbox folder permissions
   - name: Distribution Groups
     description: Retrieve distribution group and dynamic distribution group membership
+  - name: Mailbox Folder Permissions
+    description: View and manage mailbox folder permissions
+  - name: Mailboxes
+    description: View and update mailbox properties and delegation
+  - name: Organization Configuration
+    description: Retrieve organization-level Exchange configuration
 paths:
   /OrganizationConfig:
     post:

@@ -21,10 +21,10 @@ servers:
 security:
   - oauth2: []
 tags:
-  - name: Contacts
-    description: Operations for managing personal contacts
   - name: Contact Folders
     description: Operations for managing contact folders
+  - name: Contacts
+    description: Operations for managing personal contacts
 paths:
   /me/contacts:
     get:
@@ -294,8 +294,8 @@ paths:
       description: >-
         Get a contact collection from the specified contact folder.
       tags:
-        - Contacts
         - Contact Folders
+        - Contacts
       parameters:
         - $ref: '#/components/parameters/ContactFolderIdParam'
         - $ref: '#/components/parameters/TopParam'
@@ -320,8 +320,8 @@ paths:
       description: >-
         Add a contact to the specified contact folder.
       tags:
-        - Contacts
         - Contact Folders
+        - Contacts
       parameters:
         - $ref: '#/components/parameters/ContactFolderIdParam'
       requestBody:

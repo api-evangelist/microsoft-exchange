@@ -559,8 +559,8 @@ paths:
         Retrieve a list of events in a specified calendar. The list contains
         single-instance meetings and series masters.
       tags:
-        - Events
         - Calendars
+        - Events
       parameters:
         - $ref: '#/components/parameters/CalendarIdParam'
         - $ref: '#/components/parameters/TopParam'
@@ -585,8 +585,8 @@ paths:
       description: >-
         Create a new event in the specified calendar.
       tags:
-        - Events
         - Calendars
+        - Events
       parameters:
         - $ref: '#/components/parameters/CalendarIdParam'
       requestBody:

@@ -22,12 +22,12 @@ servers:
 security:
   - oauth2: []
 tags:
-  - name: Messages
-    description: Operations for managing email messages
-  - name: Mail Folders
-    description: Operations for managing mail folders
   - name: Attachments
     description: Operations for managing message attachments
+  - name: Mail Folders
+    description: Operations for managing mail folders
+  - name: Messages
+    description: Operations for managing email messages
 paths:
   /me/messages:
     get:
@@ -646,8 +646,8 @@ paths:
         Get all the messages in the specified mail folder of the signed-in
         user's mailbox.
       tags:
-        - Messages
         - Mail Folders
+        - Messages
       parameters:
         - $ref: '#/components/parameters/MailFolderIdParam'
         - $ref: '#/components/parameters/TopParam'
@@ -672,8 +672,8 @@ paths:
       description: >-
         Create a new message in the specified mail folder.
       tags:
-        - Messages
         - Mail Folders
+        - Messages
       parameters:
         - $ref: '#/components/parameters/MailFolderIdParam'
       requestBody:

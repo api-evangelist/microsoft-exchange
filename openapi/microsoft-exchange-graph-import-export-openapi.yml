@@ -25,10 +25,10 @@ security:
 tags:
   - name: Mailbox Discovery
     description: Operations for discovering mailbox structure and content
-  - name: Mailbox Import
-    description: Operations for importing content into mailboxes
   - name: Mailbox Export
     description: Operations for exporting content from mailboxes
+  - name: Mailbox Import
+    description: Operations for importing content into mailboxes
 paths:
   /users/{user-id}/mailboxes:
     get:
