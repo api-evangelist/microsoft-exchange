@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Microsoft Graph Calendar API
+  title: Microsoft Exchange Microsoft Graph Calendar API
   description: >-
     Manage calendar events, meetings, and scheduling for Exchange Online users
     through the Microsoft Graph API. Provides endpoints for creating, updating,
@@ -32,7 +32,7 @@ paths:
   /me/calendars:
     get:
       operationId: listCalendars
-      summary: List calendars
+      summary: Microsoft Exchange List calendars
       description: >-
         Get all the user's calendars, or the calendars in the default or
         other specific calendar group. Returns the calendar collection for
@@ -54,7 +54,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createCalendar
-      summary: Create calendar
+      summary: Microsoft Exchange Create calendar
       description: >-
         Create a new calendar in the default calendar group or specified
         calendar group for the user.
@@ -80,7 +80,7 @@ paths:
   /me/calendars/{calendar-id}:
     get:
       operationId: getCalendar
-      summary: Get calendar
+      summary: Microsoft Exchange Get calendar
       description: >-
         Get the properties and relationships of a calendar object. The calendar
         can be one for a user or the default calendar of a Microsoft 365 group.
@@ -102,7 +102,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     patch:
       operationId: updateCalendar
-      summary: Update calendar
+      summary: Microsoft Exchange Update calendar
       description: >-
         Update the properties of a calendar object. The calendar can be one
         for a user or the default calendar of a Microsoft 365 group.
@@ -131,7 +131,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteCalendar
-      summary: Delete calendar
+      summary: Microsoft Exchange Delete calendar
       description: >-
         Delete a calendar other than the user's default calendar.
       tags:
@@ -148,7 +148,7 @@ paths:
   /me/events:
     get:
       operationId: listEvents
-      summary: List events
+      summary: Microsoft Exchange List events
       description: >-
         Retrieve a list of event objects in the user's mailbox. The list
         contains single-instance meetings and series masters. Supports OData
@@ -172,7 +172,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createEvent
-      summary: Create event
+      summary: Microsoft Exchange Create event
       description: >-
         Create a new event in the user's default calendar or specified calendar.
         Supports creating single-instance and recurring events, and events with
@@ -199,7 +199,7 @@ paths:
   /me/events/{event-id}:
     get:
       operationId: getEvent
-      summary: Get event
+      summary: Microsoft Exchange Get event
       description: >-
         Get the properties and relationships of an event object. Returns the
         event details including attendees, location, recurrence, and online
@@ -222,7 +222,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     patch:
       operationId: updateEvent
-      summary: Update event
+      summary: Microsoft Exchange Update event
       description: >-
         Update the properties of an event object. When updating the start or
         end time zones, use the list of supported time zones.
@@ -251,7 +251,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteEvent
-      summary: Delete event
+      summary: Microsoft Exchange Delete event
       description: >-
         Delete an event from the user's calendar. If the event is a meeting
         and the user is the organizer, a cancellation message is sent to
@@ -270,7 +270,7 @@ paths:
   /me/events/{event-id}/accept:
     post:
       operationId: acceptEvent
-      summary: Accept event
+      summary: Microsoft Exchange Accept event
       description: >-
         Accept the specified event in a user calendar. Optionally sends a
         response to the organizer indicating the user has accepted.
@@ -301,7 +301,7 @@ paths:
   /me/events/{event-id}/tentativelyAccept:
     post:
       operationId: tentativelyAcceptEvent
-      summary: Tentatively accept event
+      summary: Microsoft Exchange Tentatively accept event
       description: >-
         Tentatively accept the specified event in a user calendar.
       tags:
@@ -333,7 +333,7 @@ paths:
   /me/events/{event-id}/decline:
     post:
       operationId: declineEvent
-      summary: Decline event
+      summary: Microsoft Exchange Decline event
       description: >-
         Decline invitation to the specified event in a user calendar.
       tags:
@@ -365,7 +365,7 @@ paths:
   /me/events/{event-id}/cancel:
     post:
       operationId: cancelEvent
-      summary: Cancel event
+      summary: Microsoft Exchange Cancel event
       description: >-
         Send a cancellation message from the organizer to all the attendees
         and cancel the specified meeting. Only the organizer can cancel a meeting.
@@ -392,7 +392,7 @@ paths:
   /me/events/{event-id}/forward:
     post:
       operationId: forwardEvent
-      summary: Forward event
+      summary: Microsoft Exchange Forward event
       description: >-
         Forward a meeting request to a new recipient. The organizer or
         attendee forwards the meeting request to a new recipient.
@@ -427,7 +427,7 @@ paths:
   /me/events/{event-id}/instances:
     get:
       operationId: listEventInstances
-      summary: List event instances
+      summary: Microsoft Exchange List event instances
       description: >-
         Get the occurrences of a recurring series within a specified time range.
         If the event is a seriesMaster type, this returns the occurrences and
@@ -466,7 +466,7 @@ paths:
   /me/events/{event-id}/attachments:
     get:
       operationId: listEventAttachments
-      summary: List event attachments
+      summary: Microsoft Exchange List event attachments
       description: >-
         Retrieve a list of attachment objects attached to an event.
       tags:
@@ -487,7 +487,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     post:
       operationId: addEventAttachment
-      summary: Add event attachment
+      summary: Microsoft Exchange Add event attachment
       description: >-
         Add a file, item, or reference attachment to an event. This operation
         limits the size of the attachment to 3 MB.
@@ -515,7 +515,7 @@ paths:
   /me/calendarView:
     get:
       operationId: listCalendarView
-      summary: List calendar view
+      summary: Microsoft Exchange List calendar view
       description: >-
         Get the occurrences, exceptions, and single instances of events in a
         calendar view defined by a time range, from the user's primary calendar.
@@ -554,7 +554,7 @@ paths:
   /me/calendars/{calendar-id}/events:
     get:
       operationId: listCalendarEvents
-      summary: List events in calendar
+      summary: Microsoft Exchange List events in calendar
       description: >-
         Retrieve a list of events in a specified calendar. The list contains
         single-instance meetings and series masters.
@@ -581,7 +581,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     post:
       operationId: createEventInCalendar
-      summary: Create event in calendar
+      summary: Microsoft Exchange Create event in calendar
       description: >-
         Create a new event in the specified calendar.
       tags:
@@ -609,7 +609,7 @@ paths:
   /me/calendar/getSchedule:
     post:
       operationId: getSchedule
-      summary: Get free/busy schedule
+      summary: Microsoft Exchange Get free/busy schedule
       description: >-
         Get the free/busy availability information for a collection of users,
         distribution lists, or resources for a specified time period.
@@ -659,7 +659,7 @@ paths:
   /me/findMeetingTimes:
     post:
       operationId: findMeetingTimes
-      summary: Find meeting times
+      summary: Microsoft Exchange Find meeting times
       description: >-
         Suggest meeting times and locations based on organizer and attendee
         availability, and time or location constraints specified as parameters.

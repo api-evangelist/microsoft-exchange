@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Microsoft Graph Mail API
+  title: Microsoft Exchange Microsoft Graph Mail API
   description: >-
     Access Exchange Online mailboxes through the Microsoft Graph API, providing
     modern REST endpoints for reading, sending, and managing email messages,
@@ -32,7 +32,7 @@ paths:
   /me/messages:
     get:
       operationId: listMessages
-      summary: List messages
+      summary: Microsoft Exchange List messages
       description: >-
         Get all the messages in the signed-in user's mailbox including the
         Deleted Items and Clutter folders. Supports OData query parameters
@@ -59,7 +59,7 @@ paths:
           $ref: '#/components/responses/Forbidden'
     post:
       operationId: createDraftMessage
-      summary: Create draft message
+      summary: Microsoft Exchange Create draft message
       description: >-
         Create a draft of a new message in the signed-in user's mailbox. The
         draft can then be updated and sent. The message is saved in the Drafts
@@ -86,7 +86,7 @@ paths:
   /me/messages/{message-id}:
     get:
       operationId: getMessage
-      summary: Get message
+      summary: Microsoft Exchange Get message
       description: >-
         Read properties and relationships of a message object. Supports
         $select query parameter to return specific properties.
@@ -108,7 +108,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     patch:
       operationId: updateMessage
-      summary: Update message
+      summary: Microsoft Exchange Update message
       description: >-
         Update the properties of a message object. Only draft messages can
         have their body, subject, and other writable properties updated.
@@ -137,7 +137,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteMessage
-      summary: Delete message
+      summary: Microsoft Exchange Delete message
       description: >-
         Delete a message in the specified user's mailbox, or delete a
         relationship of the message. The message is moved to the Deleted
@@ -156,7 +156,7 @@ paths:
   /me/messages/{message-id}/send:
     post:
       operationId: sendDraftMessage
-      summary: Send draft message
+      summary: Microsoft Exchange Send draft message
       description: >-
         Send a previously created message draft. The message is then saved in
         the Sent Items folder. The draft message can be a new message draft,
@@ -175,7 +175,7 @@ paths:
   /me/messages/{message-id}/reply:
     post:
       operationId: replyToMessage
-      summary: Reply to message
+      summary: Microsoft Exchange Reply to message
       description: >-
         Reply to the sender of a message, add a comment, and send the reply.
         The message is then saved in the Sent Items folder.
@@ -205,7 +205,7 @@ paths:
   /me/messages/{message-id}/replyAll:
     post:
       operationId: replyAllToMessage
-      summary: Reply all to message
+      summary: Microsoft Exchange Reply all to message
       description: >-
         Reply to all recipients of a message, add a comment, and send the
         reply. The message is then saved in the Sent Items folder.
@@ -235,7 +235,7 @@ paths:
   /me/messages/{message-id}/forward:
     post:
       operationId: forwardMessage
-      summary: Forward message
+      summary: Microsoft Exchange Forward message
       description: >-
         Forward a message, add a comment, and send the forwarded message.
         The message is then saved in the Sent Items folder.
@@ -270,7 +270,7 @@ paths:
   /me/messages/{message-id}/copy:
     post:
       operationId: copyMessage
-      summary: Copy message
+      summary: Microsoft Exchange Copy message
       description: >-
         Copy a message to a specified folder. Returns the new copy of the
         message in the destination folder.
@@ -304,7 +304,7 @@ paths:
   /me/messages/{message-id}/move:
     post:
       operationId: moveMessage
-      summary: Move message
+      summary: Microsoft Exchange Move message
       description: >-
         Move a message to a specified folder. This creates a new copy of the
         message in the destination folder and removes the original message.
@@ -338,7 +338,7 @@ paths:
   /me/messages/{message-id}/createReply:
     post:
       operationId: createReplyDraft
-      summary: Create reply draft
+      summary: Microsoft Exchange Create reply draft
       description: >-
         Create a draft of a reply message. You can then update the draft
         and send it.
@@ -370,7 +370,7 @@ paths:
   /me/messages/{message-id}/createReplyAll:
     post:
       operationId: createReplyAllDraft
-      summary: Create reply-all draft
+      summary: Microsoft Exchange Create reply-all draft
       description: >-
         Create a draft of a reply-all message. You can then update the
         draft and send it.
@@ -402,7 +402,7 @@ paths:
   /me/messages/{message-id}/createForward:
     post:
       operationId: createForwardDraft
-      summary: Create forward draft
+      summary: Microsoft Exchange Create forward draft
       description: >-
         Create a draft of a forward message. You can then update the draft
         to add recipients and content, and then send it.
@@ -438,7 +438,7 @@ paths:
   /me/messages/{message-id}/attachments:
     get:
       operationId: listMessageAttachments
-      summary: List message attachments
+      summary: Microsoft Exchange List message attachments
       description: >-
         Retrieve a list of attachment objects attached to a message. Includes
         file attachments, item attachments, and reference attachments.
@@ -460,7 +460,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     post:
       operationId: addMessageAttachment
-      summary: Add attachment to message
+      summary: Microsoft Exchange Add attachment to message
       description: >-
         Add a file, item, or reference attachment to a message. This operation
         limits the size of the attachment to 3 MB. For larger attachments, use
@@ -489,7 +489,7 @@ paths:
   /me/sendMail:
     post:
       operationId: sendMail
-      summary: Send mail
+      summary: Microsoft Exchange Send mail
       description: >-
         Send the message specified in the request body using either JSON or
         MIME format. The message is saved in the Sent Items folder by default.
@@ -521,7 +521,7 @@ paths:
   /me/mailFolders:
     get:
       operationId: listMailFolders
-      summary: List mail folders
+      summary: Microsoft Exchange List mail folders
       description: >-
         Get all the mail folders in the signed-in user's mailbox, including
         any mail search folders. By default, hidden mail folders are not
@@ -548,7 +548,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createMailFolder
-      summary: Create mail folder
+      summary: Microsoft Exchange Create mail folder
       description: >-
         Create a new mail folder in the root folder of the user's mailbox.
       tags:
@@ -573,7 +573,7 @@ paths:
   /me/mailFolders/{mailFolder-id}:
     get:
       operationId: getMailFolder
-      summary: Get mail folder
+      summary: Microsoft Exchange Get mail folder
       description: >-
         Read the properties and relationships of a mail folder object.
       tags:
@@ -594,7 +594,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     patch:
       operationId: updateMailFolder
-      summary: Update mail folder
+      summary: Microsoft Exchange Update mail folder
       description: >-
         Update the properties of a mail folder object.
       tags:
@@ -622,7 +622,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteMailFolder
-      summary: Delete mail folder
+      summary: Microsoft Exchange Delete mail folder
       description: >-
         Delete the specified mail folder. The folder is moved to the Deleted
         Items folder. To permanently delete a mail folder, use the
@@ -641,7 +641,7 @@ paths:
   /me/mailFolders/{mailFolder-id}/messages:
     get:
       operationId: listMailFolderMessages
-      summary: List messages in mail folder
+      summary: Microsoft Exchange List messages in mail folder
       description: >-
         Get all the messages in the specified mail folder of the signed-in
         user's mailbox.
@@ -668,7 +668,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     post:
       operationId: createMessageInFolder
-      summary: Create message in folder
+      summary: Microsoft Exchange Create message in folder
       description: >-
         Create a new message in the specified mail folder.
       tags:
@@ -696,7 +696,7 @@ paths:
   /me/mailFolders/{mailFolder-id}/childFolders:
     get:
       operationId: listChildFolders
-      summary: List child folders
+      summary: Microsoft Exchange List child folders
       description: >-
         Get the folder collection under the specified folder.
       tags:
@@ -718,7 +718,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     post:
       operationId: createChildFolder
-      summary: Create child folder
+      summary: Microsoft Exchange Create child folder
       description: >-
         Create a new child mail folder under the specified folder.
       tags:
@@ -745,7 +745,7 @@ paths:
   /me/mailFolders/{mailFolder-id}/copy:
     post:
       operationId: copyMailFolder
-      summary: Copy mail folder
+      summary: Microsoft Exchange Copy mail folder
       description: >-
         Copy a mail folder and its contents to another mail folder.
       tags:
@@ -778,7 +778,7 @@ paths:
   /me/mailFolders/{mailFolder-id}/move:
     post:
       operationId: moveMailFolder
-      summary: Move mail folder
+      summary: Microsoft Exchange Move mail folder
       description: >-
         Move a mail folder and its contents to another mail folder.
       tags:

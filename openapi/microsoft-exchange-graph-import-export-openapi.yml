@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Microsoft Graph Mailbox Import Export API
+  title: Microsoft Exchange Microsoft Graph Mailbox Import Export API
   description: >-
     APIs for discovering, importing, and exporting content from Exchange Online
     mailboxes in full fidelity through the Microsoft Graph beta endpoint.
@@ -33,7 +33,7 @@ paths:
   /users/{user-id}/mailboxes:
     get:
       operationId: listMailboxes
-      summary: List mailboxes
+      summary: Microsoft Exchange List mailboxes
       description: >-
         Discover the mailboxes associated with a user, including primary
         mailbox and archive mailbox information. Returns mailbox metadata
@@ -65,7 +65,7 @@ paths:
   /users/{user-id}/mailboxes/{mailbox-id}/folders:
     get:
       operationId: listMailboxFolders
-      summary: List mailbox folders
+      summary: Microsoft Exchange List mailbox folders
       description: >-
         List all folders in the specified mailbox for content discovery.
         Returns folder hierarchy with metadata needed for targeted import
@@ -103,7 +103,7 @@ paths:
   /users/{user-id}/mailboxes/{mailbox-id}/folders/{folder-id}/items:
     get:
       operationId: listMailboxFolderItems
-      summary: List folder items
+      summary: Microsoft Exchange List folder items
       description: >-
         List items in a specific mailbox folder for export. Returns items
         with their metadata for batch export processing. Supports pagination
@@ -143,7 +143,7 @@ paths:
   /users/{user-id}/mailboxes/{mailbox-id}/folders/{folder-id}/items/{item-id}/content:
     get:
       operationId: exportMailboxItemContent
-      summary: Export item content
+      summary: Microsoft Exchange Export item content
       description: >-
         Export the full-fidelity content of a specific mailbox item in MIME
         format. Returns the complete item with all properties, headers, and
@@ -173,7 +173,7 @@ paths:
   /users/{user-id}/mailboxes/{mailbox-id}/folders/{folder-id}/items/import:
     post:
       operationId: importMailboxItem
-      summary: Import item into folder
+      summary: Microsoft Exchange Import item into folder
       description: >-
         Import a full-fidelity item into the specified mailbox folder. Accepts
         MIME content and creates the item preserving all properties and

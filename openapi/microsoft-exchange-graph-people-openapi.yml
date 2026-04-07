@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Microsoft Graph People API
+  title: Microsoft Exchange Microsoft Graph People API
   description: >-
     Retrieve people most relevant to a user based on communication and
     collaboration patterns, business relationships, and contacts. The People
@@ -28,7 +28,7 @@ paths:
   /me/people:
     get:
       operationId: listPeople
-      summary: List people
+      summary: Microsoft Exchange List people
       description: >-
         Retrieve a collection of person objects ordered by their relevance to
         the signed-in user, which is determined by the user's communication
@@ -65,7 +65,7 @@ paths:
   /users/{user-id}/people:
     get:
       operationId: listUserPeople
-      summary: List user's people
+      summary: Microsoft Exchange List user's people
       description: >-
         Retrieve a collection of person objects ordered by their relevance
         to the specified user. Requires People.Read.All permission. Useful

@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Microsoft Graph Contacts API
+  title: Microsoft Exchange Microsoft Graph Contacts API
   description: >-
     Manage Outlook personal contacts and contact folders for Exchange Online
     users through the Microsoft Graph API. Supports creating, reading, updating,
@@ -29,7 +29,7 @@ paths:
   /me/contacts:
     get:
       operationId: listContacts
-      summary: List contacts
+      summary: Microsoft Exchange List contacts
       description: >-
         Get a contact collection from the default contacts folder of the
         signed-in user. Returns all contacts in the user's mailbox.
@@ -53,7 +53,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createContact
-      summary: Create contact
+      summary: Microsoft Exchange Create contact
       description: >-
         Add a contact to the root contacts folder or the contacts endpoint
         of another contact folder.
@@ -79,7 +79,7 @@ paths:
   /me/contacts/{contact-id}:
     get:
       operationId: getContact
-      summary: Get contact
+      summary: Microsoft Exchange Get contact
       description: >-
         Read properties and relationships of a contact object.
       tags:
@@ -100,7 +100,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     patch:
       operationId: updateContact
-      summary: Update contact
+      summary: Microsoft Exchange Update contact
       description: >-
         Update the properties of a contact object.
       tags:
@@ -128,7 +128,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteContact
-      summary: Delete contact
+      summary: Microsoft Exchange Delete contact
       description: >-
         Delete a contact object. The contact is moved to the Deleted Items folder.
       tags:
@@ -145,7 +145,7 @@ paths:
   /me/contacts/delta:
     get:
       operationId: getContactDelta
-      summary: Get contact delta
+      summary: Microsoft Exchange Get contact delta
       description: >-
         Get a set of contacts that have been added, deleted, or updated
         in the user's mailbox. A delta function call for contacts is similar
@@ -177,7 +177,7 @@ paths:
   /me/contactFolders:
     get:
       operationId: listContactFolders
-      summary: List contact folders
+      summary: Microsoft Exchange List contact folders
       description: >-
         Get the contact folder collection in the default contacts folder
         of the signed-in user.
@@ -198,7 +198,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createContactFolder
-      summary: Create contact folder
+      summary: Microsoft Exchange Create contact folder
       description: >-
         Create a new contact folder as a child of a specified folder or as
         a top-level folder.
@@ -224,7 +224,7 @@ paths:
   /me/contactFolders/{contactFolder-id}:
     get:
       operationId: getContactFolder
-      summary: Get contact folder
+      summary: Microsoft Exchange Get contact folder
       description: >-
         Get a contact folder by using the contact folder ID.
       tags:
@@ -245,7 +245,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     patch:
       operationId: updateContactFolder
-      summary: Update contact folder
+      summary: Microsoft Exchange Update contact folder
       description: >-
         Update the properties of a contact folder object.
       tags:
@@ -273,7 +273,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteContactFolder
-      summary: Delete contact folder
+      summary: Microsoft Exchange Delete contact folder
       description: >-
         Delete a contact folder. The folder is moved to the Deleted Items folder.
       tags:
@@ -290,7 +290,7 @@ paths:
   /me/contactFolders/{contactFolder-id}/contacts:
     get:
       operationId: listContactsInFolder
-      summary: List contacts in folder
+      summary: Microsoft Exchange List contacts in folder
       description: >-
         Get a contact collection from the specified contact folder.
       tags:
@@ -316,7 +316,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     post:
       operationId: createContactInFolder
-      summary: Create contact in folder
+      summary: Microsoft Exchange Create contact in folder
       description: >-
         Add a contact to the specified contact folder.
       tags:
@@ -344,7 +344,7 @@ paths:
   /me/contactFolders/{contactFolder-id}/childFolders:
     get:
       operationId: listContactChildFolders
-      summary: List child contact folders
+      summary: Microsoft Exchange List child contact folders
       description: >-
         Get a collection of child folders under the specified contact folder.
       tags:
@@ -366,7 +366,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     post:
       operationId: createContactChildFolder
-      summary: Create child contact folder
+      summary: Microsoft Exchange Create child contact folder
       description: >-
         Create a new contact folder as a child of the specified folder.
       tags:

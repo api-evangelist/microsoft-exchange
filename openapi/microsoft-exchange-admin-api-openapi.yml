@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Exchange Online Admin API
+  title: Microsoft Exchange Exchange Online Admin API
   description: >-
     REST-based administrative API that enables a focused set of Exchange
     cmdlets and parameters as POST-only endpoints. Provides access to key
@@ -38,7 +38,7 @@ paths:
   /OrganizationConfig:
     post:
       operationId: getOrganizationConfig
-      summary: Get organization configuration
+      summary: Microsoft Exchange Get organization configuration
       description: >-
         Retrieve organization-level Exchange configuration related to MailTips
         settings. Returns organization settings such as accepted domains,
@@ -80,7 +80,7 @@ paths:
   /AcceptedDomain:
     post:
       operationId: getAcceptedDomains
-      summary: Get accepted domains
+      summary: Microsoft Exchange Get accepted domains
       description: >-
         View accepted domains and their configurations for the organization.
         Returns the list of domains that are configured for the Exchange
@@ -119,7 +119,7 @@ paths:
   /Mailbox:
     post:
       operationId: manageMailbox
-      summary: Manage mailbox
+      summary: Microsoft Exchange Manage mailbox
       description: >-
         View mailbox properties or update Send on Behalf (delegation) for
         mailboxes. Supports Get-Mailbox to retrieve properties such as display
@@ -164,7 +164,7 @@ paths:
   /MailboxFolderPermission:
     post:
       operationId: manageMailboxFolderPermission
-      summary: Manage mailbox folder permissions
+      summary: Microsoft Exchange Manage mailbox folder permissions
       description: >-
         View and manage permissions on mailbox folders. Supports Get, Add, Set,
         and Remove operations for mailbox folder permissions. Replaces the
@@ -215,7 +215,7 @@ paths:
   /DistributionGroupMember:
     post:
       operationId: getDistributionGroupMembers
-      summary: Get distribution group members
+      summary: Microsoft Exchange Get distribution group members
       description: >-
         Retrieve membership details for distribution groups. Returns the
         list of members for the specified distribution group. Replaces the
@@ -257,7 +257,7 @@ paths:
   /DynamicDistributionGroupMember:
     post:
       operationId: getDynamicDistributionGroupMembers
-      summary: Get dynamic distribution group members
+      summary: Microsoft Exchange Get dynamic distribution group members
       description: >-
         Retrieve membership details for dynamic distribution groups. Returns
         the dynamically computed members for the specified group. Replaces
