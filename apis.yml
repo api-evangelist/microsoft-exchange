@@ -1,5 +1,7 @@
+aid: microsoft-exchange
 name: Microsoft Exchange
-description: A comprehensive API collection for Microsoft Exchange Server and Exchange Online, providing programmatic access to email, calendars, contacts, and other mailbox resources.
+description: A comprehensive API collection for Microsoft Exchange Server and Exchange Online, providing programmatic access to email, calendars, contacts, and other mailbox resources through Microsoft Graph, EWS, PowerShell, Autodiscover, and the Exchange Online Admin API.
+type: Index
 image: https://learn.microsoft.com/en-us/media/logos/logo-ms-social.png
 tags:
   - Calendar
@@ -7,10 +9,10 @@ tags:
   - Contacts
   - Email
   - Enterprise
-created: '2024'
-modified: '2026-03-16'
-url: https://docs.microsoft.com/en-us/exchange/
-specificationVersion: '0.18'
+created: '2024-01-01'
+modified: '2026-04-28'
+url: https://raw.githubusercontent.com/api-evangelist/microsoft-exchange/refs/heads/main/apis.yml
+specificationVersion: '0.19'
 apis:
   - name: Microsoft Graph Mail API
     description: Access Exchange Online mailboxes through the Microsoft Graph API, providing modern REST endpoints for reading, sending, and managing email messages, drafts, attachments, and mail folders.
