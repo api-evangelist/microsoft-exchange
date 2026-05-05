@@ -1,0 +1,13 @@
+{
+  "repo": "microsoft-exchange",
+  "feeds": [
+    {
+      "source": "https://devblogs.microsoft.com/microsoft365dev/tag/exchange/",
+      "feed_url": "https://devblogs.microsoft.com/microsoft365dev/tag/exchange/feed/",
+      "saved": 9,
+      "title": "Exchange - Tag | Microsoft 365 Developer Blog"
+    }
+  ],
+  "post_count": 9,
+  "fetched": "2026-05-03T23:31:54Z"
+}
