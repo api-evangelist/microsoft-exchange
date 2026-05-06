@@ -4,204 +4,164 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Microsoft Exchange
 providerId: microsoft-exchange
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
-  - Calendar
-  - Collaboration
-  - Contacts
   - Email
-  - Enterprise
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+  - Calendar
+  - Exchange Online
+  - Microsoft 365
+  - Microsoft
+description: Microsoft Exchange Online is sold as standalone Plan 1 / Plan 2 SKUs and is also bundled
+  into Microsoft 365 Business / Enterprise plans. Pricing is per-user-per-month with annual commitment.
+  The Exchange Online APIs (Microsoft Graph mail/calendar, Exchange Web Services, EXO PowerShell, Exchange
+  REST) are included with any Exchange-licensed seat at no incremental per-call charge.
+sources:
+  - https://www.microsoft.com/en-us/microsoft-365/exchange/compare-microsoft-exchange-online-plans
+  - https://learn.microsoft.com/en-us/exchange/clients-and-mobile-in-exchange-online/exchange-web-services/exchange-web-services
 plans:
-  - id: microsoft-exchange-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the Microsoft Exchange API surface. Intended for evaluation, prototyping,
-      and low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
+  - id: microsoft-exchange-online-plan-1
+    name: Exchange Online (Plan 1)
+    type: subscription
+    description: Cloud-hosted business email with a 50 GB primary mailbox and 50 GB archive. $4.00/user/month,
+      paid yearly.
     entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
+      - label: Per user, paid yearly
+        name: exchange_plan_1
+        type: subscription
+        metric: seat
+        limit: -1
         timeFrame: month
         geo: global
-        domains:
-          - https://graph.microsoft.com/v1.0
-          - https://outlook.office365.com/EWS/Exchange.asmx
-          - https://outlook.office365.com/powershell-liveid/
-          - https://outlook.office365.com/autodiscover/autodiscover.svc
-          - https://outlook.office365.com/adminapi/v2.0
-          - https://graph.microsoft.com/beta
         unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
+        price: '4.00'
+        userMultiplied: true
+      - label: Primary mailbox storage
+        name: mailbox_primary
+        type: quota
+        metric: gb
+        limit: 50
+        timeFrame: usage
         geo: global
-        domains:
-          - https://graph.microsoft.com/v1.0
-          - https://outlook.office365.com/EWS/Exchange.asmx
-          - https://outlook.office365.com/powershell-liveid/
-          - https://outlook.office365.com/autodiscover/autodiscover.svc
-          - https://outlook.office365.com/adminapi/v2.0
-          - https://graph.microsoft.com/beta
         unit: 1
-        price: '0.00'
-        userMultiplied: false
+        price: included
+        userMultiplied: true
+      - label: Archive mailbox
+        name: mailbox_archive
+        type: quota
+        metric: gb
+        limit: 50
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: true
     elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Microsoft Graph Mail API
-      - name: Microsoft Graph Calendar API
-      - name: Microsoft Graph Contacts API
-      - name: Microsoft Graph People API
-      - name: Exchange Web Services (EWS)
-      - name: Exchange Online PowerShell API
-      - name: Exchange Autodiscover API
-      - name: Exchange Online Admin API
-  - id: microsoft-exchange-pro
-    name: Professional
-    type: paid
-    description: Production tier for Microsoft Exchange. Provides higher quotas, priority support, and
-      access to the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
+      - name: 50 GB mailbox
+      - name: Custom email domain
+      - name: Calendar
+      - name: Anti-malware / anti-spam (EOP)
+      - name: Outlook web / mobile / desktop
+  - id: microsoft-exchange-online-plan-2
+    name: Exchange Online (Plan 2)
+    type: subscription
+    description: 100 GB primary mailbox plus unlimited archive (1.5 TB), DLP, hosted voicemail. $8.00/user/month,
+      paid yearly.
     entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
+      - label: Per user, paid yearly
+        name: exchange_plan_2
+        type: subscription
+        metric: seat
+        limit: -1
         timeFrame: month
         geo: global
-        domains:
-          - https://graph.microsoft.com/v1.0
-          - https://outlook.office365.com/EWS/Exchange.asmx
-          - https://outlook.office365.com/powershell-liveid/
-          - https://outlook.office365.com/autodiscover/autodiscover.svc
-          - https://outlook.office365.com/adminapi/v2.0
-          - https://graph.microsoft.com/beta
         unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
+        price: '8.00'
+        userMultiplied: true
+      - label: Primary mailbox storage
+        name: mailbox_primary
+        type: quota
+        metric: gb
         limit: 100
-        timeFrame: minute
+        timeFrame: usage
         geo: global
-        domains:
-          - https://graph.microsoft.com/v1.0
-          - https://outlook.office365.com/EWS/Exchange.asmx
-          - https://outlook.office365.com/powershell-liveid/
-          - https://outlook.office365.com/autodiscover/autodiscover.svc
-          - https://outlook.office365.com/adminapi/v2.0
-          - https://graph.microsoft.com/beta
         unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: global
-        domains:
-          - https://graph.microsoft.com/v1.0
-          - https://outlook.office365.com/EWS/Exchange.asmx
-          - https://outlook.office365.com/powershell-liveid/
-          - https://outlook.office365.com/autodiscover/autodiscover.svc
-          - https://outlook.office365.com/adminapi/v2.0
-          - https://graph.microsoft.com/beta
-        unit: 1000
-        price: TBD
-        userMultiplied: false
-    elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Microsoft Graph Mail API
-      - name: Microsoft Graph Calendar API
-      - name: Microsoft Graph Contacts API
-      - name: Microsoft Graph People API
-      - name: Exchange Web Services (EWS)
-      - name: Exchange Online PowerShell API
-      - name: Exchange Autodiscover API
-      - name: Exchange Online Admin API
-      - name: Microsoft Graph Mailbox Import Export API
-  - id: microsoft-exchange-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for Microsoft Exchange. Includes dedicated capacity, contractual
-      SLAs, security review, data residency options, and named technical account management.
-    entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
+        price: included
+        userMultiplied: true
+      - label: Archive mailbox (auto-expanding)
+        name: mailbox_archive
         type: quota
-        metric: requests
+        metric: gb
+        limit: 1500
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: true
+    elements:
+      - name: 100 GB mailbox
+      - name: 1.5 TB auto-expanding archive
+      - name: Data Loss Prevention
+      - name: Hosted voicemail
+      - name: In-place hold / eDiscovery
+  - id: microsoft-exchange-via-m365-business
+    name: Exchange Online via Microsoft 365 Business
+    type: subscription
+    description: Exchange Online Plan 1 is bundled in Microsoft 365 Business Basic / Standard / Premium.
+    entries:
+      - label: Microsoft 365 Business Basic (per user, yearly)
+        name: m365_business_basic
+        type: subscription
+        metric: seat
         limit: -1
         timeFrame: month
-        geo: configurable
-        domains:
-          - https://graph.microsoft.com/v1.0
-          - https://outlook.office365.com/EWS/Exchange.asmx
-          - https://outlook.office365.com/powershell-liveid/
-          - https://outlook.office365.com/autodiscover/autodiscover.svc
-          - https://outlook.office365.com/adminapi/v2.0
-          - https://graph.microsoft.com/beta
+        geo: global
         unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains:
-          - https://graph.microsoft.com/v1.0
-          - https://outlook.office365.com/EWS/Exchange.asmx
-          - https://outlook.office365.com/powershell-liveid/
-          - https://outlook.office365.com/autodiscover/autodiscover.svc
-          - https://outlook.office365.com/adminapi/v2.0
-          - https://graph.microsoft.com/beta
+        price: '6.00'
+        userMultiplied: true
+      - label: Microsoft 365 Business Standard (per user, yearly)
+        name: m365_business_standard
+        type: subscription
+        metric: seat
+        limit: -1
+        timeFrame: month
+        geo: global
         unit: 1
-        price: custom
-        userMultiplied: false
+        price: '12.50'
+        userMultiplied: true
     elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Microsoft Graph Mail API
-      - name: Microsoft Graph Calendar API
-      - name: Microsoft Graph Contacts API
-      - name: Microsoft Graph People API
-      - name: Exchange Web Services (EWS)
-      - name: Exchange Online PowerShell API
-      - name: Exchange Autodiscover API
-      - name: Exchange Online Admin API
-      - name: Microsoft Graph Mailbox Import Export API
+      - name: Bundled Exchange Online Plan 1
+      - name: Outlook desktop (Standard tier)
+      - name: 1 TB OneDrive
+  - id: microsoft-exchange-via-m365-enterprise
+    name: Exchange Online via Microsoft 365 Enterprise
+    type: subscription
+    description: Exchange Online Plan 2 is bundled in Microsoft 365 E3 and E5.
+    entries:
+      - label: Microsoft 365 E3 (per user, yearly)
+        name: m365_e3
+        type: subscription
+        metric: seat
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '36.00'
+        userMultiplied: true
+      - label: Microsoft 365 E5 (per user, yearly)
+        name: m365_e5
+        type: subscription
+        metric: seat
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '57.00'
+        userMultiplied: true
+    elements:
+      - name: Bundled Exchange Online Plan 2
+      - name: Defender for Office 365 (E5)
+      - name: Advanced eDiscovery
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
-    url: https://apievangelist.com
