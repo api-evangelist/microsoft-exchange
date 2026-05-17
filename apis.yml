@@ -34,11 +34,11 @@ apis:
         url: https://raw.githubusercontent.com/microsoftgraph/msgraph-metadata/master/openapi/v1.0/openapi.yaml
       - type: Authentication
         url: https://learn.microsoft.com/en-us/graph/auth/
-      - type: Getting Started
+      - type: GettingStarted
         url: https://developer.microsoft.com/en-us/graph/quick-start
       - type: SDKs
         url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
-      - type: Change Log
+      - type: ChangeLog
         url: https://developer.microsoft.com/en-us/graph/changelog
     contact:
       - FN: Microsoft Support
@@ -64,11 +64,11 @@ apis:
         url: https://raw.githubusercontent.com/microsoftgraph/msgraph-metadata/master/openapi/v1.0/openapi.yaml
       - type: Authentication
         url: https://learn.microsoft.com/en-us/graph/auth/
-      - type: Getting Started
+      - type: GettingStarted
         url: https://developer.microsoft.com/en-us/graph/quick-start
       - type: SDKs
         url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
-      - type: Change Log
+      - type: ChangeLog
         url: https://developer.microsoft.com/en-us/graph/changelog
   - name: Microsoft Graph Contacts API
     description: Manage Outlook personal contacts and contact folders for Exchange Online users. Supports creating, reading, updating, and deleting contacts, organizing them into folders, and assigning categories.
@@ -138,7 +138,7 @@ apis:
         url: https://github.com/officedev/ews-managed-api
       - type: Reference
         url: https://learn.microsoft.com/en-us/exchange/client-developer/exchange-web-services/explore-the-ews-managed-api-ews-and-web-services-in-exchange
-      - type: Getting Started
+      - type: GettingStarted
         url: https://learn.microsoft.com/en-us/exchange/client-developer/exchange-server-development
   - name: Exchange Online PowerShell API
     description: PowerShell module for managing Exchange Online through REST-based cmdlets. Provides the complete Exchange management surface for administrative tasks including mailbox management, mail flow rules, and organization configuration.
@@ -194,7 +194,7 @@ apis:
         url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-overview
       - type: OpenAPI
         url: openapi/microsoft-exchange-admin-api-openapi.yml
-      - type: Getting Started
+      - type: GettingStarted
         url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-get-started
       - type: Authentication
         url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-authentication
@@ -225,21 +225,21 @@ common:
     url: https://developer.microsoft.com/en-us/graph
   - type: Documentation
     url: https://learn.microsoft.com/en-us/exchange/client-developer/exchange-server-development
-  - type: Getting Started
+  - type: GettingStarted
     url: https://developer.microsoft.com/en-us/graph/quick-start
   - type: Authentication
     url: https://learn.microsoft.com/en-us/graph/auth/
   - type: Blog
     url: https://devblogs.microsoft.com/microsoft365dev/tag/exchange/
-  - type: Status
+  - type: StatusPage
     url: https://status.office365.com/
   - type: Support
     url: https://support.microsoft.com/en-us/office
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://www.microsoft.com/en-us/legal/terms-of-use
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://privacy.microsoft.com/en-us/privacystatement
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/OfficeDev
   - type: Community
     url: https://techcommunity.microsoft.com/category/exchange
@@ -247,9 +247,9 @@ common:
     url: https://www.microsoft.com/en-us/microsoft-365/exchange/email
   - type: Login
     url: https://admin.exchange.microsoft.com
-  - type: Sign Up
+  - type: SignUp
     url: https://signup.azure.com/
-  - type: Change Log
+  - type: ChangeLog
     url: https://developer.microsoft.com/en-us/graph/changelog
   - type: SDKs
     url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
