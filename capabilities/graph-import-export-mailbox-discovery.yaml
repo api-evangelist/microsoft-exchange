@@ -1,0 +1,103 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Exchange Microsoft Graph Mailbox Import Export API — Mailbox Discovery
+  description: 'Microsoft Exchange Microsoft Graph Mailbox Import Export API — Mailbox Discovery. 2 operations. Lead operation:
+    Microsoft Exchange List mailboxes. Self-contained Naftiko capability covering one Microsoft Exchange business surface.'
+  tags:
+  - Microsoft Exchange
+  - Mailbox Discovery
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_EXCHANGE_API_KEY: MICROSOFT_EXCHANGE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: graph-import-export-mailbox-discovery
+    baseUri: https://graph.microsoft.com/beta
+    description: Microsoft Exchange Microsoft Graph Mailbox Import Export API — Mailbox Discovery business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: users-user-id-mailboxes
+      path: /users/{user-id}/mailboxes
+      operations:
+      - name: listmailboxes
+        method: GET
+        description: Microsoft Exchange List mailboxes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: users-user-id-mailboxes-mailbox-id-folders
+      path: /users/{user-id}/mailboxes/{mailbox-id}/folders
+      operations:
+      - name: listmailboxfolders
+        method: GET
+        description: Microsoft Exchange List mailbox folders
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_EXCHANGE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: graph-import-export-mailbox-discovery-rest
+    port: 8080
+    description: REST adapter for Microsoft Exchange Microsoft Graph Mailbox Import Export API — Mailbox Discovery. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/users/{user-id}/mailboxes
+      name: users-user-id-mailboxes
+      description: REST surface for users-user-id-mailboxes.
+      operations:
+      - method: GET
+        name: listmailboxes
+        description: Microsoft Exchange List mailboxes
+        call: graph-import-export-mailbox-discovery.listmailboxes
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/users/{user-id}/mailboxes/{mailbox-id}/folders
+      name: users-user-id-mailboxes-mailbox-id-folders
+      description: REST surface for users-user-id-mailboxes-mailbox-id-folders.
+      operations:
+      - method: GET
+        name: listmailboxfolders
+        description: Microsoft Exchange List mailbox folders
+        call: graph-import-export-mailbox-discovery.listmailboxfolders
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: graph-import-export-mailbox-discovery-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Exchange Microsoft Graph Mailbox Import Export API — Mailbox Discovery. One tool
+      per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-exchange-list-mailboxes
+      description: Microsoft Exchange List mailboxes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-import-export-mailbox-discovery.listmailboxes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-list-mailbox-folders
+      description: Microsoft Exchange List mailbox folders
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-import-export-mailbox-discovery.listmailboxfolders
+      outputParameters:
+      - type: object
+        mapping: $.

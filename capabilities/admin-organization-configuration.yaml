@@ -1,0 +1,81 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Exchange Exchange Online Admin API — Organization Configuration
+  description: 'Microsoft Exchange Exchange Online Admin API — Organization Configuration. 1 operations. Lead operation: Microsoft
+    Exchange Get organization configuration. Self-contained Naftiko capability covering one Microsoft Exchange business surface.'
+  tags:
+  - Microsoft Exchange
+  - Organization Configuration
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_EXCHANGE_API_KEY: MICROSOFT_EXCHANGE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: admin-organization-configuration
+    baseUri: https://outlook.office365.com/adminapi/v2.0
+    description: Microsoft Exchange Exchange Online Admin API — Organization Configuration business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: OrganizationConfig
+      path: /OrganizationConfig
+      operations:
+      - name: getorganizationconfig
+        method: POST
+        description: Microsoft Exchange Get organization configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_EXCHANGE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: admin-organization-configuration-rest
+    port: 8080
+    description: REST adapter for Microsoft Exchange Exchange Online Admin API — Organization Configuration. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/organizationconfig
+      name: organizationconfig
+      description: REST surface for OrganizationConfig.
+      operations:
+      - method: POST
+        name: getorganizationconfig
+        description: Microsoft Exchange Get organization configuration
+        call: admin-organization-configuration.getorganizationconfig
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: admin-organization-configuration-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Exchange Exchange Online Admin API — Organization Configuration. One tool per consumed
+      operation, routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-exchange-get-organization-configuration
+      description: Microsoft Exchange Get organization configuration
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: admin-organization-configuration.getorganizationconfig
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

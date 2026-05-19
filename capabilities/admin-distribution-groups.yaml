@@ -1,0 +1,123 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Exchange Exchange Online Admin API — Distribution Groups
+  description: 'Microsoft Exchange Exchange Online Admin API — Distribution Groups. 2 operations. Lead operation: Microsoft
+    Exchange Get distribution group members. Self-contained Naftiko capability covering one Microsoft Exchange business surface.'
+  tags:
+  - Microsoft Exchange
+  - Distribution Groups
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_EXCHANGE_API_KEY: MICROSOFT_EXCHANGE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: admin-distribution-groups
+    baseUri: https://outlook.office365.com/adminapi/v2.0
+    description: Microsoft Exchange Exchange Online Admin API — Distribution Groups business capability. Self-contained, no
+      shared references.
+    resources:
+    - name: DistributionGroupMember
+      path: /DistributionGroupMember
+      operations:
+      - name: getdistributiongroupmembers
+        method: POST
+        description: Microsoft Exchange Get distribution group members
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: DynamicDistributionGroupMember
+      path: /DynamicDistributionGroupMember
+      operations:
+      - name: getdynamicdistributiongroupmembers
+        method: POST
+        description: Microsoft Exchange Get dynamic distribution group members
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_EXCHANGE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: admin-distribution-groups-rest
+    port: 8080
+    description: REST adapter for Microsoft Exchange Exchange Online Admin API — Distribution Groups. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/distributiongroupmember
+      name: distributiongroupmember
+      description: REST surface for DistributionGroupMember.
+      operations:
+      - method: POST
+        name: getdistributiongroupmembers
+        description: Microsoft Exchange Get distribution group members
+        call: admin-distribution-groups.getdistributiongroupmembers
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/dynamicdistributiongroupmember
+      name: dynamicdistributiongroupmember
+      description: REST surface for DynamicDistributionGroupMember.
+      operations:
+      - method: POST
+        name: getdynamicdistributiongroupmembers
+        description: Microsoft Exchange Get dynamic distribution group members
+        call: admin-distribution-groups.getdynamicdistributiongroupmembers
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: admin-distribution-groups-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Exchange Exchange Online Admin API — Distribution Groups. One tool per consumed
+      operation, routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-exchange-get-distribution-group
+      description: Microsoft Exchange Get distribution group members
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: admin-distribution-groups.getdistributiongroupmembers
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-get-dynamic-distribution
+      description: Microsoft Exchange Get dynamic distribution group members
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: admin-distribution-groups.getdynamicdistributiongroupmembers
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

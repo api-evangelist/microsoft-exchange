@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Exchange Exchange Online Admin API — Mailboxes
+  description: 'Microsoft Exchange Exchange Online Admin API — Mailboxes. 1 operations. Lead operation: Microsoft Exchange
+    Manage mailbox. Self-contained Naftiko capability covering one Microsoft Exchange business surface.'
+  tags:
+  - Microsoft Exchange
+  - Mailboxes
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_EXCHANGE_API_KEY: MICROSOFT_EXCHANGE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: admin-mailboxes
+    baseUri: https://outlook.office365.com/adminapi/v2.0
+    description: Microsoft Exchange Exchange Online Admin API — Mailboxes business capability. Self-contained, no shared references.
+    resources:
+    - name: Mailbox
+      path: /Mailbox
+      operations:
+      - name: managemailbox
+        method: POST
+        description: Microsoft Exchange Manage mailbox
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_EXCHANGE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: admin-mailboxes-rest
+    port: 8080
+    description: REST adapter for Microsoft Exchange Exchange Online Admin API — Mailboxes. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/mailbox
+      name: mailbox
+      description: REST surface for Mailbox.
+      operations:
+      - method: POST
+        name: managemailbox
+        description: Microsoft Exchange Manage mailbox
+        call: admin-mailboxes.managemailbox
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: admin-mailboxes-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Exchange Exchange Online Admin API — Mailboxes. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-exchange-manage-mailbox
+      description: Microsoft Exchange Manage mailbox
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: admin-mailboxes.managemailbox
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

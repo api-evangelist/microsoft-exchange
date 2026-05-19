@@ -1,0 +1,265 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Exchange Microsoft Graph Calendar API — Calendars
+  description: 'Microsoft Exchange Microsoft Graph Calendar API — Calendars. 7 operations. Lead operation: Microsoft Exchange
+    List calendars. Self-contained Naftiko capability covering one Microsoft Exchange business surface.'
+  tags:
+  - Microsoft Exchange
+  - Calendars
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_EXCHANGE_API_KEY: MICROSOFT_EXCHANGE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: graph-calendar-calendars
+    baseUri: https://graph.microsoft.com/v1.0
+    description: Microsoft Exchange Microsoft Graph Calendar API — Calendars business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: me-calendars
+      path: /me/calendars
+      operations:
+      - name: listcalendars
+        method: GET
+        description: Microsoft Exchange List calendars
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createcalendar
+        method: POST
+        description: Microsoft Exchange Create calendar
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: me-calendars-calendar-id
+      path: /me/calendars/{calendar-id}
+      operations:
+      - name: getcalendar
+        method: GET
+        description: Microsoft Exchange Get calendar
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatecalendar
+        method: PATCH
+        description: Microsoft Exchange Update calendar
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletecalendar
+        method: DELETE
+        description: Microsoft Exchange Delete calendar
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: me-calendars-calendar-id-events
+      path: /me/calendars/{calendar-id}/events
+      operations:
+      - name: listcalendarevents
+        method: GET
+        description: Microsoft Exchange List events in calendar
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createeventincalendar
+        method: POST
+        description: Microsoft Exchange Create event in calendar
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_EXCHANGE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: graph-calendar-calendars-rest
+    port: 8080
+    description: REST adapter for Microsoft Exchange Microsoft Graph Calendar API — Calendars. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/me/calendars
+      name: me-calendars
+      description: REST surface for me-calendars.
+      operations:
+      - method: GET
+        name: listcalendars
+        description: Microsoft Exchange List calendars
+        call: graph-calendar-calendars.listcalendars
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createcalendar
+        description: Microsoft Exchange Create calendar
+        call: graph-calendar-calendars.createcalendar
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/calendars/{calendar-id}
+      name: me-calendars-calendar-id
+      description: REST surface for me-calendars-calendar-id.
+      operations:
+      - method: GET
+        name: getcalendar
+        description: Microsoft Exchange Get calendar
+        call: graph-calendar-calendars.getcalendar
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatecalendar
+        description: Microsoft Exchange Update calendar
+        call: graph-calendar-calendars.updatecalendar
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletecalendar
+        description: Microsoft Exchange Delete calendar
+        call: graph-calendar-calendars.deletecalendar
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/calendars/{calendar-id}/events
+      name: me-calendars-calendar-id-events
+      description: REST surface for me-calendars-calendar-id-events.
+      operations:
+      - method: GET
+        name: listcalendarevents
+        description: Microsoft Exchange List events in calendar
+        call: graph-calendar-calendars.listcalendarevents
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createeventincalendar
+        description: Microsoft Exchange Create event in calendar
+        call: graph-calendar-calendars.createeventincalendar
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: graph-calendar-calendars-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Exchange Microsoft Graph Calendar API — Calendars. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-exchange-list-calendars
+      description: Microsoft Exchange List calendars
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-calendar-calendars.listcalendars
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-create-calendar
+      description: Microsoft Exchange Create calendar
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: graph-calendar-calendars.createcalendar
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-get-calendar
+      description: Microsoft Exchange Get calendar
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-calendar-calendars.getcalendar
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-update-calendar
+      description: Microsoft Exchange Update calendar
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: graph-calendar-calendars.updatecalendar
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-delete-calendar
+      description: Microsoft Exchange Delete calendar
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: graph-calendar-calendars.deletecalendar
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-list-events-calendar
+      description: Microsoft Exchange List events in calendar
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-calendar-calendars.listcalendarevents
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-create-event-calendar
+      description: Microsoft Exchange Create event in calendar
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: graph-calendar-calendars.createeventincalendar
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

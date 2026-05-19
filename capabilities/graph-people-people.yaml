@@ -1,0 +1,122 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Exchange Microsoft Graph People API — People
+  description: 'Microsoft Exchange Microsoft Graph People API — People. 2 operations. Lead operation: Microsoft Exchange List
+    people. Self-contained Naftiko capability covering one Microsoft Exchange business surface.'
+  tags:
+  - Microsoft Exchange
+  - People
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_EXCHANGE_API_KEY: MICROSOFT_EXCHANGE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: graph-people-people
+    baseUri: https://graph.microsoft.com/v1.0
+    description: Microsoft Exchange Microsoft Graph People API — People business capability. Self-contained, no shared references.
+    resources:
+    - name: me-people
+      path: /me/people
+      operations:
+      - name: listpeople
+        method: GET
+        description: Microsoft Exchange List people
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: $search
+          in: query
+          type: string
+          description: Search for people by name or alias. Supports fuzzy matching and the topic keyword to find people based
+            on topics extracted from email conversations.
+    - name: users-user-id-people
+      path: /users/{user-id}/people
+      operations:
+      - name: listuserpeople
+        method: GET
+        description: Microsoft Exchange List user's people
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user-id
+          in: path
+          type: string
+          description: The unique identifier or user principal name of the user
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_EXCHANGE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: graph-people-people-rest
+    port: 8080
+    description: REST adapter for Microsoft Exchange Microsoft Graph People API — People. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/me/people
+      name: me-people
+      description: REST surface for me-people.
+      operations:
+      - method: GET
+        name: listpeople
+        description: Microsoft Exchange List people
+        call: graph-people-people.listpeople
+        with:
+          $search: rest.$search
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/users/{user-id}/people
+      name: users-user-id-people
+      description: REST surface for users-user-id-people.
+      operations:
+      - method: GET
+        name: listuserpeople
+        description: Microsoft Exchange List user's people
+        call: graph-people-people.listuserpeople
+        with:
+          user-id: rest.user-id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: graph-people-people-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Exchange Microsoft Graph People API — People. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-exchange-list-people
+      description: Microsoft Exchange List people
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-people-people.listpeople
+      with:
+        $search: tools.$search
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-list-user-s-people
+      description: Microsoft Exchange List user's people
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-people-people.listuserpeople
+      with:
+        user-id: tools.user-id
+      outputParameters:
+      - type: object
+        mapping: $.

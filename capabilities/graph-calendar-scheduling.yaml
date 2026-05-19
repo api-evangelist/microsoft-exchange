@@ -1,0 +1,172 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Exchange Microsoft Graph Calendar API — Scheduling
+  description: 'Microsoft Exchange Microsoft Graph Calendar API — Scheduling. 3 operations. Lead operation: Microsoft Exchange
+    Get free/busy schedule. Self-contained Naftiko capability covering one Microsoft Exchange business surface.'
+  tags:
+  - Microsoft Exchange
+  - Scheduling
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_EXCHANGE_API_KEY: MICROSOFT_EXCHANGE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: graph-calendar-scheduling
+    baseUri: https://graph.microsoft.com/v1.0
+    description: Microsoft Exchange Microsoft Graph Calendar API — Scheduling business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: me-calendar-getSchedule
+      path: /me/calendar/getSchedule
+      operations:
+      - name: getschedule
+        method: POST
+        description: Microsoft Exchange Get free/busy schedule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: me-calendarView
+      path: /me/calendarView
+      operations:
+      - name: listcalendarview
+        method: GET
+        description: Microsoft Exchange List calendar view
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: startDateTime
+          in: query
+          type: string
+          description: The start date and time of the time range in ISO 8601 format
+          required: true
+        - name: endDateTime
+          in: query
+          type: string
+          description: The end date and time of the time range in ISO 8601 format
+          required: true
+    - name: me-findMeetingTimes
+      path: /me/findMeetingTimes
+      operations:
+      - name: findmeetingtimes
+        method: POST
+        description: Microsoft Exchange Find meeting times
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_EXCHANGE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: graph-calendar-scheduling-rest
+    port: 8080
+    description: REST adapter for Microsoft Exchange Microsoft Graph Calendar API — Scheduling. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/me/calendar/getschedule
+      name: me-calendar-getschedule
+      description: REST surface for me-calendar-getSchedule.
+      operations:
+      - method: POST
+        name: getschedule
+        description: Microsoft Exchange Get free/busy schedule
+        call: graph-calendar-scheduling.getschedule
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/calendarview
+      name: me-calendarview
+      description: REST surface for me-calendarView.
+      operations:
+      - method: GET
+        name: listcalendarview
+        description: Microsoft Exchange List calendar view
+        call: graph-calendar-scheduling.listcalendarview
+        with:
+          startDateTime: rest.startDateTime
+          endDateTime: rest.endDateTime
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/findmeetingtimes
+      name: me-findmeetingtimes
+      description: REST surface for me-findMeetingTimes.
+      operations:
+      - method: POST
+        name: findmeetingtimes
+        description: Microsoft Exchange Find meeting times
+        call: graph-calendar-scheduling.findmeetingtimes
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: graph-calendar-scheduling-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Exchange Microsoft Graph Calendar API — Scheduling. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-exchange-get-free-busy
+      description: Microsoft Exchange Get free/busy schedule
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: graph-calendar-scheduling.getschedule
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-list-calendar-view
+      description: Microsoft Exchange List calendar view
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-calendar-scheduling.listcalendarview
+      with:
+        startDateTime: tools.startDateTime
+        endDateTime: tools.endDateTime
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-find-meeting-times
+      description: Microsoft Exchange Find meeting times
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: graph-calendar-scheduling.findmeetingtimes
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

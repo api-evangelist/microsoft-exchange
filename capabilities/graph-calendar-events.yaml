@@ -1,0 +1,639 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Exchange Microsoft Graph Calendar API — Events
+  description: 'Microsoft Exchange Microsoft Graph Calendar API — Events. 16 operations. Lead operation: Microsoft Exchange
+    List calendar view. Self-contained Naftiko capability covering one Microsoft Exchange business surface.'
+  tags:
+  - Microsoft Exchange
+  - Events
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_EXCHANGE_API_KEY: MICROSOFT_EXCHANGE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: graph-calendar-events
+    baseUri: https://graph.microsoft.com/v1.0
+    description: Microsoft Exchange Microsoft Graph Calendar API — Events business capability. Self-contained, no shared references.
+    resources:
+    - name: me-calendarView
+      path: /me/calendarView
+      operations:
+      - name: listcalendarview
+        method: GET
+        description: Microsoft Exchange List calendar view
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: startDateTime
+          in: query
+          type: string
+          description: The start date and time of the time range in ISO 8601 format
+          required: true
+        - name: endDateTime
+          in: query
+          type: string
+          description: The end date and time of the time range in ISO 8601 format
+          required: true
+    - name: me-calendars-calendar-id-events
+      path: /me/calendars/{calendar-id}/events
+      operations:
+      - name: listcalendarevents
+        method: GET
+        description: Microsoft Exchange List events in calendar
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createeventincalendar
+        method: POST
+        description: Microsoft Exchange Create event in calendar
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: me-events
+      path: /me/events
+      operations:
+      - name: listevents
+        method: GET
+        description: Microsoft Exchange List events
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createevent
+        method: POST
+        description: Microsoft Exchange Create event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: me-events-event-id
+      path: /me/events/{event-id}
+      operations:
+      - name: getevent
+        method: GET
+        description: Microsoft Exchange Get event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateevent
+        method: PATCH
+        description: Microsoft Exchange Update event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteevent
+        method: DELETE
+        description: Microsoft Exchange Delete event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: me-events-event-id-accept
+      path: /me/events/{event-id}/accept
+      operations:
+      - name: acceptevent
+        method: POST
+        description: Microsoft Exchange Accept event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: me-events-event-id-attachments
+      path: /me/events/{event-id}/attachments
+      operations:
+      - name: listeventattachments
+        method: GET
+        description: Microsoft Exchange List event attachments
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: addeventattachment
+        method: POST
+        description: Microsoft Exchange Add event attachment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: me-events-event-id-cancel
+      path: /me/events/{event-id}/cancel
+      operations:
+      - name: cancelevent
+        method: POST
+        description: Microsoft Exchange Cancel event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: me-events-event-id-decline
+      path: /me/events/{event-id}/decline
+      operations:
+      - name: declineevent
+        method: POST
+        description: Microsoft Exchange Decline event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: me-events-event-id-forward
+      path: /me/events/{event-id}/forward
+      operations:
+      - name: forwardevent
+        method: POST
+        description: Microsoft Exchange Forward event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: me-events-event-id-instances
+      path: /me/events/{event-id}/instances
+      operations:
+      - name: listeventinstances
+        method: GET
+        description: Microsoft Exchange List event instances
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: startDateTime
+          in: query
+          type: string
+          description: The start date and time of the time range in ISO 8601 format
+          required: true
+        - name: endDateTime
+          in: query
+          type: string
+          description: The end date and time of the time range in ISO 8601 format
+          required: true
+    - name: me-events-event-id-tentativelyAccept
+      path: /me/events/{event-id}/tentativelyAccept
+      operations:
+      - name: tentativelyacceptevent
+        method: POST
+        description: Microsoft Exchange Tentatively accept event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_EXCHANGE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: graph-calendar-events-rest
+    port: 8080
+    description: REST adapter for Microsoft Exchange Microsoft Graph Calendar API — Events. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/me/calendarview
+      name: me-calendarview
+      description: REST surface for me-calendarView.
+      operations:
+      - method: GET
+        name: listcalendarview
+        description: Microsoft Exchange List calendar view
+        call: graph-calendar-events.listcalendarview
+        with:
+          startDateTime: rest.startDateTime
+          endDateTime: rest.endDateTime
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/calendars/{calendar-id}/events
+      name: me-calendars-calendar-id-events
+      description: REST surface for me-calendars-calendar-id-events.
+      operations:
+      - method: GET
+        name: listcalendarevents
+        description: Microsoft Exchange List events in calendar
+        call: graph-calendar-events.listcalendarevents
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createeventincalendar
+        description: Microsoft Exchange Create event in calendar
+        call: graph-calendar-events.createeventincalendar
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/events
+      name: me-events
+      description: REST surface for me-events.
+      operations:
+      - method: GET
+        name: listevents
+        description: Microsoft Exchange List events
+        call: graph-calendar-events.listevents
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createevent
+        description: Microsoft Exchange Create event
+        call: graph-calendar-events.createevent
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/events/{event-id}
+      name: me-events-event-id
+      description: REST surface for me-events-event-id.
+      operations:
+      - method: GET
+        name: getevent
+        description: Microsoft Exchange Get event
+        call: graph-calendar-events.getevent
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateevent
+        description: Microsoft Exchange Update event
+        call: graph-calendar-events.updateevent
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteevent
+        description: Microsoft Exchange Delete event
+        call: graph-calendar-events.deleteevent
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/events/{event-id}/accept
+      name: me-events-event-id-accept
+      description: REST surface for me-events-event-id-accept.
+      operations:
+      - method: POST
+        name: acceptevent
+        description: Microsoft Exchange Accept event
+        call: graph-calendar-events.acceptevent
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/events/{event-id}/attachments
+      name: me-events-event-id-attachments
+      description: REST surface for me-events-event-id-attachments.
+      operations:
+      - method: GET
+        name: listeventattachments
+        description: Microsoft Exchange List event attachments
+        call: graph-calendar-events.listeventattachments
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: addeventattachment
+        description: Microsoft Exchange Add event attachment
+        call: graph-calendar-events.addeventattachment
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/events/{event-id}/cancel
+      name: me-events-event-id-cancel
+      description: REST surface for me-events-event-id-cancel.
+      operations:
+      - method: POST
+        name: cancelevent
+        description: Microsoft Exchange Cancel event
+        call: graph-calendar-events.cancelevent
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/events/{event-id}/decline
+      name: me-events-event-id-decline
+      description: REST surface for me-events-event-id-decline.
+      operations:
+      - method: POST
+        name: declineevent
+        description: Microsoft Exchange Decline event
+        call: graph-calendar-events.declineevent
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/events/{event-id}/forward
+      name: me-events-event-id-forward
+      description: REST surface for me-events-event-id-forward.
+      operations:
+      - method: POST
+        name: forwardevent
+        description: Microsoft Exchange Forward event
+        call: graph-calendar-events.forwardevent
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/events/{event-id}/instances
+      name: me-events-event-id-instances
+      description: REST surface for me-events-event-id-instances.
+      operations:
+      - method: GET
+        name: listeventinstances
+        description: Microsoft Exchange List event instances
+        call: graph-calendar-events.listeventinstances
+        with:
+          startDateTime: rest.startDateTime
+          endDateTime: rest.endDateTime
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/events/{event-id}/tentativelyaccept
+      name: me-events-event-id-tentativelyaccept
+      description: REST surface for me-events-event-id-tentativelyAccept.
+      operations:
+      - method: POST
+        name: tentativelyacceptevent
+        description: Microsoft Exchange Tentatively accept event
+        call: graph-calendar-events.tentativelyacceptevent
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: graph-calendar-events-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Exchange Microsoft Graph Calendar API — Events. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-exchange-list-calendar-view
+      description: Microsoft Exchange List calendar view
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-calendar-events.listcalendarview
+      with:
+        startDateTime: tools.startDateTime
+        endDateTime: tools.endDateTime
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-list-events-calendar
+      description: Microsoft Exchange List events in calendar
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-calendar-events.listcalendarevents
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-create-event-calendar
+      description: Microsoft Exchange Create event in calendar
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: graph-calendar-events.createeventincalendar
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-list-events
+      description: Microsoft Exchange List events
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-calendar-events.listevents
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-create-event
+      description: Microsoft Exchange Create event
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: graph-calendar-events.createevent
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-get-event
+      description: Microsoft Exchange Get event
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-calendar-events.getevent
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-update-event
+      description: Microsoft Exchange Update event
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: graph-calendar-events.updateevent
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-delete-event
+      description: Microsoft Exchange Delete event
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: graph-calendar-events.deleteevent
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-accept-event
+      description: Microsoft Exchange Accept event
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: graph-calendar-events.acceptevent
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-list-event-attachments
+      description: Microsoft Exchange List event attachments
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-calendar-events.listeventattachments
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-add-event-attachment
+      description: Microsoft Exchange Add event attachment
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: graph-calendar-events.addeventattachment
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-cancel-event
+      description: Microsoft Exchange Cancel event
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: graph-calendar-events.cancelevent
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-decline-event
+      description: Microsoft Exchange Decline event
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: graph-calendar-events.declineevent
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-forward-event
+      description: Microsoft Exchange Forward event
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: graph-calendar-events.forwardevent
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-list-event-instances
+      description: Microsoft Exchange List event instances
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-calendar-events.listeventinstances
+      with:
+        startDateTime: tools.startDateTime
+        endDateTime: tools.endDateTime
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-tentatively-accept-event
+      description: Microsoft Exchange Tentatively accept event
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: graph-calendar-events.tentativelyacceptevent
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

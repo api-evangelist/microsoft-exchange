@@ -1,0 +1,81 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Exchange Exchange Online Admin API — Accepted Domains
+  description: 'Microsoft Exchange Exchange Online Admin API — Accepted Domains. 1 operations. Lead operation: Microsoft Exchange
+    Get accepted domains. Self-contained Naftiko capability covering one Microsoft Exchange business surface.'
+  tags:
+  - Microsoft Exchange
+  - Accepted Domains
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_EXCHANGE_API_KEY: MICROSOFT_EXCHANGE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: admin-accepted-domains
+    baseUri: https://outlook.office365.com/adminapi/v2.0
+    description: Microsoft Exchange Exchange Online Admin API — Accepted Domains business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: AcceptedDomain
+      path: /AcceptedDomain
+      operations:
+      - name: getaccepteddomains
+        method: POST
+        description: Microsoft Exchange Get accepted domains
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_EXCHANGE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: admin-accepted-domains-rest
+    port: 8080
+    description: REST adapter for Microsoft Exchange Exchange Online Admin API — Accepted Domains. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/accepteddomain
+      name: accepteddomain
+      description: REST surface for AcceptedDomain.
+      operations:
+      - method: POST
+        name: getaccepteddomains
+        description: Microsoft Exchange Get accepted domains
+        call: admin-accepted-domains.getaccepteddomains
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: admin-accepted-domains-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Exchange Exchange Online Admin API — Accepted Domains. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-exchange-get-accepted-domains
+      description: Microsoft Exchange Get accepted domains
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: admin-accepted-domains.getaccepteddomains
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

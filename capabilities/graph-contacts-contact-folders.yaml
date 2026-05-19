@@ -1,0 +1,332 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Exchange Microsoft Graph Contacts API — Contact Folders
+  description: 'Microsoft Exchange Microsoft Graph Contacts API — Contact Folders. 9 operations. Lead operation: Microsoft
+    Exchange List contact folders. Self-contained Naftiko capability covering one Microsoft Exchange business surface.'
+  tags:
+  - Microsoft Exchange
+  - Contact Folders
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_EXCHANGE_API_KEY: MICROSOFT_EXCHANGE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: graph-contacts-contact-folders
+    baseUri: https://graph.microsoft.com/v1.0
+    description: Microsoft Exchange Microsoft Graph Contacts API — Contact Folders business capability. Self-contained, no
+      shared references.
+    resources:
+    - name: me-contactFolders
+      path: /me/contactFolders
+      operations:
+      - name: listcontactfolders
+        method: GET
+        description: Microsoft Exchange List contact folders
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createcontactfolder
+        method: POST
+        description: Microsoft Exchange Create contact folder
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: me-contactFolders-contactFolder-id
+      path: /me/contactFolders/{contactFolder-id}
+      operations:
+      - name: getcontactfolder
+        method: GET
+        description: Microsoft Exchange Get contact folder
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatecontactfolder
+        method: PATCH
+        description: Microsoft Exchange Update contact folder
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletecontactfolder
+        method: DELETE
+        description: Microsoft Exchange Delete contact folder
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: me-contactFolders-contactFolder-id-childFolders
+      path: /me/contactFolders/{contactFolder-id}/childFolders
+      operations:
+      - name: listcontactchildfolders
+        method: GET
+        description: Microsoft Exchange List child contact folders
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createcontactchildfolder
+        method: POST
+        description: Microsoft Exchange Create child contact folder
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: me-contactFolders-contactFolder-id-contacts
+      path: /me/contactFolders/{contactFolder-id}/contacts
+      operations:
+      - name: listcontactsinfolder
+        method: GET
+        description: Microsoft Exchange List contacts in folder
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createcontactinfolder
+        method: POST
+        description: Microsoft Exchange Create contact in folder
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_EXCHANGE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: graph-contacts-contact-folders-rest
+    port: 8080
+    description: REST adapter for Microsoft Exchange Microsoft Graph Contacts API — Contact Folders. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/me/contactfolders
+      name: me-contactfolders
+      description: REST surface for me-contactFolders.
+      operations:
+      - method: GET
+        name: listcontactfolders
+        description: Microsoft Exchange List contact folders
+        call: graph-contacts-contact-folders.listcontactfolders
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createcontactfolder
+        description: Microsoft Exchange Create contact folder
+        call: graph-contacts-contact-folders.createcontactfolder
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/contactfolders/{contactfolder-id}
+      name: me-contactfolders-contactfolder-id
+      description: REST surface for me-contactFolders-contactFolder-id.
+      operations:
+      - method: GET
+        name: getcontactfolder
+        description: Microsoft Exchange Get contact folder
+        call: graph-contacts-contact-folders.getcontactfolder
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatecontactfolder
+        description: Microsoft Exchange Update contact folder
+        call: graph-contacts-contact-folders.updatecontactfolder
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletecontactfolder
+        description: Microsoft Exchange Delete contact folder
+        call: graph-contacts-contact-folders.deletecontactfolder
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/contactfolders/{contactfolder-id}/childfolders
+      name: me-contactfolders-contactfolder-id-childfolders
+      description: REST surface for me-contactFolders-contactFolder-id-childFolders.
+      operations:
+      - method: GET
+        name: listcontactchildfolders
+        description: Microsoft Exchange List child contact folders
+        call: graph-contacts-contact-folders.listcontactchildfolders
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createcontactchildfolder
+        description: Microsoft Exchange Create child contact folder
+        call: graph-contacts-contact-folders.createcontactchildfolder
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/contactfolders/{contactfolder-id}/contacts
+      name: me-contactfolders-contactfolder-id-contacts
+      description: REST surface for me-contactFolders-contactFolder-id-contacts.
+      operations:
+      - method: GET
+        name: listcontactsinfolder
+        description: Microsoft Exchange List contacts in folder
+        call: graph-contacts-contact-folders.listcontactsinfolder
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createcontactinfolder
+        description: Microsoft Exchange Create contact in folder
+        call: graph-contacts-contact-folders.createcontactinfolder
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: graph-contacts-contact-folders-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Exchange Microsoft Graph Contacts API — Contact Folders. One tool per consumed
+      operation, routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-exchange-list-contact-folders
+      description: Microsoft Exchange List contact folders
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-contacts-contact-folders.listcontactfolders
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-create-contact-folder
+      description: Microsoft Exchange Create contact folder
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: graph-contacts-contact-folders.createcontactfolder
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-get-contact-folder
+      description: Microsoft Exchange Get contact folder
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-contacts-contact-folders.getcontactfolder
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-update-contact-folder
+      description: Microsoft Exchange Update contact folder
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: graph-contacts-contact-folders.updatecontactfolder
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-delete-contact-folder
+      description: Microsoft Exchange Delete contact folder
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: graph-contacts-contact-folders.deletecontactfolder
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-list-child-contact
+      description: Microsoft Exchange List child contact folders
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-contacts-contact-folders.listcontactchildfolders
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-create-child-contact
+      description: Microsoft Exchange Create child contact folder
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: graph-contacts-contact-folders.createcontactchildfolder
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-list-contacts-folder
+      description: Microsoft Exchange List contacts in folder
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-contacts-contact-folders.listcontactsinfolder
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-exchange-create-contact-folder-2
+      description: Microsoft Exchange Create contact in folder
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: graph-contacts-contact-folders.createcontactinfolder
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
