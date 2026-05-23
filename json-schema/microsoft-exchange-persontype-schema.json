@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PersonType",
+  "title": "PersonType",
+  "type": "object",
+  "description": "The type of person",
+  "properties": {
+    "class": {
+      "type": "string",
+      "description": "The type of data source such as Person (for directory data) or Group (for unified groups)"
+    },
+    "subclass": {
+      "type": "string",
+      "description": "The sub-type such as OrganizationUser, PersonalContact, ExternalContact, or UnifiedGroup"
+    }
+  }
+}

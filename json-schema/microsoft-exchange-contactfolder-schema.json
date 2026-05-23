@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ContactFolder",
+  "title": "ContactFolder",
+  "type": "object",
+  "description": "A folder that contains contacts",
+  "properties": {
+    "id": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The contact folder's unique identifier"
+    },
+    "displayName": {
+      "type": "string",
+      "description": "The folder's display name"
+    },
+    "parentFolderId": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The ID of the folder's parent folder"
+    }
+  }
+}

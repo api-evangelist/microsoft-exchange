@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MailboxItem",
+  "title": "MailboxItem",
+  "type": "object",
+  "description": "An item in a mailbox folder",
+  "properties": {
+    "id": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The item unique identifier"
+    },
+    "itemType": {
+      "type": "string",
+      "enum": [
+        "message",
+        "event",
+        "contact",
+        "task"
+      ],
+      "description": "The type of mailbox item"
+    },
+    "subject": {
+      "type": "string",
+      "description": "The subject of the item"
+    },
+    "createdDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the item was created"
+    },
+    "lastModifiedDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the item was last modified"
+    },
+    "size": {
+      "type": "integer",
+      "description": "Size of the item in bytes"
+    },
+    "internetMessageId": {
+      "type": "string",
+      "description": "The Internet message ID (for messages)"
+    },
+    "hasAttachments": {
+      "type": "boolean",
+      "description": "Whether the item has attachments"
+    }
+  }
+}

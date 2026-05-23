@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Phone",
+  "title": "Phone",
+  "type": "object",
+  "description": "A phone number",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "home",
+        "business",
+        "mobile",
+        "other",
+        "assistant",
+        "homeFax",
+        "businessFax",
+        "otherFax",
+        "pager",
+        "radio"
+      ],
+      "description": "The type of phone number"
+    },
+    "number": {
+      "type": "string",
+      "description": "The phone number"
+    }
+  }
+}

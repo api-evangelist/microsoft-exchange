@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/InternetMessageHeader",
+  "title": "InternetMessageHeader",
+  "type": "object",
+  "description": "A key-value pair representing an Internet message header",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the message header"
+    },
+    "value": {
+      "type": "string",
+      "description": "The value of the message header"
+    }
+  }
+}

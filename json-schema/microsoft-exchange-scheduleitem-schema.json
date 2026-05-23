@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ScheduleItem",
+  "title": "ScheduleItem",
+  "type": "object",
+  "description": "An item that describes availability",
+  "properties": {
+    "start": {
+      "$ref": "#/components/schemas/DateTimeTimeZone"
+    },
+    "end": {
+      "$ref": "#/components/schemas/DateTimeTimeZone"
+    },
+    "isPrivate": {
+      "type": "boolean"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "free",
+        "tentative",
+        "busy",
+        "oof",
+        "workingElsewhere",
+        "unknown"
+      ]
+    },
+    "subject": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    }
+  }
+}

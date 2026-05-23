@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ODataError",
+  "title": "ODataError",
+  "type": "object",
+  "description": "OData error response",
+  "properties": {
+    "error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "The error code"
+        },
+        "message": {
+          "type": "string",
+          "description": "The error message"
+        }
+      }
+    }
+  }
+}

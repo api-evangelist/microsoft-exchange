@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TimeConstraint",
+  "title": "TimeConstraint",
+  "type": "object",
+  "description": "Restricts meeting time suggestions to certain time periods",
+  "properties": {
+    "activityDomain": {
+      "type": "string",
+      "enum": [
+        "work",
+        "personal",
+        "unrestricted",
+        "unknown"
+      ]
+    },
+    "timeSlots": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TimeSlot"
+      }
+    }
+  }
+}

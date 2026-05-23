@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RecurrencePattern",
+  "title": "RecurrencePattern",
+  "type": "object",
+  "description": "The frequency of an event recurrence",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "daily",
+        "weekly",
+        "absoluteMonthly",
+        "relativeMonthly",
+        "absoluteYearly",
+        "relativeYearly"
+      ]
+    },
+    "interval": {
+      "type": "integer",
+      "description": "The number of units between occurrences"
+    },
+    "month": {
+      "type": "integer",
+      "description": "The month in which the event occurs (1-12)"
+    },
+    "dayOfMonth": {
+      "type": "integer",
+      "description": "The day of the month on which the event occurs"
+    },
+    "daysOfWeek": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "sunday",
+          "monday",
+          "tuesday",
+          "wednesday",
+          "thursday",
+          "friday",
+          "saturday"
+        ]
+      }
+    },
+    "firstDayOfWeek": {
+      "type": "string",
+      "enum": [
+        "sunday",
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday",
+        "saturday"
+      ]
+    },
+    "index": {
+      "type": "string",
+      "enum": [
+        "first",
+        "second",
+        "third",
+        "fourth",
+        "last"
+      ]
+    }
+  }
+}

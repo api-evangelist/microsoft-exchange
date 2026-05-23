@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Website",
+  "title": "Website",
+  "type": "object",
+  "description": "A website",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "other",
+        "home",
+        "work",
+        "blog",
+        "profile"
+      ],
+      "description": "The type of website"
+    },
+    "address": {
+      "type": "string",
+      "format": "uri",
+      "description": "The URL of the website"
+    },
+    "displayName": {
+      "type": "string",
+      "description": "The display name of the website"
+    }
+  }
+}

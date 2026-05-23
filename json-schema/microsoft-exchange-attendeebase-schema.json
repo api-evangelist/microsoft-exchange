@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AttendeeBase",
+  "title": "AttendeeBase",
+  "type": "object",
+  "description": "Attendee information for meeting time suggestions",
+  "properties": {
+    "emailAddress": {
+      "$ref": "#/components/schemas/EmailAddress"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "required",
+        "optional",
+        "resource"
+      ],
+      "description": "The type of attendee"
+    }
+  }
+}

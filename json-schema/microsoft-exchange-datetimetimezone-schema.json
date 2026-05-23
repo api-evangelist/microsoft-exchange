@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DateTimeTimeZone",
+  "title": "DateTimeTimeZone",
+  "type": "object",
+  "description": "Describes a date, time, and time zone",
+  "properties": {
+    "dateTime": {
+      "type": "string",
+      "description": "A date and time in ISO 8601 format"
+    },
+    "timeZone": {
+      "type": "string",
+      "description": "A time zone name (e.g. Pacific Standard Time)"
+    }
+  }
+}

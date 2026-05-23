@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Attendee",
+  "title": "Attendee",
+  "type": "object",
+  "description": "An event attendee with response status",
+  "properties": {
+    "emailAddress": {
+      "$ref": "#/components/schemas/EmailAddress"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "required",
+        "optional",
+        "resource"
+      ],
+      "description": "The type of attendee"
+    },
+    "status": {
+      "$ref": "#/components/schemas/ResponseStatus"
+    },
+    "proposedNewTime": {
+      "$ref": "#/components/schemas/TimeSlot"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PhysicalAddress",
+  "title": "PhysicalAddress",
+  "type": "object",
+  "description": "Physical street address",
+  "properties": {
+    "street": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "countryOrRegion": {
+      "type": "string"
+    },
+    "postalCode": {
+      "type": "string"
+    }
+  }
+}

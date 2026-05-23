@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Recipient",
+  "title": "Recipient",
+  "type": "object",
+  "description": "Represents the recipient of an event",
+  "properties": {
+    "emailAddress": {
+      "$ref": "#/components/schemas/EmailAddress"
+    }
+  }
+}

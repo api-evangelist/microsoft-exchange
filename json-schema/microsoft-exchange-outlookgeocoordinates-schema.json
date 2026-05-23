@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OutlookGeoCoordinates",
+  "title": "OutlookGeoCoordinates",
+  "type": "object",
+  "description": "Geographic coordinates and elevation of a location",
+  "properties": {
+    "latitude": {
+      "type": "number",
+      "format": "double"
+    },
+    "longitude": {
+      "type": "number",
+      "format": "double"
+    },
+    "accuracy": {
+      "type": "number",
+      "format": "double"
+    },
+    "altitude": {
+      "type": "number",
+      "format": "double"
+    },
+    "altitudeAccuracy": {
+      "type": "number",
+      "format": "double"
+    }
+  }
+}

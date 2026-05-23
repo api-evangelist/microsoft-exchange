@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/WorkingHours",
+  "title": "WorkingHours",
+  "type": "object",
+  "description": "Working hours for the user",
+  "properties": {
+    "daysOfWeek": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "sunday",
+          "monday",
+          "tuesday",
+          "wednesday",
+          "thursday",
+          "friday",
+          "saturday"
+        ]
+      }
+    },
+    "startTime": {
+      "type": "string",
+      "description": "The time of the day the work day starts"
+    },
+    "endTime": {
+      "type": "string",
+      "description": "The time of the day the work day ends"
+    },
+    "timeZone": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

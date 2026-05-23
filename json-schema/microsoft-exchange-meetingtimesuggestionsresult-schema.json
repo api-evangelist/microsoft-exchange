@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MeetingTimeSuggestionsResult",
+  "title": "MeetingTimeSuggestionsResult",
+  "type": "object",
+  "description": "A collection of meeting time suggestions",
+  "properties": {
+    "@odata.context": {
+      "type": "string"
+    },
+    "emptySuggestionsReason": {
+      "type": "string",
+      "description": "Reason for empty suggestions"
+    },
+    "meetingTimeSuggestions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/MeetingTimeSuggestion"
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ContactDeltaResponse",
+  "title": "ContactDeltaResponse",
+  "type": "object",
+  "description": "Delta response for contacts",
+  "properties": {
+    "@odata.context": {
+      "type": "string"
+    },
+    "@odata.nextLink": {
+      "type": "string",
+      "format": "uri"
+    },
+    "@odata.deltaLink": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to get the next set of changes"
+    },
+    "value": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Contact"
+      }
+    }
+  }
+}

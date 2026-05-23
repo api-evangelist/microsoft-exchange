@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Mailbox",
+  "title": "Mailbox",
+  "type": "object",
+  "description": "Represents a user's mailbox",
+  "properties": {
+    "id": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The mailbox unique identifier"
+    },
+    "mailboxType": {
+      "type": "string",
+      "enum": [
+        "primary",
+        "archive"
+      ],
+      "description": "The type of mailbox"
+    },
+    "displayName": {
+      "type": "string",
+      "description": "Display name of the mailbox"
+    },
+    "primarySmtpAddress": {
+      "type": "string",
+      "format": "email",
+      "description": "The primary SMTP address of the mailbox"
+    },
+    "totalItemCount": {
+      "type": "integer",
+      "description": "Total number of items in the mailbox"
+    },
+    "totalItemSize": {
+      "type": "integer",
+      "description": "Total size of all items in bytes"
+    }
+  }
+}

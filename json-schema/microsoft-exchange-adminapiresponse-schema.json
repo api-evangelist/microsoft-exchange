@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AdminApiResponse",
+  "title": "AdminApiResponse",
+  "type": "object",
+  "description": "Response from the Exchange Online Admin API",
+  "properties": {
+    "@odata.context": {
+      "type": "string",
+      "description": "OData context URL"
+    },
+    "value": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "description": "Array of result objects returned by the cmdlet"
+    },
+    "@odata.nextLink": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to retrieve the next page of results"
+    }
+  }
+}

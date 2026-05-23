@@ -1,0 +1,11 @@
+name: Microsoft Exchange Domain Vocabulary
+provider: Microsoft Exchange
+providerId: microsoft-exchange
+description: Tag-derived vocabulary for the Microsoft Exchange API surface; sourced from openapi/ tags.
+terms:
+- term: Calendars
+  description: Operations for managing calendars
+- term: Events
+  description: Operations for managing calendar events
+- term: Scheduling
+  description: Operations for scheduling and free/busy information

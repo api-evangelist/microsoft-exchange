@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RecurrenceRange",
+  "title": "RecurrenceRange",
+  "type": "object",
+  "description": "The duration of a recurrence",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "endDate",
+        "noEnd",
+        "numbered"
+      ]
+    },
+    "startDate": {
+      "type": "string",
+      "format": "date",
+      "description": "The start date of the recurring series"
+    },
+    "endDate": {
+      "type": "string",
+      "format": "date",
+      "description": "The end date of the recurring series"
+    },
+    "recurrenceTimeZone": {
+      "type": "string",
+      "description": "Time zone for the start and end dates"
+    },
+    "numberOfOccurrences": {
+      "type": "integer",
+      "description": "Number of times to repeat the event"
+    }
+  }
+}

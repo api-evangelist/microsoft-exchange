@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MailboxFolder",
+  "title": "MailboxFolder",
+  "type": "object",
+  "description": "A folder in a mailbox",
+  "properties": {
+    "id": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The folder unique identifier"
+    },
+    "displayName": {
+      "type": "string",
+      "description": "Display name of the folder"
+    },
+    "parentFolderId": {
+      "type": "string",
+      "description": "The ID of the parent folder"
+    },
+    "folderType": {
+      "type": "string",
+      "description": "The type of folder (e.g. inbox, calendar, contacts)"
+    },
+    "childFolderCount": {
+      "type": "integer",
+      "description": "Number of child folders"
+    },
+    "totalItemCount": {
+      "type": "integer",
+      "description": "Total items in the folder"
+    },
+    "unreadItemCount": {
+      "type": "integer",
+      "description": "Number of unread items"
+    }
+  }
+}

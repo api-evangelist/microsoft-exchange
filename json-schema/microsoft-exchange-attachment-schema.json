@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Attachment",
+  "title": "Attachment",
+  "type": "object",
+  "description": "A file or item attached to an event",
+  "properties": {
+    "@odata.type": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string"
+    },
+    "contentType": {
+      "type": "string"
+    },
+    "size": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "isInline": {
+      "type": "boolean"
+    },
+    "lastModifiedDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "contentBytes": {
+      "type": "string",
+      "format": "byte"
+    }
+  }
+}

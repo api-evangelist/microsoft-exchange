@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AttachmentCollectionResponse",
+  "title": "AttachmentCollectionResponse",
+  "type": "object",
+  "description": "Collection of attachments",
+  "properties": {
+    "@odata.context": {
+      "type": "string"
+    },
+    "value": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Attachment"
+      }
+    }
+  }
+}

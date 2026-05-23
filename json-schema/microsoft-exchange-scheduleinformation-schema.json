@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ScheduleInformation",
+  "title": "ScheduleInformation",
+  "type": "object",
+  "description": "Free/busy information for a user",
+  "properties": {
+    "scheduleId": {
+      "type": "string",
+      "description": "SMTP address of the user or resource"
+    },
+    "availabilityView": {
+      "type": "string",
+      "description": "Merged view of availability using single characters (0=free, 1=tentative, 2=busy, 3=oof, 4=workingElsewhere)"
+    },
+    "scheduleItems": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ScheduleItem"
+      }
+    },
+    "workingHours": {
+      "$ref": "#/components/schemas/WorkingHours"
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "responseCode": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

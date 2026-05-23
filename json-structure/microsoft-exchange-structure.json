@@ -1,0 +1,402 @@
+{
+  "provider": "Microsoft Exchange",
+  "providerId": "microsoft-exchange",
+  "kind": "json-structure",
+  "description": "Structural overview of the Microsoft Exchange API surface; extracted from openapi/.",
+  "schemaCount": 30,
+  "operationCount": 23,
+  "schemas": [
+    {
+      "name": "Calendar",
+      "type": "object",
+      "propertyCount": 14,
+      "required": []
+    },
+    {
+      "name": "Event",
+      "type": "object",
+      "propertyCount": 40,
+      "required": []
+    },
+    {
+      "name": "Attendee",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "AttendeeBase",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Recipient",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "EmailAddress",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ItemBody",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "DateTimeTimeZone",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Location",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "PhysicalAddress",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "OutlookGeoCoordinates",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "OnlineMeetingInfo",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "ResponseStatus",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "PatternedRecurrence",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "RecurrencePattern",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "RecurrenceRange",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "TimeSlot",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "TimeConstraint",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "LocationConstraint",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "LocationConstraintItem",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "ScheduleInformation",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "ScheduleItem",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "WorkingHours",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "MeetingTimeSuggestionsResult",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "MeetingTimeSuggestion",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "Attachment",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "CalendarCollectionResponse",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "EventCollectionResponse",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "AttachmentCollectionResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ODataError",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/me/calendars",
+      "operationId": "listCalendars",
+      "summary": "Microsoft Exchange List calendars",
+      "tags": [
+        "Calendars"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/me/calendars",
+      "operationId": "createCalendar",
+      "summary": "Microsoft Exchange Create calendar",
+      "tags": [
+        "Calendars"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/me/calendars/{calendar-id}",
+      "operationId": "getCalendar",
+      "summary": "Microsoft Exchange Get calendar",
+      "tags": [
+        "Calendars"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/me/calendars/{calendar-id}",
+      "operationId": "deleteCalendar",
+      "summary": "Microsoft Exchange Delete calendar",
+      "tags": [
+        "Calendars"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/me/calendars/{calendar-id}",
+      "operationId": "updateCalendar",
+      "summary": "Microsoft Exchange Update calendar",
+      "tags": [
+        "Calendars"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/me/events",
+      "operationId": "listEvents",
+      "summary": "Microsoft Exchange List events",
+      "tags": [
+        "Events"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/me/events",
+      "operationId": "createEvent",
+      "summary": "Microsoft Exchange Create event",
+      "tags": [
+        "Events"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/me/events/{event-id}",
+      "operationId": "getEvent",
+      "summary": "Microsoft Exchange Get event",
+      "tags": [
+        "Events"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/me/events/{event-id}",
+      "operationId": "deleteEvent",
+      "summary": "Microsoft Exchange Delete event",
+      "tags": [
+        "Events"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/me/events/{event-id}",
+      "operationId": "updateEvent",
+      "summary": "Microsoft Exchange Update event",
+      "tags": [
+        "Events"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/me/events/{event-id}/accept",
+      "operationId": "acceptEvent",
+      "summary": "Microsoft Exchange Accept event",
+      "tags": [
+        "Events"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/me/events/{event-id}/tentativelyAccept",
+      "operationId": "tentativelyAcceptEvent",
+      "summary": "Microsoft Exchange Tentatively accept event",
+      "tags": [
+        "Events"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/me/events/{event-id}/decline",
+      "operationId": "declineEvent",
+      "summary": "Microsoft Exchange Decline event",
+      "tags": [
+        "Events"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/me/events/{event-id}/cancel",
+      "operationId": "cancelEvent",
+      "summary": "Microsoft Exchange Cancel event",
+      "tags": [
+        "Events"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/me/events/{event-id}/forward",
+      "operationId": "forwardEvent",
+      "summary": "Microsoft Exchange Forward event",
+      "tags": [
+        "Events"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/me/events/{event-id}/instances",
+      "operationId": "listEventInstances",
+      "summary": "Microsoft Exchange List event instances",
+      "tags": [
+        "Events"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/me/events/{event-id}/attachments",
+      "operationId": "listEventAttachments",
+      "summary": "Microsoft Exchange List event attachments",
+      "tags": [
+        "Events"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/me/events/{event-id}/attachments",
+      "operationId": "addEventAttachment",
+      "summary": "Microsoft Exchange Add event attachment",
+      "tags": [
+        "Events"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/me/calendarView",
+      "operationId": "listCalendarView",
+      "summary": "Microsoft Exchange List calendar view",
+      "tags": [
+        "Events",
+        "Scheduling"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/me/calendars/{calendar-id}/events",
+      "operationId": "listCalendarEvents",
+      "summary": "Microsoft Exchange List events in calendar",
+      "tags": [
+        "Calendars",
+        "Events"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/me/calendars/{calendar-id}/events",
+      "operationId": "createEventInCalendar",
+      "summary": "Microsoft Exchange Create event in calendar",
+      "tags": [
+        "Calendars",
+        "Events"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/me/calendar/getSchedule",
+      "operationId": "getSchedule",
+      "summary": "Microsoft Exchange Get free/busy schedule",
+      "tags": [
+        "Scheduling"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/me/findMeetingTimes",
+      "operationId": "findMeetingTimes",
+      "summary": "Microsoft Exchange Find meeting times",
+      "tags": [
+        "Scheduling"
+      ]
+    }
+  ]
+}

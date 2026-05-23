@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MessageCollectionResponse",
+  "title": "MessageCollectionResponse",
+  "type": "object",
+  "description": "Collection of messages",
+  "properties": {
+    "@odata.context": {
+      "type": "string"
+    },
+    "@odata.nextLink": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to get the next set of results"
+    },
+    "value": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Message"
+      }
+    }
+  }
+}

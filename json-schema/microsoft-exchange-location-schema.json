@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Location",
+  "title": "Location",
+  "type": "object",
+  "description": "Represents location information for an event",
+  "properties": {
+    "displayName": {
+      "type": "string",
+      "description": "The name associated with the location"
+    },
+    "locationType": {
+      "type": "string",
+      "enum": [
+        "default",
+        "conferenceRoom",
+        "homeAddress",
+        "businessAddress",
+        "geoCoordinates",
+        "streetAddress",
+        "hotel",
+        "restaurant",
+        "localBusiness",
+        "postalAddress"
+      ],
+      "description": "The type of location"
+    },
+    "locationUri": {
+      "type": "string",
+      "description": "URI representing the location"
+    },
+    "locationEmailAddress": {
+      "type": "string",
+      "description": "Email address of the location"
+    },
+    "address": {
+      "$ref": "#/components/schemas/PhysicalAddress"
+    },
+    "coordinates": {
+      "$ref": "#/components/schemas/OutlookGeoCoordinates"
+    },
+    "uniqueId": {
+      "type": "string",
+      "description": "An internal identifier for the location"
+    },
+    "uniqueIdType": {
+      "type": "string",
+      "enum": [
+        "unknown",
+        "locationStore",
+        "directory",
+        "private",
+        "bing"
+      ]
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MeetingTimeSuggestion",
+  "title": "MeetingTimeSuggestion",
+  "type": "object",
+  "description": "A suggested meeting time",
+  "properties": {
+    "confidence": {
+      "type": "number",
+      "format": "double",
+      "description": "Confidence percentage of all attendees attending"
+    },
+    "meetingTimeSlot": {
+      "$ref": "#/components/schemas/TimeSlot"
+    },
+    "organizerAvailability": {
+      "type": "string",
+      "enum": [
+        "free",
+        "tentative",
+        "busy",
+        "oof",
+        "workingElsewhere",
+        "unknown"
+      ]
+    },
+    "attendeeAvailability": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "attendee": {
+            "$ref": "#/components/schemas/AttendeeBase"
+          },
+          "availability": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "locations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Location"
+      }
+    },
+    "suggestionReason": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer"
+    }
+  }
+}
