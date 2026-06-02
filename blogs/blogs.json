@@ -2,12 +2,20 @@
   "repo": "microsoft-exchange",
   "feeds": [
     {
-      "source": "https://devblogs.microsoft.com/microsoft365dev/tag/exchange/",
+      "source": "https://devblogs.microsoft.com/microsoft365dev/tag/exchange/feed/",
       "feed_url": "https://devblogs.microsoft.com/microsoft365dev/tag/exchange/feed/",
-      "title": "Exchange - Tag | Microsoft 365 Developer Blog",
-      "saved": 7
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://learn.microsoft.com/en-us/graph/auth/",
+      "feed_url": "https://learn.microsoft.com/en-us/graph/auth/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
   "post_count": 16,
-  "fetched": "2026-05-17T20:20:35Z"
+  "fetched": "2026-06-01T23:35:02Z"
 }
