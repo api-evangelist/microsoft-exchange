@@ -1,0 +1,93 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Exchange Organize a Folder and File a Message
+  summary: Create a mail folder, confirm it, and create a message inside it.
+  description: >-
+    A mailbox organization pattern on Microsoft Graph mail. The workflow creates
+    a new top-level mail folder, reads it back to confirm its identity and
+    counts, and then creates a message directly inside that folder. Each step
+    inlines its request so the flow can be executed without consulting the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphMailApi
+  url: ../openapi/microsoft-exchange-graph-mail-openapi.yml
+  type: openapi
+workflows:
+- workflowId: organize-folder-and-file-message
+  summary: Create a mail folder and file a new message into it.
+  description: >-
+    Creates a named mail folder, fetches it to verify creation, and creates a
+    message with subject and body within the new folder.
+  inputs:
+    type: object
+    required:
+    - folderName
+    - subject
+    - bodyContent
+    properties:
+      folderName:
+        type: string
+        description: The display name of the mail folder to create.
+      subject:
+        type: string
+        description: The subject of the message to file in the folder.
+      bodyContent:
+        type: string
+        description: The HTML body content of the message.
+  steps:
+  - stepId: createFolder
+    description: >-
+      Create a new mail folder in the root of the mailbox with the supplied
+      display name.
+    operationId: createMailFolder
+    requestBody:
+      contentType: application/json
+      payload:
+        displayName: $inputs.folderName
+        isHidden: false
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      folderId: $response.body#/id
+      displayName: $response.body#/displayName
+  - stepId: getFolder
+    description: >-
+      Read the newly created folder back to confirm its identity and item
+      counts before filing a message.
+    operationId: getMailFolder
+    parameters:
+    - name: mailFolder-id
+      in: path
+      value: $steps.createFolder.outputs.folderId
+    - name: $select
+      in: query
+      value: displayName,totalItemCount,childFolderCount
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      totalItemCount: $response.body#/totalItemCount
+  - stepId: createMessage
+    description: >-
+      Create a message with subject and HTML body directly inside the new mail
+      folder.
+    operationId: createMessageInFolder
+    parameters:
+    - name: mailFolder-id
+      in: path
+      value: $steps.createFolder.outputs.folderId
+    requestBody:
+      contentType: application/json
+      payload:
+        subject: $inputs.subject
+        body:
+          contentType: html
+          content: $inputs.bodyContent
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      messageId: $response.body#/id
+      parentFolderId: $response.body#/parentFolderId
+  outputs:
+    folderId: $steps.createFolder.outputs.folderId
+    messageId: $steps.createMessage.outputs.messageId

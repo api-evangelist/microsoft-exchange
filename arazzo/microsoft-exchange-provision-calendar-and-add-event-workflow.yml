@@ -1,0 +1,103 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Exchange Provision a Calendar and Add an Event
+  summary: Create a new calendar, add an event to it, and read the event back.
+  description: >-
+    A calendar provisioning pattern on Microsoft Graph calendar. The workflow
+    creates a new named calendar in the user's default calendar group, creates
+    an event inside that calendar, and reads the event back to confirm its
+    scheduling. Each step inlines its request so the flow can be executed
+    without consulting the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphCalendarApi
+  url: ../openapi/microsoft-exchange-graph-calendar-openapi.yml
+  type: openapi
+workflows:
+- workflowId: provision-calendar-and-add-event
+  summary: Create a calendar, add an event to it, and confirm the event.
+  description: >-
+    Creates a calendar with a name and color, creates an event within it, and
+    fetches the event to verify it persisted.
+  inputs:
+    type: object
+    required:
+    - calendarName
+    - eventSubject
+    - startDateTime
+    - endDateTime
+    - timeZone
+    properties:
+      calendarName:
+        type: string
+        description: The name of the calendar to create.
+      eventSubject:
+        type: string
+        description: The subject of the event to add.
+      startDateTime:
+        type: string
+        description: The event start in ISO 8601 format.
+      endDateTime:
+        type: string
+        description: The event end in ISO 8601 format.
+      timeZone:
+        type: string
+        description: The time zone name for start and end.
+  steps:
+  - stepId: createCalendar
+    description: >-
+      Create a new calendar in the default calendar group with the supplied
+      name and a UI color.
+    operationId: createCalendar
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.calendarName
+        color: auto
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      calendarId: $response.body#/id
+      name: $response.body#/name
+  - stepId: addEvent
+    description: >-
+      Create an event with subject and start/end times inside the new calendar.
+    operationId: createEventInCalendar
+    parameters:
+    - name: calendar-id
+      in: path
+      value: $steps.createCalendar.outputs.calendarId
+    requestBody:
+      contentType: application/json
+      payload:
+        subject: $inputs.eventSubject
+        start:
+          dateTime: $inputs.startDateTime
+          timeZone: $inputs.timeZone
+        end:
+          dateTime: $inputs.endDateTime
+          timeZone: $inputs.timeZone
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      eventId: $response.body#/id
+  - stepId: confirmEvent
+    description: >-
+      Read the event back to confirm it persisted with the expected subject and
+      times.
+    operationId: getEvent
+    parameters:
+    - name: event-id
+      in: path
+      value: $steps.addEvent.outputs.eventId
+    - name: $select
+      in: query
+      value: subject,start,end
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      subject: $response.body#/subject
+  outputs:
+    calendarId: $steps.createCalendar.outputs.calendarId
+    eventId: $steps.addEvent.outputs.eventId
+    subject: $steps.confirmEvent.outputs.subject

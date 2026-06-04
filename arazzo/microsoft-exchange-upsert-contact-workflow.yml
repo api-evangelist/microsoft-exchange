@@ -1,0 +1,115 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Exchange Upsert a Contact
+  summary: Find a contact by email and update it if it exists, otherwise create it.
+  description: >-
+    A contact synchronization pattern on Microsoft Graph contacts. The workflow
+    searches the default contacts folder for a contact whose email address
+    matches a supplied value and then branches: when a match is found it patches
+    the existing contact, and when no match is found it creates a new one. Each
+    step inlines its request so the flow can be executed without consulting the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphContactsApi
+  url: ../openapi/microsoft-exchange-graph-contacts-openapi.yml
+  type: openapi
+workflows:
+- workflowId: upsert-contact
+  summary: Upsert a contact in the default contacts folder by email address.
+  description: >-
+    Looks for an existing contact whose email matches the supplied value and
+    either updates the matched contact or creates a new one.
+  inputs:
+    type: object
+    required:
+    - emailAddress
+    - givenName
+    - surname
+    properties:
+      emailAddress:
+        type: string
+        description: The email address used to detect an existing contact.
+      givenName:
+        type: string
+        description: The contact's given (first) name.
+      surname:
+        type: string
+        description: The contact's surname (last name).
+      companyName:
+        type: string
+        description: The optional company name for the contact.
+  steps:
+  - stepId: findContact
+    description: >-
+      Search the default contacts folder for a contact whose email address
+      equals the supplied value, returning at most one match.
+    operationId: listContacts
+    parameters:
+    - name: $filter
+      in: query
+      value: emailAddresses/any(e:e/address eq '$inputs.emailAddress')
+    - name: $top
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      matchedContactId: $response.body#/value/0/id
+    onSuccess:
+    - name: contactExists
+      type: goto
+      stepId: updateExisting
+      criteria:
+      - context: $response.body
+        condition: $.value.length > 0
+        type: jsonpath
+    - name: contactMissing
+      type: goto
+      stepId: createNew
+      criteria:
+      - context: $response.body
+        condition: $.value.length == 0
+        type: jsonpath
+  - stepId: updateExisting
+    description: >-
+      Patch the matched contact with the supplied name and company values.
+    operationId: updateContact
+    parameters:
+    - name: contact-id
+      in: path
+      value: $steps.findContact.outputs.matchedContactId
+    requestBody:
+      contentType: application/json
+      payload:
+        givenName: $inputs.givenName
+        surname: $inputs.surname
+        companyName: $inputs.companyName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      contactId: $response.body#/id
+    onSuccess:
+    - name: done
+      type: end
+  - stepId: createNew
+    description: >-
+      Create a new contact with the supplied name, company, and email address
+      when no existing contact matched.
+    operationId: createContact
+    requestBody:
+      contentType: application/json
+      payload:
+        givenName: $inputs.givenName
+        surname: $inputs.surname
+        companyName: $inputs.companyName
+        emailAddresses:
+        - address: $inputs.emailAddress
+          name: $inputs.givenName
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      contactId: $response.body#/id
+  outputs:
+    updatedContactId: $steps.updateExisting.outputs.contactId
+    createdContactId: $steps.createNew.outputs.contactId

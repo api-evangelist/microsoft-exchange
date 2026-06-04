@@ -1,0 +1,112 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Exchange Review and Respond to an Invite
+  summary: List upcoming events, read the next one, and accept the invitation.
+  description: >-
+    An invitation-handling pattern on Microsoft Graph calendar. The workflow
+    lists the upcoming events in a calendar view window, reads the first event
+    to inspect its organizer and timing, and then accepts that event with an
+    optional response comment. Each step inlines its request so the flow can be
+    executed without consulting the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphCalendarApi
+  url: ../openapi/microsoft-exchange-graph-calendar-openapi.yml
+  type: openapi
+workflows:
+- workflowId: review-and-respond-to-invite
+  summary: Find the next event in a window and accept it.
+  description: >-
+    Reads the calendar view for the supplied window, fetches the first event,
+    and accepts it with a comment.
+  inputs:
+    type: object
+    required:
+    - windowStart
+    - windowEnd
+    - acceptComment
+    properties:
+      windowStart:
+        type: string
+        description: Start of the calendar view window, ISO 8601 (e.g. 2026-07-01T00:00:00).
+      windowEnd:
+        type: string
+        description: End of the calendar view window, ISO 8601 (e.g. 2026-07-02T00:00:00).
+      acceptComment:
+        type: string
+        description: Comment to include in the acceptance response to the organizer.
+  steps:
+  - stepId: listView
+    description: >-
+      List events in the supplied calendar view window, returning the first
+      event ordered by start time.
+    operationId: listCalendarView
+    parameters:
+    - name: startDateTime
+      in: query
+      value: $inputs.windowStart
+    - name: endDateTime
+      in: query
+      value: $inputs.windowEnd
+    - name: $orderby
+      in: query
+      value: start/dateTime
+    - name: $top
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      eventId: $response.body#/value/0/id
+    onSuccess:
+    - name: hasEvent
+      type: goto
+      stepId: getEvent
+      criteria:
+      - context: $response.body
+        condition: $.value.length > 0
+        type: jsonpath
+    - name: noEvent
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.value.length == 0
+        type: jsonpath
+  - stepId: getEvent
+    description: >-
+      Retrieve the first event to inspect its subject, organizer, and response
+      status before responding.
+    operationId: getEvent
+    parameters:
+    - name: event-id
+      in: path
+      value: $steps.listView.outputs.eventId
+    - name: $select
+      in: query
+      value: subject,organizer,start,end,responseStatus
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      subject: $response.body#/subject
+  - stepId: acceptEvent
+    description: >-
+      Accept the event and send a response to the organizer with the supplied
+      comment.
+    operationId: acceptEvent
+    parameters:
+    - name: event-id
+      in: path
+      value: $steps.listView.outputs.eventId
+    requestBody:
+      contentType: application/json
+      payload:
+        comment: $inputs.acceptComment
+        sendResponse: true
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      acceptStatus: $statusCode
+  outputs:
+    eventId: $steps.listView.outputs.eventId
+    subject: $steps.getEvent.outputs.subject
+    acceptStatus: $steps.acceptEvent.outputs.acceptStatus

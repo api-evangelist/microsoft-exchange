@@ -1,0 +1,88 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Exchange Discover Mailbox Content
+  summary: Discover a user's mailbox, drill into its folders, and list folder items.
+  description: >-
+    A discovery pattern on the Microsoft Graph import/export API. The workflow
+    finds the mailboxes for a user, drills into the first mailbox to list its
+    folders, and then lists the items in the first folder to prepare for export
+    or migration. Each step inlines its request so the flow can be executed
+    without consulting the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphImportExportApi
+  url: ../openapi/microsoft-exchange-graph-import-export-openapi.yml
+  type: openapi
+workflows:
+- workflowId: discover-mailbox-content
+  summary: Resolve a user's mailbox, its folders, and a folder's items.
+  description: >-
+    Lists the mailboxes for a user, lists folders in the first mailbox, and
+    lists items in the first folder.
+  inputs:
+    type: object
+    required:
+    - userId
+    properties:
+      userId:
+        type: string
+        description: The user id or user principal name whose mailbox is discovered.
+  steps:
+  - stepId: listMailboxes
+    description: >-
+      Discover the mailboxes associated with the user, returning the first
+      mailbox identifier.
+    operationId: listMailboxes
+    parameters:
+    - name: user-id
+      in: path
+      value: $inputs.userId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      mailboxId: $response.body#/value/0/id
+  - stepId: listFolders
+    description: >-
+      List the folders in the first discovered mailbox, returning the first
+      folder identifier.
+    operationId: listMailboxFolders
+    parameters:
+    - name: user-id
+      in: path
+      value: $inputs.userId
+    - name: mailbox-id
+      in: path
+      value: $steps.listMailboxes.outputs.mailboxId
+    - name: $top
+      in: query
+      value: 50
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      folderId: $response.body#/value/0/id
+      folderName: $response.body#/value/0/displayName
+  - stepId: listItems
+    description: >-
+      List the items in the first folder to prepare for export processing.
+    operationId: listMailboxFolderItems
+    parameters:
+    - name: user-id
+      in: path
+      value: $inputs.userId
+    - name: mailbox-id
+      in: path
+      value: $steps.listMailboxes.outputs.mailboxId
+    - name: folder-id
+      in: path
+      value: $steps.listFolders.outputs.folderId
+    - name: $top
+      in: query
+      value: 25
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstItemId: $response.body#/value/0/id
+  outputs:
+    mailboxId: $steps.listMailboxes.outputs.mailboxId
+    folderId: $steps.listFolders.outputs.folderId
+    firstItemId: $steps.listItems.outputs.firstItemId

@@ -1,0 +1,108 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Exchange Compose, Attach, and Send Mail
+  summary: Create a draft message, add a file attachment to it, then send the draft.
+  description: >-
+    The canonical Microsoft Graph mail composition pattern. The workflow creates
+    a draft message in the signed-in user's Drafts folder, attaches a
+    base64-encoded file to the draft, and then sends the completed draft so it
+    lands in the Sent Items folder. Each step spells out its request inline so
+    the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphMailApi
+  url: ../openapi/microsoft-exchange-graph-mail-openapi.yml
+  type: openapi
+workflows:
+- workflowId: compose-attach-send-mail
+  summary: Draft a message, attach a file, and send it via Microsoft Graph.
+  description: >-
+    Creates a draft message with subject, body, and recipients, adds a single
+    file attachment to the draft, and submits the draft for delivery.
+  inputs:
+    type: object
+    required:
+    - subject
+    - bodyContent
+    - toAddress
+    - attachmentName
+    - attachmentContentType
+    - attachmentContentBytes
+    properties:
+      subject:
+        type: string
+        description: The subject line of the message.
+      bodyContent:
+        type: string
+        description: The HTML body content of the message.
+      toAddress:
+        type: string
+        description: The primary recipient email address.
+      attachmentName:
+        type: string
+        description: The display name of the file attachment.
+      attachmentContentType:
+        type: string
+        description: The MIME type of the attachment (e.g. application/pdf).
+      attachmentContentBytes:
+        type: string
+        description: The base64-encoded contents of the attachment file.
+  steps:
+  - stepId: createDraft
+    description: >-
+      Create a draft message in the Drafts folder with a subject, HTML body,
+      and a single To recipient.
+    operationId: createDraftMessage
+    requestBody:
+      contentType: application/json
+      payload:
+        subject: $inputs.subject
+        body:
+          contentType: html
+          content: $inputs.bodyContent
+        toRecipients:
+        - emailAddress:
+            address: $inputs.toAddress
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      messageId: $response.body#/id
+      isDraft: $response.body#/isDraft
+  - stepId: addAttachment
+    description: >-
+      Attach a base64-encoded file to the draft message using the
+      fileAttachment OData type.
+    operationId: addMessageAttachment
+    parameters:
+    - name: message-id
+      in: path
+      value: $steps.createDraft.outputs.messageId
+    requestBody:
+      contentType: application/json
+      payload:
+        '@odata.type': '#microsoft.graph.fileAttachment'
+        name: $inputs.attachmentName
+        contentType: $inputs.attachmentContentType
+        contentBytes: $inputs.attachmentContentBytes
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      attachmentId: $response.body#/id
+  - stepId: sendDraft
+    description: >-
+      Send the prepared draft message. Microsoft Graph accepts the request for
+      delivery and saves the message in Sent Items.
+    operationId: sendDraftMessage
+    parameters:
+    - name: message-id
+      in: path
+      value: $steps.createDraft.outputs.messageId
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      sentStatus: $statusCode
+  outputs:
+    messageId: $steps.createDraft.outputs.messageId
+    attachmentId: $steps.addAttachment.outputs.attachmentId
+    sentStatus: $steps.sendDraft.outputs.sentStatus

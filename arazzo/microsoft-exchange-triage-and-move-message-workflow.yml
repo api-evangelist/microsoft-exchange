@@ -1,0 +1,123 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Exchange Triage and Move a Message
+  summary: Find the newest unread inbox message, read it, mark it read, and file it.
+  description: >-
+    An inbox triage pattern built on Microsoft Graph mail. The workflow lists
+    the newest messages in the Inbox filtered to unread items, fetches the full
+    body of the top match, marks it as read, and then moves it into a target
+    folder. Each step inlines its request so the flow can be executed without
+    consulting the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphMailApi
+  url: ../openapi/microsoft-exchange-graph-mail-openapi.yml
+  type: openapi
+workflows:
+- workflowId: triage-and-move-message
+  summary: Read the newest unread inbox message, flag it read, and move it.
+  description: >-
+    Lists the most recent unread message in the inbox, retrieves it, updates
+    its isRead flag, and relocates it to the supplied destination folder.
+  inputs:
+    type: object
+    required:
+    - destinationId
+    properties:
+      destinationId:
+        type: string
+        description: >-
+          The destination mail folder id or well-known name (e.g. archive)
+          to move the message into.
+  steps:
+  - stepId: listUnread
+    description: >-
+      List the single most recent unread message in the Inbox, ordered by
+      received date descending.
+    operationId: listMailFolderMessages
+    parameters:
+    - name: mailFolder-id
+      in: path
+      value: inbox
+    - name: $filter
+      in: query
+      value: isRead eq false
+    - name: $orderby
+      in: query
+      value: receivedDateTime desc
+    - name: $top
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      messageId: $response.body#/value/0/id
+    onSuccess:
+    - name: hasUnread
+      type: goto
+      stepId: getMessage
+      criteria:
+      - context: $response.body
+        condition: $.value.length > 0
+        type: jsonpath
+    - name: inboxClear
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.value.length == 0
+        type: jsonpath
+  - stepId: getMessage
+    description: >-
+      Retrieve the full message, selecting the subject, sender, and body
+      preview for review.
+    operationId: getMessage
+    parameters:
+    - name: message-id
+      in: path
+      value: $steps.listUnread.outputs.messageId
+    - name: $select
+      in: query
+      value: subject,from,bodyPreview,isRead
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      subject: $response.body#/subject
+      bodyPreview: $response.body#/bodyPreview
+  - stepId: markRead
+    description: >-
+      Mark the message as read by patching its isRead property to true.
+    operationId: updateMessage
+    parameters:
+    - name: message-id
+      in: path
+      value: $steps.listUnread.outputs.messageId
+    requestBody:
+      contentType: application/json
+      payload:
+        isRead: true
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      isRead: $response.body#/isRead
+  - stepId: moveMessage
+    description: >-
+      Move the now-read message into the destination folder. Graph returns the
+      new copy of the message in that folder.
+    operationId: moveMessage
+    parameters:
+    - name: message-id
+      in: path
+      value: $steps.listUnread.outputs.messageId
+    requestBody:
+      contentType: application/json
+      payload:
+        destinationId: $inputs.destinationId
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      movedMessageId: $response.body#/id
+      parentFolderId: $response.body#/parentFolderId
+  outputs:
+    messageId: $steps.listUnread.outputs.messageId
+    subject: $steps.getMessage.outputs.subject
+    movedMessageId: $steps.moveMessage.outputs.movedMessageId

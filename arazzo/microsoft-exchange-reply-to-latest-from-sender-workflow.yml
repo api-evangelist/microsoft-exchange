@@ -1,0 +1,106 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Exchange Reply to Latest Message from a Sender
+  summary: Find the newest message from a given sender, read it, and send a reply.
+  description: >-
+    A focused conversational pattern on Microsoft Graph mail. The workflow
+    searches the mailbox for the most recent message from a specified sender
+    address, retrieves it to confirm the subject and conversation, and then
+    sends a reply with a comment back to that sender. Each step inlines its
+    request so the flow can be executed without consulting the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphMailApi
+  url: ../openapi/microsoft-exchange-graph-mail-openapi.yml
+  type: openapi
+workflows:
+- workflowId: reply-to-latest-from-sender
+  summary: Locate the latest message from a sender and reply to it.
+  description: >-
+    Filters the mailbox to the newest message whose sender matches the supplied
+    address, fetches it, and replies with the supplied comment.
+  inputs:
+    type: object
+    required:
+    - senderAddress
+    - replyComment
+    properties:
+      senderAddress:
+        type: string
+        description: The email address of the sender to reply to.
+      replyComment:
+        type: string
+        description: The comment text to include in the reply.
+  steps:
+  - stepId: findLatest
+    description: >-
+      List the single newest message whose from address equals the supplied
+      sender, ordered by received date descending.
+    operationId: listMessages
+    parameters:
+    - name: $filter
+      in: query
+      value: from/emailAddress/address eq '$inputs.senderAddress'
+    - name: $orderby
+      in: query
+      value: receivedDateTime desc
+    - name: $top
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      messageId: $response.body#/value/0/id
+    onSuccess:
+    - name: found
+      type: goto
+      stepId: getMessage
+      criteria:
+      - context: $response.body
+        condition: $.value.length > 0
+        type: jsonpath
+    - name: none
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.value.length == 0
+        type: jsonpath
+  - stepId: getMessage
+    description: >-
+      Retrieve the matched message to confirm its subject and conversation
+      before replying.
+    operationId: getMessage
+    parameters:
+    - name: message-id
+      in: path
+      value: $steps.findLatest.outputs.messageId
+    - name: $select
+      in: query
+      value: subject,conversationId,from
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      subject: $response.body#/subject
+      conversationId: $response.body#/conversationId
+  - stepId: sendReply
+    description: >-
+      Reply to the sender with the supplied comment. Graph accepts the reply
+      for delivery and saves it in Sent Items.
+    operationId: replyToMessage
+    parameters:
+    - name: message-id
+      in: path
+      value: $steps.findLatest.outputs.messageId
+    requestBody:
+      contentType: application/json
+      payload:
+        comment: $inputs.replyComment
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      replyStatus: $statusCode
+  outputs:
+    messageId: $steps.findLatest.outputs.messageId
+    subject: $steps.getMessage.outputs.subject
+    replyStatus: $steps.sendReply.outputs.replyStatus

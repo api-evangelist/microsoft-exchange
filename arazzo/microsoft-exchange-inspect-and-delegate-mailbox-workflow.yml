@@ -1,0 +1,86 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Exchange Inspect and Delegate a Mailbox
+  summary: Read a mailbox's properties, then grant Send on Behalf delegation.
+  description: >-
+    An administrative delegation pattern on the Exchange Online Admin API. The
+    workflow first runs Get-Mailbox to read a mailbox's properties, and then
+    runs Set-Mailbox to grant Send on Behalf delegation to another user. Both
+    cmdlet requests are routed with the X-AnchorMailbox header and use the same
+    manageMailbox operation with different cmdlet inputs. Each step inlines its
+    request so the flow can be executed without consulting the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: exchangeAdminApi
+  url: ../openapi/microsoft-exchange-admin-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: inspect-and-delegate-mailbox
+  summary: Get a mailbox's properties and grant Send on Behalf delegation.
+  description: >-
+    Executes Get-Mailbox to inspect the target mailbox, then Set-Mailbox to add
+    a Send on Behalf delegate, routing both through the anchor mailbox.
+  inputs:
+    type: object
+    required:
+    - anchorMailbox
+    - mailboxIdentity
+    - delegateIdentity
+    properties:
+      anchorMailbox:
+        type: string
+        description: >-
+          The UPN or primary SMTP address used as the X-AnchorMailbox routing
+          hint for the target tenant.
+      mailboxIdentity:
+        type: string
+        description: The identity of the mailbox to inspect and update.
+      delegateIdentity:
+        type: string
+        description: The identity of the user to grant Send on Behalf delegation to.
+  steps:
+  - stepId: getMailbox
+    description: >-
+      Run Get-Mailbox to read the target mailbox's properties before changing
+      delegation.
+    operationId: manageMailbox
+    parameters:
+    - name: X-AnchorMailbox
+      in: header
+      value: $inputs.anchorMailbox
+    requestBody:
+      contentType: application/json
+      payload:
+        CmdletInput:
+          CmdletName: Get-Mailbox
+          Parameters:
+            Identity: $inputs.mailboxIdentity
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      mailbox: $response.body#/value/0
+  - stepId: setDelegation
+    description: >-
+      Run Set-Mailbox to grant Send on Behalf delegation for the supplied
+      delegate on the target mailbox.
+    operationId: manageMailbox
+    parameters:
+    - name: X-AnchorMailbox
+      in: header
+      value: $inputs.anchorMailbox
+    requestBody:
+      contentType: application/json
+      payload:
+        CmdletInput:
+          CmdletName: Set-Mailbox
+          Parameters:
+            Identity: $inputs.mailboxIdentity
+            GrantSendOnBehalfTo: $inputs.delegateIdentity
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      result: $response.body#/value
+  outputs:
+    mailbox: $steps.getMailbox.outputs.mailbox
+    result: $steps.setDelegation.outputs.result

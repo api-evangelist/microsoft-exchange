@@ -1,0 +1,134 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Exchange Migrate a Mailbox Item
+  summary: Pick a source item, export its full MIME content, and import it elsewhere.
+  description: >-
+    A full-fidelity migration pattern on the Microsoft Graph import/export API.
+    The workflow lists items in a source folder, exports the complete MIME
+    content of the first item, and imports that MIME into a destination folder,
+    preserving all properties and attachments. The export and import bodies use
+    the message/rfc822 media type as defined by the specification. Each step
+    inlines its request so the flow can be executed without consulting the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphImportExportApi
+  url: ../openapi/microsoft-exchange-graph-import-export-openapi.yml
+  type: openapi
+workflows:
+- workflowId: migrate-mailbox-item
+  summary: Export the first item of a source folder and import it into a target folder.
+  description: >-
+    Lists items in the source folder, exports the first item's MIME content,
+    and imports that content into the destination mailbox folder.
+  inputs:
+    type: object
+    required:
+    - sourceUserId
+    - sourceMailboxId
+    - sourceFolderId
+    - targetUserId
+    - targetMailboxId
+    - targetFolderId
+    properties:
+      sourceUserId:
+        type: string
+        description: The user id or UPN owning the source mailbox.
+      sourceMailboxId:
+        type: string
+        description: The source mailbox identifier.
+      sourceFolderId:
+        type: string
+        description: The source folder identifier to read items from.
+      targetUserId:
+        type: string
+        description: The user id or UPN owning the target mailbox.
+      targetMailboxId:
+        type: string
+        description: The target mailbox identifier.
+      targetFolderId:
+        type: string
+        description: The destination folder identifier to import into.
+  steps:
+  - stepId: listItems
+    description: >-
+      List items in the source folder, returning the first item identifier to
+      migrate.
+    operationId: listMailboxFolderItems
+    parameters:
+    - name: user-id
+      in: path
+      value: $inputs.sourceUserId
+    - name: mailbox-id
+      in: path
+      value: $inputs.sourceMailboxId
+    - name: folder-id
+      in: path
+      value: $inputs.sourceFolderId
+    - name: $top
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      itemId: $response.body#/value/0/id
+    onSuccess:
+    - name: hasItem
+      type: goto
+      stepId: exportItem
+      criteria:
+      - context: $response.body
+        condition: $.value.length > 0
+        type: jsonpath
+    - name: empty
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.value.length == 0
+        type: jsonpath
+  - stepId: exportItem
+    description: >-
+      Export the full-fidelity MIME content of the first source item.
+    operationId: exportMailboxItemContent
+    parameters:
+    - name: user-id
+      in: path
+      value: $inputs.sourceUserId
+    - name: mailbox-id
+      in: path
+      value: $inputs.sourceMailboxId
+    - name: folder-id
+      in: path
+      value: $inputs.sourceFolderId
+    - name: item-id
+      in: path
+      value: $steps.listItems.outputs.itemId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      mimeContent: $response.body
+  - stepId: importItem
+    description: >-
+      Import the exported MIME content into the destination folder, creating a
+      full-fidelity copy of the item.
+    operationId: importMailboxItem
+    parameters:
+    - name: user-id
+      in: path
+      value: $inputs.targetUserId
+    - name: mailbox-id
+      in: path
+      value: $inputs.targetMailboxId
+    - name: folder-id
+      in: path
+      value: $inputs.targetFolderId
+    requestBody:
+      contentType: message/rfc822
+      payload: $steps.exportItem.outputs.mimeContent
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      importedItemId: $response.body#/id
+  outputs:
+    sourceItemId: $steps.listItems.outputs.itemId
+    importedItemId: $steps.importItem.outputs.importedItemId

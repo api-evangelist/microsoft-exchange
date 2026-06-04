@@ -1,0 +1,75 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Exchange Audit Organization and Domains
+  summary: Read Exchange organization configuration, then list accepted domains.
+  description: >-
+    An administrative audit pattern on the Exchange Online Admin API. The
+    workflow runs Get-OrganizationConfig to capture organization-level settings
+    such as MailTips and mailbox limits, and then runs Get-AcceptedDomain to
+    enumerate the domains configured for the organization. Both cmdlet requests
+    are routed with the X-AnchorMailbox header. Each step inlines its request so
+    the flow can be executed without consulting the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: exchangeAdminApi
+  url: ../openapi/microsoft-exchange-admin-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: audit-org-and-domains
+  summary: Capture organization configuration and accepted domains.
+  description: >-
+    Executes Get-OrganizationConfig and Get-AcceptedDomain against the Exchange
+    Online Admin API, routing both through the supplied anchor mailbox.
+  inputs:
+    type: object
+    required:
+    - anchorMailbox
+    properties:
+      anchorMailbox:
+        type: string
+        description: >-
+          The UPN or primary SMTP address used as the X-AnchorMailbox routing
+          hint for the target tenant.
+  steps:
+  - stepId: getOrgConfig
+    description: >-
+      Run Get-OrganizationConfig to retrieve organization-level Exchange
+      configuration.
+    operationId: getOrganizationConfig
+    parameters:
+    - name: X-AnchorMailbox
+      in: header
+      value: $inputs.anchorMailbox
+    requestBody:
+      contentType: application/json
+      payload:
+        CmdletInput:
+          CmdletName: Get-OrganizationConfig
+          Parameters: {}
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      organization: $response.body#/value/0
+  - stepId: getAcceptedDomains
+    description: >-
+      Run Get-AcceptedDomain to enumerate the domains configured for the
+      organization.
+    operationId: getAcceptedDomains
+    parameters:
+    - name: X-AnchorMailbox
+      in: header
+      value: $inputs.anchorMailbox
+    requestBody:
+      contentType: application/json
+      payload:
+        CmdletInput:
+          CmdletName: Get-AcceptedDomain
+          Parameters: {}
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      domains: $response.body#/value
+  outputs:
+    organization: $steps.getOrgConfig.outputs.organization
+    domains: $steps.getAcceptedDomains.outputs.domains

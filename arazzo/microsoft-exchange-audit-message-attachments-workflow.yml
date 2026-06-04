@@ -1,0 +1,100 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Exchange Audit Message Attachments
+  summary: Find a message that has attachments, read it, and list its attachments.
+  description: >-
+    An attachment-auditing pattern on Microsoft Graph mail. The workflow finds
+    the newest message in the mailbox that has attachments, reads it to confirm
+    the subject and sender, and then lists the attachment objects on that
+    message. Each step inlines its request so the flow can be executed without
+    consulting the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphMailApi
+  url: ../openapi/microsoft-exchange-graph-mail-openapi.yml
+  type: openapi
+workflows:
+- workflowId: audit-message-attachments
+  summary: Locate a message with attachments and enumerate them.
+  description: >-
+    Filters the mailbox to the newest message with attachments, fetches it, and
+    lists the attachment objects attached to it.
+  inputs:
+    type: object
+    properties:
+      selectAttachmentFields:
+        type: string
+        description: Comma-separated attachment properties to return.
+        default: id,name,contentType,size,isInline
+  steps:
+  - stepId: findWithAttachments
+    description: >-
+      List the newest message that has attachments, ordered by received date
+      descending.
+    operationId: listMessages
+    parameters:
+    - name: $filter
+      in: query
+      value: hasAttachments eq true
+    - name: $orderby
+      in: query
+      value: receivedDateTime desc
+    - name: $top
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      messageId: $response.body#/value/0/id
+    onSuccess:
+    - name: found
+      type: goto
+      stepId: getMessage
+      criteria:
+      - context: $response.body
+        condition: $.value.length > 0
+        type: jsonpath
+    - name: none
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.value.length == 0
+        type: jsonpath
+  - stepId: getMessage
+    description: >-
+      Retrieve the matched message to confirm its subject and sender before
+      listing attachments.
+    operationId: getMessage
+    parameters:
+    - name: message-id
+      in: path
+      value: $steps.findWithAttachments.outputs.messageId
+    - name: $select
+      in: query
+      value: subject,from,hasAttachments
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      subject: $response.body#/subject
+      hasAttachments: $response.body#/hasAttachments
+  - stepId: listAttachments
+    description: >-
+      List the attachment objects attached to the message, selecting the
+      requested attachment properties.
+    operationId: listMessageAttachments
+    parameters:
+    - name: message-id
+      in: path
+      value: $steps.findWithAttachments.outputs.messageId
+    - name: $select
+      in: query
+      value: $inputs.selectAttachmentFields
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      attachments: $response.body#/value
+      firstAttachmentName: $response.body#/value/0/name
+  outputs:
+    messageId: $steps.findWithAttachments.outputs.messageId
+    subject: $steps.getMessage.outputs.subject
+    attachments: $steps.listAttachments.outputs.attachments

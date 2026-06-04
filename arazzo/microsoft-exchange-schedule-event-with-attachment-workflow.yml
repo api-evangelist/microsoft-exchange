@@ -1,0 +1,128 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Exchange Schedule an Event with an Attachment
+  summary: Create a calendar event, confirm it, then attach a file to it.
+  description: >-
+    A meeting setup pattern on Microsoft Graph calendar. The workflow creates an
+    event on the user's default calendar with a subject, body, start and end
+    times, and an attendee, reads the event back to confirm scheduling, and
+    attaches a base64-encoded file to it. Each step inlines its request so the
+    flow can be executed without consulting the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphCalendarApi
+  url: ../openapi/microsoft-exchange-graph-calendar-openapi.yml
+  type: openapi
+workflows:
+- workflowId: schedule-event-with-attachment
+  summary: Create a calendar event and attach a file to it.
+  description: >-
+    Creates an event with start/end times and an attendee, fetches it to
+    confirm, and adds a file attachment to the event.
+  inputs:
+    type: object
+    required:
+    - subject
+    - bodyContent
+    - startDateTime
+    - endDateTime
+    - timeZone
+    - attendeeAddress
+    - attachmentName
+    - attachmentContentType
+    - attachmentContentBytes
+    properties:
+      subject:
+        type: string
+        description: The event subject line.
+      bodyContent:
+        type: string
+        description: The HTML body content describing the event.
+      startDateTime:
+        type: string
+        description: The event start in ISO 8601 format (e.g. 2026-07-01T15:00:00).
+      endDateTime:
+        type: string
+        description: The event end in ISO 8601 format (e.g. 2026-07-01T16:00:00).
+      timeZone:
+        type: string
+        description: The time zone name for start and end (e.g. Pacific Standard Time).
+      attendeeAddress:
+        type: string
+        description: The email address of the required attendee.
+      attachmentName:
+        type: string
+        description: The display name of the file attachment.
+      attachmentContentType:
+        type: string
+        description: The MIME type of the attachment.
+      attachmentContentBytes:
+        type: string
+        description: The base64-encoded contents of the attachment file.
+  steps:
+  - stepId: createEvent
+    description: >-
+      Create an event on the default calendar with subject, body, start/end
+      times, and a required attendee.
+    operationId: createEvent
+    requestBody:
+      contentType: application/json
+      payload:
+        subject: $inputs.subject
+        body:
+          contentType: html
+          content: $inputs.bodyContent
+        start:
+          dateTime: $inputs.startDateTime
+          timeZone: $inputs.timeZone
+        end:
+          dateTime: $inputs.endDateTime
+          timeZone: $inputs.timeZone
+        attendees:
+        - type: required
+          emailAddress:
+            address: $inputs.attendeeAddress
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      eventId: $response.body#/id
+      webLink: $response.body#/webLink
+  - stepId: getEvent
+    description: >-
+      Read the created event back to confirm subject and scheduling before
+      attaching content.
+    operationId: getEvent
+    parameters:
+    - name: event-id
+      in: path
+      value: $steps.createEvent.outputs.eventId
+    - name: $select
+      in: query
+      value: subject,start,end,isOnlineMeeting
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      subject: $response.body#/subject
+  - stepId: addAttachment
+    description: >-
+      Attach a base64-encoded file to the event using the fileAttachment OData
+      type.
+    operationId: addEventAttachment
+    parameters:
+    - name: event-id
+      in: path
+      value: $steps.createEvent.outputs.eventId
+    requestBody:
+      contentType: application/json
+      payload:
+        '@odata.type': '#microsoft.graph.fileAttachment'
+        name: $inputs.attachmentName
+        contentType: $inputs.attachmentContentType
+        contentBytes: $inputs.attachmentContentBytes
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      attachmentId: $response.body#/id
+  outputs:
+    eventId: $steps.createEvent.outputs.eventId
+    attachmentId: $steps.addAttachment.outputs.attachmentId

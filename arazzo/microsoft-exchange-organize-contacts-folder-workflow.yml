@@ -1,0 +1,95 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Exchange Organize a Contacts Folder
+  summary: Create a contact folder, add a contact to it, and read the contact back.
+  description: >-
+    A contact organization pattern on Microsoft Graph contacts. The workflow
+    creates a new contact folder, adds a contact directly into that folder, and
+    reads the contact back to confirm it persisted. Each step inlines its
+    request so the flow can be executed without consulting the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphContactsApi
+  url: ../openapi/microsoft-exchange-graph-contacts-openapi.yml
+  type: openapi
+workflows:
+- workflowId: organize-contacts-folder
+  summary: Create a contact folder and add a contact into it.
+  description: >-
+    Creates a named contact folder, creates a contact within it, and fetches
+    the contact to verify creation.
+  inputs:
+    type: object
+    required:
+    - folderName
+    - givenName
+    - surname
+    - emailAddress
+    properties:
+      folderName:
+        type: string
+        description: The display name of the contact folder to create.
+      givenName:
+        type: string
+        description: The contact's given (first) name.
+      surname:
+        type: string
+        description: The contact's surname (last name).
+      emailAddress:
+        type: string
+        description: The contact's primary email address.
+  steps:
+  - stepId: createFolder
+    description: >-
+      Create a new contact folder with the supplied display name.
+    operationId: createContactFolder
+    requestBody:
+      contentType: application/json
+      payload:
+        displayName: $inputs.folderName
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      folderId: $response.body#/id
+      displayName: $response.body#/displayName
+  - stepId: addContact
+    description: >-
+      Create a contact with name and email directly inside the new contact
+      folder.
+    operationId: createContactInFolder
+    parameters:
+    - name: contactFolder-id
+      in: path
+      value: $steps.createFolder.outputs.folderId
+    requestBody:
+      contentType: application/json
+      payload:
+        givenName: $inputs.givenName
+        surname: $inputs.surname
+        emailAddresses:
+        - address: $inputs.emailAddress
+          name: $inputs.givenName
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      contactId: $response.body#/id
+  - stepId: confirmContact
+    description: >-
+      Read the contact back to confirm it persisted in the new folder.
+    operationId: getContact
+    parameters:
+    - name: contact-id
+      in: path
+      value: $steps.addContact.outputs.contactId
+    - name: $select
+      in: query
+      value: displayName,emailAddresses,parentFolderId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      displayName: $response.body#/displayName
+  outputs:
+    folderId: $steps.createFolder.outputs.folderId
+    contactId: $steps.addContact.outputs.contactId
+    displayName: $steps.confirmContact.outputs.displayName

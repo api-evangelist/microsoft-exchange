@@ -1,0 +1,107 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Exchange Find Times and Book a Meeting
+  summary: Suggest meeting times for attendees, then book the top suggestion.
+  description: >-
+    A scheduling-assistant pattern on Microsoft Graph calendar. The workflow
+    asks Graph to suggest meeting times for a set of attendees within a time
+    window, then books an event using the start and end of the highest-ranked
+    suggestion. Each step inlines its request so the flow can be executed
+    without consulting the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphCalendarApi
+  url: ../openapi/microsoft-exchange-graph-calendar-openapi.yml
+  type: openapi
+workflows:
+- workflowId: find-times-and-book-meeting
+  summary: Get meeting time suggestions and create an event for the best one.
+  description: >-
+    Calls findMeetingTimes for the supplied attendee and constraints, then
+    creates an event using the first suggested time slot.
+  inputs:
+    type: object
+    required:
+    - subject
+    - attendeeAddress
+    - windowStart
+    - windowEnd
+    - timeZone
+    - meetingDuration
+    properties:
+      subject:
+        type: string
+        description: The subject for the meeting to book.
+      attendeeAddress:
+        type: string
+        description: The email address of the required attendee.
+      windowStart:
+        type: string
+        description: Start of the time window to search, ISO 8601 (e.g. 2026-07-01T09:00:00).
+      windowEnd:
+        type: string
+        description: End of the time window to search, ISO 8601 (e.g. 2026-07-01T17:00:00).
+      timeZone:
+        type: string
+        description: The time zone name for the constraint and event.
+      meetingDuration:
+        type: string
+        description: The meeting length in ISO 8601 duration format (e.g. PT1H).
+  steps:
+  - stepId: findTimes
+    description: >-
+      Ask Graph to suggest meeting times for the attendee within the supplied
+      window and duration, returning a single best candidate.
+    operationId: findMeetingTimes
+    requestBody:
+      contentType: application/json
+      payload:
+        attendees:
+        - type: required
+          emailAddress:
+            address: $inputs.attendeeAddress
+        timeConstraint:
+          timeSlots:
+          - start:
+              dateTime: $inputs.windowStart
+              timeZone: $inputs.timeZone
+            end:
+              dateTime: $inputs.windowEnd
+              timeZone: $inputs.timeZone
+        meetingDuration: $inputs.meetingDuration
+        maxCandidates: 1
+        returnSuggestionReasons: true
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      suggestionStart: $response.body#/meetingTimeSuggestions/0/meetingTimeSlot/start/dateTime
+      suggestionEnd: $response.body#/meetingTimeSuggestions/0/meetingTimeSlot/end/dateTime
+      suggestionStartTz: $response.body#/meetingTimeSuggestions/0/meetingTimeSlot/start/timeZone
+      suggestionEndTz: $response.body#/meetingTimeSuggestions/0/meetingTimeSlot/end/timeZone
+  - stepId: bookMeeting
+    description: >-
+      Create the event using the start and end of the top meeting time
+      suggestion and invite the attendee.
+    operationId: createEvent
+    requestBody:
+      contentType: application/json
+      payload:
+        subject: $inputs.subject
+        start:
+          dateTime: $steps.findTimes.outputs.suggestionStart
+          timeZone: $steps.findTimes.outputs.suggestionStartTz
+        end:
+          dateTime: $steps.findTimes.outputs.suggestionEnd
+          timeZone: $steps.findTimes.outputs.suggestionEndTz
+        attendees:
+        - type: required
+          emailAddress:
+            address: $inputs.attendeeAddress
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      eventId: $response.body#/id
+      webLink: $response.body#/webLink
+  outputs:
+    suggestionStart: $steps.findTimes.outputs.suggestionStart
+    eventId: $steps.bookMeeting.outputs.eventId
