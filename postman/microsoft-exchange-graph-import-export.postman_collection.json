@@ -1,0 +1,1797 @@
+{
+  "info": {
+    "_postman_id": "0595aad1-18f9-42e8-8816-aa154f75d751",
+    "name": "Microsoft Exchange Microsoft Graph Mailbox Import Export API",
+    "description": "APIs for discovering, importing, and exporting content from Exchange Online mailboxes in full fidelity through the Microsoft Graph beta endpoint. Enables mailbox migration scenarios and content copying as a replacement for EWS-based approaches. Supports importing and exporting mailbox content including messages, calendar events, and contacts while preserving all metadata and properties.\n\nContact Support:\n Name: Microsoft Support\n Email: support@microsoft.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:11:57.000Z",
+    "updatedAt": "2026-06-05T15:11:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0595aad1-18f9-42e8-8816-aa154f75d751"
+  },
+  "item": [
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "{user-id}",
+          "item": [
+            {
+              "name": "mailboxes",
+              "item": [
+                {
+                  "name": "{mailbox-id}",
+                  "item": [
+                    {
+                      "name": "folders",
+                      "item": [
+                        {
+                          "name": "{folder-id}",
+                          "item": [
+                            {
+                              "name": "items",
+                              "item": [
+                                {
+                                  "name": "{item-id}",
+                                  "item": [
+                                    {
+                                      "name": "content",
+                                      "item": [
+                                        {
+                                          "name": "Microsoft Exchange Export item content",
+                                          "id": "a0c71c20-7fe8-47f1-8b51-eab41f86822c",
+                                          "protocolProfileBehavior": {
+                                            "disableBodyPruning": true
+                                          },
+                                          "request": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "message/rfc822"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/users/:user-id/mailboxes/:mailbox-id/folders/:folder-id/items/:item-id/content",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "users",
+                                                ":user-id",
+                                                "mailboxes",
+                                                ":mailbox-id",
+                                                "folders",
+                                                ":folder-id",
+                                                "items",
+                                                ":item-id",
+                                                "content"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "id": "1b785675-6dee-4774-8d3f-cd6c89b27895",
+                                                  "key": "user-id",
+                                                  "value": "<string>",
+                                                  "description": "(Required) The unique identifier or user principal name"
+                                                },
+                                                {
+                                                  "id": "48acd7a9-e810-4ea8-9141-dad72cb76983",
+                                                  "key": "mailbox-id",
+                                                  "value": "<string>",
+                                                  "description": "(Required) The unique identifier of the mailbox"
+                                                },
+                                                {
+                                                  "id": "1482ebcc-cbe4-4d7a-8215-31706246502a",
+                                                  "key": "folder-id",
+                                                  "value": "<string>",
+                                                  "description": "(Required) The unique identifier of the folder"
+                                                },
+                                                {
+                                                  "id": "50c43e9e-ce63-4593-b835-1d2438a5dc3a",
+                                                  "key": "item-id",
+                                                  "value": "<string>",
+                                                  "description": "(Required) The unique identifier of the item"
+                                                }
+                                              ]
+                                            },
+                                            "description": "Export the full-fidelity content of a specific mailbox item in MIME format. Returns the complete item with all properties, headers, and attachments preserved for migration scenarios."
+                                          },
+                                          "response": [
+                                            {
+                                              "id": "26ae461a-0a54-4744-9536-810ab682d6ae",
+                                              "name": "Successfully exported item content",
+                                              "originalRequest": {
+                                                "method": "GET",
+                                                "header": [
+                                                  {
+                                                    "key": "Accept",
+                                                    "value": "message/rfc822"
+                                                  },
+                                                  {
+                                                    "description": "Added as a part of security scheme: oauth2",
+                                                    "key": "Authorization",
+                                                    "value": "<token>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/users/:user-id/mailboxes/:mailbox-id/folders/:folder-id/items/:item-id/content",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "users",
+                                                    ":user-id",
+                                                    "mailboxes",
+                                                    ":mailbox-id",
+                                                    "folders",
+                                                    ":folder-id",
+                                                    "items",
+                                                    ":item-id",
+                                                    "content"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "user-id"
+                                                    },
+                                                    {
+                                                      "key": "mailbox-id"
+                                                    },
+                                                    {
+                                                      "key": "folder-id"
+                                                    },
+                                                    {
+                                                      "key": "item-id"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "OK",
+                                              "code": 200,
+                                              "_postman_previewlanguage": "text",
+                                              "header": [
+                                                {
+                                                  "key": "Content-Type",
+                                                  "value": "message/rfc822"
+                                                }
+                                              ],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": "<binary>",
+                                              "createdAt": "2026-06-05T15:11:57.000Z",
+                                              "updatedAt": "2026-06-05T15:11:57.000Z",
+                                              "uid": "35240-26ae461a-0a54-4744-9536-810ab682d6ae"
+                                            },
+                                            {
+                                              "id": "5830b969-0bd8-4eea-8492-1a3f958beda4",
+                                              "name": "Unauthorized",
+                                              "originalRequest": {
+                                                "method": "GET",
+                                                "header": [
+                                                  {
+                                                    "key": "Accept",
+                                                    "value": "application/json"
+                                                  },
+                                                  {
+                                                    "description": "Added as a part of security scheme: oauth2",
+                                                    "key": "Authorization",
+                                                    "value": "<token>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/users/:user-id/mailboxes/:mailbox-id/folders/:folder-id/items/:item-id/content",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "users",
+                                                    ":user-id",
+                                                    "mailboxes",
+                                                    ":mailbox-id",
+                                                    "folders",
+                                                    ":folder-id",
+                                                    "items",
+                                                    ":item-id",
+                                                    "content"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "user-id"
+                                                    },
+                                                    {
+                                                      "key": "mailbox-id"
+                                                    },
+                                                    {
+                                                      "key": "folder-id"
+                                                    },
+                                                    {
+                                                      "key": "item-id"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "Unauthorized",
+                                              "code": 401,
+                                              "_postman_previewlanguage": "json",
+                                              "header": [
+                                                {
+                                                  "key": "Content-Type",
+                                                  "value": "application/json"
+                                                }
+                                              ],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<dateTime>\"\n    }\n  }\n}",
+                                              "createdAt": "2026-06-05T15:11:57.000Z",
+                                              "updatedAt": "2026-06-05T15:11:57.000Z",
+                                              "uid": "35240-5830b969-0bd8-4eea-8492-1a3f958beda4"
+                                            },
+                                            {
+                                              "id": "062bae57-542a-4de2-a14e-242f7ce025d3",
+                                              "name": "Forbidden",
+                                              "originalRequest": {
+                                                "method": "GET",
+                                                "header": [
+                                                  {
+                                                    "key": "Accept",
+                                                    "value": "application/json"
+                                                  },
+                                                  {
+                                                    "description": "Added as a part of security scheme: oauth2",
+                                                    "key": "Authorization",
+                                                    "value": "<token>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/users/:user-id/mailboxes/:mailbox-id/folders/:folder-id/items/:item-id/content",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "users",
+                                                    ":user-id",
+                                                    "mailboxes",
+                                                    ":mailbox-id",
+                                                    "folders",
+                                                    ":folder-id",
+                                                    "items",
+                                                    ":item-id",
+                                                    "content"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "user-id"
+                                                    },
+                                                    {
+                                                      "key": "mailbox-id"
+                                                    },
+                                                    {
+                                                      "key": "folder-id"
+                                                    },
+                                                    {
+                                                      "key": "item-id"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "Forbidden",
+                                              "code": 403,
+                                              "_postman_previewlanguage": "json",
+                                              "header": [
+                                                {
+                                                  "key": "Content-Type",
+                                                  "value": "application/json"
+                                                }
+                                              ],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<dateTime>\"\n    }\n  }\n}",
+                                              "createdAt": "2026-06-05T15:11:57.000Z",
+                                              "updatedAt": "2026-06-05T15:11:57.000Z",
+                                              "uid": "35240-062bae57-542a-4de2-a14e-242f7ce025d3"
+                                            },
+                                            {
+                                              "id": "b2f38adb-0b9e-4782-b7b8-930d345933fe",
+                                              "name": "Not found",
+                                              "originalRequest": {
+                                                "method": "GET",
+                                                "header": [
+                                                  {
+                                                    "key": "Accept",
+                                                    "value": "application/json"
+                                                  },
+                                                  {
+                                                    "description": "Added as a part of security scheme: oauth2",
+                                                    "key": "Authorization",
+                                                    "value": "<token>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/users/:user-id/mailboxes/:mailbox-id/folders/:folder-id/items/:item-id/content",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "users",
+                                                    ":user-id",
+                                                    "mailboxes",
+                                                    ":mailbox-id",
+                                                    "folders",
+                                                    ":folder-id",
+                                                    "items",
+                                                    ":item-id",
+                                                    "content"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "user-id"
+                                                    },
+                                                    {
+                                                      "key": "mailbox-id"
+                                                    },
+                                                    {
+                                                      "key": "folder-id"
+                                                    },
+                                                    {
+                                                      "key": "item-id"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "Not Found",
+                                              "code": 404,
+                                              "_postman_previewlanguage": "json",
+                                              "header": [
+                                                {
+                                                  "key": "Content-Type",
+                                                  "value": "application/json"
+                                                }
+                                              ],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<dateTime>\"\n    }\n  }\n}",
+                                              "createdAt": "2026-06-05T15:11:57.000Z",
+                                              "updatedAt": "2026-06-05T15:11:57.000Z",
+                                              "uid": "35240-b2f38adb-0b9e-4782-b7b8-930d345933fe"
+                                            }
+                                          ],
+                                          "createdAt": "2026-06-05T15:11:57.000Z",
+                                          "updatedAt": "2026-06-05T15:11:57.000Z",
+                                          "uid": "35240-a0c71c20-7fe8-47f1-8b51-eab41f86822c"
+                                        }
+                                      ],
+                                      "id": "d693c1dd-caff-45f0-945f-a0187c36bf38",
+                                      "createdAt": "2026-06-05T15:11:57.000Z",
+                                      "updatedAt": "2026-06-05T15:11:57.000Z",
+                                      "uid": "35240-d693c1dd-caff-45f0-945f-a0187c36bf38"
+                                    }
+                                  ],
+                                  "id": "0d3b7b9f-e902-44b3-97a9-70004018b201",
+                                  "createdAt": "2026-06-05T15:11:57.000Z",
+                                  "updatedAt": "2026-06-05T15:11:57.000Z",
+                                  "uid": "35240-0d3b7b9f-e902-44b3-97a9-70004018b201"
+                                },
+                                {
+                                  "name": "import",
+                                  "item": [
+                                    {
+                                      "name": "Microsoft Exchange Import item into folder",
+                                      "id": "050de4c1-0c5e-4155-b2e3-5281c8474da0",
+                                      "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                      },
+                                      "request": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "message/rfc822"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "<binary>"
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/users/:user-id/mailboxes/:mailbox-id/folders/:folder-id/items/import",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "users",
+                                            ":user-id",
+                                            "mailboxes",
+                                            ":mailbox-id",
+                                            "folders",
+                                            ":folder-id",
+                                            "items",
+                                            "import"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "id": "71317d7f-e182-477a-99fd-b0c5fe919d1b",
+                                              "key": "user-id",
+                                              "value": "<string>",
+                                              "description": "(Required) The unique identifier or user principal name"
+                                            },
+                                            {
+                                              "id": "94c00267-6114-4c69-a0e7-9993866d7c87",
+                                              "key": "mailbox-id",
+                                              "value": "<string>",
+                                              "description": "(Required) The unique identifier of the mailbox"
+                                            },
+                                            {
+                                              "id": "f3359103-4c82-4472-b7fd-73e22d023efc",
+                                              "key": "folder-id",
+                                              "value": "<string>",
+                                              "description": "(Required) The unique identifier of the folder"
+                                            }
+                                          ]
+                                        },
+                                        "description": "Import a full-fidelity item into the specified mailbox folder. Accepts MIME content and creates the item preserving all properties and metadata. Used for mailbox migration and content copying scenarios."
+                                      },
+                                      "response": [
+                                        {
+                                          "id": "806cdb53-4a65-42a9-94e3-a2018ce5e13e",
+                                          "name": "Successfully imported item",
+                                          "originalRequest": {
+                                            "method": "POST",
+                                            "header": [
+                                              {
+                                                "key": "Content-Type",
+                                                "value": "message/rfc822"
+                                              },
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: oauth2",
+                                                "key": "Authorization",
+                                                "value": "<token>"
+                                              }
+                                            ],
+                                            "body": {
+                                              "mode": "raw",
+                                              "raw": "<binary>"
+                                            },
+                                            "url": {
+                                              "raw": "{{baseUrl}}/users/:user-id/mailboxes/:mailbox-id/folders/:folder-id/items/import",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "users",
+                                                ":user-id",
+                                                "mailboxes",
+                                                ":mailbox-id",
+                                                "folders",
+                                                ":folder-id",
+                                                "items",
+                                                "import"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "user-id"
+                                                },
+                                                {
+                                                  "key": "mailbox-id"
+                                                },
+                                                {
+                                                  "key": "folder-id"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Created",
+                                          "code": 201,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"id\": \"<string>\",\n  \"itemType\": \"contact\",\n  \"subject\": \"<string>\",\n  \"createdDateTime\": \"<dateTime>\",\n  \"lastModifiedDateTime\": \"<dateTime>\",\n  \"size\": \"<integer>\",\n  \"internetMessageId\": \"<string>\",\n  \"hasAttachments\": \"<boolean>\"\n}",
+                                          "createdAt": "2026-06-05T15:11:57.000Z",
+                                          "updatedAt": "2026-06-05T15:11:57.000Z",
+                                          "uid": "35240-806cdb53-4a65-42a9-94e3-a2018ce5e13e"
+                                        },
+                                        {
+                                          "id": "7cb81212-7ba2-421c-b6e2-3c3778291b53",
+                                          "name": "Bad request",
+                                          "originalRequest": {
+                                            "method": "POST",
+                                            "header": [
+                                              {
+                                                "key": "Content-Type",
+                                                "value": "message/rfc822"
+                                              },
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: oauth2",
+                                                "key": "Authorization",
+                                                "value": "<token>"
+                                              }
+                                            ],
+                                            "body": {
+                                              "mode": "raw",
+                                              "raw": "<binary>"
+                                            },
+                                            "url": {
+                                              "raw": "{{baseUrl}}/users/:user-id/mailboxes/:mailbox-id/folders/:folder-id/items/import",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "users",
+                                                ":user-id",
+                                                "mailboxes",
+                                                ":mailbox-id",
+                                                "folders",
+                                                ":folder-id",
+                                                "items",
+                                                "import"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "user-id"
+                                                },
+                                                {
+                                                  "key": "mailbox-id"
+                                                },
+                                                {
+                                                  "key": "folder-id"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Bad Request",
+                                          "code": 400,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<dateTime>\"\n    }\n  }\n}",
+                                          "createdAt": "2026-06-05T15:11:57.000Z",
+                                          "updatedAt": "2026-06-05T15:11:57.000Z",
+                                          "uid": "35240-7cb81212-7ba2-421c-b6e2-3c3778291b53"
+                                        },
+                                        {
+                                          "id": "5e04ad08-1cf9-49cd-9d07-f31dfb37ca42",
+                                          "name": "Unauthorized",
+                                          "originalRequest": {
+                                            "method": "POST",
+                                            "header": [
+                                              {
+                                                "key": "Content-Type",
+                                                "value": "message/rfc822"
+                                              },
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: oauth2",
+                                                "key": "Authorization",
+                                                "value": "<token>"
+                                              }
+                                            ],
+                                            "body": {
+                                              "mode": "raw",
+                                              "raw": "<binary>"
+                                            },
+                                            "url": {
+                                              "raw": "{{baseUrl}}/users/:user-id/mailboxes/:mailbox-id/folders/:folder-id/items/import",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "users",
+                                                ":user-id",
+                                                "mailboxes",
+                                                ":mailbox-id",
+                                                "folders",
+                                                ":folder-id",
+                                                "items",
+                                                "import"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "user-id"
+                                                },
+                                                {
+                                                  "key": "mailbox-id"
+                                                },
+                                                {
+                                                  "key": "folder-id"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Unauthorized",
+                                          "code": 401,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<dateTime>\"\n    }\n  }\n}",
+                                          "createdAt": "2026-06-05T15:11:57.000Z",
+                                          "updatedAt": "2026-06-05T15:11:57.000Z",
+                                          "uid": "35240-5e04ad08-1cf9-49cd-9d07-f31dfb37ca42"
+                                        },
+                                        {
+                                          "id": "0ed93a6d-8322-4aa1-8831-93d97c82a1ef",
+                                          "name": "Forbidden",
+                                          "originalRequest": {
+                                            "method": "POST",
+                                            "header": [
+                                              {
+                                                "key": "Content-Type",
+                                                "value": "message/rfc822"
+                                              },
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: oauth2",
+                                                "key": "Authorization",
+                                                "value": "<token>"
+                                              }
+                                            ],
+                                            "body": {
+                                              "mode": "raw",
+                                              "raw": "<binary>"
+                                            },
+                                            "url": {
+                                              "raw": "{{baseUrl}}/users/:user-id/mailboxes/:mailbox-id/folders/:folder-id/items/import",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "users",
+                                                ":user-id",
+                                                "mailboxes",
+                                                ":mailbox-id",
+                                                "folders",
+                                                ":folder-id",
+                                                "items",
+                                                "import"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "user-id"
+                                                },
+                                                {
+                                                  "key": "mailbox-id"
+                                                },
+                                                {
+                                                  "key": "folder-id"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Forbidden",
+                                          "code": 403,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<dateTime>\"\n    }\n  }\n}",
+                                          "createdAt": "2026-06-05T15:11:57.000Z",
+                                          "updatedAt": "2026-06-05T15:11:57.000Z",
+                                          "uid": "35240-0ed93a6d-8322-4aa1-8831-93d97c82a1ef"
+                                        },
+                                        {
+                                          "id": "e7c353af-49d7-42fa-8046-2038a325be61",
+                                          "name": "Not found",
+                                          "originalRequest": {
+                                            "method": "POST",
+                                            "header": [
+                                              {
+                                                "key": "Content-Type",
+                                                "value": "message/rfc822"
+                                              },
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: oauth2",
+                                                "key": "Authorization",
+                                                "value": "<token>"
+                                              }
+                                            ],
+                                            "body": {
+                                              "mode": "raw",
+                                              "raw": "<binary>"
+                                            },
+                                            "url": {
+                                              "raw": "{{baseUrl}}/users/:user-id/mailboxes/:mailbox-id/folders/:folder-id/items/import",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "users",
+                                                ":user-id",
+                                                "mailboxes",
+                                                ":mailbox-id",
+                                                "folders",
+                                                ":folder-id",
+                                                "items",
+                                                "import"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "user-id"
+                                                },
+                                                {
+                                                  "key": "mailbox-id"
+                                                },
+                                                {
+                                                  "key": "folder-id"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Not Found",
+                                          "code": 404,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<dateTime>\"\n    }\n  }\n}",
+                                          "createdAt": "2026-06-05T15:11:57.000Z",
+                                          "updatedAt": "2026-06-05T15:11:57.000Z",
+                                          "uid": "35240-e7c353af-49d7-42fa-8046-2038a325be61"
+                                        }
+                                      ],
+                                      "createdAt": "2026-06-05T15:11:57.000Z",
+                                      "updatedAt": "2026-06-05T15:11:57.000Z",
+                                      "uid": "35240-050de4c1-0c5e-4155-b2e3-5281c8474da0"
+                                    }
+                                  ],
+                                  "id": "df6e647a-f395-4ea4-885b-60c2d9c4ef0b",
+                                  "createdAt": "2026-06-05T15:11:57.000Z",
+                                  "updatedAt": "2026-06-05T15:11:57.000Z",
+                                  "uid": "35240-df6e647a-f395-4ea4-885b-60c2d9c4ef0b"
+                                },
+                                {
+                                  "name": "Microsoft Exchange List folder items",
+                                  "id": "2e1b987b-e40b-4787-bcba-662cc3ad9af9",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/users/:user-id/mailboxes/:mailbox-id/folders/:folder-id/items?$top=<integer>&$skip=<integer>&$select=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "users",
+                                        ":user-id",
+                                        "mailboxes",
+                                        ":mailbox-id",
+                                        "folders",
+                                        ":folder-id",
+                                        "items"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Number of items to return",
+                                          "key": "$top",
+                                          "value": "<integer>"
+                                        },
+                                        {
+                                          "description": "Number of items to skip",
+                                          "key": "$skip",
+                                          "value": "<integer>"
+                                        },
+                                        {
+                                          "description": "Comma-separated list of properties to include",
+                                          "key": "$select",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "7c6fc0b9-b705-4369-baba-74addc874127",
+                                          "key": "user-id",
+                                          "value": "<string>",
+                                          "description": "(Required) The unique identifier or user principal name"
+                                        },
+                                        {
+                                          "id": "77782474-26aa-4eed-b56d-d26b44a20863",
+                                          "key": "mailbox-id",
+                                          "value": "<string>",
+                                          "description": "(Required) The unique identifier of the mailbox"
+                                        },
+                                        {
+                                          "id": "95add8f0-e7dd-458e-9873-926d5e9dd580",
+                                          "key": "folder-id",
+                                          "value": "<string>",
+                                          "description": "(Required) The unique identifier of the folder"
+                                        }
+                                      ]
+                                    },
+                                    "description": "List items in a specific mailbox folder for export. Returns items with their metadata for batch export processing. Supports pagination for large folders."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "8cbaac38-1e14-463b-8149-a881d070608a",
+                                      "name": "Successfully retrieved folder items",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/users/:user-id/mailboxes/:mailbox-id/folders/:folder-id/items?$top=<integer>&$skip=<integer>&$select=<string>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "users",
+                                            ":user-id",
+                                            "mailboxes",
+                                            ":mailbox-id",
+                                            "folders",
+                                            ":folder-id",
+                                            "items"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Number of items to return",
+                                              "key": "$top",
+                                              "value": "<integer>"
+                                            },
+                                            {
+                                              "description": "Number of items to skip",
+                                              "key": "$skip",
+                                              "value": "<integer>"
+                                            },
+                                            {
+                                              "description": "Comma-separated list of properties to include",
+                                              "key": "$select",
+                                              "value": "<string>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "user-id"
+                                            },
+                                            {
+                                              "key": "mailbox-id"
+                                            },
+                                            {
+                                              "key": "folder-id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"@odata.context\": \"<string>\",\n  \"@odata.nextLink\": \"<uri>\",\n  \"value\": [\n    {\n      \"id\": \"<string>\",\n      \"itemType\": \"event\",\n      \"subject\": \"<string>\",\n      \"createdDateTime\": \"<dateTime>\",\n      \"lastModifiedDateTime\": \"<dateTime>\",\n      \"size\": \"<integer>\",\n      \"internetMessageId\": \"<string>\",\n      \"hasAttachments\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"itemType\": \"contact\",\n      \"subject\": \"<string>\",\n      \"createdDateTime\": \"<dateTime>\",\n      \"lastModifiedDateTime\": \"<dateTime>\",\n      \"size\": \"<integer>\",\n      \"internetMessageId\": \"<string>\",\n      \"hasAttachments\": \"<boolean>\"\n    }\n  ]\n}",
+                                      "createdAt": "2026-06-05T15:11:57.000Z",
+                                      "updatedAt": "2026-06-05T15:11:57.000Z",
+                                      "uid": "35240-8cbaac38-1e14-463b-8149-a881d070608a"
+                                    },
+                                    {
+                                      "id": "1dc1de68-dd8b-440e-aa56-6cf6427d3956",
+                                      "name": "Unauthorized",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/users/:user-id/mailboxes/:mailbox-id/folders/:folder-id/items?$top=<integer>&$skip=<integer>&$select=<string>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "users",
+                                            ":user-id",
+                                            "mailboxes",
+                                            ":mailbox-id",
+                                            "folders",
+                                            ":folder-id",
+                                            "items"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Number of items to return",
+                                              "key": "$top",
+                                              "value": "<integer>"
+                                            },
+                                            {
+                                              "description": "Number of items to skip",
+                                              "key": "$skip",
+                                              "value": "<integer>"
+                                            },
+                                            {
+                                              "description": "Comma-separated list of properties to include",
+                                              "key": "$select",
+                                              "value": "<string>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "user-id"
+                                            },
+                                            {
+                                              "key": "mailbox-id"
+                                            },
+                                            {
+                                              "key": "folder-id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Unauthorized",
+                                      "code": 401,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<dateTime>\"\n    }\n  }\n}",
+                                      "createdAt": "2026-06-05T15:11:57.000Z",
+                                      "updatedAt": "2026-06-05T15:11:57.000Z",
+                                      "uid": "35240-1dc1de68-dd8b-440e-aa56-6cf6427d3956"
+                                    },
+                                    {
+                                      "id": "d0b3f6e3-734c-4b31-a72e-0830c3b7442c",
+                                      "name": "Forbidden",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/users/:user-id/mailboxes/:mailbox-id/folders/:folder-id/items?$top=<integer>&$skip=<integer>&$select=<string>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "users",
+                                            ":user-id",
+                                            "mailboxes",
+                                            ":mailbox-id",
+                                            "folders",
+                                            ":folder-id",
+                                            "items"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Number of items to return",
+                                              "key": "$top",
+                                              "value": "<integer>"
+                                            },
+                                            {
+                                              "description": "Number of items to skip",
+                                              "key": "$skip",
+                                              "value": "<integer>"
+                                            },
+                                            {
+                                              "description": "Comma-separated list of properties to include",
+                                              "key": "$select",
+                                              "value": "<string>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "user-id"
+                                            },
+                                            {
+                                              "key": "mailbox-id"
+                                            },
+                                            {
+                                              "key": "folder-id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Forbidden",
+                                      "code": 403,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<dateTime>\"\n    }\n  }\n}",
+                                      "createdAt": "2026-06-05T15:11:57.000Z",
+                                      "updatedAt": "2026-06-05T15:11:57.000Z",
+                                      "uid": "35240-d0b3f6e3-734c-4b31-a72e-0830c3b7442c"
+                                    },
+                                    {
+                                      "id": "796a24c7-3930-46b7-8540-eb8980eec52f",
+                                      "name": "Not found",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/users/:user-id/mailboxes/:mailbox-id/folders/:folder-id/items?$top=<integer>&$skip=<integer>&$select=<string>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "users",
+                                            ":user-id",
+                                            "mailboxes",
+                                            ":mailbox-id",
+                                            "folders",
+                                            ":folder-id",
+                                            "items"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Number of items to return",
+                                              "key": "$top",
+                                              "value": "<integer>"
+                                            },
+                                            {
+                                              "description": "Number of items to skip",
+                                              "key": "$skip",
+                                              "value": "<integer>"
+                                            },
+                                            {
+                                              "description": "Comma-separated list of properties to include",
+                                              "key": "$select",
+                                              "value": "<string>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "user-id"
+                                            },
+                                            {
+                                              "key": "mailbox-id"
+                                            },
+                                            {
+                                              "key": "folder-id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<dateTime>\"\n    }\n  }\n}",
+                                      "createdAt": "2026-06-05T15:11:57.000Z",
+                                      "updatedAt": "2026-06-05T15:11:57.000Z",
+                                      "uid": "35240-796a24c7-3930-46b7-8540-eb8980eec52f"
+                                    }
+                                  ],
+                                  "createdAt": "2026-06-05T15:11:57.000Z",
+                                  "updatedAt": "2026-06-05T15:11:57.000Z",
+                                  "uid": "35240-2e1b987b-e40b-4787-bcba-662cc3ad9af9"
+                                }
+                              ],
+                              "id": "f41c6b50-a5dd-4989-9c09-245df7dacb8b",
+                              "createdAt": "2026-06-05T15:11:57.000Z",
+                              "updatedAt": "2026-06-05T15:11:57.000Z",
+                              "uid": "35240-f41c6b50-a5dd-4989-9c09-245df7dacb8b"
+                            }
+                          ],
+                          "id": "c1cf7c38-9523-4eb6-ba1f-0a2c47b4a152",
+                          "createdAt": "2026-06-05T15:11:57.000Z",
+                          "updatedAt": "2026-06-05T15:11:57.000Z",
+                          "uid": "35240-c1cf7c38-9523-4eb6-ba1f-0a2c47b4a152"
+                        },
+                        {
+                          "name": "Microsoft Exchange List mailbox folders",
+                          "id": "06649db1-73e9-4286-afcb-9cb3dc8aff0d",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/users/:user-id/mailboxes/:mailbox-id/folders?$top=<integer>&$skip=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "users",
+                                ":user-id",
+                                "mailboxes",
+                                ":mailbox-id",
+                                "folders"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Number of items to return",
+                                  "key": "$top",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Number of items to skip",
+                                  "key": "$skip",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "5d765100-4b3c-40b0-9930-2115c595bdd1",
+                                  "key": "user-id",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier or user principal name"
+                                },
+                                {
+                                  "id": "adf8ebdd-94bc-4f8e-8b14-93ddf04d4e44",
+                                  "key": "mailbox-id",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier of the mailbox"
+                                }
+                              ]
+                            },
+                            "description": "List all folders in the specified mailbox for content discovery. Returns folder hierarchy with metadata needed for targeted import and export operations."
+                          },
+                          "response": [
+                            {
+                              "id": "7c08601c-51f8-4cc6-93cd-d521998b65f4",
+                              "name": "Successfully retrieved mailbox folders",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/users/:user-id/mailboxes/:mailbox-id/folders?$top=<integer>&$skip=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "users",
+                                    ":user-id",
+                                    "mailboxes",
+                                    ":mailbox-id",
+                                    "folders"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Number of items to return",
+                                      "key": "$top",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Number of items to skip",
+                                      "key": "$skip",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "user-id"
+                                    },
+                                    {
+                                      "key": "mailbox-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"@odata.context\": \"<string>\",\n  \"@odata.nextLink\": \"<uri>\",\n  \"value\": [\n    {\n      \"id\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"parentFolderId\": \"<string>\",\n      \"folderType\": \"<string>\",\n      \"childFolderCount\": \"<integer>\",\n      \"totalItemCount\": \"<integer>\",\n      \"unreadItemCount\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"parentFolderId\": \"<string>\",\n      \"folderType\": \"<string>\",\n      \"childFolderCount\": \"<integer>\",\n      \"totalItemCount\": \"<integer>\",\n      \"unreadItemCount\": \"<integer>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-06-05T15:11:57.000Z",
+                              "updatedAt": "2026-06-05T15:11:57.000Z",
+                              "uid": "35240-7c08601c-51f8-4cc6-93cd-d521998b65f4"
+                            },
+                            {
+                              "id": "2b989156-e4bb-4d0b-86f3-3f06b71743cc",
+                              "name": "Unauthorized",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/users/:user-id/mailboxes/:mailbox-id/folders?$top=<integer>&$skip=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "users",
+                                    ":user-id",
+                                    "mailboxes",
+                                    ":mailbox-id",
+                                    "folders"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Number of items to return",
+                                      "key": "$top",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Number of items to skip",
+                                      "key": "$skip",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "user-id"
+                                    },
+                                    {
+                                      "key": "mailbox-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<dateTime>\"\n    }\n  }\n}",
+                              "createdAt": "2026-06-05T15:11:57.000Z",
+                              "updatedAt": "2026-06-05T15:11:57.000Z",
+                              "uid": "35240-2b989156-e4bb-4d0b-86f3-3f06b71743cc"
+                            },
+                            {
+                              "id": "26151930-ddd8-478a-a5f0-f66e1aaf9cdd",
+                              "name": "Forbidden",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/users/:user-id/mailboxes/:mailbox-id/folders?$top=<integer>&$skip=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "users",
+                                    ":user-id",
+                                    "mailboxes",
+                                    ":mailbox-id",
+                                    "folders"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Number of items to return",
+                                      "key": "$top",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Number of items to skip",
+                                      "key": "$skip",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "user-id"
+                                    },
+                                    {
+                                      "key": "mailbox-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<dateTime>\"\n    }\n  }\n}",
+                              "createdAt": "2026-06-05T15:11:57.000Z",
+                              "updatedAt": "2026-06-05T15:11:57.000Z",
+                              "uid": "35240-26151930-ddd8-478a-a5f0-f66e1aaf9cdd"
+                            },
+                            {
+                              "id": "b703cd26-70e0-47cb-ab60-6f0c3a08a8b9",
+                              "name": "Not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/users/:user-id/mailboxes/:mailbox-id/folders?$top=<integer>&$skip=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "users",
+                                    ":user-id",
+                                    "mailboxes",
+                                    ":mailbox-id",
+                                    "folders"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Number of items to return",
+                                      "key": "$top",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Number of items to skip",
+                                      "key": "$skip",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "user-id"
+                                    },
+                                    {
+                                      "key": "mailbox-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<dateTime>\"\n    }\n  }\n}",
+                              "createdAt": "2026-06-05T15:11:57.000Z",
+                              "updatedAt": "2026-06-05T15:11:57.000Z",
+                              "uid": "35240-b703cd26-70e0-47cb-ab60-6f0c3a08a8b9"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:11:57.000Z",
+                          "updatedAt": "2026-06-05T15:11:57.000Z",
+                          "uid": "35240-06649db1-73e9-4286-afcb-9cb3dc8aff0d"
+                        }
+                      ],
+                      "id": "833223c5-4ac7-482b-8037-83008d646460",
+                      "createdAt": "2026-06-05T15:11:57.000Z",
+                      "updatedAt": "2026-06-05T15:11:57.000Z",
+                      "uid": "35240-833223c5-4ac7-482b-8037-83008d646460"
+                    }
+                  ],
+                  "id": "b5716e73-2243-455d-a6cd-e60babf27151",
+                  "createdAt": "2026-06-05T15:11:57.000Z",
+                  "updatedAt": "2026-06-05T15:11:57.000Z",
+                  "uid": "35240-b5716e73-2243-455d-a6cd-e60babf27151"
+                },
+                {
+                  "name": "Microsoft Exchange List mailboxes",
+                  "id": "f9547295-cf26-4bb7-aa8c-5d89a18b45a7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:user-id/mailboxes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":user-id",
+                        "mailboxes"
+                      ],
+                      "variable": [
+                        {
+                          "id": "982219ca-de3d-4733-ab5d-bf6d8306d921",
+                          "key": "user-id",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier or user principal name"
+                        }
+                      ]
+                    },
+                    "description": "Discover the mailboxes associated with a user, including primary mailbox and archive mailbox information. Returns mailbox metadata needed for import and export operations."
+                  },
+                  "response": [
+                    {
+                      "id": "9ffe1b3b-b98b-4e78-9eba-0d3567e0f188",
+                      "name": "Successfully retrieved mailbox information",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:user-id/mailboxes",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":user-id",
+                            "mailboxes"
+                          ],
+                          "variable": [
+                            {
+                              "key": "user-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"@odata.context\": \"<string>\",\n  \"value\": [\n    {\n      \"id\": \"<string>\",\n      \"mailboxType\": \"primary\",\n      \"displayName\": \"<string>\",\n      \"primarySmtpAddress\": \"<email>\",\n      \"totalItemCount\": \"<integer>\",\n      \"totalItemSize\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"mailboxType\": \"archive\",\n      \"displayName\": \"<string>\",\n      \"primarySmtpAddress\": \"<email>\",\n      \"totalItemCount\": \"<integer>\",\n      \"totalItemSize\": \"<integer>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:11:57.000Z",
+                      "updatedAt": "2026-06-05T15:11:57.000Z",
+                      "uid": "35240-9ffe1b3b-b98b-4e78-9eba-0d3567e0f188"
+                    },
+                    {
+                      "id": "d91ae09e-9ada-49c3-9939-35dd2079b0c2",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:user-id/mailboxes",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":user-id",
+                            "mailboxes"
+                          ],
+                          "variable": [
+                            {
+                              "key": "user-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<dateTime>\"\n    }\n  }\n}",
+                      "createdAt": "2026-06-05T15:11:57.000Z",
+                      "updatedAt": "2026-06-05T15:11:57.000Z",
+                      "uid": "35240-d91ae09e-9ada-49c3-9939-35dd2079b0c2"
+                    },
+                    {
+                      "id": "b1360ea6-6116-4ba4-ae82-3d2a1f38a3b5",
+                      "name": "Forbidden",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:user-id/mailboxes",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":user-id",
+                            "mailboxes"
+                          ],
+                          "variable": [
+                            {
+                              "key": "user-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<dateTime>\"\n    }\n  }\n}",
+                      "createdAt": "2026-06-05T15:11:57.000Z",
+                      "updatedAt": "2026-06-05T15:11:57.000Z",
+                      "uid": "35240-b1360ea6-6116-4ba4-ae82-3d2a1f38a3b5"
+                    },
+                    {
+                      "id": "d3a735c5-7c40-419c-a22c-0d1ab9a5d2cc",
+                      "name": "Not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:user-id/mailboxes",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":user-id",
+                            "mailboxes"
+                          ],
+                          "variable": [
+                            {
+                              "key": "user-id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"innerError\": {\n      \"request-id\": \"<string>\",\n      \"date\": \"<dateTime>\"\n    }\n  }\n}",
+                      "createdAt": "2026-06-05T15:11:57.000Z",
+                      "updatedAt": "2026-06-05T15:11:57.000Z",
+                      "uid": "35240-d3a735c5-7c40-419c-a22c-0d1ab9a5d2cc"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:11:57.000Z",
+                  "updatedAt": "2026-06-05T15:11:57.000Z",
+                  "uid": "35240-f9547295-cf26-4bb7-aa8c-5d89a18b45a7"
+                }
+              ],
+              "id": "96fe376c-a0e7-42b2-9467-7745834ab1b0",
+              "createdAt": "2026-06-05T15:11:57.000Z",
+              "updatedAt": "2026-06-05T15:11:57.000Z",
+              "uid": "35240-96fe376c-a0e7-42b2-9467-7745834ab1b0"
+            }
+          ],
+          "id": "eca1d2bf-f813-4d45-9eb5-0597e35756e3",
+          "createdAt": "2026-06-05T15:11:57.000Z",
+          "updatedAt": "2026-06-05T15:11:57.000Z",
+          "uid": "35240-eca1d2bf-f813-4d45-9eb5-0597e35756e3"
+        }
+      ],
+      "id": "26bd8c89-1392-4e1f-84db-19f3d6224881",
+      "createdAt": "2026-06-05T15:11:57.000Z",
+      "updatedAt": "2026-06-05T15:11:57.000Z",
+      "uid": "35240-26bd8c89-1392-4e1f-84db-19f3d6224881"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "Mailbox.Import Mailbox.Export MailboxFolder.Read",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://graph.microsoft.com/beta"
+    }
+  ]
+}

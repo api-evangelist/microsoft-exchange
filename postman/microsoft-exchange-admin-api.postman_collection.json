@@ -1,0 +1,1736 @@
+{
+  "info": {
+    "_postman_id": "41da8749-dedb-404d-89fa-d5e87a6abea1",
+    "name": "Microsoft Exchange Exchange Online Admin API",
+    "description": "REST-based administrative API that enables a focused set of Exchange cmdlets and parameters as POST-only endpoints. Provides access to key tasks previously available through Exchange Web Services (EWS), including organization configuration, accepted domains, mailbox properties, mailbox folder permissions, and distribution group membership. Built as a complementary REST-first surface for specific administrative tasks caused by the EWS deprecation planned for October 2026.\n\nContact Support:\n Name: Microsoft Support\n Email: support@microsoft.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:11:56.000Z",
+    "updatedAt": "2026-06-05T15:11:56.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-41da8749-dedb-404d-89fa-d5e87a6abea1"
+  },
+  "item": [
+    {
+      "name": "OrganizationConfig",
+      "item": [
+        {
+          "name": "Microsoft Exchange Get organization configuration",
+          "id": "74e23cd7-2c5d-4ec0-a981-9e4b27745c8f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                "key": "X-AnchorMailbox",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"<string>\",\n    \"Parameters\": {\n      \"qui_0_f\": 31124147,\n      \"nostrud55f\": -32183170\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/OrganizationConfig",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "OrganizationConfig"
+              ]
+            },
+            "description": "Retrieve organization-level Exchange configuration related to MailTips settings. Returns organization settings such as accepted domains, MailTips configuration, and mailbox limits including MaxSendSize. Replaces the GetServiceConfiguration EWS operation."
+          },
+          "response": [
+            {
+              "id": "247fd040-d78b-4043-a40e-713882abf539",
+              "name": "Successfully retrieved organization configuration",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                    "key": "X-AnchorMailbox",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"<string>\",\n    \"Parameters\": {\n      \"qui_0_f\": 31124147,\n      \"nostrud55f\": -32183170\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/OrganizationConfig",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "OrganizationConfig"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"@odata.context\": \"<string>\",\n  \"value\": [\n    {\n      \"magna238\": true\n    },\n    {\n      \"commodof_0\": \"dolor amet consectetur quis\",\n      \"dolore8b0\": \"officia laborum tempor\"\n    }\n  ],\n  \"@odata.nextLink\": \"<uri>\"\n}",
+              "createdAt": "2026-06-05T15:11:56.000Z",
+              "updatedAt": "2026-06-05T15:11:56.000Z",
+              "uid": "35240-247fd040-d78b-4043-a40e-713882abf539"
+            },
+            {
+              "id": "24af59cd-6560-4518-87b1-94bf06481cd7",
+              "name": "Unauthorized - authentication token is missing or invalid",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                    "key": "X-AnchorMailbox",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"<string>\",\n    \"Parameters\": {\n      \"qui_0_f\": 31124147,\n      \"nostrud55f\": -32183170\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/OrganizationConfig",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "OrganizationConfig"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:11:56.000Z",
+              "updatedAt": "2026-06-05T15:11:56.000Z",
+              "uid": "35240-24af59cd-6560-4518-87b1-94bf06481cd7"
+            },
+            {
+              "id": "9c429174-1284-45a6-bcfa-957f53b5ee33",
+              "name": "Forbidden - insufficient Exchange RBAC permissions",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                    "key": "X-AnchorMailbox",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"<string>\",\n    \"Parameters\": {\n      \"qui_0_f\": 31124147,\n      \"nostrud55f\": -32183170\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/OrganizationConfig",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "OrganizationConfig"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:11:56.000Z",
+              "updatedAt": "2026-06-05T15:11:56.000Z",
+              "uid": "35240-9c429174-1284-45a6-bcfa-957f53b5ee33"
+            }
+          ],
+          "createdAt": "2026-06-05T15:11:56.000Z",
+          "updatedAt": "2026-06-05T15:11:56.000Z",
+          "uid": "35240-74e23cd7-2c5d-4ec0-a981-9e4b27745c8f"
+        }
+      ],
+      "id": "d72a3c45-53f5-457b-a109-750078b8bb07",
+      "createdAt": "2026-06-05T15:11:56.000Z",
+      "updatedAt": "2026-06-05T15:11:56.000Z",
+      "uid": "35240-d72a3c45-53f5-457b-a109-750078b8bb07"
+    },
+    {
+      "name": "AcceptedDomain",
+      "item": [
+        {
+          "name": "Microsoft Exchange Get accepted domains",
+          "id": "39b22577-de38-4a0b-a236-9e77e8498351",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                "key": "X-AnchorMailbox",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"<string>\",\n    \"Parameters\": {\n      \"non_\": \"laborum exercitation eiusmod\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/AcceptedDomain",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "AcceptedDomain"
+              ]
+            },
+            "description": "View accepted domains and their configurations for the organization. Returns the list of domains that are configured for the Exchange Online organization. Replaces the GetServiceConfiguration EWS operation."
+          },
+          "response": [
+            {
+              "id": "22268343-e303-46e9-8720-c6a5cedd86a7",
+              "name": "Successfully retrieved accepted domains",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                    "key": "X-AnchorMailbox",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"<string>\",\n    \"Parameters\": {\n      \"non_\": \"laborum exercitation eiusmod\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/AcceptedDomain",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AcceptedDomain"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"@odata.context\": \"<string>\",\n  \"value\": [\n    {\n      \"magna238\": true\n    },\n    {\n      \"commodof_0\": \"dolor amet consectetur quis\",\n      \"dolore8b0\": \"officia laborum tempor\"\n    }\n  ],\n  \"@odata.nextLink\": \"<uri>\"\n}",
+              "createdAt": "2026-06-05T15:11:56.000Z",
+              "updatedAt": "2026-06-05T15:11:56.000Z",
+              "uid": "35240-22268343-e303-46e9-8720-c6a5cedd86a7"
+            },
+            {
+              "id": "d2d08665-c256-4cd5-b38a-aef8661818db",
+              "name": "Unauthorized - authentication token is missing or invalid",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                    "key": "X-AnchorMailbox",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"<string>\",\n    \"Parameters\": {\n      \"non_\": \"laborum exercitation eiusmod\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/AcceptedDomain",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AcceptedDomain"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:11:56.000Z",
+              "updatedAt": "2026-06-05T15:11:56.000Z",
+              "uid": "35240-d2d08665-c256-4cd5-b38a-aef8661818db"
+            },
+            {
+              "id": "c60e4edd-146c-4402-bc15-fb5428cdcf0c",
+              "name": "Forbidden - insufficient Exchange RBAC permissions",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                    "key": "X-AnchorMailbox",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"<string>\",\n    \"Parameters\": {\n      \"non_\": \"laborum exercitation eiusmod\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/AcceptedDomain",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AcceptedDomain"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:11:56.000Z",
+              "updatedAt": "2026-06-05T15:11:56.000Z",
+              "uid": "35240-c60e4edd-146c-4402-bc15-fb5428cdcf0c"
+            }
+          ],
+          "createdAt": "2026-06-05T15:11:56.000Z",
+          "updatedAt": "2026-06-05T15:11:56.000Z",
+          "uid": "35240-39b22577-de38-4a0b-a236-9e77e8498351"
+        }
+      ],
+      "id": "36431cff-4cd8-48ff-af9c-2763d56492cc",
+      "createdAt": "2026-06-05T15:11:56.000Z",
+      "updatedAt": "2026-06-05T15:11:56.000Z",
+      "uid": "35240-36431cff-4cd8-48ff-af9c-2763d56492cc"
+    },
+    {
+      "name": "Mailbox",
+      "item": [
+        {
+          "name": "Microsoft Exchange Manage mailbox",
+          "id": "96832ec4-1644-4dcb-af2a-0ee03eec35a1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                "key": "X-AnchorMailbox",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"<string>\",\n    \"Parameters\": {\n      \"cupidatat_69\": 49315313.68192163,\n      \"in340\": -9671177\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/Mailbox",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Mailbox"
+              ]
+            },
+            "description": "View mailbox properties or update Send on Behalf (delegation) for mailboxes. Supports Get-Mailbox to retrieve properties such as display name, primary SMTP address, size limits, and delegate information, and Set-Mailbox to update delegation settings. Replaces the AddDelegate and RemoveDelegate EWS operations."
+          },
+          "response": [
+            {
+              "id": "7be05d5e-b342-492a-bc4c-283318224e71",
+              "name": "Successfully executed mailbox operation",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                    "key": "X-AnchorMailbox",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"<string>\",\n    \"Parameters\": {\n      \"cupidatat_69\": 49315313.68192163,\n      \"in340\": -9671177\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Mailbox",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Mailbox"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"@odata.context\": \"<string>\",\n  \"value\": [\n    {\n      \"magna238\": true\n    },\n    {\n      \"commodof_0\": \"dolor amet consectetur quis\",\n      \"dolore8b0\": \"officia laborum tempor\"\n    }\n  ],\n  \"@odata.nextLink\": \"<uri>\"\n}",
+              "createdAt": "2026-06-05T15:11:56.000Z",
+              "updatedAt": "2026-06-05T15:11:56.000Z",
+              "uid": "35240-7be05d5e-b342-492a-bc4c-283318224e71"
+            },
+            {
+              "id": "8d2a3d16-2e69-40db-a2a2-c2349621d544",
+              "name": "Unauthorized - authentication token is missing or invalid",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                    "key": "X-AnchorMailbox",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"<string>\",\n    \"Parameters\": {\n      \"cupidatat_69\": 49315313.68192163,\n      \"in340\": -9671177\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Mailbox",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Mailbox"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:11:56.000Z",
+              "updatedAt": "2026-06-05T15:11:56.000Z",
+              "uid": "35240-8d2a3d16-2e69-40db-a2a2-c2349621d544"
+            },
+            {
+              "id": "e8ae6076-75c0-4597-9306-61adee7b35b9",
+              "name": "Forbidden - insufficient Exchange RBAC permissions",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                    "key": "X-AnchorMailbox",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"<string>\",\n    \"Parameters\": {\n      \"cupidatat_69\": 49315313.68192163,\n      \"in340\": -9671177\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Mailbox",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Mailbox"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:11:56.000Z",
+              "updatedAt": "2026-06-05T15:11:56.000Z",
+              "uid": "35240-e8ae6076-75c0-4597-9306-61adee7b35b9"
+            },
+            {
+              "id": "b8859b17-9f7a-43a2-b63f-8b8a8774abd2",
+              "name": "Not found - the specified resource was not found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                    "key": "X-AnchorMailbox",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"<string>\",\n    \"Parameters\": {\n      \"cupidatat_69\": 49315313.68192163,\n      \"in340\": -9671177\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Mailbox",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Mailbox"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:11:56.000Z",
+              "updatedAt": "2026-06-05T15:11:56.000Z",
+              "uid": "35240-b8859b17-9f7a-43a2-b63f-8b8a8774abd2"
+            }
+          ],
+          "createdAt": "2026-06-05T15:11:56.000Z",
+          "updatedAt": "2026-06-05T15:11:56.000Z",
+          "uid": "35240-96832ec4-1644-4dcb-af2a-0ee03eec35a1"
+        }
+      ],
+      "id": "f1644e1a-be06-40e8-8a13-c6dacf00b78f",
+      "createdAt": "2026-06-05T15:11:56.000Z",
+      "updatedAt": "2026-06-05T15:11:56.000Z",
+      "uid": "35240-f1644e1a-be06-40e8-8a13-c6dacf00b78f"
+    },
+    {
+      "name": "MailboxFolderPermission",
+      "item": [
+        {
+          "name": "Microsoft Exchange Manage mailbox folder permissions",
+          "id": "1ca27470-7390-45c6-9331-38879c19014b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                "key": "X-AnchorMailbox",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"<string>\",\n    \"Parameters\": {\n      \"ipsum3\": 41388378.46632385,\n      \"voluptate950\": true,\n      \"ullamcoc\": -11291679\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/MailboxFolderPermission",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "MailboxFolderPermission"
+              ]
+            },
+            "description": "View and manage permissions on mailbox folders. Supports Get, Add, Set, and Remove operations for mailbox folder permissions. Replaces the GetFolder, UpdateFolder, and CreateFolder EWS operations for permission management."
+          },
+          "response": [
+            {
+              "id": "012be576-dc5c-4778-a278-0f3f406ea3dc",
+              "name": "Successfully executed folder permission operation",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                    "key": "X-AnchorMailbox",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"<string>\",\n    \"Parameters\": {\n      \"ipsum3\": 41388378.46632385,\n      \"voluptate950\": true,\n      \"ullamcoc\": -11291679\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/MailboxFolderPermission",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "MailboxFolderPermission"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"@odata.context\": \"<string>\",\n  \"value\": [\n    {\n      \"magna238\": true\n    },\n    {\n      \"commodof_0\": \"dolor amet consectetur quis\",\n      \"dolore8b0\": \"officia laborum tempor\"\n    }\n  ],\n  \"@odata.nextLink\": \"<uri>\"\n}",
+              "createdAt": "2026-06-05T15:11:56.000Z",
+              "updatedAt": "2026-06-05T15:11:56.000Z",
+              "uid": "35240-012be576-dc5c-4778-a278-0f3f406ea3dc"
+            },
+            {
+              "id": "ef6f6f21-fa6c-4d02-bc47-498be6bf7b3f",
+              "name": "Unauthorized - authentication token is missing or invalid",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                    "key": "X-AnchorMailbox",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"<string>\",\n    \"Parameters\": {\n      \"ipsum3\": 41388378.46632385,\n      \"voluptate950\": true,\n      \"ullamcoc\": -11291679\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/MailboxFolderPermission",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "MailboxFolderPermission"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:11:56.000Z",
+              "updatedAt": "2026-06-05T15:11:56.000Z",
+              "uid": "35240-ef6f6f21-fa6c-4d02-bc47-498be6bf7b3f"
+            },
+            {
+              "id": "73a0b651-6277-4cb7-8d1d-08badf62f673",
+              "name": "Forbidden - insufficient Exchange RBAC permissions",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                    "key": "X-AnchorMailbox",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"<string>\",\n    \"Parameters\": {\n      \"ipsum3\": 41388378.46632385,\n      \"voluptate950\": true,\n      \"ullamcoc\": -11291679\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/MailboxFolderPermission",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "MailboxFolderPermission"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:11:56.000Z",
+              "updatedAt": "2026-06-05T15:11:56.000Z",
+              "uid": "35240-73a0b651-6277-4cb7-8d1d-08badf62f673"
+            },
+            {
+              "id": "31343f9e-c9d0-4dbe-9ffd-cc866e5b7b5b",
+              "name": "Not found - the specified resource was not found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                    "key": "X-AnchorMailbox",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"<string>\",\n    \"Parameters\": {\n      \"ipsum3\": 41388378.46632385,\n      \"voluptate950\": true,\n      \"ullamcoc\": -11291679\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/MailboxFolderPermission",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "MailboxFolderPermission"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:11:56.000Z",
+              "updatedAt": "2026-06-05T15:11:56.000Z",
+              "uid": "35240-31343f9e-c9d0-4dbe-9ffd-cc866e5b7b5b"
+            }
+          ],
+          "createdAt": "2026-06-05T15:11:56.000Z",
+          "updatedAt": "2026-06-05T15:11:56.000Z",
+          "uid": "35240-1ca27470-7390-45c6-9331-38879c19014b"
+        }
+      ],
+      "id": "4ce9f76e-6ca1-4140-bd0d-222e58e49b71",
+      "createdAt": "2026-06-05T15:11:56.000Z",
+      "updatedAt": "2026-06-05T15:11:56.000Z",
+      "uid": "35240-4ce9f76e-6ca1-4140-bd0d-222e58e49b71"
+    },
+    {
+      "name": "DistributionGroupMember",
+      "item": [
+        {
+          "name": "Microsoft Exchange Get distribution group members",
+          "id": "b930fcb4-5d51-4c9f-8a5f-d121828087c9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                "key": "X-AnchorMailbox",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"<string>\",\n    \"Parameters\": {\n      \"in_6\": 42573985,\n      \"amet_9a5\": -88004048.04254645\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/DistributionGroupMember",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "DistributionGroupMember"
+              ]
+            },
+            "description": "Retrieve membership details for distribution groups. Returns the list of members for the specified distribution group. Replaces the ExpandDL EWS operation."
+          },
+          "response": [
+            {
+              "id": "b1a4674c-eff1-47de-b089-afa797ae1e53",
+              "name": "Successfully retrieved distribution group members",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                    "key": "X-AnchorMailbox",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"<string>\",\n    \"Parameters\": {\n      \"in_6\": 42573985,\n      \"amet_9a5\": -88004048.04254645\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/DistributionGroupMember",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "DistributionGroupMember"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"@odata.context\": \"<string>\",\n  \"value\": [\n    {\n      \"magna238\": true\n    },\n    {\n      \"commodof_0\": \"dolor amet consectetur quis\",\n      \"dolore8b0\": \"officia laborum tempor\"\n    }\n  ],\n  \"@odata.nextLink\": \"<uri>\"\n}",
+              "createdAt": "2026-06-05T15:11:56.000Z",
+              "updatedAt": "2026-06-05T15:11:56.000Z",
+              "uid": "35240-b1a4674c-eff1-47de-b089-afa797ae1e53"
+            },
+            {
+              "id": "95903916-ffa2-44fd-96a9-7fa8b9418648",
+              "name": "Unauthorized - authentication token is missing or invalid",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                    "key": "X-AnchorMailbox",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"<string>\",\n    \"Parameters\": {\n      \"in_6\": 42573985,\n      \"amet_9a5\": -88004048.04254645\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/DistributionGroupMember",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "DistributionGroupMember"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:11:56.000Z",
+              "updatedAt": "2026-06-05T15:11:56.000Z",
+              "uid": "35240-95903916-ffa2-44fd-96a9-7fa8b9418648"
+            },
+            {
+              "id": "f4a4fe29-ae4b-4511-8b62-62c63aa69482",
+              "name": "Forbidden - insufficient Exchange RBAC permissions",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                    "key": "X-AnchorMailbox",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"<string>\",\n    \"Parameters\": {\n      \"in_6\": 42573985,\n      \"amet_9a5\": -88004048.04254645\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/DistributionGroupMember",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "DistributionGroupMember"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:11:56.000Z",
+              "updatedAt": "2026-06-05T15:11:56.000Z",
+              "uid": "35240-f4a4fe29-ae4b-4511-8b62-62c63aa69482"
+            },
+            {
+              "id": "53ebd593-8fb0-4789-a1c3-be7e4893e5d0",
+              "name": "Not found - the specified resource was not found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                    "key": "X-AnchorMailbox",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"<string>\",\n    \"Parameters\": {\n      \"in_6\": 42573985,\n      \"amet_9a5\": -88004048.04254645\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/DistributionGroupMember",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "DistributionGroupMember"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:11:56.000Z",
+              "updatedAt": "2026-06-05T15:11:56.000Z",
+              "uid": "35240-53ebd593-8fb0-4789-a1c3-be7e4893e5d0"
+            }
+          ],
+          "createdAt": "2026-06-05T15:11:56.000Z",
+          "updatedAt": "2026-06-05T15:11:56.000Z",
+          "uid": "35240-b930fcb4-5d51-4c9f-8a5f-d121828087c9"
+        }
+      ],
+      "id": "a5069bd8-38a7-443e-93b1-b8441849810a",
+      "createdAt": "2026-06-05T15:11:56.000Z",
+      "updatedAt": "2026-06-05T15:11:56.000Z",
+      "uid": "35240-a5069bd8-38a7-443e-93b1-b8441849810a"
+    },
+    {
+      "name": "DynamicDistributionGroupMember",
+      "item": [
+        {
+          "name": "Microsoft Exchange Get dynamic distribution group members",
+          "id": "10278cbb-4cca-4b3e-b65f-3afd28221d10",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                "key": "X-AnchorMailbox",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"<string>\",\n    \"Parameters\": {\n      \"consequata05\": -42287960,\n      \"occaecat0\": false,\n      \"occaecat7\": -70617192,\n      \"et6d\": 53383029.45536944,\n      \"nisi_3__\": \"laboris ut\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/DynamicDistributionGroupMember",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "DynamicDistributionGroupMember"
+              ]
+            },
+            "description": "Retrieve membership details for dynamic distribution groups. Returns the dynamically computed members for the specified group. Replaces the ExpandDL EWS operation for dynamic groups."
+          },
+          "response": [
+            {
+              "id": "1665b149-e208-4701-94ca-01b01c0724b4",
+              "name": "Successfully retrieved dynamic distribution group members",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                    "key": "X-AnchorMailbox",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"<string>\",\n    \"Parameters\": {\n      \"consequata05\": -42287960,\n      \"occaecat0\": false,\n      \"occaecat7\": -70617192,\n      \"et6d\": 53383029.45536944,\n      \"nisi_3__\": \"laboris ut\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/DynamicDistributionGroupMember",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "DynamicDistributionGroupMember"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"@odata.context\": \"<string>\",\n  \"value\": [\n    {\n      \"magna238\": true\n    },\n    {\n      \"commodof_0\": \"dolor amet consectetur quis\",\n      \"dolore8b0\": \"officia laborum tempor\"\n    }\n  ],\n  \"@odata.nextLink\": \"<uri>\"\n}",
+              "createdAt": "2026-06-05T15:11:56.000Z",
+              "updatedAt": "2026-06-05T15:11:56.000Z",
+              "uid": "35240-1665b149-e208-4701-94ca-01b01c0724b4"
+            },
+            {
+              "id": "09657ec5-59dc-42e9-8060-058064dfee86",
+              "name": "Unauthorized - authentication token is missing or invalid",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                    "key": "X-AnchorMailbox",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"<string>\",\n    \"Parameters\": {\n      \"consequata05\": -42287960,\n      \"occaecat0\": false,\n      \"occaecat7\": -70617192,\n      \"et6d\": 53383029.45536944,\n      \"nisi_3__\": \"laboris ut\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/DynamicDistributionGroupMember",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "DynamicDistributionGroupMember"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:11:56.000Z",
+              "updatedAt": "2026-06-05T15:11:56.000Z",
+              "uid": "35240-09657ec5-59dc-42e9-8060-058064dfee86"
+            },
+            {
+              "id": "93f5b039-f904-4db7-a4c8-02bc8c50f93e",
+              "name": "Forbidden - insufficient Exchange RBAC permissions",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                    "key": "X-AnchorMailbox",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"<string>\",\n    \"Parameters\": {\n      \"consequata05\": -42287960,\n      \"occaecat0\": false,\n      \"occaecat7\": -70617192,\n      \"et6d\": 53383029.45536944,\n      \"nisi_3__\": \"laboris ut\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/DynamicDistributionGroupMember",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "DynamicDistributionGroupMember"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:11:56.000Z",
+              "updatedAt": "2026-06-05T15:11:56.000Z",
+              "uid": "35240-93f5b039-f904-4db7-a4c8-02bc8c50f93e"
+            },
+            {
+              "id": "1070aab3-f299-4a43-87e1-8b22ff5fba00",
+              "name": "Not found - the specified resource was not found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                    "key": "X-AnchorMailbox",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"<string>\",\n    \"Parameters\": {\n      \"consequata05\": -42287960,\n      \"occaecat0\": false,\n      \"occaecat7\": -70617192,\n      \"et6d\": 53383029.45536944,\n      \"nisi_3__\": \"laboris ut\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/DynamicDistributionGroupMember",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "DynamicDistributionGroupMember"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:11:56.000Z",
+              "updatedAt": "2026-06-05T15:11:56.000Z",
+              "uid": "35240-1070aab3-f299-4a43-87e1-8b22ff5fba00"
+            }
+          ],
+          "createdAt": "2026-06-05T15:11:56.000Z",
+          "updatedAt": "2026-06-05T15:11:56.000Z",
+          "uid": "35240-10278cbb-4cca-4b3e-b65f-3afd28221d10"
+        }
+      ],
+      "id": "a573df9e-494e-4d33-a14c-01b5298368a1",
+      "createdAt": "2026-06-05T15:11:56.000Z",
+      "updatedAt": "2026-06-05T15:11:56.000Z",
+      "uid": "35240-a573df9e-494e-4d33-a14c-01b5298368a1"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://outlook.office365.com/.default",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://outlook.office365.com/adminapi/v2.0"
+    }
+  ]
+}

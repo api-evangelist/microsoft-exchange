@@ -1,0 +1,641 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Exchange Microsoft Graph Calendar API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+      "accessTokenUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Calendars",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Exchange List calendars",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/me/calendars",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to skip"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response"
+              }
+            ]
+          },
+          "docs": "Get all the user's calendars, or the calendars in the default or other specific calendar group. Returns the calendar collection for the signed-in user."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Create calendar",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/calendars",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new calendar in the default calendar group or specified calendar group for the user."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Get calendar",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/me/calendars/:calendar-id",
+            "params": [
+              {
+                "name": "calendar-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the calendar"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response"
+              }
+            ]
+          },
+          "docs": "Get the properties and relationships of a calendar object. The calendar can be one for a user or the default calendar of a Microsoft 365 group."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Update calendar",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://graph.microsoft.com/v1.0/me/calendars/:calendar-id",
+            "params": [
+              {
+                "name": "calendar-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the calendar"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the properties of a calendar object. The calendar can be one for a user or the default calendar of a Microsoft 365 group."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Delete calendar",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://graph.microsoft.com/v1.0/me/calendars/:calendar-id",
+            "params": [
+              {
+                "name": "calendar-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the calendar"
+              }
+            ]
+          },
+          "docs": "Delete a calendar other than the user's default calendar."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange List events in calendar",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/me/calendars/:calendar-id/events",
+            "params": [
+              {
+                "name": "calendar-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the calendar"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to skip"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression"
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to sort by"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of events in a specified calendar. The list contains single-instance meetings and series masters."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Create event in calendar",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/calendars/:calendar-id/events",
+            "params": [
+              {
+                "name": "calendar-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the calendar"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new event in the specified calendar."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Exchange List events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/me/events",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to skip"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression"
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to sort by"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of event objects in the user's mailbox. The list contains single-instance meetings and series masters. Supports OData query parameters to filter, order, and page results."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Create event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/events",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new event in the user's default calendar or specified calendar. Supports creating single-instance and recurring events, and events with online meeting information."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Get event",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/me/events/:event-id",
+            "params": [
+              {
+                "name": "event-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the event"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response"
+              }
+            ]
+          },
+          "docs": "Get the properties and relationships of an event object. Returns the event details including attendees, location, recurrence, and online meeting information."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Update event",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://graph.microsoft.com/v1.0/me/events/:event-id",
+            "params": [
+              {
+                "name": "event-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the event"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the properties of an event object. When updating the start or end time zones, use the list of supported time zones."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Delete event",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://graph.microsoft.com/v1.0/me/events/:event-id",
+            "params": [
+              {
+                "name": "event-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the event"
+              }
+            ]
+          },
+          "docs": "Delete an event from the user's calendar. If the event is a meeting and the user is the organizer, a cancellation message is sent to all attendees."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Accept event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/events/:event-id/accept",
+            "params": [
+              {
+                "name": "event-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the event"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Accept the specified event in a user calendar. Optionally sends a response to the organizer indicating the user has accepted."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Tentatively accept event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/events/:event-id/tentativelyAccept",
+            "params": [
+              {
+                "name": "event-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the event"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Tentatively accept the specified event in a user calendar."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Decline event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/events/:event-id/decline",
+            "params": [
+              {
+                "name": "event-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the event"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Decline invitation to the specified event in a user calendar."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Cancel event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/events/:event-id/cancel",
+            "params": [
+              {
+                "name": "event-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the event"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a cancellation message from the organizer to all the attendees and cancel the specified meeting. Only the organizer can cancel a meeting."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Forward event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/events/:event-id/forward",
+            "params": [
+              {
+                "name": "event-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the event"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Forward a meeting request to a new recipient. The organizer or attendee forwards the meeting request to a new recipient."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange List event instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/me/events/:event-id/instances",
+            "params": [
+              {
+                "name": "event-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the event"
+              },
+              {
+                "name": "startDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The start date and time of the time range in ISO 8601 format"
+              },
+              {
+                "name": "endDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The end date and time of the time range in ISO 8601 format"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to skip"
+              }
+            ]
+          },
+          "docs": "Get the occurrences of a recurring series within a specified time range. If the event is a seriesMaster type, this returns the occurrences and exceptions of that series."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange List event attachments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/me/events/:event-id/attachments",
+            "params": [
+              {
+                "name": "event-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the event"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of attachment objects attached to an event."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Add event attachment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/events/:event-id/attachments",
+            "params": [
+              {
+                "name": "event-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the event"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a file, item, or reference attachment to an event. This operation limits the size of the attachment to 3 MB."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange List calendar view",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/me/calendarView",
+            "params": [
+              {
+                "name": "startDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The start date and time of the time range in ISO 8601 format"
+              },
+              {
+                "name": "endDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The end date and time of the time range in ISO 8601 format"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to skip"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression"
+              }
+            ]
+          },
+          "docs": "Get the occurrences, exceptions, and single instances of events in a calendar view defined by a time range, from the user's primary calendar. Recurring events are expanded into their occurrences within the time range."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Scheduling",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Exchange Get free/busy schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/calendar/getSchedule",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get the free/busy availability information for a collection of users, distribution lists, or resources for a specified time period."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Find meeting times",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/findMeetingTimes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Suggest meeting times and locations based on organizer and attendee availability, and time or location constraints specified as parameters."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,218 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Exchange Microsoft Graph Mailbox Import Export API",
+    "version": "0.1.0-beta"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Mailbox Discovery",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Exchange List mailboxes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/beta/users/:user-id/mailboxes",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier or user principal name"
+              }
+            ]
+          },
+          "docs": "Discover the mailboxes associated with a user, including primary mailbox and archive mailbox information. Returns mailbox metadata needed for import and export operations."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange List mailbox folders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/beta/users/:user-id/mailboxes/:mailbox-id/folders",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier or user principal name"
+              },
+              {
+                "name": "mailbox-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the mailbox"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip"
+              }
+            ]
+          },
+          "docs": "List all folders in the specified mailbox for content discovery. Returns folder hierarchy with metadata needed for targeted import and export operations."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Mailbox Export",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Exchange List folder items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/beta/users/:user-id/mailboxes/:mailbox-id/folders/:folder-id/items",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier or user principal name"
+              },
+              {
+                "name": "mailbox-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the mailbox"
+              },
+              {
+                "name": "folder-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the folder"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include"
+              }
+            ]
+          },
+          "docs": "List items in a specific mailbox folder for export. Returns items with their metadata for batch export processing. Supports pagination for large folders."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Export item content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/beta/users/:user-id/mailboxes/:mailbox-id/folders/:folder-id/items/:item-id/content",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier or user principal name"
+              },
+              {
+                "name": "mailbox-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the mailbox"
+              },
+              {
+                "name": "folder-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the folder"
+              },
+              {
+                "name": "item-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the item"
+              }
+            ]
+          },
+          "docs": "Export the full-fidelity content of a specific mailbox item in MIME format. Returns the complete item with all properties, headers, and attachments preserved for migration scenarios."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Mailbox Import",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Exchange Import item into folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/beta/users/:user-id/mailboxes/:mailbox-id/folders/:folder-id/items/import",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier or user principal name"
+              },
+              {
+                "name": "mailbox-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the mailbox"
+              },
+              {
+                "name": "folder-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the folder"
+              }
+            ]
+          },
+          "docs": "Import a full-fidelity item into the specified mailbox folder. Accepts MIME content and creates the item preserving all properties and metadata. Used for mailbox migration and content copying scenarios."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

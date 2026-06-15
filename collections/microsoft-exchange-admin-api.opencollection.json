@@ -1,0 +1,187 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Exchange Exchange Online Admin API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Organization Configuration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Exchange Get organization configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://outlook.office365.com/adminapi/v2.0/OrganizationConfig",
+            "headers": [
+              {
+                "name": "X-AnchorMailbox",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve organization-level Exchange configuration related to MailTips settings. Returns organization settings such as accepted domains, MailTips configuration, and mailbox limits including MaxSendSize. Replaces the GetServiceConfiguration EWS operation."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Accepted Domains",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Exchange Get accepted domains",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://outlook.office365.com/adminapi/v2.0/AcceptedDomain",
+            "headers": [
+              {
+                "name": "X-AnchorMailbox",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "View accepted domains and their configurations for the organization. Returns the list of domains that are configured for the Exchange Online organization. Replaces the GetServiceConfiguration EWS operation."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Mailboxes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Exchange Manage mailbox",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://outlook.office365.com/adminapi/v2.0/Mailbox",
+            "headers": [
+              {
+                "name": "X-AnchorMailbox",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "View mailbox properties or update Send on Behalf (delegation) for mailboxes. Supports Get-Mailbox to retrieve properties such as display name, primary SMTP address, size limits, and delegate information, and Set-Mailbox to update delegation settings. Replaces the AddDelegate and RemoveDelegate EWS operations."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Mailbox Folder Permissions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Exchange Manage mailbox folder permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://outlook.office365.com/adminapi/v2.0/MailboxFolderPermission",
+            "headers": [
+              {
+                "name": "X-AnchorMailbox",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "View and manage permissions on mailbox folders. Supports Get, Add, Set, and Remove operations for mailbox folder permissions. Replaces the GetFolder, UpdateFolder, and CreateFolder EWS operations for permission management."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Distribution Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Exchange Get distribution group members",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://outlook.office365.com/adminapi/v2.0/DistributionGroupMember",
+            "headers": [
+              {
+                "name": "X-AnchorMailbox",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve membership details for distribution groups. Returns the list of members for the specified distribution group. Replaces the ExpandDL EWS operation."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Get dynamic distribution group members",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://outlook.office365.com/adminapi/v2.0/DynamicDistributionGroupMember",
+            "headers": [
+              {
+                "name": "X-AnchorMailbox",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve membership details for dynamic distribution groups. Returns the dynamically computed members for the specified group. Replaces the ExpandDL EWS operation for dynamic groups."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

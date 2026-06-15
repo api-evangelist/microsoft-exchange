@@ -1,0 +1,734 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Exchange Microsoft Graph Mail API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+      "accessTokenUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Messages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Exchange List messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/me/messages",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return in a result set"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to skip in a result set"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression to filter results"
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to sort results by"
+              },
+              {
+                "name": "$search",
+                "value": "",
+                "type": "query",
+                "description": "Search string to filter results"
+              }
+            ]
+          },
+          "docs": "Get all the messages in the signed-in user's mailbox including the Deleted Items and Clutter folders. Supports OData query parameters including $filter, $orderby, $select, $top, $skip, and $expand."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Create draft message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/messages",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a draft of a new message in the signed-in user's mailbox. The draft can then be updated and sent. The message is saved in the Drafts folder by default."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Get message",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/me/messages/:message-id",
+            "params": [
+              {
+                "name": "message-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the message"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response"
+              }
+            ]
+          },
+          "docs": "Read properties and relationships of a message object. Supports $select query parameter to return specific properties."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Update message",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://graph.microsoft.com/v1.0/me/messages/:message-id",
+            "params": [
+              {
+                "name": "message-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the message"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the properties of a message object. Only draft messages can have their body, subject, and other writable properties updated."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Delete message",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://graph.microsoft.com/v1.0/me/messages/:message-id",
+            "params": [
+              {
+                "name": "message-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the message"
+              }
+            ]
+          },
+          "docs": "Delete a message in the specified user's mailbox, or delete a relationship of the message. The message is moved to the Deleted Items folder."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Send draft message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/messages/:message-id/send",
+            "params": [
+              {
+                "name": "message-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the message"
+              }
+            ]
+          },
+          "docs": "Send a previously created message draft. The message is then saved in the Sent Items folder. The draft message can be a new message draft, reply draft, reply-all draft, or a forward draft."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Reply to message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/messages/:message-id/reply",
+            "params": [
+              {
+                "name": "message-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the message"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Reply to the sender of a message, add a comment, and send the reply. The message is then saved in the Sent Items folder."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Reply all to message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/messages/:message-id/replyAll",
+            "params": [
+              {
+                "name": "message-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the message"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Reply to all recipients of a message, add a comment, and send the reply. The message is then saved in the Sent Items folder."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Forward message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/messages/:message-id/forward",
+            "params": [
+              {
+                "name": "message-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the message"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Forward a message, add a comment, and send the forwarded message. The message is then saved in the Sent Items folder."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Copy message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/messages/:message-id/copy",
+            "params": [
+              {
+                "name": "message-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the message"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Copy a message to a specified folder. Returns the new copy of the message in the destination folder."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Move message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/messages/:message-id/move",
+            "params": [
+              {
+                "name": "message-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the message"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Move a message to a specified folder. This creates a new copy of the message in the destination folder and removes the original message."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Create reply draft",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/messages/:message-id/createReply",
+            "params": [
+              {
+                "name": "message-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the message"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a draft of a reply message. You can then update the draft and send it."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Create reply-all draft",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/messages/:message-id/createReplyAll",
+            "params": [
+              {
+                "name": "message-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the message"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a draft of a reply-all message. You can then update the draft and send it."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Create forward draft",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/messages/:message-id/createForward",
+            "params": [
+              {
+                "name": "message-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the message"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a draft of a forward message. You can then update the draft to add recipients and content, and then send it."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Send mail",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/sendMail",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send the message specified in the request body using either JSON or MIME format. The message is saved in the Sent Items folder by default. You can include a file attachment in the same sendMail action call."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Attachments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Exchange List message attachments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/me/messages/:message-id/attachments",
+            "params": [
+              {
+                "name": "message-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the message"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of attachment objects attached to a message. Includes file attachments, item attachments, and reference attachments."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Add attachment to message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/messages/:message-id/attachments",
+            "params": [
+              {
+                "name": "message-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the message"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a file, item, or reference attachment to a message. This operation limits the size of the attachment to 3 MB. For larger attachments, use the upload session approach."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Mail Folders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Exchange List mail folders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/me/mailFolders",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return in a result set"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to skip in a result set"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response"
+              },
+              {
+                "name": "includeHiddenFolders",
+                "value": "",
+                "type": "query",
+                "description": "Include hidden mail folders in the response"
+              }
+            ]
+          },
+          "docs": "Get all the mail folders in the signed-in user's mailbox, including any mail search folders. By default, hidden mail folders are not included. Use the includeHiddenFolders query parameter to include them."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Create mail folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/mailFolders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new mail folder in the root folder of the user's mailbox."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Get mail folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/me/mailFolders/:mailFolder-id",
+            "params": [
+              {
+                "name": "mailFolder-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the mail folder, or a well-known folder name such as inbox, drafts, sentitems, or deleteditems"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response"
+              }
+            ]
+          },
+          "docs": "Read the properties and relationships of a mail folder object."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Update mail folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://graph.microsoft.com/v1.0/me/mailFolders/:mailFolder-id",
+            "params": [
+              {
+                "name": "mailFolder-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the mail folder, or a well-known folder name such as inbox, drafts, sentitems, or deleteditems"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the properties of a mail folder object."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Delete mail folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://graph.microsoft.com/v1.0/me/mailFolders/:mailFolder-id",
+            "params": [
+              {
+                "name": "mailFolder-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the mail folder, or a well-known folder name such as inbox, drafts, sentitems, or deleteditems"
+              }
+            ]
+          },
+          "docs": "Delete the specified mail folder. The folder is moved to the Deleted Items folder. To permanently delete a mail folder, use the permanentDelete action."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange List messages in mail folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/me/mailFolders/:mailFolder-id/messages",
+            "params": [
+              {
+                "name": "mailFolder-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the mail folder, or a well-known folder name such as inbox, drafts, sentitems, or deleteditems"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return in a result set"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to skip in a result set"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression to filter results"
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to sort results by"
+              }
+            ]
+          },
+          "docs": "Get all the messages in the specified mail folder of the signed-in user's mailbox."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Create message in folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/mailFolders/:mailFolder-id/messages",
+            "params": [
+              {
+                "name": "mailFolder-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the mail folder, or a well-known folder name such as inbox, drafts, sentitems, or deleteditems"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new message in the specified mail folder."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange List child folders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/me/mailFolders/:mailFolder-id/childFolders",
+            "params": [
+              {
+                "name": "mailFolder-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the mail folder, or a well-known folder name such as inbox, drafts, sentitems, or deleteditems"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return in a result set"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to skip in a result set"
+              }
+            ]
+          },
+          "docs": "Get the folder collection under the specified folder."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Create child folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/mailFolders/:mailFolder-id/childFolders",
+            "params": [
+              {
+                "name": "mailFolder-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the mail folder, or a well-known folder name such as inbox, drafts, sentitems, or deleteditems"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new child mail folder under the specified folder."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Copy mail folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/mailFolders/:mailFolder-id/copy",
+            "params": [
+              {
+                "name": "mailFolder-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the mail folder, or a well-known folder name such as inbox, drafts, sentitems, or deleteditems"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Copy a mail folder and its contents to another mail folder."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Move mail folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/mailFolders/:mailFolder-id/move",
+            "params": [
+              {
+                "name": "mailFolder-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the mail folder, or a well-known folder name such as inbox, drafts, sentitems, or deleteditems"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Move a mail folder and its contents to another mail folder."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
