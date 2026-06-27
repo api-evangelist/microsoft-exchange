@@ -149,7 +149,7 @@ apis:
           https://learn.microsoft.com/en-us/exchange/client-developer/web-service-reference/web-services-reference-for-exchange
       - type: WSDL
         url: https://outlook.office365.com/EWS/Exchange.asmx?wsdl
-      - type: SDK
+      - type: SDKs
         url: https://github.com/officedev/ews-managed-api
       - type: Reference
         url: >-
@@ -200,7 +200,7 @@ apis:
       - type: Reference
         url: >-
           https://learn.microsoft.com/en-us/exchange/client-developer/web-service-reference/soap-autodiscover-web-service-reference-for-exchange
-      - type: SDK
+      - type: SDKs
         url: https://github.com/officedev/ews-managed-api
   - name: Exchange Online Admin API
     description: >-
@@ -252,60 +252,57 @@ apis:
 common:
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/microsoft-exchange/overview
-  - type: ArazzoWorkflows
-    url: arazzo/
-    workflows:
-      - url: arazzo/microsoft-exchange-audit-message-attachments-workflow.yml
-        name: Microsoft Exchange Audit Message Attachments
-        summary: Find a message that has attachments, read it, and list its attachments.
-      - url: arazzo/microsoft-exchange-audit-org-and-domains-workflow.yml
-        name: Microsoft Exchange Audit Organization and Domains
-        summary: Read Exchange organization configuration, then list accepted domains.
-      - url: arazzo/microsoft-exchange-compose-attach-send-mail-workflow.yml
-        name: Microsoft Exchange Compose, Attach, and Send Mail
-        summary: Create a draft message, add a file attachment to it, then send the draft.
-      - url: arazzo/microsoft-exchange-discover-mailbox-content-workflow.yml
-        name: Microsoft Exchange Discover Mailbox Content
-        summary: Discover a user's mailbox, drill into its folders, and list folder items.
-      - url: arazzo/microsoft-exchange-find-times-and-book-meeting-workflow.yml
-        name: Microsoft Exchange Find Times and Book a Meeting
-        summary: Suggest meeting times for attendees, then book the top suggestion.
-      - url: arazzo/microsoft-exchange-grant-folder-permission-workflow.yml
-        name: Microsoft Exchange Grant a Mailbox Folder Permission
-        summary: Read current folder permissions, then add a permission for a user.
-      - url: arazzo/microsoft-exchange-inspect-and-delegate-mailbox-workflow.yml
-        name: Microsoft Exchange Inspect and Delegate a Mailbox
-        summary: Read a mailbox's properties, then grant Send on Behalf delegation.
-      - url: arazzo/microsoft-exchange-migrate-mailbox-item-workflow.yml
-        name: Microsoft Exchange Migrate a Mailbox Item
-        summary: Pick a source item, export its full MIME content, and import it elsewhere.
-      - url: arazzo/microsoft-exchange-organize-contacts-folder-workflow.yml
-        name: Microsoft Exchange Organize a Contacts Folder
-        summary: Create a contact folder, add a contact to it, and read the contact back.
-      - url: arazzo/microsoft-exchange-organize-folder-and-file-message-workflow.yml
-        name: Microsoft Exchange Organize a Folder and File a Message
-        summary: Create a mail folder, confirm it, and create a message inside it.
-      - url: arazzo/microsoft-exchange-prepare-and-send-forward-workflow.yml
-        name: Microsoft Exchange Prepare and Send a Forward
-        summary: Create a forward draft, edit its body, and send it to new recipients.
-      - url: arazzo/microsoft-exchange-provision-calendar-and-add-event-workflow.yml
-        name: Microsoft Exchange Provision a Calendar and Add an Event
-        summary: Create a new calendar, add an event to it, and read the event back.
-      - url: arazzo/microsoft-exchange-reply-to-latest-from-sender-workflow.yml
-        name: Microsoft Exchange Reply to Latest Message from a Sender
-        summary: Find the newest message from a given sender, read it, and send a reply.
-      - url: arazzo/microsoft-exchange-review-and-respond-to-invite-workflow.yml
-        name: Microsoft Exchange Review and Respond to an Invite
-        summary: List upcoming events, read the next one, and accept the invitation.
-      - url: arazzo/microsoft-exchange-schedule-event-with-attachment-workflow.yml
-        name: Microsoft Exchange Schedule an Event with an Attachment
-        summary: Create a calendar event, confirm it, then attach a file to it.
-      - url: arazzo/microsoft-exchange-triage-and-move-message-workflow.yml
-        name: Microsoft Exchange Triage and Move a Message
-        summary: Find the newest unread inbox message, read it, mark it read, and file it.
-      - url: arazzo/microsoft-exchange-upsert-contact-workflow.yml
-        name: Microsoft Exchange Upsert a Contact
-        summary: Find a contact by email and update it if it exists, otherwise create it.
+  - type: Arazzo
+    url: arazzo/microsoft-exchange-audit-message-attachments-workflow.yml
+    name: Microsoft Exchange Audit Message Attachments
+  - type: Arazzo
+    url: arazzo/microsoft-exchange-audit-org-and-domains-workflow.yml
+    name: Microsoft Exchange Audit Organization and Domains
+  - type: Arazzo
+    url: arazzo/microsoft-exchange-compose-attach-send-mail-workflow.yml
+    name: Microsoft Exchange Compose, Attach, and Send Mail
+  - type: Arazzo
+    url: arazzo/microsoft-exchange-discover-mailbox-content-workflow.yml
+    name: Microsoft Exchange Discover Mailbox Content
+  - type: Arazzo
+    url: arazzo/microsoft-exchange-find-times-and-book-meeting-workflow.yml
+    name: Microsoft Exchange Find Times and Book a Meeting
+  - type: Arazzo
+    url: arazzo/microsoft-exchange-grant-folder-permission-workflow.yml
+    name: Microsoft Exchange Grant a Mailbox Folder Permission
+  - type: Arazzo
+    url: arazzo/microsoft-exchange-inspect-and-delegate-mailbox-workflow.yml
+    name: Microsoft Exchange Inspect and Delegate a Mailbox
+  - type: Arazzo
+    url: arazzo/microsoft-exchange-migrate-mailbox-item-workflow.yml
+    name: Microsoft Exchange Migrate a Mailbox Item
+  - type: Arazzo
+    url: arazzo/microsoft-exchange-organize-contacts-folder-workflow.yml
+    name: Microsoft Exchange Organize a Contacts Folder
+  - type: Arazzo
+    url: arazzo/microsoft-exchange-organize-folder-and-file-message-workflow.yml
+    name: Microsoft Exchange Organize a Folder and File a Message
+  - type: Arazzo
+    url: arazzo/microsoft-exchange-prepare-and-send-forward-workflow.yml
+    name: Microsoft Exchange Prepare and Send a Forward
+  - type: Arazzo
+    url: arazzo/microsoft-exchange-provision-calendar-and-add-event-workflow.yml
+    name: Microsoft Exchange Provision a Calendar and Add an Event
+  - type: Arazzo
+    url: arazzo/microsoft-exchange-reply-to-latest-from-sender-workflow.yml
+    name: Microsoft Exchange Reply to Latest Message from a Sender
+  - type: Arazzo
+    url: arazzo/microsoft-exchange-review-and-respond-to-invite-workflow.yml
+    name: Microsoft Exchange Review and Respond to an Invite
+  - type: Arazzo
+    url: arazzo/microsoft-exchange-schedule-event-with-attachment-workflow.yml
+    name: Microsoft Exchange Schedule an Event with an Attachment
+  - type: Arazzo
+    url: arazzo/microsoft-exchange-triage-and-move-message-workflow.yml
+    name: Microsoft Exchange Triage and Move a Message
+  - type: Arazzo
+    url: arazzo/microsoft-exchange-upsert-contact-workflow.yml
+    name: Microsoft Exchange Upsert a Contact
   - type: Portal
     url: https://developer.microsoft.com/en-us/graph
   - type: Documentation
@@ -332,7 +329,7 @@ common:
     url: https://www.microsoft.com/en-us/microsoft-365/exchange/email
   - type: Login
     url: https://admin.exchange.microsoft.com
-  - type: SignUp
+  - type: Signup
     url: https://signup.azure.com/
   - type: ChangeLog
     url: https://developer.microsoft.com/en-us/graph/changelog
@@ -342,19 +339,19 @@ common:
     url: https://www.microsoft.com/en-us/microsoft-365/exchange/compare-microsoft-exchange-online-plans
   - type: Graph Explorer
     url: https://developer.microsoft.com/en-us/graph/graph-explorer
-  - type: JSON-LD Context
+  - type: JSONLDContext
     url: json-ld/microsoft-exchange-context.jsonld
-  - type: JSON Schema
+  - type: JSONSchema
     url: json-schema/microsoft-exchange-message-schema.json
-  - type: JSON Schema
+  - type: JSONSchema
     url: json-schema/microsoft-exchange-event-schema.json
-  - type: JSON Schema
+  - type: JSONSchema
     url: json-schema/microsoft-exchange-contact-schema.json
-  - type: JSON Schema
+  - type: JSONSchema
     url: json-schema/microsoft-exchange-calendar-schema.json
-  - type: JSON Schema
+  - type: JSONSchema
     url: json-schema/microsoft-exchange-mail-folder-schema.json
-  - type: JSON Schema
+  - type: JSONSchema
     url: json-schema/microsoft-exchange-person-schema.json
   - type: Integrations
     url: https://www.microsoft.com/en-us/marketplace
