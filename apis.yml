@@ -250,6 +250,8 @@ apis:
       - type: SDKs
         url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
 common:
+  - type: OAuthScopes
+    url: scopes/microsoft-exchange-scopes.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/microsoft-exchange/overview
   - type: Arazzo

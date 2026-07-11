@@ -1,0 +1,155 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/microsoft-exchange-admin-api-openapi.yml, openapi/microsoft-exchange-graph-calendar-openapi.yml,
+  openapi/microsoft-exchange-graph-contacts-openapi.yml, openapi/microsoft-exchange-graph-import-export-openapi.yml,
+  openapi/microsoft-exchange-graph-mail-openapi.yml, openapi/microsoft-exchange-graph-people-openapi.yml
+schemes:
+- name: oauth2
+  source: openapi/microsoft-exchange-admin-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
+  description: OAuth 2.0 authorization with Microsoft identity platform
+- name: oauth2
+  source: openapi/microsoft-exchange-graph-calendar-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+    tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+  description: OAuth 2.0 authorization with Microsoft identity platform
+- name: oauth2
+  source: openapi/microsoft-exchange-graph-contacts-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+    tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+  description: OAuth 2.0 authorization with Microsoft identity platform
+- name: oauth2
+  source: openapi/microsoft-exchange-graph-import-export-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
+  description: OAuth 2.0 authorization with Microsoft identity platform
+- name: oauth2
+  source: openapi/microsoft-exchange-graph-mail-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+    tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+  description: OAuth 2.0 authorization with Microsoft identity platform
+- name: oauth2
+  source: openapi/microsoft-exchange-graph-people-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+    tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+  description: OAuth 2.0 authorization with Microsoft identity platform
+scopes:
+- scope: Calendars.Read
+  description: Read user calendars
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-exchange-graph-calendar-openapi.yml
+- scope: Calendars.Read.Shared
+  description: Read shared calendars
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-exchange-graph-calendar-openapi.yml
+- scope: Calendars.ReadWrite
+  description: Read and write access to user calendars
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-exchange-graph-calendar-openapi.yml
+- scope: Calendars.ReadWrite.Shared
+  description: Read and write shared calendars
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-exchange-graph-calendar-openapi.yml
+- scope: Contacts.Read
+  description: Read user contacts
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-exchange-graph-contacts-openapi.yml
+- scope: Contacts.Read.Shared
+  description: Read shared contacts
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-exchange-graph-contacts-openapi.yml
+- scope: Contacts.ReadWrite
+  description: Read and write user contacts
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-exchange-graph-contacts-openapi.yml
+- scope: Contacts.ReadWrite.Shared
+  description: Read and write shared contacts
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-exchange-graph-contacts-openapi.yml
+- scope: Mail.Read
+  description: Read user mail
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-exchange-graph-mail-openapi.yml
+- scope: Mail.ReadBasic
+  description: Read user basic mail
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-exchange-graph-mail-openapi.yml
+- scope: Mail.ReadWrite
+  description: Read and write access to user mail
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-exchange-graph-mail-openapi.yml
+- scope: Mail.Send
+  description: Send mail as a user
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-exchange-graph-mail-openapi.yml
+- scope: Mailbox.Export
+  description: Export content from mailboxes
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/microsoft-exchange-graph-import-export-openapi.yml
+- scope: Mailbox.Import
+  description: Import content into mailboxes
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/microsoft-exchange-graph-import-export-openapi.yml
+- scope: MailboxFolder.Read
+  description: Read mailbox folder information
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/microsoft-exchange-graph-import-export-openapi.yml
+- scope: People.Read
+  description: Read user's relevant people list
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-exchange-graph-people-openapi.yml
+- scope: People.Read.All
+  description: Read all users' relevant people lists
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-exchange-graph-people-openapi.yml
+- scope: https://outlook.office365.com/.default
+  description: Default scope for Exchange Online Admin API
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/microsoft-exchange-admin-api-openapi.yml
