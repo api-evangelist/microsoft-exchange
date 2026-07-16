@@ -1,0 +1,36 @@
+generated: '2026-06-20'
+method: searched
+source: https://developer.microsoft.com/en-us/graph/changelog
+description: >-
+  Microsoft Graph publishes a live, dated, RSS-backed changelog covering
+  additions, changes, and deprecations across all Graph workloads including
+  Exchange (Mail, Calendar, Contacts, People). This artifact points at the
+  authoritative feed and captures the Exchange-relevant recent window verified
+  from this repo's harvested devblogs posts; consult the live changelog for the
+  full and current list.
+scheme: dated-rss
+changelog_url: https://developer.microsoft.com/en-us/graph/changelog
+changelog_rss: https://developer.microsoft.com/en-us/graph/changelog/rss
+current_version: v1.0
+entries:
+  - date: '2026-03-26'
+    category: change
+    breaking: true
+    highlights: >-
+      Breaking change ahead — Graph API updates to sensitive email properties
+      (see blogs/2026-03-26 in this repo).
+  - date: '2024-08-14'
+    category: deprecation
+    breaking: true
+    highlights: Updates on deprecating legacy Exchange Online tokens for Outlook add-ins.
+  - date: '2024-04-09'
+    category: addition
+    breaking: false
+    highlights: New nested app authentication for Office add-ins (legacy Exchange tokens).
+  - date: '2023-10-26'
+    category: change
+    breaking: false
+    highlights: Update to Exchange callback tokens for Outlook add-ins.
+note: >-
+  Dates above are corroborated by the harvested posts in blogs/; they are a
+  recent Exchange-relevant slice, not the complete Graph changelog.

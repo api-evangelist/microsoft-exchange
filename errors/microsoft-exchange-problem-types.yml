@@ -1,0 +1,48 @@
+generated: '2026-06-20'
+method: derived
+format: odata
+source: >-
+  Derived from the 4xx responses in openapi/*.yml (BadRequest, Unauthorized,
+  Forbidden, NotFound), all of which reference the ODataError schema
+  (json-schema/microsoft-exchange-odataerror-schema.json), enriched from the
+  Microsoft Graph error responses documentation.
+docs: https://learn.microsoft.com/en-us/graph/errors
+envelope:
+  media_type: application/json
+  shape: '{ "error": { "code": <string>, "message": <string>, "innerError": { "request-id", "date" } } }'
+  note: >-
+    Microsoft Graph does not use RFC 9457 application/problem+json. Errors are
+    returned as the OData error object. The `code` is a machine-readable string
+    (e.g. ErrorItemNotFound); `message` is human-readable and must not be
+    parsed programmatically.
+problems:
+  - status: 400
+    code: badRequest
+    title: Bad request
+    description: The request is malformed or incorrect (invalid OData query, bad payload, or unsupported parameter).
+    remediation: Validate the request body and OData query parameters against the operation schema.
+  - status: 401
+    code: unauthenticated
+    title: Unauthorized
+    description: Required authentication is missing, malformed, or the access token is expired or invalid.
+    remediation: Acquire a valid OAuth 2.0 bearer token from the Microsoft identity platform with the required delegated or application permission.
+  - status: 403
+    code: forbidden
+    title: Forbidden
+    description: The authenticated principal lacks the permission/scope required for the resource, or an access policy denies it.
+    remediation: Grant the required Graph permission (see scopes/microsoft-exchange-scopes.yml) and obtain admin consent where needed.
+  - status: 404
+    code: notFound
+    title: Not found
+    description: The requested resource (message, event, contact, folder, mailbox) does not exist or is not visible to the caller.
+    remediation: Verify the resource id and that the mailbox/folder exists and is in scope for the token.
+common_graph_codes:
+  - code: ErrorItemNotFound
+    status: 404
+  - code: ErrorAccessDenied
+    status: 403
+  - code: InvalidAuthenticationToken
+    status: 401
+  - code: TooManyRequests
+    status: 429
+    note: Throttling; honor the Retry-After response header (see conventions/ and rate-limits/).

@@ -1,0 +1,45 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  https://learn.microsoft.com/en-us/graph/versioning-and-deprecation and the
+  Exchange Online EWS deprecation guidance; corroborated by repo blog posts on
+  basic-auth and legacy-token deprecations.
+description: >-
+  Versioning, deprecation, and reliability posture for the Microsoft Exchange
+  API collection. Microsoft Graph uses named versions (v1.0 GA and beta);
+  Exchange Web Services is on a published deprecation path for Exchange Online.
+versioning:
+  scheme: named-version-path
+  current: v1.0
+  preview: beta
+  docs: https://learn.microsoft.com/en-us/graph/versioning-and-deprecation
+  detail: >-
+    Graph exposes /v1.0 (production, supported) and /beta (preview, may change
+    without notice, not for production). The Mailbox Import/Export API in this
+    collection is beta.
+deprecation:
+  policy_url: https://learn.microsoft.com/en-us/graph/versioning-and-deprecation
+  sunset_header: false
+  deprecation_header: false
+  notice: >-
+    Graph deprecations get a minimum 24-month notice and are announced via the
+    changelog; they are not signaled with RFC 8594 Sunset/Deprecation headers.
+  notable:
+    - item: Exchange Web Services (EWS)
+      status: deprecated
+      sunset: '2026-10'
+      note: EWS in Exchange Online stops functioning October 2026; migrate to Microsoft Graph.
+      migrate_to: Microsoft Graph
+    - item: Basic authentication (IMAP/POP/SMTP/EWS)
+      status: retired
+      note: Basic auth deprecated in favor of OAuth 2.0; see blogs/ in this repo.
+    - item: Legacy Exchange Online tokens for Outlook add-ins
+      status: deprecating
+      note: See blogs/2024-08-14 legacy-token deprecation.
+sla:
+  url: https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services
+  uptime_target: "99.9%"
+  note: Microsoft 365 financially-backed SLA covers Exchange Online.
+status_page: https://status.office365.com/
+support: https://support.microsoft.com/en-us/office
+deprecated_operations: []

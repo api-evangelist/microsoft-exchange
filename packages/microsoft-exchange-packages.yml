@@ -1,0 +1,84 @@
+generated: '2026-06-20'
+method: searched
+source: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+description: >-
+  First-party client libraries for programmatic access to Exchange Online via
+  Microsoft Graph, plus the legacy EWS Managed API and the Exchange Online
+  management modules. Microsoft ships official Graph SDKs across .NET, Java,
+  JavaScript/TypeScript, Python, Go, and PHP; the PowerShell surface ships as
+  the Microsoft.Graph and ExchangeOnlineManagement modules on the PowerShell
+  Gallery.
+packages:
+  - language: dotnet
+    registry: nuget
+    name: Microsoft.Graph
+    url: https://www.nuget.org/packages/Microsoft.Graph/
+    install: dotnet add package Microsoft.Graph
+    official: true
+    source_repo: https://github.com/microsoftgraph/msgraph-sdk-dotnet
+  - language: javascript
+    registry: npm
+    name: "@microsoft/microsoft-graph-client"
+    url: https://www.npmjs.com/package/@microsoft/microsoft-graph-client
+    install: npm install @microsoft/microsoft-graph-client
+    official: true
+    note: Long-standing JavaScript client library for Microsoft Graph.
+  - language: typescript
+    registry: npm
+    name: "@microsoft/msgraph-sdk"
+    url: https://www.npmjs.com/package/@microsoft/msgraph-sdk
+    install: npm install @microsoft/msgraph-sdk
+    official: true
+    note: Newer Kiota-generated modular TypeScript SDK (pre-release).
+  - language: python
+    registry: pypi
+    name: msgraph-sdk
+    url: https://pypi.org/project/msgraph-sdk/
+    install: pip install msgraph-sdk
+    official: true
+    source_repo: https://github.com/microsoftgraph/msgraph-sdk-python
+  - language: go
+    registry: pkg.go.dev
+    name: github.com/microsoftgraph/msgraph-sdk-go
+    url: https://pkg.go.dev/github.com/microsoftgraph/msgraph-sdk-go
+    install: go get github.com/microsoftgraph/msgraph-sdk-go
+    official: true
+  - language: java
+    registry: maven
+    name: com.microsoft.graph:microsoft-graph
+    url: https://central.sonatype.com/artifact/com.microsoft.graph/microsoft-graph
+    install: 'implementation "com.microsoft.graph:microsoft-graph"'
+    official: true
+    source_repo: https://github.com/microsoftgraph/msgraph-sdk-java
+  - language: php
+    registry: packagist
+    name: microsoft/microsoft-graph
+    url: https://packagist.org/packages/microsoft/microsoft-graph
+    install: composer require microsoft/microsoft-graph
+    official: true
+  - language: powershell
+    registry: powershell-gallery
+    name: Microsoft.Graph
+    url: https://www.powershellgallery.com/packages/Microsoft.Graph
+    install: Install-Module Microsoft.Graph -Scope CurrentUser
+    official: true
+    note: Microsoft Graph PowerShell SDK; the mgc binary lives in cli/.
+  - language: powershell
+    registry: powershell-gallery
+    name: ExchangeOnlineManagement
+    url: https://www.powershellgallery.com/packages/ExchangeOnlineManagement
+    install: Install-Module ExchangeOnlineManagement -Scope CurrentUser
+    official: true
+    note: >-
+      REST-based V3 module (3.0+) exposing the full Exchange Online management
+      cmdlet surface; backs the Exchange Online PowerShell API in apis.yml.
+  - language: dotnet
+    registry: nuget
+    name: Microsoft.Exchange.WebServices
+    url: https://www.nuget.org/packages/Microsoft.Exchange.WebServices/
+    install: dotnet add package Microsoft.Exchange.WebServices
+    official: true
+    note: >-
+      EWS Managed API client. Legacy; EWS in Exchange Online is planned for
+      deprecation October 2026 (see lifecycle/). Source at
+      https://github.com/officedev/ews-managed-api.

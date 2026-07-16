@@ -13,7 +13,7 @@ tags:
   - Email
   - Enterprise
 created: '2024-01-01'
-modified: '2026-05-19'
+modified: '2026-06-20'
 url: https://raw.githubusercontent.com/api-evangelist/microsoft-exchange/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
@@ -35,6 +35,8 @@ apis:
         url: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
       - type: OpenAPI
         url: openapi/microsoft-exchange-graph-mail-openapi.yml
+      - type: Overlay
+        url: overlays/microsoft-exchange-graph-mail-overlay.yaml
       - type: OpenAPI
         url: https://raw.githubusercontent.com/microsoftgraph/msgraph-metadata/master/openapi/v1.0/openapi.yaml
       - type: Authentication
@@ -67,6 +69,8 @@ apis:
         url: https://learn.microsoft.com/en-us/graph/api/resources/calendar
       - type: OpenAPI
         url: openapi/microsoft-exchange-graph-calendar-openapi.yml
+      - type: Overlay
+        url: overlays/microsoft-exchange-graph-calendar-overlay.yaml
       - type: OpenAPI
         url: https://raw.githubusercontent.com/microsoftgraph/msgraph-metadata/master/openapi/v1.0/openapi.yaml
       - type: Authentication
@@ -97,6 +101,8 @@ apis:
         url: https://learn.microsoft.com/en-us/graph/api/resources/contact?view=graph-rest-1.0
       - type: OpenAPI
         url: openapi/microsoft-exchange-graph-contacts-openapi.yml
+      - type: Overlay
+        url: overlays/microsoft-exchange-graph-contacts-overlay.yaml
       - type: OpenAPI
         url: https://raw.githubusercontent.com/microsoftgraph/msgraph-metadata/master/openapi/v1.0/openapi.yaml
       - type: Authentication
@@ -123,6 +129,8 @@ apis:
         url: https://learn.microsoft.com/en-us/graph/api/user-list-people?view=graph-rest-1.0
       - type: OpenAPI
         url: openapi/microsoft-exchange-graph-people-openapi.yml
+      - type: Overlay
+        url: overlays/microsoft-exchange-graph-people-overlay.yaml
       - type: OpenAPI
         url: https://raw.githubusercontent.com/microsoftgraph/msgraph-metadata/master/openapi/v1.0/openapi.yaml
       - type: Authentication
@@ -221,6 +229,8 @@ apis:
         url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-overview
       - type: OpenAPI
         url: openapi/microsoft-exchange-admin-api-openapi.yml
+      - type: Overlay
+        url: overlays/microsoft-exchange-admin-api-overlay.yaml
       - type: GettingStarted
         url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-get-started
       - type: Authentication
@@ -243,6 +253,8 @@ apis:
         url: https://learn.microsoft.com/en-us/graph/mailbox-import-export-concept-overview
       - type: OpenAPI
         url: openapi/microsoft-exchange-graph-import-export-openapi.yml
+      - type: Overlay
+        url: overlays/microsoft-exchange-graph-import-export-overlay.yaml
       - type: Reference
         url: https://learn.microsoft.com/en-us/graph/api/resources/mailbox-import-export-api-overview?view=graph-rest-beta
       - type: Authentication
@@ -260,6 +272,32 @@ common:
     url: authentication/microsoft-exchange-authentication.yml
   - type: OAuthScopes
     url: scopes/microsoft-exchange-scopes.yml
+  - type: Packages
+    url: packages/microsoft-exchange-packages.yml
+  - type: WellKnown
+    url: well-known/microsoft-exchange-well-known.yml
+  - type: SecurityTxt
+    url: well-known/microsoft-exchange-security.txt
+  - type: MCPServer
+    url: mcp/microsoft-exchange-mcp.yml
+  - type: LLMsTxt
+    url: llms/microsoft-exchange-llms.txt
+  - type: Conformance
+    url: conformance/microsoft-exchange-conformance.yml
+  - type: ErrorCatalog
+    url: errors/microsoft-exchange-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/microsoft-exchange-lifecycle.yml
+  - type: Conventions
+    url: conventions/microsoft-exchange-conventions.yml
+  - type: ChangeLog
+    url: changelog/microsoft-exchange-changelog.yml
+  - type: CLI
+    url: cli/microsoft-exchange-cli.yml
+  - type: DataModel
+    url: data-model/microsoft-exchange-data-model.yml
+  - type: Sandbox
+    url: sandbox/microsoft-exchange-sandbox.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/microsoft-exchange/overview
   - type: Arazzo

@@ -1,0 +1,77 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  https://learn.microsoft.com/en-us/graph/query-parameters and Microsoft Graph
+  best-practices docs; DERIVE-corroborated from openapi/*.yml.
+description: >-
+  Cross-cutting request/response semantics that apply across the Microsoft
+  Graph Exchange APIs (Mail, Calendar, Contacts, People, Import/Export). The
+  Exchange Online Admin API and EWS follow different (POST-cmdlet / SOAP)
+  conventions noted below.
+base_urls:
+  graph: https://graph.microsoft.com/v1.0
+  graph_beta: https://graph.microsoft.com/beta
+  admin_api: https://outlook.office365.com/adminapi/v2.0
+api_style: REST over HTTPS, JSON, OData 4.0 (Graph); POST-only cmdlet JSON (Admin API); SOAP (EWS/Autodiscover)
+authentication:
+  scheme: OAuth 2.0 Bearer (Microsoft identity platform)
+  flows: [authorizationCode, clientCredentials]
+  detail: authentication/microsoft-exchange-authentication.yml
+  scopes: scopes/microsoft-exchange-scopes.yml
+  docs: https://learn.microsoft.com/en-us/graph/auth/
+idempotency:
+  supported: false
+  mechanism: none
+  note: >-
+    Graph does not expose a client idempotency-key header; safety comes from
+    resource semantics (PATCH/PUT are idempotent, POST creates are not).
+pagination:
+  style: server-driven (OData)
+  request_params:
+    $top: page size hint
+    $skip: offset (where supported)
+    $skiptoken: opaque continuation token (server-issued)
+  response_fields:
+    "@odata.nextLink": absolute URL to the next page (follow verbatim)
+    "@odata.count": total count when $count=true
+    "value": array of results
+  delta:
+    supported: true
+    fields: ["@odata.deltaLink", "@odata.nextLink"]
+    note: Delta queries (e.g. /messages/delta) return a deltaLink for incremental sync.
+  docs: https://learn.microsoft.com/en-us/graph/paging
+field_selection:
+  select: $select — return only named properties
+  expand: $expand — inline related resources (e.g. attachments)
+  filter: $filter
+  orderby: $orderby
+  search: $search
+  docs: https://learn.microsoft.com/en-us/graph/query-parameters
+consistency:
+  header: ConsistencyLevel
+  value: eventual
+  note: Required with advanced query capabilities ($search, $count, certain $filter/$orderby).
+request_tracing:
+  request_id_header: request-id
+  client_request_id_header: client-request-id
+  note: request-id and client-request-id appear on responses and in error.innerError for support lookup.
+versioning:
+  scheme: named-version-path (v1.0 | beta)
+  detail: lifecycle/microsoft-exchange-lifecycle.yml
+error_envelope:
+  media_type: application/json
+  shape: '{ "error": { "code", "message", "innerError" } }'
+  detail: errors/microsoft-exchange-problem-types.yml
+rate_limiting:
+  signaling: HTTP 429 with Retry-After header
+  model: per-app / per-mailbox throttling and service protection limits
+  detail: rate-limits/microsoft-exchange-rate-limits.yml
+  docs: https://learn.microsoft.com/en-us/graph/throttling
+batching:
+  supported: true
+  endpoint: POST https://graph.microsoft.com/v1.0/$batch
+  note: Combine up to 20 requests in a single JSON batch.
+change_notifications:
+  supported: true
+  mechanism: subscriptions (webhooks) via /subscriptions resource
+  docs: https://learn.microsoft.com/en-us/graph/change-notifications-overview

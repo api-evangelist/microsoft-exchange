@@ -1,0 +1,42 @@
+generated: '2026-06-20'
+method: searched
+description: >-
+  Discovery surface probed across the Microsoft identity platform and Exchange
+  Online API hosts. Microsoft Graph (graph.microsoft.com) requires
+  authentication on all paths, so /.well-known/ probes there return 401. OAuth
+  / OIDC discovery lives on the Microsoft identity platform
+  (login.microsoftonline.com), and the RFC 9116 security.txt lives on the
+  corporate domain (www.microsoft.com) pointing at MSRC.
+hosts:
+  - host: https://login.microsoftonline.com
+    documents:
+      - path: /common/v2.0/.well-known/openid-configuration
+        status: 200
+        file: microsoft-exchange-openid-configuration.json
+        note: OIDC discovery for the /common (multi-tenant) authority.
+      - path: /common/v2.0/.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/security.txt
+        status: 404
+  - host: https://www.microsoft.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        file: microsoft-exchange-security.txt
+        note: RFC 9116 security.txt (canonical) pointing at MSRC bounty/CVD.
+  - host: https://graph.microsoft.com
+    documents:
+      - path: /.well-known/openid-configuration
+        status: 401
+      - path: /.well-known/security.txt
+        status: 401
+      - path: /.well-known/api-catalog
+        status: 401
+      - path: /.well-known/ai-plugin.json
+        status: 401
+  - host: https://outlook.office365.com
+    documents:
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/security.txt
+        status: 404

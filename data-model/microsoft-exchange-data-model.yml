@@ -1,0 +1,46 @@
+generated: '2026-06-20'
+method: derived
+source: >-
+  Derived from the schema $ref links and navigation properties in openapi/*.yml
+  and json-schema/*.json (Message, MailFolder, Attachment, Event, Calendar,
+  Contact, ContactFolder, Person, Mailbox), enriched from the Microsoft Graph
+  resource reference (learn.microsoft.com/en-us/graph/api/resources).
+docs: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+notation: >-
+  Relationships use has_one / has_many / belongs_to with the navigation-property
+  or id-reference field name; Graph ids are opaque, base64url-style strings (no
+  short type prefixes like Stripe).
+entities:
+  - {name: User, domain: identity, description: "The signed-in mailbox owner (/me or /users/ID); root of most Exchange navigation."}
+  - {name: Mailbox, domain: mail, description: A user's Exchange Online mailbox (primary or shared).}
+  - {name: MailFolder, domain: mail, description: A folder in a mailbox (Inbox, Drafts, custom); nestable.}
+  - {name: Message, domain: mail, description: An email message.}
+  - {name: Attachment, domain: mail, description: A file/item/reference attachment on a message or event.}
+  - {name: Calendar, domain: calendar, description: A calendar belonging to a user.}
+  - {name: Event, domain: calendar, description: A calendar event/meeting with attendees and recurrence.}
+  - {name: Attendee, domain: calendar, description: A participant on an event with a response status.}
+  - {name: ContactFolder, domain: contacts, description: A folder that organizes contacts.}
+  - {name: Contact, domain: contacts, description: An Outlook personal contact.}
+  - {name: Person, domain: people, description: A person relevant to the user (relevance-ranked; read-only).}
+  - {name: MailboxItem, domain: import-export, description: A full-fidelity mailbox item exposed by the Import/Export API.}
+relationships:
+  - {from: User, to: Mailbox, kind: has_one, via: mailbox}
+  - {from: User, to: MailFolder, kind: has_many, via: mailFolders}
+  - {from: User, to: Message, kind: has_many, via: messages}
+  - {from: User, to: Calendar, kind: has_many, via: calendars}
+  - {from: User, to: Event, kind: has_many, via: events}
+  - {from: User, to: ContactFolder, kind: has_many, via: contactFolders}
+  - {from: User, to: Contact, kind: has_many, via: contacts}
+  - {from: User, to: Person, kind: has_many, via: people}
+  - {from: MailFolder, to: MailFolder, kind: has_many, via: childFolders}
+  - {from: MailFolder, to: Message, kind: has_many, via: messages}
+  - {from: Message, to: MailFolder, kind: belongs_to, via: parentFolderId}
+  - {from: Message, to: Attachment, kind: has_many, via: attachments}
+  - {from: Calendar, to: Event, kind: has_many, via: events}
+  - {from: Event, to: Attendee, kind: has_many, via: attendees}
+  - {from: Event, to: Attachment, kind: has_many, via: attachments}
+  - {from: Event, to: Calendar, kind: belongs_to, via: calendar}
+  - {from: ContactFolder, to: Contact, kind: has_many, via: contacts}
+  - {from: ContactFolder, to: ContactFolder, kind: has_many, via: childFolders}
+  - {from: Contact, to: ContactFolder, kind: belongs_to, via: parentFolderId}
+  - {from: Mailbox, to: MailboxItem, kind: has_many, via: items}

@@ -1,0 +1,38 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  https://developer.microsoft.com/en-us/microsoft-365/dev-program and
+  https://developer.microsoft.com/en-us/graph/graph-explorer
+description: >-
+  Microsoft does not publish "test cards"; the Exchange/Graph sandbox model is a
+  free, sample-data-populated developer tenant plus a browser sandbox (Graph
+  Explorer) that runs against a Microsoft-provided demo tenant with a signed-in
+  sample account. All values below are published entry points, not secrets.
+test_vs_live:
+  model: separate tenant
+  note: >-
+    There is no test/live key prefix. Isolation is by tenant — you develop
+    against a dedicated Microsoft 365 developer (sandbox) tenant, then point the
+    same OAuth app + Graph endpoints at a production tenant.
+developer_program:
+  name: Microsoft 365 Developer Program
+  url: https://developer.microsoft.com/en-us/microsoft-365/dev-program
+  provides: >-
+    A free, renewable Microsoft 365 E5 sandbox subscription that can be
+    provisioned with sample users, mail, calendar, and contact data for testing
+    Exchange Online / Graph apps.
+graph_explorer:
+  name: Graph Explorer
+  url: https://developer.microsoft.com/en-us/graph/graph-explorer
+  provides: >-
+    A hosted, no-setup sandbox. Sign in with your own tenant, or use the
+    built-in sample account/demo tenant to run real Mail, Calendar, Contacts,
+    and People requests without registering an app.
+  sample_queries:
+    - GET https://graph.microsoft.com/v1.0/me/messages
+    - GET https://graph.microsoft.com/v1.0/me/events
+    - GET https://graph.microsoft.com/v1.0/me/contacts
+    - GET https://graph.microsoft.com/v1.0/me/people
+preview_endpoint:
+  beta: https://graph.microsoft.com/beta
+  note: The /beta endpoint is a preview surface (used by the Mailbox Import/Export API here); not a data sandbox — it hits real data.

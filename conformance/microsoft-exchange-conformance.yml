@@ -1,0 +1,38 @@
+generated: '2026-06-20'
+method: derived
+source: >-
+  Derived from openapi/*.yml (securitySchemes, OData query conventions,
+  @odata.nextLink pagination, ODataError envelope) and the Microsoft identity
+  platform OIDC discovery document at
+  well-known/microsoft-exchange-openid-configuration.json.
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: All specs declare an oauth2 securityScheme (authorizationCode + clientCredentials flows) against the Microsoft identity platform.
+  - id: oidc
+    conforms: true
+    evidence: login.microsoftonline.com publishes a live OpenID Connect discovery document (well-known/microsoft-exchange-openid-configuration.json).
+  - id: odata
+    conforms: true
+    evidence: Microsoft Graph is an OData 4.0 service; operations support $select, $filter, $orderby, $top, $skip, $expand and return @odata.* annotations.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: "Errors use the OData error envelope (error.code + error.message) with content type application/json, not application/problem+json."
+  - id: pagination
+    conforms: true
+    evidence: Collection responses use OData server-driven paging via @odata.nextLink (skiptoken/deltatoken); delta queries return @odata.deltaLink.
+  - id: rfc8594-sunset
+    conforms: partial
+    evidence: Deprecations are announced via the Graph changelog and dated policy (e.g. EWS Oct 2026) rather than Sunset/Deprecation response headers.
+  - id: mutual-tls
+    conforms: true
+    evidence: The identity platform advertises tls_client_certificate_bound_access_tokens and self_signed_tls_client_auth in its OIDC metadata.
+  - id: scim
+    conforms: false
+    evidence: SCIM 2.0 provisioning is part of Microsoft Entra ID, not the Exchange mailbox APIs in this collection.
+  - id: fhir-r4
+    conforms: false
+  - id: fapi
+    conforms: false
+  - id: json-api
+    conforms: false

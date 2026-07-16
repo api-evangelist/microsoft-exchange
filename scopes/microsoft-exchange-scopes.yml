@@ -1,8 +1,16 @@
-generated: '2026-07-11'
-method: derived
+generated: '2026-06-20'
+method: searched
 source: openapi/microsoft-exchange-admin-api-openapi.yml, openapi/microsoft-exchange-graph-calendar-openapi.yml,
   openapi/microsoft-exchange-graph-contacts-openapi.yml, openapi/microsoft-exchange-graph-import-export-openapi.yml,
   openapi/microsoft-exchange-graph-mail-openapi.yml, openapi/microsoft-exchange-graph-people-openapi.yml
+docs: https://learn.microsoft.com/en-us/graph/permissions-reference
+docs_note: >-
+  Microsoft Graph permissions come in delegated and application variants (e.g.
+  Mail.Read has both). Application permissions require admin consent; some read
+  scopes (Mail.ReadBasic, MailboxFolder.Read) and the .Shared variants are
+  documented in the Graph permissions reference. The .default scope is used
+  with the client-credentials flow to request all statically-consented app
+  permissions.
 schemes:
 - name: oauth2
   source: openapi/microsoft-exchange-admin-api-openapi.yml

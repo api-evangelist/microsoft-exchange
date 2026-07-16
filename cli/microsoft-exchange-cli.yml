@@ -1,0 +1,54 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  https://github.com/microsoftgraph/msgraph-cli and
+  https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell
+description: >-
+  Two first-party command-line surfaces reach Exchange Online: the Microsoft
+  Graph CLI (mgc), a cross-platform .NET/Kiota-generated CLI over the Graph
+  REST API, and the ExchangeOnlineManagement PowerShell module, the REST-based
+  (V3) cmdlet surface for Exchange administration. The binaries are catalogued
+  in packages/; this artifact captures their command surface.
+clis:
+  - name: Microsoft Graph CLI
+    binary: mgc
+    repo: https://github.com/microsoftgraph/msgraph-cli
+    docs: https://learn.microsoft.com/en-us/graph/cli/installation
+    ga: 'Microsoft Graph CLI v1.0.0 (generally available)'
+    install:
+      - method: download
+        detail: Download the platform binary from GitHub releases; run mgc (Windows) or ./mgc (Linux/macOS); add to PATH.
+      - method: winget
+        detail: winget install Microsoft.Graph.CLI
+    auth:
+      - mgc login  # interactive delegated auth
+      - mgc login --strategy ClientCertificate  # app-only
+    command_groups:
+      - group: mgc users messages
+        maps_to: Graph Mail API
+        example: mgc users messages list --user-id {id}
+      - group: mgc users events
+        maps_to: Graph Calendar API
+      - group: mgc users contacts
+        maps_to: Graph Contacts API
+      - group: mgc users people
+        maps_to: Graph People API
+      - group: mgc users mail-folders
+        maps_to: Graph Mail folders
+  - name: Exchange Online PowerShell (V3)
+    module: ExchangeOnlineManagement
+    docs: https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell
+    install:
+      - Install-Module ExchangeOnlineManagement -Scope CurrentUser
+      - Import-Module ExchangeOnlineManagement
+    connect:
+      - Connect-ExchangeOnline -UserPrincipalName admin@contoso.com
+    note: >-
+      V3 (3.0+) cmdlets are REST-based (no WinRM), support modern auth/MFA and
+      certificate-based app-only auth, and cover the full Exchange management
+      surface (mailboxes, mail-flow rules, organization config).
+    command_groups:
+      - group: "*-Mailbox / *-MailboxFolderPermission"
+        maps_to: Exchange Online Admin API
+      - group: "*-DistributionGroup / *-DynamicDistributionGroup"
+      - group: "*-AcceptedDomain / *-OrganizationConfig"

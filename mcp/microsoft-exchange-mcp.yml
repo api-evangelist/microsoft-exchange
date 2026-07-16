@@ -1,0 +1,253 @@
+generated: '2026-06-20'
+method: derived
+status: candidate
+source: openapi/*.yml
+description: >-
+  Candidate MCP server for Microsoft Exchange derived one-tool-per-operation
+  from the repo's OpenAPI definitions (79 operations across the Graph Mail,
+  Calendar, Contacts, People, Import/Export, and Exchange Online Admin APIs).
+  Microsoft does not publish a dedicated hosted Exchange MCP server; the closest
+  official surface is the Microsoft Graph API itself plus community servers
+  (e.g. Lokka). This is a governance/agent-readiness starting point, not a
+  published server.
+server:
+  name: microsoft-exchange
+  transport: http
+tools:
+- name: getOrganizationConfig
+  description: Get organization configuration
+  source_operation: openapi/microsoft-exchange-admin-api-openapi.yml#getOrganizationConfig
+- name: getAcceptedDomains
+  description: Get accepted domains
+  source_operation: openapi/microsoft-exchange-admin-api-openapi.yml#getAcceptedDomains
+- name: manageMailbox
+  description: Manage mailbox
+  source_operation: openapi/microsoft-exchange-admin-api-openapi.yml#manageMailbox
+- name: manageMailboxFolderPermission
+  description: Manage mailbox folder permissions
+  source_operation: openapi/microsoft-exchange-admin-api-openapi.yml#manageMailboxFolderPermission
+- name: getDistributionGroupMembers
+  description: Get distribution group members
+  source_operation: openapi/microsoft-exchange-admin-api-openapi.yml#getDistributionGroupMembers
+- name: getDynamicDistributionGroupMembers
+  description: Get dynamic distribution group members
+  source_operation: openapi/microsoft-exchange-admin-api-openapi.yml#getDynamicDistributionGroupMembers
+- name: listCalendars
+  description: List calendars
+  source_operation: openapi/microsoft-exchange-graph-calendar-openapi.yml#listCalendars
+- name: createCalendar
+  description: Create calendar
+  source_operation: openapi/microsoft-exchange-graph-calendar-openapi.yml#createCalendar
+- name: getCalendar
+  description: Get calendar
+  source_operation: openapi/microsoft-exchange-graph-calendar-openapi.yml#getCalendar
+- name: updateCalendar
+  description: Update calendar
+  source_operation: openapi/microsoft-exchange-graph-calendar-openapi.yml#updateCalendar
+- name: deleteCalendar
+  description: Delete calendar
+  source_operation: openapi/microsoft-exchange-graph-calendar-openapi.yml#deleteCalendar
+- name: listEvents
+  description: List events
+  source_operation: openapi/microsoft-exchange-graph-calendar-openapi.yml#listEvents
+- name: createEvent
+  description: Create event
+  source_operation: openapi/microsoft-exchange-graph-calendar-openapi.yml#createEvent
+- name: getEvent
+  description: Get event
+  source_operation: openapi/microsoft-exchange-graph-calendar-openapi.yml#getEvent
+- name: updateEvent
+  description: Update event
+  source_operation: openapi/microsoft-exchange-graph-calendar-openapi.yml#updateEvent
+- name: deleteEvent
+  description: Delete event
+  source_operation: openapi/microsoft-exchange-graph-calendar-openapi.yml#deleteEvent
+- name: acceptEvent
+  description: Accept event
+  source_operation: openapi/microsoft-exchange-graph-calendar-openapi.yml#acceptEvent
+- name: tentativelyAcceptEvent
+  description: Tentatively accept event
+  source_operation: openapi/microsoft-exchange-graph-calendar-openapi.yml#tentativelyAcceptEvent
+- name: declineEvent
+  description: Decline event
+  source_operation: openapi/microsoft-exchange-graph-calendar-openapi.yml#declineEvent
+- name: cancelEvent
+  description: Cancel event
+  source_operation: openapi/microsoft-exchange-graph-calendar-openapi.yml#cancelEvent
+- name: forwardEvent
+  description: Forward event
+  source_operation: openapi/microsoft-exchange-graph-calendar-openapi.yml#forwardEvent
+- name: listEventInstances
+  description: List event instances
+  source_operation: openapi/microsoft-exchange-graph-calendar-openapi.yml#listEventInstances
+- name: listEventAttachments
+  description: List event attachments
+  source_operation: openapi/microsoft-exchange-graph-calendar-openapi.yml#listEventAttachments
+- name: addEventAttachment
+  description: Add event attachment
+  source_operation: openapi/microsoft-exchange-graph-calendar-openapi.yml#addEventAttachment
+- name: listCalendarView
+  description: List calendar view
+  source_operation: openapi/microsoft-exchange-graph-calendar-openapi.yml#listCalendarView
+- name: listCalendarEvents
+  description: List events in calendar
+  source_operation: openapi/microsoft-exchange-graph-calendar-openapi.yml#listCalendarEvents
+- name: createEventInCalendar
+  description: Create event in calendar
+  source_operation: openapi/microsoft-exchange-graph-calendar-openapi.yml#createEventInCalendar
+- name: getSchedule
+  description: Get free/busy schedule
+  source_operation: openapi/microsoft-exchange-graph-calendar-openapi.yml#getSchedule
+- name: findMeetingTimes
+  description: Find meeting times
+  source_operation: openapi/microsoft-exchange-graph-calendar-openapi.yml#findMeetingTimes
+- name: listContacts
+  description: List contacts
+  source_operation: openapi/microsoft-exchange-graph-contacts-openapi.yml#listContacts
+- name: createContact
+  description: Create contact
+  source_operation: openapi/microsoft-exchange-graph-contacts-openapi.yml#createContact
+- name: getContact
+  description: Get contact
+  source_operation: openapi/microsoft-exchange-graph-contacts-openapi.yml#getContact
+- name: updateContact
+  description: Update contact
+  source_operation: openapi/microsoft-exchange-graph-contacts-openapi.yml#updateContact
+- name: deleteContact
+  description: Delete contact
+  source_operation: openapi/microsoft-exchange-graph-contacts-openapi.yml#deleteContact
+- name: getContactDelta
+  description: Get contact delta
+  source_operation: openapi/microsoft-exchange-graph-contacts-openapi.yml#getContactDelta
+- name: listContactFolders
+  description: List contact folders
+  source_operation: openapi/microsoft-exchange-graph-contacts-openapi.yml#listContactFolders
+- name: createContactFolder
+  description: Create contact folder
+  source_operation: openapi/microsoft-exchange-graph-contacts-openapi.yml#createContactFolder
+- name: getContactFolder
+  description: Get contact folder
+  source_operation: openapi/microsoft-exchange-graph-contacts-openapi.yml#getContactFolder
+- name: updateContactFolder
+  description: Update contact folder
+  source_operation: openapi/microsoft-exchange-graph-contacts-openapi.yml#updateContactFolder
+- name: deleteContactFolder
+  description: Delete contact folder
+  source_operation: openapi/microsoft-exchange-graph-contacts-openapi.yml#deleteContactFolder
+- name: listContactsInFolder
+  description: List contacts in folder
+  source_operation: openapi/microsoft-exchange-graph-contacts-openapi.yml#listContactsInFolder
+- name: createContactInFolder
+  description: Create contact in folder
+  source_operation: openapi/microsoft-exchange-graph-contacts-openapi.yml#createContactInFolder
+- name: listContactChildFolders
+  description: List child contact folders
+  source_operation: openapi/microsoft-exchange-graph-contacts-openapi.yml#listContactChildFolders
+- name: createContactChildFolder
+  description: Create child contact folder
+  source_operation: openapi/microsoft-exchange-graph-contacts-openapi.yml#createContactChildFolder
+- name: listMailboxes
+  description: List mailboxes
+  source_operation: openapi/microsoft-exchange-graph-import-export-openapi.yml#listMailboxes
+- name: listMailboxFolders
+  description: List mailbox folders
+  source_operation: openapi/microsoft-exchange-graph-import-export-openapi.yml#listMailboxFolders
+- name: listMailboxFolderItems
+  description: List folder items
+  source_operation: openapi/microsoft-exchange-graph-import-export-openapi.yml#listMailboxFolderItems
+- name: exportMailboxItemContent
+  description: Export item content
+  source_operation: openapi/microsoft-exchange-graph-import-export-openapi.yml#exportMailboxItemContent
+- name: importMailboxItem
+  description: Import item into folder
+  source_operation: openapi/microsoft-exchange-graph-import-export-openapi.yml#importMailboxItem
+- name: listMessages
+  description: List messages
+  source_operation: openapi/microsoft-exchange-graph-mail-openapi.yml#listMessages
+- name: createDraftMessage
+  description: Create draft message
+  source_operation: openapi/microsoft-exchange-graph-mail-openapi.yml#createDraftMessage
+- name: getMessage
+  description: Get message
+  source_operation: openapi/microsoft-exchange-graph-mail-openapi.yml#getMessage
+- name: updateMessage
+  description: Update message
+  source_operation: openapi/microsoft-exchange-graph-mail-openapi.yml#updateMessage
+- name: deleteMessage
+  description: Delete message
+  source_operation: openapi/microsoft-exchange-graph-mail-openapi.yml#deleteMessage
+- name: sendDraftMessage
+  description: Send draft message
+  source_operation: openapi/microsoft-exchange-graph-mail-openapi.yml#sendDraftMessage
+- name: replyToMessage
+  description: Reply to message
+  source_operation: openapi/microsoft-exchange-graph-mail-openapi.yml#replyToMessage
+- name: replyAllToMessage
+  description: Reply all to message
+  source_operation: openapi/microsoft-exchange-graph-mail-openapi.yml#replyAllToMessage
+- name: forwardMessage
+  description: Forward message
+  source_operation: openapi/microsoft-exchange-graph-mail-openapi.yml#forwardMessage
+- name: copyMessage
+  description: Copy message
+  source_operation: openapi/microsoft-exchange-graph-mail-openapi.yml#copyMessage
+- name: moveMessage
+  description: Move message
+  source_operation: openapi/microsoft-exchange-graph-mail-openapi.yml#moveMessage
+- name: createReplyDraft
+  description: Create reply draft
+  source_operation: openapi/microsoft-exchange-graph-mail-openapi.yml#createReplyDraft
+- name: createReplyAllDraft
+  description: Create reply-all draft
+  source_operation: openapi/microsoft-exchange-graph-mail-openapi.yml#createReplyAllDraft
+- name: createForwardDraft
+  description: Create forward draft
+  source_operation: openapi/microsoft-exchange-graph-mail-openapi.yml#createForwardDraft
+- name: listMessageAttachments
+  description: List message attachments
+  source_operation: openapi/microsoft-exchange-graph-mail-openapi.yml#listMessageAttachments
+- name: addMessageAttachment
+  description: Add attachment to message
+  source_operation: openapi/microsoft-exchange-graph-mail-openapi.yml#addMessageAttachment
+- name: sendMail
+  description: Send mail
+  source_operation: openapi/microsoft-exchange-graph-mail-openapi.yml#sendMail
+- name: listMailFolders
+  description: List mail folders
+  source_operation: openapi/microsoft-exchange-graph-mail-openapi.yml#listMailFolders
+- name: createMailFolder
+  description: Create mail folder
+  source_operation: openapi/microsoft-exchange-graph-mail-openapi.yml#createMailFolder
+- name: getMailFolder
+  description: Get mail folder
+  source_operation: openapi/microsoft-exchange-graph-mail-openapi.yml#getMailFolder
+- name: updateMailFolder
+  description: Update mail folder
+  source_operation: openapi/microsoft-exchange-graph-mail-openapi.yml#updateMailFolder
+- name: deleteMailFolder
+  description: Delete mail folder
+  source_operation: openapi/microsoft-exchange-graph-mail-openapi.yml#deleteMailFolder
+- name: listMailFolderMessages
+  description: List messages in mail folder
+  source_operation: openapi/microsoft-exchange-graph-mail-openapi.yml#listMailFolderMessages
+- name: createMessageInFolder
+  description: Create message in folder
+  source_operation: openapi/microsoft-exchange-graph-mail-openapi.yml#createMessageInFolder
+- name: listChildFolders
+  description: List child folders
+  source_operation: openapi/microsoft-exchange-graph-mail-openapi.yml#listChildFolders
+- name: createChildFolder
+  description: Create child folder
+  source_operation: openapi/microsoft-exchange-graph-mail-openapi.yml#createChildFolder
+- name: copyMailFolder
+  description: Copy mail folder
+  source_operation: openapi/microsoft-exchange-graph-mail-openapi.yml#copyMailFolder
+- name: moveMailFolder
+  description: Move mail folder
+  source_operation: openapi/microsoft-exchange-graph-mail-openapi.yml#moveMailFolder
+- name: listPeople
+  description: List people
+  source_operation: openapi/microsoft-exchange-graph-people-openapi.yml#listPeople
+- name: listUserPeople
+  description: List user's people
+  source_operation: openapi/microsoft-exchange-graph-people-openapi.yml#listUserPeople
