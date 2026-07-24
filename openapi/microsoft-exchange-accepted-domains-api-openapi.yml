@@ -1,0 +1,120 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Exchange Exchange Online Admin Accepted Domains API
+  description: REST-based administrative API that enables a focused set of Exchange cmdlets and parameters as POST-only endpoints. Provides access to key tasks previously available through Exchange Web Services (EWS), including organization configuration, accepted domains, mailbox properties, mailbox folder permissions, and distribution group membership. Built as a complementary REST-first surface for specific administrative tasks caused by the EWS deprecation planned for October 2026.
+  version: 2.0.0
+  contact:
+    name: Microsoft Support
+    url: https://support.microsoft.com
+    email: support@microsoft.com
+  license:
+    name: Microsoft API License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+  x-date-modified: '2026-03-04'
+servers:
+- url: https://outlook.office365.com/adminapi/v2.0
+  description: Exchange Online Admin API v2.0 endpoint
+security:
+- oauth2: []
+tags:
+- name: Accepted Domains
+  description: View accepted domains and their configurations
+paths:
+  /AcceptedDomain:
+    post:
+      operationId: getAcceptedDomains
+      summary: Microsoft Exchange Get accepted domains
+      description: View accepted domains and their configurations for the organization. Returns the list of domains that are configured for the Exchange Online organization. Replaces the GetServiceConfiguration EWS operation.
+      tags:
+      - Accepted Domains
+      parameters:
+      - $ref: '#/components/parameters/AnchorMailboxHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                CmdletInput:
+                  type: object
+                  properties:
+                    CmdletName:
+                      type: string
+                      example: Get-AcceptedDomain
+                    Parameters:
+                      type: object
+                      additionalProperties: true
+      responses:
+        '200':
+          description: Successfully retrieved accepted domains
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdminApiResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+components:
+  responses:
+    Forbidden:
+      description: Forbidden - insufficient Exchange RBAC permissions
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Unauthorized:
+      description: Unauthorized - authentication token is missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+  schemas:
+    ODataError:
+      type: object
+      description: OData error response
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code
+            message:
+              type: string
+              description: The error message
+    AdminApiResponse:
+      type: object
+      description: Response from the Exchange Online Admin API
+      properties:
+        '@odata.context':
+          type: string
+          description: OData context URL
+        value:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+          description: Array of result objects returned by the cmdlet
+        '@odata.nextLink':
+          type: string
+          format: uri
+          description: URL to retrieve the next page of results
+  parameters:
+    AnchorMailboxHeader:
+      name: X-AnchorMailbox
+      in: header
+      required: true
+      description: Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.
+      schema:
+        type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authorization with Microsoft identity platform
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
+          scopes:
+            https://outlook.office365.com/.default: Default scope for Exchange Online Admin API

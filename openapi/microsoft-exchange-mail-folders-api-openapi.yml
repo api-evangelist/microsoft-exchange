@@ -1,0 +1,638 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Exchange Exchange Online Admin Accepted Domains Mail Folders API
+  description: REST-based administrative API that enables a focused set of Exchange cmdlets and parameters as POST-only endpoints. Provides access to key tasks previously available through Exchange Web Services (EWS), including organization configuration, accepted domains, mailbox properties, mailbox folder permissions, and distribution group membership. Built as a complementary REST-first surface for specific administrative tasks caused by the EWS deprecation planned for October 2026.
+  version: 2.0.0
+  contact:
+    name: Microsoft Support
+    url: https://support.microsoft.com
+    email: support@microsoft.com
+  license:
+    name: Microsoft API License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+  x-date-modified: '2026-03-04'
+servers:
+- url: https://outlook.office365.com/adminapi/v2.0
+  description: Exchange Online Admin API v2.0 endpoint
+security:
+- oauth2: []
+tags:
+- name: Mail Folders
+  description: Operations for managing mail folders
+paths:
+  /me/mailFolders:
+    get:
+      operationId: listMailFolders
+      summary: Microsoft Exchange List mail folders
+      description: Get all the mail folders in the signed-in user's mailbox, including any mail search folders. By default, hidden mail folders are not included. Use the includeHiddenFolders query parameter to include them.
+      tags:
+      - Mail Folders
+      parameters:
+      - $ref: '#/components/parameters/TopParam'
+      - $ref: '#/components/parameters/SkipParam'
+      - $ref: '#/components/parameters/SelectParam'
+      - name: includeHiddenFolders
+        in: query
+        description: Include hidden mail folders in the response
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully retrieved mail folders
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MailFolderCollectionResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createMailFolder
+      summary: Microsoft Exchange Create mail folder
+      description: Create a new mail folder in the root folder of the user's mailbox.
+      tags:
+      - Mail Folders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MailFolder'
+      responses:
+        '201':
+          description: Successfully created mail folder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MailFolder'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /me/mailFolders/{mailFolder-id}:
+    get:
+      operationId: getMailFolder
+      summary: Microsoft Exchange Get mail folder
+      description: Read the properties and relationships of a mail folder object.
+      tags:
+      - Mail Folders
+      parameters:
+      - $ref: '#/components/parameters/MailFolderIdParam'
+      - $ref: '#/components/parameters/SelectParam'
+      responses:
+        '200':
+          description: Successfully retrieved mail folder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MailFolder'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateMailFolder
+      summary: Microsoft Exchange Update mail folder
+      description: Update the properties of a mail folder object.
+      tags:
+      - Mail Folders
+      parameters:
+      - $ref: '#/components/parameters/MailFolderIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MailFolder'
+      responses:
+        '200':
+          description: Successfully updated mail folder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MailFolder'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteMailFolder
+      summary: Microsoft Exchange Delete mail folder
+      description: Delete the specified mail folder. The folder is moved to the Deleted Items folder. To permanently delete a mail folder, use the permanentDelete action.
+      tags:
+      - Mail Folders
+      parameters:
+      - $ref: '#/components/parameters/MailFolderIdParam'
+      responses:
+        '204':
+          description: Successfully deleted mail folder
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /me/mailFolders/{mailFolder-id}/messages:
+    get:
+      operationId: listMailFolderMessages
+      summary: Microsoft Exchange List messages in mail folder
+      description: Get all the messages in the specified mail folder of the signed-in user's mailbox.
+      tags:
+      - Mail Folders
+      parameters:
+      - $ref: '#/components/parameters/MailFolderIdParam'
+      - $ref: '#/components/parameters/TopParam'
+      - $ref: '#/components/parameters/SkipParam'
+      - $ref: '#/components/parameters/SelectParam'
+      - $ref: '#/components/parameters/FilterParam'
+      - $ref: '#/components/parameters/OrderByParam'
+      responses:
+        '200':
+          description: Successfully retrieved messages
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageCollectionResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: createMessageInFolder
+      summary: Microsoft Exchange Create message in folder
+      description: Create a new message in the specified mail folder.
+      tags:
+      - Mail Folders
+      parameters:
+      - $ref: '#/components/parameters/MailFolderIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Message'
+      responses:
+        '201':
+          description: Successfully created message in folder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /me/mailFolders/{mailFolder-id}/childFolders:
+    get:
+      operationId: listChildFolders
+      summary: Microsoft Exchange List child folders
+      description: Get the folder collection under the specified folder.
+      tags:
+      - Mail Folders
+      parameters:
+      - $ref: '#/components/parameters/MailFolderIdParam'
+      - $ref: '#/components/parameters/TopParam'
+      - $ref: '#/components/parameters/SkipParam'
+      responses:
+        '200':
+          description: Successfully retrieved child folders
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MailFolderCollectionResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: createChildFolder
+      summary: Microsoft Exchange Create child folder
+      description: Create a new child mail folder under the specified folder.
+      tags:
+      - Mail Folders
+      parameters:
+      - $ref: '#/components/parameters/MailFolderIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MailFolder'
+      responses:
+        '201':
+          description: Successfully created child folder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MailFolder'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /me/mailFolders/{mailFolder-id}/copy:
+    post:
+      operationId: copyMailFolder
+      summary: Microsoft Exchange Copy mail folder
+      description: Copy a mail folder and its contents to another mail folder.
+      tags:
+      - Mail Folders
+      parameters:
+      - $ref: '#/components/parameters/MailFolderIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                destinationId:
+                  type: string
+                  description: The ID of the destination folder or a well-known folder name
+              required:
+              - destinationId
+      responses:
+        '200':
+          description: Successfully copied mail folder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MailFolder'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /me/mailFolders/{mailFolder-id}/move:
+    post:
+      operationId: moveMailFolder
+      summary: Microsoft Exchange Move mail folder
+      description: Move a mail folder and its contents to another mail folder.
+      tags:
+      - Mail Folders
+      parameters:
+      - $ref: '#/components/parameters/MailFolderIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                destinationId:
+                  type: string
+                  description: The ID of the destination folder or a well-known folder name
+              required:
+              - destinationId
+      responses:
+        '200':
+          description: Successfully moved mail folder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MailFolder'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    EmailAddress:
+      type: object
+      description: Represents the name and email address of a contact or message recipient
+      properties:
+        name:
+          type: string
+          description: The display name of the person or entity
+        address:
+          type: string
+          format: email
+          description: The email address of the person or entity
+    ODataError:
+      type: object
+      description: OData error response
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code
+            message:
+              type: string
+              description: The error message
+            innerError:
+              type: object
+              properties:
+                request-id:
+                  type: string
+                date:
+                  type: string
+                  format: date-time
+    InternetMessageHeader:
+      type: object
+      description: A key-value pair representing an Internet message header
+      properties:
+        name:
+          type: string
+          description: The name of the message header
+        value:
+          type: string
+          description: The value of the message header
+    DateTimeTimeZone:
+      type: object
+      description: Describes the date, time, and time zone of a point in time
+      properties:
+        dateTime:
+          type: string
+          description: A date and time combined in ISO 8601 format
+        timeZone:
+          type: string
+          description: Represents a time zone (e.g. Pacific Standard Time)
+    Message:
+      type: object
+      description: A message in a mailFolder
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Unique identifier for the message
+        subject:
+          type: string
+          description: The subject of the message
+        body:
+          $ref: '#/components/schemas/ItemBody'
+        bodyPreview:
+          type: string
+          readOnly: true
+          description: The first 255 characters of the message body in text format
+        from:
+          $ref: '#/components/schemas/Recipient'
+        sender:
+          $ref: '#/components/schemas/Recipient'
+        toRecipients:
+          type: array
+          items:
+            $ref: '#/components/schemas/Recipient'
+          description: 'The To: recipients for the message'
+        ccRecipients:
+          type: array
+          items:
+            $ref: '#/components/schemas/Recipient'
+          description: 'The Cc: recipients for the message'
+        bccRecipients:
+          type: array
+          items:
+            $ref: '#/components/schemas/Recipient'
+          description: 'The Bcc: recipients for the message'
+        replyTo:
+          type: array
+          items:
+            $ref: '#/components/schemas/Recipient'
+          description: The email addresses to use when replying
+        conversationId:
+          type: string
+          description: The ID of the conversation the email belongs to
+        conversationIndex:
+          type: string
+          format: byte
+          description: Indicates the position of the message within the conversation
+        createdDateTime:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The date and time the message was created in ISO 8601 UTC format
+        lastModifiedDateTime:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The date and time the message was last changed in ISO 8601 UTC format
+        receivedDateTime:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The date and time the message was received in ISO 8601 UTC format
+        sentDateTime:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The date and time the message was sent in ISO 8601 UTC format
+        hasAttachments:
+          type: boolean
+          readOnly: true
+          description: Indicates whether the message has attachments (excludes inline attachments)
+        importance:
+          type: string
+          enum:
+          - low
+          - normal
+          - high
+          description: The importance of the message
+        inferenceClassification:
+          type: string
+          enum:
+          - focused
+          - other
+          description: The classification of the message for the user based on inferred relevance or importance
+        internetMessageId:
+          type: string
+          description: The message ID in the format specified by RFC2822
+        internetMessageHeaders:
+          type: array
+          items:
+            $ref: '#/components/schemas/InternetMessageHeader'
+          readOnly: true
+          description: A collection of message headers defined by RFC5322
+        isDeliveryReceiptRequested:
+          type: boolean
+          description: Indicates whether a delivery receipt is requested
+        isDraft:
+          type: boolean
+          readOnly: true
+          description: Indicates whether the message is a draft
+        isRead:
+          type: boolean
+          description: Indicates whether the message has been read
+        isReadReceiptRequested:
+          type: boolean
+          description: Indicates whether a read receipt is requested
+        parentFolderId:
+          type: string
+          readOnly: true
+          description: The unique identifier for the message's parent mailFolder
+        webLink:
+          type: string
+          format: uri
+          readOnly: true
+          description: The URL to open the message in Outlook on the web
+        flag:
+          $ref: '#/components/schemas/FollowupFlag'
+        categories:
+          type: array
+          items:
+            type: string
+          description: The categories associated with the message
+        changeKey:
+          type: string
+          readOnly: true
+          description: The version of the message
+        uniqueBody:
+          $ref: '#/components/schemas/ItemBody'
+    MessageCollectionResponse:
+      type: object
+      description: Collection of messages
+      properties:
+        '@odata.context':
+          type: string
+        '@odata.nextLink':
+          type: string
+          format: uri
+          description: URL to get the next set of results
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Message'
+    MailFolderCollectionResponse:
+      type: object
+      description: Collection of mail folders
+      properties:
+        '@odata.context':
+          type: string
+        '@odata.nextLink':
+          type: string
+          format: uri
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/MailFolder'
+    MailFolder:
+      type: object
+      description: A mail folder in a user's mailbox
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: The mail folder's unique identifier
+        displayName:
+          type: string
+          description: The mail folder's display name
+        parentFolderId:
+          type: string
+          readOnly: true
+          description: The unique identifier for the parent mail folder
+        childFolderCount:
+          type: integer
+          readOnly: true
+          description: The number of immediate child mail folders
+        totalItemCount:
+          type: integer
+          readOnly: true
+          description: The number of items in the mail folder
+        unreadItemCount:
+          type: integer
+          readOnly: true
+          description: The number of unread items in the mail folder
+        isHidden:
+          type: boolean
+          description: Indicates whether the mail folder is hidden
+    Recipient:
+      type: object
+      description: Represents an email recipient
+      properties:
+        emailAddress:
+          $ref: '#/components/schemas/EmailAddress'
+    ItemBody:
+      type: object
+      description: Represents the body of a message or event
+      properties:
+        contentType:
+          type: string
+          enum:
+          - text
+          - html
+          description: The type of the content
+        content:
+          type: string
+          description: The content of the item body
+    FollowupFlag:
+      type: object
+      description: Follow-up flag on a message
+      properties:
+        completedDateTime:
+          $ref: '#/components/schemas/DateTimeTimeZone'
+        dueDateTime:
+          $ref: '#/components/schemas/DateTimeTimeZone'
+        startDateTime:
+          $ref: '#/components/schemas/DateTimeTimeZone'
+        flagStatus:
+          type: string
+          enum:
+          - notFlagged
+          - complete
+          - flagged
+          description: The status of the follow-up flag
+  responses:
+    NotFound:
+      description: Not found - the specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Unauthorized:
+      description: Unauthorized - authentication is required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    BadRequest:
+      description: Bad request - the request body or parameters are invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+  parameters:
+    OrderByParam:
+      name: $orderby
+      in: query
+      description: Comma-separated list of properties to sort results by
+      schema:
+        type: string
+    MailFolderIdParam:
+      name: mailFolder-id
+      in: path
+      required: true
+      description: The unique identifier of the mail folder, or a well-known folder name such as inbox, drafts, sentitems, or deleteditems
+      schema:
+        type: string
+    FilterParam:
+      name: $filter
+      in: query
+      description: OData filter expression to filter results
+      schema:
+        type: string
+    SkipParam:
+      name: $skip
+      in: query
+      description: The number of items to skip in a result set
+      schema:
+        type: integer
+        minimum: 0
+    TopParam:
+      name: $top
+      in: query
+      description: The number of items to return in a result set
+      schema:
+        type: integer
+        minimum: 1
+    SelectParam:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response
+      schema:
+        type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authorization with Microsoft identity platform
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
+          scopes:
+            https://outlook.office365.com/.default: Default scope for Exchange Online Admin API
