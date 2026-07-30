@@ -5,6 +5,19 @@ description: >-
   email, calendars, contacts, and other mailbox resources through Microsoft Graph, EWS, PowerShell, Autodiscover, and
   the Exchange Online Admin API.
 type: Index
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://learn.microsoft.com/en-us/media/logos/logo-ms-social.png
 tags:
   - Calendar
@@ -17,250 +30,780 @@ modified: '2026-06-20'
 url: https://raw.githubusercontent.com/api-evangelist/microsoft-exchange/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-  - name: Microsoft Graph Mail API
-    description: >-
-      Access Exchange Online mailboxes through the Microsoft Graph API, providing modern REST endpoints for reading,
-      sending, and managing email messages, drafts, attachments, and mail folders.
-    image: https://learn.microsoft.com/en-us/media/logos/logo-ms-social.png
-    humanURL: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
-    baseURL: https://graph.microsoft.com/v1.0
-    tags:
-      - Email
-      - Mail
-      - Messaging
-      - Microsoft Graph
-      - REST
-    properties:
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
-      - type: OpenAPI
-        url: openapi/microsoft-exchange-graph-mail-openapi.yml
-      - type: Overlay
-        url: overlays/microsoft-exchange-graph-mail-overlay.yaml
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/microsoftgraph/msgraph-metadata/master/openapi/v1.0/openapi.yaml
-      - type: Authentication
-        url: https://learn.microsoft.com/en-us/graph/auth/
-      - type: GettingStarted
-        url: https://developer.microsoft.com/en-us/graph/quick-start
-      - type: SDKs
-        url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
-      - type: ChangeLog
-        url: https://developer.microsoft.com/en-us/graph/changelog
-    contact:
-      - FN: Microsoft Support
-        email: support@microsoft.com
-        url: https://support.microsoft.com
-  - name: Microsoft Graph Calendar API
-    description: >-
-      Manage calendar events, meetings, and scheduling for Exchange Online users. Provides endpoints for creating,
-      updating, and deleting events, managing attendees, and handling recurring meetings.
-    image: https://learn.microsoft.com/en-us/media/logos/logo-ms-social.png
-    humanURL: https://learn.microsoft.com/en-us/graph/api/resources/calendar
-    baseURL: https://graph.microsoft.com/v1.0
-    tags:
-      - Calendar
-      - Events
-      - Meetings
-      - Microsoft Graph
-      - Scheduling
-    properties:
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/graph/api/resources/calendar
-      - type: OpenAPI
-        url: openapi/microsoft-exchange-graph-calendar-openapi.yml
-      - type: Overlay
-        url: overlays/microsoft-exchange-graph-calendar-overlay.yaml
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/microsoftgraph/msgraph-metadata/master/openapi/v1.0/openapi.yaml
-      - type: Authentication
-        url: https://learn.microsoft.com/en-us/graph/auth/
-      - type: GettingStarted
-        url: https://developer.microsoft.com/en-us/graph/quick-start
-      - type: SDKs
-        url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
-      - type: ChangeLog
-        url: https://developer.microsoft.com/en-us/graph/changelog
-  - name: Microsoft Graph Contacts API
-    description: >-
-      Manage Outlook personal contacts and contact folders for Exchange Online users. Supports creating, reading,
-      updating, and deleting contacts, organizing them into folders, and assigning categories.
-    image: https://learn.microsoft.com/en-us/media/logos/logo-ms-social.png
-    humanURL: https://learn.microsoft.com/en-us/graph/outlook-contacts-concept-overview
-    baseURL: https://graph.microsoft.com/v1.0
-    tags:
-      - Address Book
-      - Contacts
-      - Microsoft Graph
-      - Outlook
-      - People
-    properties:
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/graph/outlook-contacts-concept-overview
-      - type: Reference
-        url: https://learn.microsoft.com/en-us/graph/api/resources/contact?view=graph-rest-1.0
-      - type: OpenAPI
-        url: openapi/microsoft-exchange-graph-contacts-openapi.yml
-      - type: Overlay
-        url: overlays/microsoft-exchange-graph-contacts-overlay.yaml
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/microsoftgraph/msgraph-metadata/master/openapi/v1.0/openapi.yaml
-      - type: Authentication
-        url: https://learn.microsoft.com/en-us/graph/auth/
-      - type: SDKs
-        url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
-  - name: Microsoft Graph People API
-    description: >-
-      Retrieve people most relevant to a user based on communication and collaboration patterns, business relationships,
-      and contacts. Useful for people-picking scenarios and social intelligence features.
-    image: https://learn.microsoft.com/en-us/media/logos/logo-ms-social.png
-    humanURL: https://learn.microsoft.com/en-us/graph/people-insights-overview
-    baseURL: https://graph.microsoft.com/v1.0
-    tags:
-      - Collaboration
-      - Contacts
-      - Microsoft Graph
-      - People
-      - Social Intelligence
-    properties:
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/graph/people-insights-overview
-      - type: Reference
-        url: https://learn.microsoft.com/en-us/graph/api/user-list-people?view=graph-rest-1.0
-      - type: OpenAPI
-        url: openapi/microsoft-exchange-graph-people-openapi.yml
-      - type: Overlay
-        url: overlays/microsoft-exchange-graph-people-overlay.yaml
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/microsoftgraph/msgraph-metadata/master/openapi/v1.0/openapi.yaml
-      - type: Authentication
-        url: https://learn.microsoft.com/en-us/graph/auth/
-      - type: SDKs
-        url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
-  - name: Exchange Web Services (EWS)
-    description: >-
-      Legacy SOAP-based API for Exchange Server providing comprehensive access to mailbox data and operations. Planned
-      for deprecation in Exchange Online in October 2026, with Microsoft Graph recommended for new development.
-    image: https://learn.microsoft.com/en-us/media/logos/logo-ms-social.png
-    humanURL: >-
+- name: Exchange Web Services (EWS)
+  description: >-
+    Legacy SOAP-based API for Exchange Server providing comprehensive access to mailbox data and operations.
+    Planned for deprecation in Exchange Online in October 2026, with Microsoft Graph recommended for new
+    development.
+  image: https://learn.microsoft.com/en-us/media/logos/logo-ms-social.png
+  humanURL: >-
+    https://learn.microsoft.com/en-us/exchange/client-developer/exchange-web-services/explore-the-ews-managed-api-ews-and-web-services-in-exchange
+  baseURL: https://outlook.office365.com/EWS/Exchange.asmx
+  tags:
+  - Exchange Server
+  - Legacy
+  - Mailbox
+  - SOAP
+  - Web Services
+  properties:
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/exchange/client-developer/web-service-reference/web-services-reference-for-exchange
+  - type: WSDL
+    url: https://outlook.office365.com/EWS/Exchange.asmx?wsdl
+  - type: SDKs
+    url: https://github.com/officedev/ews-managed-api
+  - type: Reference
+    url: >-
       https://learn.microsoft.com/en-us/exchange/client-developer/exchange-web-services/explore-the-ews-managed-api-ews-and-web-services-in-exchange
-    baseURL: https://outlook.office365.com/EWS/Exchange.asmx
-    tags:
-      - Exchange Server
-      - Legacy
-      - Mailbox
-      - SOAP
-      - Web Services
-    properties:
-      - type: Documentation
-        url: >-
-          https://learn.microsoft.com/en-us/exchange/client-developer/web-service-reference/web-services-reference-for-exchange
-      - type: WSDL
-        url: https://outlook.office365.com/EWS/Exchange.asmx?wsdl
-      - type: SDKs
-        url: https://github.com/officedev/ews-managed-api
-      - type: Reference
-        url: >-
-          https://learn.microsoft.com/en-us/exchange/client-developer/exchange-web-services/explore-the-ews-managed-api-ews-and-web-services-in-exchange
-      - type: GettingStarted
-        url: https://learn.microsoft.com/en-us/exchange/client-developer/exchange-server-development
-  - name: Exchange Online PowerShell API
-    description: >-
-      PowerShell module for managing Exchange Online through REST-based cmdlets. Provides the complete Exchange
-      management surface for administrative tasks including mailbox management, mail flow rules, and organization
-      configuration.
-    image: https://learn.microsoft.com/en-us/media/logos/logo-ms-social.png
-    humanURL: https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell
-    baseURL: https://outlook.office365.com/powershell-liveid/
-    tags:
-      - Administration
-      - Automation
-      - Exchange Online
-      - Management
-      - PowerShell
-    properties:
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell-v2
-      - type: Installation Guide
-        url: >-
-          https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell-v2#install-and-maintain-the-exchange-online-powershell-module
-      - type: Authentication
-        url: https://learn.microsoft.com/en-us/powershell/exchange/connect-to-exchange-online-powershell
-      - type: Reference
-        url: https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell
-  - name: Exchange Autodiscover API
-    description: >-
-      Service that enables client applications to automatically configure themselves for Exchange connectivity using
-      minimal user input. Supports SOAP and POX protocols for discovering EWS endpoint URLs and other Exchange service
-      settings.
-    image: https://learn.microsoft.com/en-us/media/logos/logo-ms-social.png
-    humanURL: https://learn.microsoft.com/en-us/exchange/client-developer/exchange-web-services/autodiscover-for-exchange
-    baseURL: https://outlook.office365.com/autodiscover/autodiscover.svc
-    tags:
-      - Autodiscover
-      - Configuration
-      - Exchange Server
-      - Service Discovery
-      - SOAP
-    properties:
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/exchange/client-developer/exchange-web-services/autodiscover-for-exchange
-      - type: Reference
-        url: >-
-          https://learn.microsoft.com/en-us/exchange/client-developer/web-service-reference/soap-autodiscover-web-service-reference-for-exchange
-      - type: SDKs
-        url: https://github.com/officedev/ews-managed-api
-  - name: Exchange Online Admin API
-    description: >-
-      REST-based administrative API that provides cmdlet-style endpoints for Exchange Online management tasks previously
-      available through EWS. Supports organization configuration, mailbox folder permissions, distribution group
-      membership, and delegation management.
-    image: https://learn.microsoft.com/en-us/media/logos/logo-ms-social.png
-    humanURL: https://learn.microsoft.com/en-us/exchange/reference/admin-api-overview
-    baseURL: https://outlook.office365.com/adminapi/v2.0
-    tags:
-      - Administration
-      - Exchange Online
-      - Management
-      - Permissions
-      - REST
-    properties:
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-overview
-      - type: OpenAPI
-        url: openapi/microsoft-exchange-admin-api-openapi.yml
-      - type: Overlay
-        url: overlays/microsoft-exchange-admin-api-overlay.yaml
-      - type: GettingStarted
-        url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-get-started
-      - type: Authentication
-        url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-authentication
-  - name: Microsoft Graph Mailbox Import Export API
-    description: >-
-      APIs for discovering, importing, and exporting content from Exchange Online mailboxes in full fidelity. Enables
-      mailbox migration scenarios and content copying as a replacement for EWS-based approaches.
-    image: https://learn.microsoft.com/en-us/media/logos/logo-ms-social.png
-    humanURL: https://learn.microsoft.com/en-us/graph/mailbox-import-export-concept-overview
-    baseURL: https://graph.microsoft.com/beta
-    tags:
-      - Export
-      - Import
-      - Mailbox
-      - Microsoft Graph
-      - Migration
-    properties:
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/graph/mailbox-import-export-concept-overview
-      - type: OpenAPI
-        url: openapi/microsoft-exchange-graph-import-export-openapi.yml
-      - type: Overlay
-        url: overlays/microsoft-exchange-graph-import-export-overlay.yaml
-      - type: Reference
-        url: https://learn.microsoft.com/en-us/graph/api/resources/mailbox-import-export-api-overview?view=graph-rest-beta
-      - type: Authentication
-        url: https://learn.microsoft.com/en-us/graph/auth/
-      - type: SDKs
-        url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/exchange/client-developer/exchange-server-development
+- name: Exchange Online PowerShell API
+  description: >-
+    PowerShell module for managing Exchange Online through REST-based cmdlets. Provides the complete Exchange
+    management surface for administrative tasks including mailbox management, mail flow rules, and organization
+    configuration.
+  image: https://learn.microsoft.com/en-us/media/logos/logo-ms-social.png
+  humanURL: https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell
+  baseURL: https://outlook.office365.com/powershell-liveid/
+  tags:
+  - Administration
+  - Automation
+  - Exchange Online
+  - Management
+  - PowerShell
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell-v2
+  - type: Installation Guide
+    url: >-
+      https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell-v2#install-and-maintain-the-exchange-online-powershell-module
+  - type: Authentication
+    url: >-
+      https://learn.microsoft.com/en-us/powershell/exchange/connect-to-exchange-online-powershell
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell
+- name: Exchange Autodiscover API
+  description: >-
+    Service that enables client applications to automatically configure themselves for Exchange connectivity
+    using minimal user input. Supports SOAP and POX protocols for discovering EWS endpoint URLs and other
+    Exchange service settings.
+  image: https://learn.microsoft.com/en-us/media/logos/logo-ms-social.png
+  humanURL: >-
+    https://learn.microsoft.com/en-us/exchange/client-developer/exchange-web-services/autodiscover-for-exchange
+  baseURL: https://outlook.office365.com/autodiscover/autodiscover.svc
+  tags:
+  - Autodiscover
+  - Configuration
+  - Exchange Server
+  - Service Discovery
+  - SOAP
+  properties:
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/exchange/client-developer/exchange-web-services/autodiscover-for-exchange
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/exchange/client-developer/web-service-reference/soap-autodiscover-web-service-reference-for-exchange
+  - type: SDKs
+    url: https://github.com/officedev/ews-managed-api
+- aid: microsoft-exchange:microsoft-exchange-accepted-domains-api
+  name: Microsoft Exchange Accepted Domains API
+  description: View accepted domains and their configurations
+  humanURL: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Accepted Domains
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-exchange-accepted-domains-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: GettingStarted
+    url: https://developer.microsoft.com/en-us/graph/quick-start
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/calendar
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/outlook-contacts-concept-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/contact?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/people-insights-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/user-list-people?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-get-started
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-authentication
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/mailbox-import-export-concept-overview
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/mailbox-import-export-api-overview?view=graph-rest-beta
+- aid: microsoft-exchange:microsoft-exchange-attachments-api
+  name: Microsoft Exchange Attachments API
+  description: Operations for managing message attachments
+  humanURL: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Attachments
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-exchange-attachments-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: GettingStarted
+    url: https://developer.microsoft.com/en-us/graph/quick-start
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/calendar
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/outlook-contacts-concept-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/contact?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/people-insights-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/user-list-people?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-get-started
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-authentication
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/mailbox-import-export-concept-overview
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/mailbox-import-export-api-overview?view=graph-rest-beta
+- aid: microsoft-exchange:microsoft-exchange-calendars-api
+  name: Microsoft Exchange Calendars API
+  description: Operations for managing calendars
+  humanURL: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Calendars
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-exchange-calendars-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: GettingStarted
+    url: https://developer.microsoft.com/en-us/graph/quick-start
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/calendar
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/outlook-contacts-concept-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/contact?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/people-insights-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/user-list-people?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-get-started
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-authentication
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/mailbox-import-export-concept-overview
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/mailbox-import-export-api-overview?view=graph-rest-beta
+- aid: microsoft-exchange:microsoft-exchange-contact-folders-api
+  name: Microsoft Exchange Contact Folders API
+  description: Operations for managing contact folders
+  humanURL: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Contact Folders
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-exchange-contact-folders-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: GettingStarted
+    url: https://developer.microsoft.com/en-us/graph/quick-start
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/calendar
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/outlook-contacts-concept-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/contact?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/people-insights-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/user-list-people?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-get-started
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-authentication
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/mailbox-import-export-concept-overview
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/mailbox-import-export-api-overview?view=graph-rest-beta
+- aid: microsoft-exchange:microsoft-exchange-contacts-api
+  name: Microsoft Exchange Contacts API
+  description: Operations for managing personal contacts
+  humanURL: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Contacts
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-exchange-contacts-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: GettingStarted
+    url: https://developer.microsoft.com/en-us/graph/quick-start
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/calendar
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/outlook-contacts-concept-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/contact?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/people-insights-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/user-list-people?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-get-started
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-authentication
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/mailbox-import-export-concept-overview
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/mailbox-import-export-api-overview?view=graph-rest-beta
+- aid: microsoft-exchange:microsoft-exchange-distribution-groups-api
+  name: Microsoft Exchange Distribution Groups API
+  description: Retrieve distribution group and dynamic distribution group membership
+  humanURL: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Distribution Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-exchange-distribution-groups-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: GettingStarted
+    url: https://developer.microsoft.com/en-us/graph/quick-start
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/calendar
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/outlook-contacts-concept-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/contact?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/people-insights-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/user-list-people?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-get-started
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-authentication
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/mailbox-import-export-concept-overview
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/mailbox-import-export-api-overview?view=graph-rest-beta
+- aid: microsoft-exchange:microsoft-exchange-events-api
+  name: Microsoft Exchange Events API
+  description: Operations for managing calendar events
+  humanURL: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-exchange-events-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: GettingStarted
+    url: https://developer.microsoft.com/en-us/graph/quick-start
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/calendar
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/outlook-contacts-concept-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/contact?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/people-insights-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/user-list-people?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-get-started
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-authentication
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/mailbox-import-export-concept-overview
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/mailbox-import-export-api-overview?view=graph-rest-beta
+- aid: microsoft-exchange:microsoft-exchange-mail-folders-api
+  name: Microsoft Exchange Mail Folders API
+  description: Operations for managing mail folders
+  humanURL: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Mail Folders
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-exchange-mail-folders-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: GettingStarted
+    url: https://developer.microsoft.com/en-us/graph/quick-start
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/calendar
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/outlook-contacts-concept-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/contact?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/people-insights-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/user-list-people?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-get-started
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-authentication
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/mailbox-import-export-concept-overview
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/mailbox-import-export-api-overview?view=graph-rest-beta
+- aid: microsoft-exchange:microsoft-exchange-mailbox-discovery-api
+  name: Microsoft Exchange Mailbox Discovery API
+  description: Operations for discovering mailbox structure and content
+  humanURL: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Mailbox Discovery
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-exchange-mailbox-discovery-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: GettingStarted
+    url: https://developer.microsoft.com/en-us/graph/quick-start
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/calendar
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/outlook-contacts-concept-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/contact?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/people-insights-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/user-list-people?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-get-started
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-authentication
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/mailbox-import-export-concept-overview
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/mailbox-import-export-api-overview?view=graph-rest-beta
+- aid: microsoft-exchange:microsoft-exchange-mailbox-export-api
+  name: Microsoft Exchange Mailbox Export API
+  description: Operations for exporting content from mailboxes
+  humanURL: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Mailbox Export
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-exchange-mailbox-export-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: GettingStarted
+    url: https://developer.microsoft.com/en-us/graph/quick-start
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/calendar
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/outlook-contacts-concept-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/contact?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/people-insights-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/user-list-people?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-get-started
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-authentication
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/mailbox-import-export-concept-overview
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/mailbox-import-export-api-overview?view=graph-rest-beta
+- aid: microsoft-exchange:microsoft-exchange-mailbox-folder-permissions-api
+  name: Microsoft Exchange Mailbox Folder Permissions API
+  description: View and manage mailbox folder permissions
+  humanURL: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Mailbox Folder Permissions
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-exchange-mailbox-folder-permissions-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: GettingStarted
+    url: https://developer.microsoft.com/en-us/graph/quick-start
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/calendar
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/outlook-contacts-concept-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/contact?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/people-insights-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/user-list-people?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-get-started
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-authentication
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/mailbox-import-export-concept-overview
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/mailbox-import-export-api-overview?view=graph-rest-beta
+- aid: microsoft-exchange:microsoft-exchange-mailbox-import-api
+  name: Microsoft Exchange Mailbox Import API
+  description: Operations for importing content into mailboxes
+  humanURL: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Mailbox Import
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-exchange-mailbox-import-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: GettingStarted
+    url: https://developer.microsoft.com/en-us/graph/quick-start
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/calendar
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/outlook-contacts-concept-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/contact?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/people-insights-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/user-list-people?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-get-started
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-authentication
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/mailbox-import-export-concept-overview
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/mailbox-import-export-api-overview?view=graph-rest-beta
+- aid: microsoft-exchange:microsoft-exchange-mailboxes-api
+  name: Microsoft Exchange Mailboxes API
+  description: View and update mailbox properties and delegation
+  humanURL: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Mailboxes
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-exchange-mailboxes-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: GettingStarted
+    url: https://developer.microsoft.com/en-us/graph/quick-start
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/calendar
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/outlook-contacts-concept-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/contact?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/people-insights-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/user-list-people?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-get-started
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-authentication
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/mailbox-import-export-concept-overview
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/mailbox-import-export-api-overview?view=graph-rest-beta
+- aid: microsoft-exchange:microsoft-exchange-messages-api
+  name: Microsoft Exchange Messages API
+  description: Operations for managing email messages
+  humanURL: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Messages
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-exchange-messages-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: GettingStarted
+    url: https://developer.microsoft.com/en-us/graph/quick-start
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/calendar
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/outlook-contacts-concept-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/contact?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/people-insights-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/user-list-people?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-get-started
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-authentication
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/mailbox-import-export-concept-overview
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/mailbox-import-export-api-overview?view=graph-rest-beta
+- aid: microsoft-exchange:microsoft-exchange-organization-configuration-api
+  name: Microsoft Exchange Organization Configuration API
+  description: Retrieve organization-level Exchange configuration
+  humanURL: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Organization Configuration
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-exchange-organization-configuration-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: GettingStarted
+    url: https://developer.microsoft.com/en-us/graph/quick-start
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/calendar
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/outlook-contacts-concept-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/contact?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/people-insights-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/user-list-people?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-get-started
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-authentication
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/mailbox-import-export-concept-overview
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/mailbox-import-export-api-overview?view=graph-rest-beta
+- aid: microsoft-exchange:microsoft-exchange-people-api
+  name: Microsoft Exchange People API
+  description: Operations for retrieving relevant people
+  humanURL: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - People
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-exchange-people-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: GettingStarted
+    url: https://developer.microsoft.com/en-us/graph/quick-start
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/calendar
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/outlook-contacts-concept-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/contact?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/people-insights-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/user-list-people?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-get-started
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-authentication
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/mailbox-import-export-concept-overview
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/mailbox-import-export-api-overview?view=graph-rest-beta
+- aid: microsoft-exchange:microsoft-exchange-scheduling-api
+  name: Microsoft Exchange Scheduling API
+  description: Operations for scheduling and free/busy information
+  humanURL: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Scheduling
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-exchange-scheduling-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+  - type: GettingStarted
+    url: https://developer.microsoft.com/en-us/graph/quick-start
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: ChangeLog
+    url: https://developer.microsoft.com/en-us/graph/changelog
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/calendar
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/outlook-contacts-concept-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/contact?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/people-insights-overview
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/graph/api/user-list-people?view=graph-rest-1.0
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-get-started
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/exchange/reference/admin-api-authentication
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/mailbox-import-export-concept-overview
+  - type: Reference
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/mailbox-import-export-api-overview?view=graph-rest-beta
 common:
   - type: AgenticAccess
     url: agentic-access/microsoft-exchange-agentic-access.yml
