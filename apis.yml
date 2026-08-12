@@ -805,6 +805,8 @@ apis:
     url: >-
       https://learn.microsoft.com/en-us/graph/api/resources/mailbox-import-export-api-overview?view=graph-rest-beta
 common:
+  - type: Overlay
+    url: overlays/microsoft-exchange-admin-api-overlay.yaml
   - type: AgenticAccess
     url: agentic-access/microsoft-exchange-agentic-access.yml
   - type: VulnerabilityDisclosure
