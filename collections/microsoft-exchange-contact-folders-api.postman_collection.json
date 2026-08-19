@@ -1,0 +1,2191 @@
+{
+  "item": [
+    {
+      "id": "d0224a11-beae-4e49-98bd-0e4633613005",
+      "name": "Contact Folders",
+      "description": {
+        "content": "Operations for managing contact folders",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4616e893-90ee-47a5-8384-7f0f4fc376a6",
+          "name": "Microsoft Exchange List contact folders",
+          "request": {
+            "name": "Microsoft Exchange List contact folders",
+            "description": {
+              "content": "Get the contact folder collection in the default contacts folder of the signed-in user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "contactFolders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "The number of items to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "The number of items to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9b96931c-ef8e-4998-ae2f-c025360b4dac",
+              "name": "Successfully retrieved contact folders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contactFolders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.context\": \"string\",\n  \"@odata.nextLink\": \"http://huzIaWByftVl.nyY59YWTwX.8DmuWOI1JBuZEOfWy3csNspRWAbZAYDNQB9\",\n  \"value\": [\n    {\n      \"id\": \"string\",\n      \"displayName\": \"string\",\n      \"parentFolderId\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"displayName\": \"string\",\n      \"parentFolderId\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "23695078-858d-448f-ae82-d80d8afe7719",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contactFolders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"2000-12-20T11:42:04.113Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3ef7e3e3-9283-4937-8b0b-e91856d71128",
+          "name": "Microsoft Exchange Create contact folder",
+          "request": {
+            "name": "Microsoft Exchange Create contact folder",
+            "description": {
+              "content": "Create a new contact folder as a child of a specified folder or as a top-level folder.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "contactFolders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"displayName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "da58a973-88e8-4c37-819c-e07b7d983cd5",
+              "name": "Successfully created contact folder",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contactFolders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"displayName\": \"string\",\n  \"parentFolderId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e887ca3-442f-4c83-adc9-e0e79061b5ad",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contactFolders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"2000-12-20T11:42:04.113Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "99a7630b-0a98-41bd-a0c3-49c7269cd2e9",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contactFolders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"2000-12-20T11:42:04.113Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b961e25a-c325-4b59-9dc3-ee5ac6fad8c8",
+          "name": "Microsoft Exchange Get contact folder",
+          "request": {
+            "name": "Microsoft Exchange Get contact folder",
+            "description": {
+              "content": "Get a contact folder by using the contact folder ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "contactFolders",
+                ":contactFolder-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contactFolder-id",
+                  "description": "(Required) The unique identifier of the contact folder"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "47141937-cfd6-4fec-aaf0-1c779712dd85",
+              "name": "Successfully retrieved contact folder",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contactFolders",
+                    ":contactFolder-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactFolder-id",
+                      "description": "(Required) The unique identifier of the contact folder"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"displayName\": \"string\",\n  \"parentFolderId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54f6ae1e-da35-4294-a857-e0625b1ad0fe",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contactFolders",
+                    ":contactFolder-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactFolder-id",
+                      "description": "(Required) The unique identifier of the contact folder"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"2000-12-20T11:42:04.113Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7beb4670-744b-47a0-8499-9118ffdc53b5",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contactFolders",
+                    ":contactFolder-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactFolder-id",
+                      "description": "(Required) The unique identifier of the contact folder"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"2000-12-20T11:42:04.113Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6c0b1d18-63e1-4cae-bdc7-7d9ec28c41fc",
+          "name": "Microsoft Exchange Update contact folder",
+          "request": {
+            "name": "Microsoft Exchange Update contact folder",
+            "description": {
+              "content": "Update the properties of a contact folder object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "contactFolders",
+                ":contactFolder-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contactFolder-id",
+                  "description": "(Required) The unique identifier of the contact folder"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"displayName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5dad1666-a82e-412d-bfd3-0d451710a1a4",
+              "name": "Successfully updated contact folder",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contactFolders",
+                    ":contactFolder-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactFolder-id",
+                      "description": "(Required) The unique identifier of the contact folder"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"displayName\": \"string\",\n  \"parentFolderId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b8e10528-bf44-4051-ade3-1830f18e847f",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contactFolders",
+                    ":contactFolder-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactFolder-id",
+                      "description": "(Required) The unique identifier of the contact folder"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"2000-12-20T11:42:04.113Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "685b8953-8f29-40a1-b449-ab0a83327108",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contactFolders",
+                    ":contactFolder-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactFolder-id",
+                      "description": "(Required) The unique identifier of the contact folder"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"2000-12-20T11:42:04.113Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "85fe704e-7e0e-4c96-ba82-f52ebf000d2d",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contactFolders",
+                    ":contactFolder-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactFolder-id",
+                      "description": "(Required) The unique identifier of the contact folder"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"2000-12-20T11:42:04.113Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1b7ac700-1ef7-48d7-9b8b-0115297a0e84",
+          "name": "Microsoft Exchange Delete contact folder",
+          "request": {
+            "name": "Microsoft Exchange Delete contact folder",
+            "description": {
+              "content": "Delete a contact folder. The folder is moved to the Deleted Items folder.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "contactFolders",
+                ":contactFolder-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contactFolder-id",
+                  "description": "(Required) The unique identifier of the contact folder"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "55793f53-9e6a-4026-b283-d7bb54090b52",
+              "name": "Successfully deleted contact folder",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contactFolders",
+                    ":contactFolder-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactFolder-id",
+                      "description": "(Required) The unique identifier of the contact folder"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e6364f23-d13f-409b-8701-ad4c9fbe416e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contactFolders",
+                    ":contactFolder-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactFolder-id",
+                      "description": "(Required) The unique identifier of the contact folder"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"2000-12-20T11:42:04.113Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d8acd76d-54fc-4591-a2ef-c3d8c500e653",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contactFolders",
+                    ":contactFolder-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactFolder-id",
+                      "description": "(Required) The unique identifier of the contact folder"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"2000-12-20T11:42:04.113Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "42aeef02-62c0-471d-9fc9-488b47f7717b",
+          "name": "Microsoft Exchange List contacts in folder",
+          "request": {
+            "name": "Microsoft Exchange List contacts in folder",
+            "description": {
+              "content": "Get a contact collection from the specified contact folder.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "contactFolders",
+                ":contactFolder-id",
+                "contacts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "The number of items to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "The number of items to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include"
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to sort by"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contactFolder-id",
+                  "description": "(Required) The unique identifier of the contact folder"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9e8800e5-e2e0-4b6f-9656-abd93a6a3eff",
+              "name": "Successfully retrieved contacts in folder",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contactFolders",
+                    ":contactFolder-id",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactFolder-id",
+                      "description": "(Required) The unique identifier of the contact folder"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.context\": \"string\",\n  \"@odata.nextLink\": \"https://NrGw.jixE-pBielFJ\",\n  \"value\": [\n    {\n      \"id\": \"string\",\n      \"displayName\": \"string\",\n      \"givenName\": \"string\",\n      \"surname\": \"string\",\n      \"middleName\": \"string\",\n      \"nickName\": \"string\",\n      \"title\": \"string\",\n      \"initials\": \"string\",\n      \"generation\": \"string\",\n      \"emailAddresses\": [\n        {\n          \"name\": \"string\",\n          \"address\": \"uhjb1wA@qfEVWVbNqDrtLlUKxEAVcSpUqD.phvw\"\n        },\n        {\n          \"name\": \"string\",\n          \"address\": \"zMgFs4Nul@hPqBBbiyEjraabcbjremMFKqSMFHKCF.rabt\"\n        }\n      ],\n      \"businessPhones\": [\n        \"string\",\n        \"string\"\n      ],\n      \"homePhones\": [\n        \"string\",\n        \"string\"\n      ],\n      \"mobilePhone\": \"string\",\n      \"imAddresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"jobTitle\": \"string\",\n      \"companyName\": \"string\",\n      \"department\": \"string\",\n      \"officeLocation\": \"string\",\n      \"profession\": \"string\",\n      \"manager\": \"string\",\n      \"assistantName\": \"string\",\n      \"businessHomePage\": \"string\",\n      \"businessAddress\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"countryOrRegion\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"homeAddress\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"countryOrRegion\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"otherAddress\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"countryOrRegion\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"spouseName\": \"string\",\n      \"birthday\": \"2001-02-13T10:49:33.229Z\",\n      \"children\": [\n        \"string\",\n        \"string\"\n      ],\n      \"personalNotes\": \"string\",\n      \"fileAs\": \"string\",\n      \"categories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"parentFolderId\": \"string\",\n      \"changeKey\": \"string\",\n      \"createdDateTime\": \"1986-03-12T15:23:26.267Z\",\n      \"lastModifiedDateTime\": \"1958-07-20T01:41:45.885Z\",\n      \"yomiGivenName\": \"string\",\n      \"yomiSurname\": \"string\",\n      \"yomiCompanyName\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"displayName\": \"string\",\n      \"givenName\": \"string\",\n      \"surname\": \"string\",\n      \"middleName\": \"string\",\n      \"nickName\": \"string\",\n      \"title\": \"string\",\n      \"initials\": \"string\",\n      \"generation\": \"string\",\n      \"emailAddresses\": [\n        {\n          \"name\": \"string\",\n          \"address\": \"kynpZI@kMZINnTnpERslajUkKCCBo.kwcm\"\n        },\n        {\n          \"name\": \"string\",\n          \"address\": \"SxCdk2PvmY4@KxjlCpcasVCLPhzaMmlYaCfIEPxbJK.kmx\"\n        }\n      ],\n      \"businessPhones\": [\n        \"string\",\n        \"string\"\n      ],\n      \"homePhones\": [\n        \"string\",\n        \"string\"\n      ],\n      \"mobilePhone\": \"string\",\n      \"imAddresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"jobTitle\": \"string\",\n      \"companyName\": \"string\",\n      \"department\": \"string\",\n      \"officeLocation\": \"string\",\n      \"profession\": \"string\",\n      \"manager\": \"string\",\n      \"assistantName\": \"string\",\n      \"businessHomePage\": \"string\",\n      \"businessAddress\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"countryOrRegion\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"homeAddress\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"countryOrRegion\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"otherAddress\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"countryOrRegion\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"spouseName\": \"string\",\n      \"birthday\": \"1980-09-01T02:26:31.584Z\",\n      \"children\": [\n        \"string\",\n        \"string\"\n      ],\n      \"personalNotes\": \"string\",\n      \"fileAs\": \"string\",\n      \"categories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"parentFolderId\": \"string\",\n      \"changeKey\": \"string\",\n      \"createdDateTime\": \"2016-01-30T20:53:15.671Z\",\n      \"lastModifiedDateTime\": \"1972-04-26T07:40:00.664Z\",\n      \"yomiGivenName\": \"string\",\n      \"yomiSurname\": \"string\",\n      \"yomiCompanyName\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a57219cf-f505-4f6c-9a6b-1097ae51e488",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contactFolders",
+                    ":contactFolder-id",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactFolder-id",
+                      "description": "(Required) The unique identifier of the contact folder"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"2000-12-20T11:42:04.113Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5af73224-a6db-4812-bd7d-b5f96880ce94",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contactFolders",
+                    ":contactFolder-id",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactFolder-id",
+                      "description": "(Required) The unique identifier of the contact folder"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"2000-12-20T11:42:04.113Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "62576cc6-688c-439e-909b-51f80d0d5e2f",
+          "name": "Microsoft Exchange Create contact in folder",
+          "request": {
+            "name": "Microsoft Exchange Create contact in folder",
+            "description": {
+              "content": "Add a contact to the specified contact folder.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "contactFolders",
+                ":contactFolder-id",
+                "contacts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contactFolder-id",
+                  "description": "(Required) The unique identifier of the contact folder"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"displayName\": \"<string>\",\n  \"givenName\": \"<string>\",\n  \"surname\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"nickName\": \"<string>\",\n  \"title\": \"<string>\",\n  \"initials\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"emailAddresses\": [\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<email>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<email>\"\n    }\n  ],\n  \"businessPhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"homePhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mobilePhone\": \"<string>\",\n  \"imAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"jobTitle\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"department\": \"<string>\",\n  \"officeLocation\": \"<string>\",\n  \"profession\": \"<string>\",\n  \"manager\": \"<string>\",\n  \"assistantName\": \"<string>\",\n  \"businessHomePage\": \"<string>\",\n  \"businessAddress\": {\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"countryOrRegion\": \"<string>\",\n    \"postalCode\": \"<string>\"\n  },\n  \"homeAddress\": {\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"countryOrRegion\": \"<string>\",\n    \"postalCode\": \"<string>\"\n  },\n  \"otherAddress\": {\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"countryOrRegion\": \"<string>\",\n    \"postalCode\": \"<string>\"\n  },\n  \"spouseName\": \"<string>\",\n  \"birthday\": \"<dateTime>\",\n  \"children\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"personalNotes\": \"<string>\",\n  \"fileAs\": \"<string>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"yomiGivenName\": \"<string>\",\n  \"yomiSurname\": \"<string>\",\n  \"yomiCompanyName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "95b39da7-ca44-4312-864d-a042de6be02e",
+              "name": "Successfully created contact in folder",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contactFolders",
+                    ":contactFolder-id",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactFolder-id",
+                      "description": "(Required) The unique identifier of the contact folder"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"<string>\",\n  \"givenName\": \"<string>\",\n  \"surname\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"nickName\": \"<string>\",\n  \"title\": \"<string>\",\n  \"initials\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"emailAddresses\": [\n    {\n      \"name\": \"string\",\n      \"address\": \"wFlYV9h8vMy317o@nERtNyqreVHTgDrsbQ.lzoh\"\n    },\n    {\n      \"name\": \"string\",\n      \"address\": \"IhSb@qUZmMWsmKMOyRtN.kb\"\n    }\n  ],\n  \"businessPhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"homePhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mobilePhone\": \"<string>\",\n  \"imAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"jobTitle\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"department\": \"<string>\",\n  \"officeLocation\": \"<string>\",\n  \"profession\": \"<string>\",\n  \"manager\": \"<string>\",\n  \"assistantName\": \"<string>\",\n  \"businessHomePage\": \"<string>\",\n  \"businessAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"homeAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"otherAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"spouseName\": \"<string>\",\n  \"birthday\": \"<dateTime>\",\n  \"children\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"personalNotes\": \"<string>\",\n  \"fileAs\": \"<string>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"yomiGivenName\": \"<string>\",\n  \"yomiSurname\": \"<string>\",\n  \"yomiCompanyName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"displayName\": \"string\",\n  \"givenName\": \"string\",\n  \"surname\": \"string\",\n  \"middleName\": \"string\",\n  \"nickName\": \"string\",\n  \"title\": \"string\",\n  \"initials\": \"string\",\n  \"generation\": \"string\",\n  \"emailAddresses\": [\n    {\n      \"name\": \"string\",\n      \"address\": \"QaJy5olh642V0iM@ZPYsPBxYPMQIStEiadVWZs.ztc\"\n    },\n    {\n      \"name\": \"string\",\n      \"address\": \"2dKmgmttu4x@qluzMqyJOySCrg.ydcs\"\n    }\n  ],\n  \"businessPhones\": [\n    \"string\",\n    \"string\"\n  ],\n  \"homePhones\": [\n    \"string\",\n    \"string\"\n  ],\n  \"mobilePhone\": \"string\",\n  \"imAddresses\": [\n    \"string\",\n    \"string\"\n  ],\n  \"jobTitle\": \"string\",\n  \"companyName\": \"string\",\n  \"department\": \"string\",\n  \"officeLocation\": \"string\",\n  \"profession\": \"string\",\n  \"manager\": \"string\",\n  \"assistantName\": \"string\",\n  \"businessHomePage\": \"string\",\n  \"businessAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"homeAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"otherAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"spouseName\": \"string\",\n  \"birthday\": \"2019-11-01T20:09:30.650Z\",\n  \"children\": [\n    \"string\",\n    \"string\"\n  ],\n  \"personalNotes\": \"string\",\n  \"fileAs\": \"string\",\n  \"categories\": [\n    \"string\",\n    \"string\"\n  ],\n  \"parentFolderId\": \"string\",\n  \"changeKey\": \"string\",\n  \"createdDateTime\": \"1952-04-01T14:57:11.030Z\",\n  \"lastModifiedDateTime\": \"1974-11-03T06:21:05.760Z\",\n  \"yomiGivenName\": \"string\",\n  \"yomiSurname\": \"string\",\n  \"yomiCompanyName\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c503fff-88dd-40fa-b76a-dd37d76dc16f",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contactFolders",
+                    ":contactFolder-id",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactFolder-id",
+                      "description": "(Required) The unique identifier of the contact folder"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"<string>\",\n  \"givenName\": \"<string>\",\n  \"surname\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"nickName\": \"<string>\",\n  \"title\": \"<string>\",\n  \"initials\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"emailAddresses\": [\n    {\n      \"name\": \"string\",\n      \"address\": \"wFlYV9h8vMy317o@nERtNyqreVHTgDrsbQ.lzoh\"\n    },\n    {\n      \"name\": \"string\",\n      \"address\": \"IhSb@qUZmMWsmKMOyRtN.kb\"\n    }\n  ],\n  \"businessPhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"homePhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mobilePhone\": \"<string>\",\n  \"imAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"jobTitle\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"department\": \"<string>\",\n  \"officeLocation\": \"<string>\",\n  \"profession\": \"<string>\",\n  \"manager\": \"<string>\",\n  \"assistantName\": \"<string>\",\n  \"businessHomePage\": \"<string>\",\n  \"businessAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"homeAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"otherAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"spouseName\": \"<string>\",\n  \"birthday\": \"<dateTime>\",\n  \"children\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"personalNotes\": \"<string>\",\n  \"fileAs\": \"<string>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"yomiGivenName\": \"<string>\",\n  \"yomiSurname\": \"<string>\",\n  \"yomiCompanyName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"2000-12-20T11:42:04.113Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cad310e1-2b62-4a5e-9086-15a1105dfe73",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contactFolders",
+                    ":contactFolder-id",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactFolder-id",
+                      "description": "(Required) The unique identifier of the contact folder"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"<string>\",\n  \"givenName\": \"<string>\",\n  \"surname\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"nickName\": \"<string>\",\n  \"title\": \"<string>\",\n  \"initials\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"emailAddresses\": [\n    {\n      \"name\": \"string\",\n      \"address\": \"wFlYV9h8vMy317o@nERtNyqreVHTgDrsbQ.lzoh\"\n    },\n    {\n      \"name\": \"string\",\n      \"address\": \"IhSb@qUZmMWsmKMOyRtN.kb\"\n    }\n  ],\n  \"businessPhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"homePhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mobilePhone\": \"<string>\",\n  \"imAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"jobTitle\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"department\": \"<string>\",\n  \"officeLocation\": \"<string>\",\n  \"profession\": \"<string>\",\n  \"manager\": \"<string>\",\n  \"assistantName\": \"<string>\",\n  \"businessHomePage\": \"<string>\",\n  \"businessAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"homeAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"otherAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"spouseName\": \"<string>\",\n  \"birthday\": \"<dateTime>\",\n  \"children\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"personalNotes\": \"<string>\",\n  \"fileAs\": \"<string>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"yomiGivenName\": \"<string>\",\n  \"yomiSurname\": \"<string>\",\n  \"yomiCompanyName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"2000-12-20T11:42:04.113Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8a8c65a5-1bec-4cc4-b4ac-86ab47dfc0eb",
+          "name": "Microsoft Exchange List child contact folders",
+          "request": {
+            "name": "Microsoft Exchange List child contact folders",
+            "description": {
+              "content": "Get a collection of child folders under the specified contact folder.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "contactFolders",
+                ":contactFolder-id",
+                "childFolders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "The number of items to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "The number of items to skip"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contactFolder-id",
+                  "description": "(Required) The unique identifier of the contact folder"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "da6ca26c-6e0c-4600-aab2-24670254ab95",
+              "name": "Successfully retrieved child folders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contactFolders",
+                    ":contactFolder-id",
+                    "childFolders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactFolder-id",
+                      "description": "(Required) The unique identifier of the contact folder"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.context\": \"string\",\n  \"@odata.nextLink\": \"http://huzIaWByftVl.nyY59YWTwX.8DmuWOI1JBuZEOfWy3csNspRWAbZAYDNQB9\",\n  \"value\": [\n    {\n      \"id\": \"string\",\n      \"displayName\": \"string\",\n      \"parentFolderId\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"displayName\": \"string\",\n      \"parentFolderId\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d5f6dc75-089a-4c1c-8e57-30fe5b2bc682",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contactFolders",
+                    ":contactFolder-id",
+                    "childFolders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactFolder-id",
+                      "description": "(Required) The unique identifier of the contact folder"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"2000-12-20T11:42:04.113Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e407f20f-54ab-45c2-9d9c-f397efd39ae2",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contactFolders",
+                    ":contactFolder-id",
+                    "childFolders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactFolder-id",
+                      "description": "(Required) The unique identifier of the contact folder"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"2000-12-20T11:42:04.113Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6e5c19be-d05d-4416-a3a5-04a07308cc22",
+          "name": "Microsoft Exchange Create child contact folder",
+          "request": {
+            "name": "Microsoft Exchange Create child contact folder",
+            "description": {
+              "content": "Create a new contact folder as a child of the specified folder.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "contactFolders",
+                ":contactFolder-id",
+                "childFolders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contactFolder-id",
+                  "description": "(Required) The unique identifier of the contact folder"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"displayName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "243c2214-55e4-4281-8c43-6ef81a25b483",
+              "name": "Successfully created child folder",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contactFolders",
+                    ":contactFolder-id",
+                    "childFolders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactFolder-id",
+                      "description": "(Required) The unique identifier of the contact folder"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"displayName\": \"string\",\n  \"parentFolderId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a5a8eb1a-bee2-475c-a2ed-59978da67b42",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contactFolders",
+                    ":contactFolder-id",
+                    "childFolders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactFolder-id",
+                      "description": "(Required) The unique identifier of the contact folder"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"2000-12-20T11:42:04.113Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1a683f2a-fd87-46a8-b9ba-2212fdacb870",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contactFolders",
+                    ":contactFolder-id",
+                    "childFolders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactFolder-id",
+                      "description": "(Required) The unique identifier of the contact folder"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"2000-12-20T11:42:04.113Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://outlook.office365.com/adminapi/v2.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://outlook.office365.com/.default"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7e655c59-b5ff-4ce6-95c8-66c3d03e42c0",
+    "name": "Microsoft Exchange Exchange Online Admin Accepted Domains Contact Folders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST-based administrative API that enables a focused set of Exchange cmdlets and parameters as POST-only endpoints. Provides access to key tasks previously available through Exchange Web Services (EWS), including organization configuration, accepted domains, mailbox properties, mailbox folder permissions, and distribution group membership. Built as a complementary REST-first surface for specific administrative tasks caused by the EWS deprecation planned for October 2026.\n\nContact Support:\n Name: Microsoft Support\n Email: support@microsoft.com",
+      "type": "text/plain"
+    }
+  }
+}

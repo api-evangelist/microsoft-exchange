@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Exchange Exchange Online Admin Accepted Domains Mailbox Import API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Mailbox Import",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Exchange Import item into folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://outlook.office365.com/adminapi/v2.0/users/:user-id/mailboxes/:mailbox-id/folders/:folder-id/items/import",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier or user principal name"
+              },
+              {
+                "name": "mailbox-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the mailbox"
+              },
+              {
+                "name": "folder-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the folder"
+              }
+            ]
+          },
+          "docs": "Import a full-fidelity item into the specified mailbox folder. Accepts MIME content and creates the item preserving all properties and metadata. Used for mailbox migration and content copying scenarios."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

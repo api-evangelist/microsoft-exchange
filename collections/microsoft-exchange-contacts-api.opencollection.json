@@ -1,0 +1,263 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Exchange Exchange Online Admin Accepted Domains Contacts API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Contacts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Exchange List contacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://outlook.office365.com/adminapi/v2.0/me/contacts",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to skip"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression"
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to sort by"
+              },
+              {
+                "name": "$search",
+                "value": "",
+                "type": "query",
+                "description": "Search string to filter results"
+              }
+            ]
+          },
+          "docs": "Get a contact collection from the default contacts folder of the signed-in user. Returns all contacts in the user's mailbox."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Create contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://outlook.office365.com/adminapi/v2.0/me/contacts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a contact to the root contacts folder or the contacts endpoint of another contact folder."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Get contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://outlook.office365.com/adminapi/v2.0/me/contacts/:contact-id",
+            "params": [
+              {
+                "name": "contact-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the contact"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include"
+              }
+            ]
+          },
+          "docs": "Read properties and relationships of a contact object."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Update contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://outlook.office365.com/adminapi/v2.0/me/contacts/:contact-id",
+            "params": [
+              {
+                "name": "contact-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the contact"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the properties of a contact object."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Delete contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://outlook.office365.com/adminapi/v2.0/me/contacts/:contact-id",
+            "params": [
+              {
+                "name": "contact-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the contact"
+              }
+            ]
+          },
+          "docs": "Delete a contact object. The contact is moved to the Deleted Items folder."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Get contact delta",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://outlook.office365.com/adminapi/v2.0/me/contacts/delta",
+            "params": [
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include"
+              },
+              {
+                "name": "$deltatoken",
+                "value": "",
+                "type": "query",
+                "description": "The delta token returned from a previous delta call"
+              },
+              {
+                "name": "$skiptoken",
+                "value": "",
+                "type": "query",
+                "description": "The skip token for paging through results"
+              }
+            ]
+          },
+          "docs": "Get a set of contacts that have been added, deleted, or updated in the user's mailbox. A delta function call for contacts is similar to a GET request, except that by applying state tokens, you can query for incremental changes."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange List contacts in folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://outlook.office365.com/adminapi/v2.0/me/contactFolders/:contactFolder-id/contacts",
+            "params": [
+              {
+                "name": "contactFolder-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the contact folder"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to skip"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include"
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression"
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to sort by"
+              }
+            ]
+          },
+          "docs": "Get a contact collection from the specified contact folder."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Create contact in folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://outlook.office365.com/adminapi/v2.0/me/contactFolders/:contactFolder-id/contacts",
+            "params": [
+              {
+                "name": "contactFolder-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the contact folder"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a contact to the specified contact folder."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

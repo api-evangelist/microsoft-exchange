@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Exchange Exchange Online Admin Accepted Domains Attachments API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Attachments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Exchange List message attachments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://outlook.office365.com/adminapi/v2.0/me/messages/:message-id/attachments",
+            "params": [
+              {
+                "name": "message-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the message"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of attachment objects attached to a message. Includes file attachments, item attachments, and reference attachments."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Add attachment to message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://outlook.office365.com/adminapi/v2.0/me/messages/:message-id/attachments",
+            "params": [
+              {
+                "name": "message-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the message"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a file, item, or reference attachment to a message. This operation limits the size of the attachment to 3 MB. For larger attachments, use the upload session approach."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

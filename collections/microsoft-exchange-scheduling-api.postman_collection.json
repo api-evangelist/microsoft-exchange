@@ -1,0 +1,674 @@
+{
+  "item": [
+    {
+      "id": "60a824e9-38d2-4a8b-a01a-7f3d2958aebb",
+      "name": "Scheduling",
+      "description": {
+        "content": "Operations for scheduling and free/busy information",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6f922172-9858-450a-8686-2c623e5949d3",
+          "name": "Microsoft Exchange List calendar view",
+          "request": {
+            "name": "Microsoft Exchange List calendar view",
+            "description": {
+              "content": "Get the occurrences, exceptions, and single instances of events in a calendar view defined by a time range, from the user's primary calendar. Recurring events are expanded into their occurrences within the time range.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "calendarView"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDateTime",
+                  "value": "<dateTime>",
+                  "description": "(Required) The start date and time of the time range in ISO 8601 format"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDateTime",
+                  "value": "<dateTime>",
+                  "description": "(Required) The end date and time of the time range in ISO 8601 format"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "The number of items to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "The number of items to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include in the response"
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9bf9c3e0-9e31-4b06-b688-68d934c76cb0",
+              "name": "Successfully retrieved calendar view",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendarView"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDateTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDateTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.context\": \"string\",\n  \"@odata.nextLink\": \"https://Dm.qseviL9nVBULeSUzbSx.b-MvBMT71mATFWjq\",\n  \"value\": [\n    {\n      \"id\": \"string\",\n      \"subject\": \"string\",\n      \"body\": {\n        \"contentType\": \"html\",\n        \"content\": \"string\"\n      },\n      \"bodyPreview\": \"string\",\n      \"start\": {\n        \"dateTime\": \"string\",\n        \"timeZone\": \"string\"\n      },\n      \"end\": {\n        \"dateTime\": \"string\",\n        \"timeZone\": \"string\"\n      },\n      \"location\": {\n        \"displayName\": \"string\",\n        \"locationType\": \"conferenceRoom\",\n        \"locationUri\": \"string\",\n        \"locationEmailAddress\": \"string\",\n        \"address\": {\n          \"street\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"string\",\n          \"countryOrRegion\": \"string\",\n          \"postalCode\": \"string\"\n        },\n        \"coordinates\": {\n          \"latitude\": 5591.956860719891,\n          \"longitude\": 7172.181216258574,\n          \"accuracy\": 3719.4391788595426,\n          \"altitude\": 8094.96574342558,\n          \"altitudeAccuracy\": 4711.428364974296\n        },\n        \"uniqueId\": \"string\",\n        \"uniqueIdType\": \"locationStore\"\n      },\n      \"locations\": [\n        {\n          \"displayName\": \"string\",\n          \"locationType\": \"localBusiness\",\n          \"locationUri\": \"string\",\n          \"locationEmailAddress\": \"string\",\n          \"address\": {\n            \"street\": \"string\",\n            \"city\": \"string\",\n            \"state\": \"string\",\n            \"countryOrRegion\": \"string\",\n            \"postalCode\": \"string\"\n          },\n          \"coordinates\": {\n            \"latitude\": 3852.7435916008167,\n            \"longitude\": 7978.479079455213,\n            \"accuracy\": 3888.8573948656303,\n            \"altitude\": 9512.609600685455,\n            \"altitudeAccuracy\": 7583.6326639923855\n          },\n          \"uniqueId\": \"string\",\n          \"uniqueIdType\": \"bing\"\n        },\n        {\n          \"displayName\": \"string\",\n          \"locationType\": \"hotel\",\n          \"locationUri\": \"string\",\n          \"locationEmailAddress\": \"string\",\n          \"address\": {\n            \"street\": \"string\",\n            \"city\": \"string\",\n            \"state\": \"string\",\n            \"countryOrRegion\": \"string\",\n            \"postalCode\": \"string\"\n          },\n          \"coordinates\": {\n            \"latitude\": 6025.2133232124015,\n            \"longitude\": 9529.98383676818,\n            \"accuracy\": 8874.84947493738,\n            \"altitude\": 151.03393826623068,\n            \"altitudeAccuracy\": 1714.6991937273738\n          },\n          \"uniqueId\": \"string\",\n          \"uniqueIdType\": \"unknown\"\n        }\n      ],\n      \"attendees\": [\n        {\n          \"emailAddress\": {\n            \"name\": \"string\",\n            \"address\": \"iDp@ObnFVzVIltnEaYbOLvCgdjMaO.gw\"\n          },\n          \"type\": \"resource\",\n          \"status\": {\n            \"response\": \"notResponded\",\n            \"time\": \"2017-09-03T11:38:26.155Z\"\n          },\n          \"proposedNewTime\": {\n            \"start\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"emailAddress\": {\n            \"name\": \"string\",\n            \"address\": \"oAW7N@tBtUSTzHvLgMCuDXVOJb.sq\"\n          },\n          \"type\": \"required\",\n          \"status\": {\n            \"response\": \"declined\",\n            \"time\": \"1995-06-29T14:03:41.702Z\"\n          },\n          \"proposedNewTime\": {\n            \"start\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"organizer\": {\n        \"emailAddress\": {\n          \"name\": \"string\",\n          \"address\": \"umoYz2hY@OdPcLumgGDyxhzM.zyc\"\n        }\n      },\n      \"isAllDay\": false,\n      \"isCancelled\": false,\n      \"isDraft\": false,\n      \"isOnlineMeeting\": true,\n      \"isOrganizer\": false,\n      \"isReminderOn\": false,\n      \"onlineMeeting\": {\n        \"joinUrl\": \"https://qaLPnUtr.cqvxy66qOEiQ1ehQDl+pUhQiK6L8kLCDMqQv2posAFBHAD5M1YYNE4n-IK6sBWPg4.lS8KRLb,5RL\",\n        \"conferenceId\": \"string\",\n        \"tollNumber\": \"string\",\n        \"tollFreeNumbers\": [\n          \"string\",\n          \"string\"\n        ],\n        \"quickDial\": \"string\",\n        \"phones\": [\n          {\n            \"number\": \"string\",\n            \"type\": \"mobile\"\n          },\n          {\n            \"number\": \"string\",\n            \"type\": \"other\"\n          }\n        ]\n      },\n      \"onlineMeetingProvider\": \"skypeForConsumer\",\n      \"onlineMeetingUrl\": \"string\",\n      \"recurrence\": {\n        \"pattern\": {\n          \"type\": \"relativeMonthly\",\n          \"interval\": 8391,\n          \"month\": 4950,\n          \"dayOfMonth\": 1462,\n          \"daysOfWeek\": [\n            \"thursday\",\n            \"tuesday\"\n          ],\n          \"firstDayOfWeek\": \"friday\",\n          \"index\": \"third\"\n        },\n        \"range\": {\n          \"type\": \"numbered\",\n          \"startDate\": \"2018-12-20\",\n          \"endDate\": \"2009-08-29\",\n          \"recurrenceTimeZone\": \"string\",\n          \"numberOfOccurrences\": 4611\n        }\n      },\n      \"reminderMinutesBeforeStart\": 972,\n      \"responseRequested\": false,\n      \"responseStatus\": {\n        \"response\": \"none\",\n        \"time\": \"2007-11-09T14:29:01.589Z\"\n      },\n      \"sensitivity\": \"confidential\",\n      \"seriesMasterId\": \"string\",\n      \"showAs\": \"unknown\",\n      \"type\": \"exception\",\n      \"importance\": \"low\",\n      \"hasAttachments\": false,\n      \"categories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"allowNewTimeProposals\": false,\n      \"iCalUId\": \"string\",\n      \"changeKey\": \"string\",\n      \"createdDateTime\": \"2016-04-07T10:06:56.589Z\",\n      \"lastModifiedDateTime\": \"2013-12-24T01:34:55.304Z\",\n      \"webLink\": \"http://wgmPWOs.qpguFu8E-W1G-\",\n      \"transactionId\": \"string\",\n      \"hideAttendees\": true,\n      \"originalStartTimeZone\": \"string\",\n      \"originalEndTimeZone\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"subject\": \"string\",\n      \"body\": {\n        \"contentType\": \"text\",\n        \"content\": \"string\"\n      },\n      \"bodyPreview\": \"string\",\n      \"start\": {\n        \"dateTime\": \"string\",\n        \"timeZone\": \"string\"\n      },\n      \"end\": {\n        \"dateTime\": \"string\",\n        \"timeZone\": \"string\"\n      },\n      \"location\": {\n        \"displayName\": \"string\",\n        \"locationType\": \"localBusiness\",\n        \"locationUri\": \"string\",\n        \"locationEmailAddress\": \"string\",\n        \"address\": {\n          \"street\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"string\",\n          \"countryOrRegion\": \"string\",\n          \"postalCode\": \"string\"\n        },\n        \"coordinates\": {\n          \"latitude\": 9422.80668768293,\n          \"longitude\": 2986.5389939480046,\n          \"accuracy\": 8950.669404493901,\n          \"altitude\": 9283.437176117022,\n          \"altitudeAccuracy\": 3088.021485159167\n        },\n        \"uniqueId\": \"string\",\n        \"uniqueIdType\": \"bing\"\n      },\n      \"locations\": [\n        {\n          \"displayName\": \"string\",\n          \"locationType\": \"restaurant\",\n          \"locationUri\": \"string\",\n          \"locationEmailAddress\": \"string\",\n          \"address\": {\n            \"street\": \"string\",\n            \"city\": \"string\",\n            \"state\": \"string\",\n            \"countryOrRegion\": \"string\",\n            \"postalCode\": \"string\"\n          },\n          \"coordinates\": {\n            \"latitude\": 447.634317829928,\n            \"longitude\": 8752.749720081832,\n            \"accuracy\": 5725.968024817884,\n            \"altitude\": 9823.55347581263,\n            \"altitudeAccuracy\": 9120.489651770695\n          },\n          \"uniqueId\": \"string\",\n          \"uniqueIdType\": \"directory\"\n        },\n        {\n          \"displayName\": \"string\",\n          \"locationType\": \"postalAddress\",\n          \"locationUri\": \"string\",\n          \"locationEmailAddress\": \"string\",\n          \"address\": {\n            \"street\": \"string\",\n            \"city\": \"string\",\n            \"state\": \"string\",\n            \"countryOrRegion\": \"string\",\n            \"postalCode\": \"string\"\n          },\n          \"coordinates\": {\n            \"latitude\": 7443.558756837199,\n            \"longitude\": 3431.285137676815,\n            \"accuracy\": 3318.3708761391063,\n            \"altitude\": 7858.817252192844,\n            \"altitudeAccuracy\": 3803.4325119770897\n          },\n          \"uniqueId\": \"string\",\n          \"uniqueIdType\": \"directory\"\n        }\n      ],\n      \"attendees\": [\n        {\n          \"emailAddress\": {\n            \"name\": \"string\",\n            \"address\": \"Mv50JeOXgGCeH@njuWLXnEdjzAEIgyBeYmIyuNc.qmbv\"\n          },\n          \"type\": \"required\",\n          \"status\": {\n            \"response\": \"none\",\n            \"time\": \"2002-04-06T22:46:36.590Z\"\n          },\n          \"proposedNewTime\": {\n            \"start\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"emailAddress\": {\n            \"name\": \"string\",\n            \"address\": \"d8vEmMXeMc@mssMitthexMYkaWEsbCnRWzZ.kv\"\n          },\n          \"type\": \"required\",\n          \"status\": {\n            \"response\": \"none\",\n            \"time\": \"1968-02-17T11:56:17.942Z\"\n          },\n          \"proposedNewTime\": {\n            \"start\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"organizer\": {\n        \"emailAddress\": {\n          \"name\": \"string\",\n          \"address\": \"pROciUiM@uVqLXsDOpSCgr.cq\"\n        }\n      },\n      \"isAllDay\": true,\n      \"isCancelled\": true,\n      \"isDraft\": false,\n      \"isOnlineMeeting\": true,\n      \"isOrganizer\": false,\n      \"isReminderOn\": false,\n      \"onlineMeeting\": {\n        \"joinUrl\": \"http://jTrxJFAXRmLtkKUfyUEzhX.pzni3ykheqRbVxwd2bMbk45KSO.9QHjZ6nnxbjUySjzJEK,yGkwv47BE+VsWSj6deUR02Kq5XSb0\",\n        \"conferenceId\": \"string\",\n        \"tollNumber\": \"string\",\n        \"tollFreeNumbers\": [\n          \"string\",\n          \"string\"\n        ],\n        \"quickDial\": \"string\",\n        \"phones\": [\n          {\n            \"number\": \"string\",\n            \"type\": \"other\"\n          },\n          {\n            \"number\": \"string\",\n            \"type\": \"other\"\n          }\n        ]\n      },\n      \"onlineMeetingProvider\": \"teamsForBusiness\",\n      \"onlineMeetingUrl\": \"string\",\n      \"recurrence\": {\n        \"pattern\": {\n          \"type\": \"daily\",\n          \"interval\": 8234,\n          \"month\": 2888,\n          \"dayOfMonth\": 5288,\n          \"daysOfWeek\": [\n            \"thursday\",\n            \"tuesday\"\n          ],\n          \"firstDayOfWeek\": \"monday\",\n          \"index\": \"last\"\n        },\n        \"range\": {\n          \"type\": \"numbered\",\n          \"startDate\": \"1990-01-03\",\n          \"endDate\": \"1971-12-17\",\n          \"recurrenceTimeZone\": \"string\",\n          \"numberOfOccurrences\": 8846\n        }\n      },\n      \"reminderMinutesBeforeStart\": 6550,\n      \"responseRequested\": false,\n      \"responseStatus\": {\n        \"response\": \"notResponded\",\n        \"time\": \"1984-06-19T19:32:52.694Z\"\n      },\n      \"sensitivity\": \"personal\",\n      \"seriesMasterId\": \"string\",\n      \"showAs\": \"unknown\",\n      \"type\": \"exception\",\n      \"importance\": \"high\",\n      \"hasAttachments\": false,\n      \"categories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"allowNewTimeProposals\": false,\n      \"iCalUId\": \"string\",\n      \"changeKey\": \"string\",\n      \"createdDateTime\": \"1995-12-30T07:08:12.343Z\",\n      \"lastModifiedDateTime\": \"1979-01-10T16:59:08.404Z\",\n      \"webLink\": \"https://iihquvpDonVqjUHascbAqzUdSx.doiAKgoFnI9f\",\n      \"transactionId\": \"string\",\n      \"hideAttendees\": true,\n      \"originalStartTimeZone\": \"string\",\n      \"originalEndTimeZone\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "91fec810-3958-4341-93b1-ce8bec55a580",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendarView"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDateTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDateTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"1960-11-15T14:26:42.992Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4a7607aa-e4dc-4d4e-a341-bca6b7a8db81",
+          "name": "Microsoft Exchange Get free/busy schedule",
+          "request": {
+            "name": "Microsoft Exchange Get free/busy schedule",
+            "description": {
+              "content": "Get the free/busy availability information for a collection of users, distribution lists, or resources for a specified time period.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "calendar",
+                "getSchedule"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"schedules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"startTime\": {\n    \"dateTime\": \"<string>\",\n    \"timeZone\": \"<string>\"\n  },\n  \"endTime\": {\n    \"dateTime\": \"<string>\",\n    \"timeZone\": \"<string>\"\n  },\n  \"availabilityViewInterval\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e2fcddb9-e6ac-463a-974f-e5d710df34cf",
+              "name": "Successfully retrieved schedule information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendar",
+                    "getSchedule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"schedules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"startTime\": {\n    \"dateTime\": \"string\",\n    \"timeZone\": \"string\"\n  },\n  \"endTime\": {\n    \"dateTime\": \"string\",\n    \"timeZone\": \"string\"\n  },\n  \"availabilityViewInterval\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.context\": \"string\",\n  \"value\": [\n    {\n      \"scheduleId\": \"string\",\n      \"availabilityView\": \"string\",\n      \"scheduleItems\": [\n        {\n          \"start\": {\n            \"dateTime\": \"string\",\n            \"timeZone\": \"string\"\n          },\n          \"end\": {\n            \"dateTime\": \"string\",\n            \"timeZone\": \"string\"\n          },\n          \"isPrivate\": true,\n          \"status\": \"free\",\n          \"subject\": \"string\",\n          \"location\": \"string\"\n        },\n        {\n          \"start\": {\n            \"dateTime\": \"string\",\n            \"timeZone\": \"string\"\n          },\n          \"end\": {\n            \"dateTime\": \"string\",\n            \"timeZone\": \"string\"\n          },\n          \"isPrivate\": false,\n          \"status\": \"free\",\n          \"subject\": \"string\",\n          \"location\": \"string\"\n        }\n      ],\n      \"workingHours\": {\n        \"daysOfWeek\": [\n          \"sunday\",\n          \"sunday\"\n        ],\n        \"startTime\": \"string\",\n        \"endTime\": \"string\",\n        \"timeZone\": {\n          \"name\": \"string\"\n        }\n      },\n      \"error\": {\n        \"message\": \"string\",\n        \"responseCode\": \"string\"\n      }\n    },\n    {\n      \"scheduleId\": \"string\",\n      \"availabilityView\": \"string\",\n      \"scheduleItems\": [\n        {\n          \"start\": {\n            \"dateTime\": \"string\",\n            \"timeZone\": \"string\"\n          },\n          \"end\": {\n            \"dateTime\": \"string\",\n            \"timeZone\": \"string\"\n          },\n          \"isPrivate\": false,\n          \"status\": \"workingElsewhere\",\n          \"subject\": \"string\",\n          \"location\": \"string\"\n        },\n        {\n          \"start\": {\n            \"dateTime\": \"string\",\n            \"timeZone\": \"string\"\n          },\n          \"end\": {\n            \"dateTime\": \"string\",\n            \"timeZone\": \"string\"\n          },\n          \"isPrivate\": true,\n          \"status\": \"tentative\",\n          \"subject\": \"string\",\n          \"location\": \"string\"\n        }\n      ],\n      \"workingHours\": {\n        \"daysOfWeek\": [\n          \"saturday\",\n          \"monday\"\n        ],\n        \"startTime\": \"string\",\n        \"endTime\": \"string\",\n        \"timeZone\": {\n          \"name\": \"string\"\n        }\n      },\n      \"error\": {\n        \"message\": \"string\",\n        \"responseCode\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "42cd618b-0296-4363-98d4-b326012d094e",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendar",
+                    "getSchedule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"schedules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"startTime\": {\n    \"dateTime\": \"string\",\n    \"timeZone\": \"string\"\n  },\n  \"endTime\": {\n    \"dateTime\": \"string\",\n    \"timeZone\": \"string\"\n  },\n  \"availabilityViewInterval\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"1960-11-15T14:26:42.992Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0837b928-c6e7-4097-b2bd-d7f9364abd7f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendar",
+                    "getSchedule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"schedules\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"startTime\": {\n    \"dateTime\": \"string\",\n    \"timeZone\": \"string\"\n  },\n  \"endTime\": {\n    \"dateTime\": \"string\",\n    \"timeZone\": \"string\"\n  },\n  \"availabilityViewInterval\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"1960-11-15T14:26:42.992Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "29a57b51-e23b-47d3-84f2-27eef711ee84",
+          "name": "Microsoft Exchange Find meeting times",
+          "request": {
+            "name": "Microsoft Exchange Find meeting times",
+            "description": {
+              "content": "Suggest meeting times and locations based on organizer and attendee availability, and time or location constraints specified as parameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "findMeetingTimes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"attendees\": [\n    {\n      \"emailAddress\": {\n        \"name\": \"<string>\",\n        \"address\": \"<email>\"\n      },\n      \"type\": \"<string>\"\n    },\n    {\n      \"emailAddress\": {\n        \"name\": \"<string>\",\n        \"address\": \"<email>\"\n      },\n      \"type\": \"<string>\"\n    }\n  ],\n  \"timeConstraint\": {\n    \"activityDomain\": \"<string>\",\n    \"timeSlots\": [\n      {\n        \"start\": {\n          \"dateTime\": \"<string>\",\n          \"timeZone\": \"<string>\"\n        },\n        \"end\": {\n          \"dateTime\": \"<string>\",\n          \"timeZone\": \"<string>\"\n        }\n      },\n      {\n        \"start\": {\n          \"dateTime\": \"<string>\",\n          \"timeZone\": \"<string>\"\n        },\n        \"end\": {\n          \"dateTime\": \"<string>\",\n          \"timeZone\": \"<string>\"\n        }\n      }\n    ]\n  },\n  \"locationConstraint\": {\n    \"isRequired\": \"<boolean>\",\n    \"suggestLocation\": \"<boolean>\",\n    \"locations\": [\n      {\n        \"displayName\": \"<string>\",\n        \"locationEmailAddress\": \"<string>\",\n        \"resolveAvailability\": \"<boolean>\"\n      },\n      {\n        \"displayName\": \"<string>\",\n        \"locationEmailAddress\": \"<string>\",\n        \"resolveAvailability\": \"<boolean>\"\n      }\n    ]\n  },\n  \"meetingDuration\": \"<string>\",\n  \"maxCandidates\": \"<integer>\",\n  \"isOrganizerOptional\": \"<boolean>\",\n  \"returnSuggestionReasons\": \"<boolean>\",\n  \"minimumAttendeePercentage\": \"<double>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3dff1b7c-86e4-4214-bad8-eef635f96b25",
+              "name": "Successfully found meeting times",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "findMeetingTimes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"attendees\": [\n    {\n      \"emailAddress\": {\n        \"name\": \"string\",\n        \"address\": \"I6IkDCe@DDyb.pnh\"\n      },\n      \"type\": \"required\"\n    },\n    {\n      \"emailAddress\": {\n        \"name\": \"string\",\n        \"address\": \"SozKL@HLMK.xd\"\n      },\n      \"type\": \"required\"\n    }\n  ],\n  \"timeConstraint\": {\n    \"activityDomain\": \"personal\",\n    \"timeSlots\": [\n      {\n        \"start\": {\n          \"dateTime\": \"string\",\n          \"timeZone\": \"string\"\n        },\n        \"end\": {\n          \"dateTime\": \"string\",\n          \"timeZone\": \"string\"\n        }\n      },\n      {\n        \"start\": {\n          \"dateTime\": \"string\",\n          \"timeZone\": \"string\"\n        },\n        \"end\": {\n          \"dateTime\": \"string\",\n          \"timeZone\": \"string\"\n        }\n      }\n    ]\n  },\n  \"locationConstraint\": {\n    \"isRequired\": true,\n    \"suggestLocation\": false,\n    \"locations\": [\n      {\n        \"displayName\": \"string\",\n        \"locationEmailAddress\": \"string\",\n        \"resolveAvailability\": true\n      },\n      {\n        \"displayName\": \"string\",\n        \"locationEmailAddress\": \"string\",\n        \"resolveAvailability\": false\n      }\n    ]\n  },\n  \"meetingDuration\": \"<string>\",\n  \"maxCandidates\": \"<integer>\",\n  \"isOrganizerOptional\": \"<boolean>\",\n  \"returnSuggestionReasons\": \"<boolean>\",\n  \"minimumAttendeePercentage\": \"<double>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.context\": \"string\",\n  \"emptySuggestionsReason\": \"string\",\n  \"meetingTimeSuggestions\": [\n    {\n      \"confidence\": 5841.978106564604,\n      \"meetingTimeSlot\": {\n        \"start\": {\n          \"dateTime\": \"string\",\n          \"timeZone\": \"string\"\n        },\n        \"end\": {\n          \"dateTime\": \"string\",\n          \"timeZone\": \"string\"\n        }\n      },\n      \"organizerAvailability\": \"free\",\n      \"attendeeAvailability\": [\n        {\n          \"attendee\": {\n            \"emailAddress\": {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"address\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"type\": \"required\"\n          },\n          \"availability\": \"string\"\n        },\n        {\n          \"attendee\": {\n            \"emailAddress\": {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"address\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"type\": \"required\"\n          },\n          \"availability\": \"string\"\n        }\n      ],\n      \"locations\": [\n        {\n          \"displayName\": \"string\",\n          \"locationType\": \"default\",\n          \"locationUri\": \"string\",\n          \"locationEmailAddress\": \"string\",\n          \"address\": {\n            \"street\": \"string\",\n            \"city\": \"string\",\n            \"state\": \"string\",\n            \"countryOrRegion\": \"string\",\n            \"postalCode\": \"string\"\n          },\n          \"coordinates\": {\n            \"latitude\": 5325.167731228388,\n            \"longitude\": 6669.489828673979,\n            \"accuracy\": 524.9624406410225,\n            \"altitude\": 3518.3252867865613,\n            \"altitudeAccuracy\": 4781.756819735926\n          },\n          \"uniqueId\": \"string\",\n          \"uniqueIdType\": \"directory\"\n        },\n        {\n          \"displayName\": \"string\",\n          \"locationType\": \"geoCoordinates\",\n          \"locationUri\": \"string\",\n          \"locationEmailAddress\": \"string\",\n          \"address\": {\n            \"street\": \"string\",\n            \"city\": \"string\",\n            \"state\": \"string\",\n            \"countryOrRegion\": \"string\",\n            \"postalCode\": \"string\"\n          },\n          \"coordinates\": {\n            \"latitude\": 2181.542380717678,\n            \"longitude\": 3576.8100076529363,\n            \"accuracy\": 7118.597284824221,\n            \"altitude\": 4020.9578921097686,\n            \"altitudeAccuracy\": 3456.7348047341075\n          },\n          \"uniqueId\": \"string\",\n          \"uniqueIdType\": \"directory\"\n        }\n      ],\n      \"suggestionReason\": \"string\",\n      \"order\": 2803\n    },\n    {\n      \"confidence\": 5095.313322978724,\n      \"meetingTimeSlot\": {\n        \"start\": {\n          \"dateTime\": \"string\",\n          \"timeZone\": \"string\"\n        },\n        \"end\": {\n          \"dateTime\": \"string\",\n          \"timeZone\": \"string\"\n        }\n      },\n      \"organizerAvailability\": \"oof\",\n      \"attendeeAvailability\": [\n        {\n          \"attendee\": {\n            \"emailAddress\": {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"address\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"type\": \"resource\"\n          },\n          \"availability\": \"string\"\n        },\n        {\n          \"attendee\": {\n            \"emailAddress\": {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"address\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"type\": \"optional\"\n          },\n          \"availability\": \"string\"\n        }\n      ],\n      \"locations\": [\n        {\n          \"displayName\": \"string\",\n          \"locationType\": \"default\",\n          \"locationUri\": \"string\",\n          \"locationEmailAddress\": \"string\",\n          \"address\": {\n            \"street\": \"string\",\n            \"city\": \"string\",\n            \"state\": \"string\",\n            \"countryOrRegion\": \"string\",\n            \"postalCode\": \"string\"\n          },\n          \"coordinates\": {\n            \"latitude\": 9750.225538838067,\n            \"longitude\": 6907.8184298582555,\n            \"accuracy\": 5216.070557841743,\n            \"altitude\": 8679.509322316191,\n            \"altitudeAccuracy\": 9761.84530971272\n          },\n          \"uniqueId\": \"string\",\n          \"uniqueIdType\": \"directory\"\n        },\n        {\n          \"displayName\": \"string\",\n          \"locationType\": \"hotel\",\n          \"locationUri\": \"string\",\n          \"locationEmailAddress\": \"string\",\n          \"address\": {\n            \"street\": \"string\",\n            \"city\": \"string\",\n            \"state\": \"string\",\n            \"countryOrRegion\": \"string\",\n            \"postalCode\": \"string\"\n          },\n          \"coordinates\": {\n            \"latitude\": 3332.1731338876248,\n            \"longitude\": 1745.7278032432698,\n            \"accuracy\": 7054.472938029937,\n            \"altitude\": 9813.460903056324,\n            \"altitudeAccuracy\": 2772.8056726952445\n          },\n          \"uniqueId\": \"string\",\n          \"uniqueIdType\": \"directory\"\n        }\n      ],\n      \"suggestionReason\": \"string\",\n      \"order\": 7836\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b33e889c-b26f-48b1-9be1-53173a58a8e2",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "findMeetingTimes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"attendees\": [\n    {\n      \"emailAddress\": {\n        \"name\": \"string\",\n        \"address\": \"I6IkDCe@DDyb.pnh\"\n      },\n      \"type\": \"required\"\n    },\n    {\n      \"emailAddress\": {\n        \"name\": \"string\",\n        \"address\": \"SozKL@HLMK.xd\"\n      },\n      \"type\": \"required\"\n    }\n  ],\n  \"timeConstraint\": {\n    \"activityDomain\": \"personal\",\n    \"timeSlots\": [\n      {\n        \"start\": {\n          \"dateTime\": \"string\",\n          \"timeZone\": \"string\"\n        },\n        \"end\": {\n          \"dateTime\": \"string\",\n          \"timeZone\": \"string\"\n        }\n      },\n      {\n        \"start\": {\n          \"dateTime\": \"string\",\n          \"timeZone\": \"string\"\n        },\n        \"end\": {\n          \"dateTime\": \"string\",\n          \"timeZone\": \"string\"\n        }\n      }\n    ]\n  },\n  \"locationConstraint\": {\n    \"isRequired\": true,\n    \"suggestLocation\": false,\n    \"locations\": [\n      {\n        \"displayName\": \"string\",\n        \"locationEmailAddress\": \"string\",\n        \"resolveAvailability\": true\n      },\n      {\n        \"displayName\": \"string\",\n        \"locationEmailAddress\": \"string\",\n        \"resolveAvailability\": false\n      }\n    ]\n  },\n  \"meetingDuration\": \"<string>\",\n  \"maxCandidates\": \"<integer>\",\n  \"isOrganizerOptional\": \"<boolean>\",\n  \"returnSuggestionReasons\": \"<boolean>\",\n  \"minimumAttendeePercentage\": \"<double>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"1960-11-15T14:26:42.992Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8c70e723-165d-4b6c-8612-3e6c94104c6d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "findMeetingTimes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"attendees\": [\n    {\n      \"emailAddress\": {\n        \"name\": \"string\",\n        \"address\": \"I6IkDCe@DDyb.pnh\"\n      },\n      \"type\": \"required\"\n    },\n    {\n      \"emailAddress\": {\n        \"name\": \"string\",\n        \"address\": \"SozKL@HLMK.xd\"\n      },\n      \"type\": \"required\"\n    }\n  ],\n  \"timeConstraint\": {\n    \"activityDomain\": \"personal\",\n    \"timeSlots\": [\n      {\n        \"start\": {\n          \"dateTime\": \"string\",\n          \"timeZone\": \"string\"\n        },\n        \"end\": {\n          \"dateTime\": \"string\",\n          \"timeZone\": \"string\"\n        }\n      },\n      {\n        \"start\": {\n          \"dateTime\": \"string\",\n          \"timeZone\": \"string\"\n        },\n        \"end\": {\n          \"dateTime\": \"string\",\n          \"timeZone\": \"string\"\n        }\n      }\n    ]\n  },\n  \"locationConstraint\": {\n    \"isRequired\": true,\n    \"suggestLocation\": false,\n    \"locations\": [\n      {\n        \"displayName\": \"string\",\n        \"locationEmailAddress\": \"string\",\n        \"resolveAvailability\": true\n      },\n      {\n        \"displayName\": \"string\",\n        \"locationEmailAddress\": \"string\",\n        \"resolveAvailability\": false\n      }\n    ]\n  },\n  \"meetingDuration\": \"<string>\",\n  \"maxCandidates\": \"<integer>\",\n  \"isOrganizerOptional\": \"<boolean>\",\n  \"returnSuggestionReasons\": \"<boolean>\",\n  \"minimumAttendeePercentage\": \"<double>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"1960-11-15T14:26:42.992Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://outlook.office365.com/adminapi/v2.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://outlook.office365.com/.default"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "76b47117-47a8-423d-a46c-ee020ce68e80",
+    "name": "Microsoft Exchange Exchange Online Admin Accepted Domains Scheduling API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST-based administrative API that enables a focused set of Exchange cmdlets and parameters as POST-only endpoints. Provides access to key tasks previously available through Exchange Web Services (EWS), including organization configuration, accepted domains, mailbox properties, mailbox folder permissions, and distribution group membership. Built as a complementary REST-first surface for specific administrative tasks caused by the EWS deprecation planned for October 2026.\n\nContact Support:\n Name: Microsoft Support\n Email: support@microsoft.com",
+      "type": "text/plain"
+    }
+  }
+}

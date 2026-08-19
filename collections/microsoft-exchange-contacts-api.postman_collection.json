@@ -1,0 +1,1912 @@
+{
+  "item": [
+    {
+      "id": "ae4a58df-f4b7-49c6-9b91-f345bb295b69",
+      "name": "Contacts",
+      "description": {
+        "content": "Operations for managing personal contacts",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "aa62af65-7d49-4105-be7d-399486bcf091",
+          "name": "Microsoft Exchange List contacts",
+          "request": {
+            "name": "Microsoft Exchange List contacts",
+            "description": {
+              "content": "Get a contact collection from the default contacts folder of the signed-in user. Returns all contacts in the user's mailbox.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "contacts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "The number of items to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "The number of items to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include"
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "$search",
+                  "value": "<string>",
+                  "description": "Search string to filter results"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "374bc63f-a377-4909-a3b1-e677660fe170",
+              "name": "Successfully retrieved contacts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.context\": \"string\",\n  \"@odata.nextLink\": \"http://EUUQwEC.zaqVrz9UPkW2IMoXh.ByZGHCAV0luG0JeaXmef,\",\n  \"value\": [\n    {\n      \"id\": \"string\",\n      \"displayName\": \"string\",\n      \"givenName\": \"string\",\n      \"surname\": \"string\",\n      \"middleName\": \"string\",\n      \"nickName\": \"string\",\n      \"title\": \"string\",\n      \"initials\": \"string\",\n      \"generation\": \"string\",\n      \"emailAddresses\": [\n        {\n          \"name\": \"string\",\n          \"address\": \"WoaHfLBqdX@nugfdjaSkEIMUTHxgFCHXGgoUmGpxni.kw\"\n        },\n        {\n          \"name\": \"string\",\n          \"address\": \"FB5bI@mOdEYjxdUaDk.pmql\"\n        }\n      ],\n      \"businessPhones\": [\n        \"string\",\n        \"string\"\n      ],\n      \"homePhones\": [\n        \"string\",\n        \"string\"\n      ],\n      \"mobilePhone\": \"string\",\n      \"imAddresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"jobTitle\": \"string\",\n      \"companyName\": \"string\",\n      \"department\": \"string\",\n      \"officeLocation\": \"string\",\n      \"profession\": \"string\",\n      \"manager\": \"string\",\n      \"assistantName\": \"string\",\n      \"businessHomePage\": \"string\",\n      \"businessAddress\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"countryOrRegion\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"homeAddress\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"countryOrRegion\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"otherAddress\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"countryOrRegion\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"spouseName\": \"string\",\n      \"birthday\": \"1952-11-26T00:14:54.532Z\",\n      \"children\": [\n        \"string\",\n        \"string\"\n      ],\n      \"personalNotes\": \"string\",\n      \"fileAs\": \"string\",\n      \"categories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"parentFolderId\": \"string\",\n      \"changeKey\": \"string\",\n      \"createdDateTime\": \"1971-02-16T18:10:56.468Z\",\n      \"lastModifiedDateTime\": \"1955-11-09T01:39:19.053Z\",\n      \"yomiGivenName\": \"string\",\n      \"yomiSurname\": \"string\",\n      \"yomiCompanyName\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"displayName\": \"string\",\n      \"givenName\": \"string\",\n      \"surname\": \"string\",\n      \"middleName\": \"string\",\n      \"nickName\": \"string\",\n      \"title\": \"string\",\n      \"initials\": \"string\",\n      \"generation\": \"string\",\n      \"emailAddresses\": [\n        {\n          \"name\": \"string\",\n          \"address\": \"ZQQqw@PYDhcf.she\"\n        },\n        {\n          \"name\": \"string\",\n          \"address\": \"u0rBOHea3e0cP@fWTKHCuXYKyRXTq.bd\"\n        }\n      ],\n      \"businessPhones\": [\n        \"string\",\n        \"string\"\n      ],\n      \"homePhones\": [\n        \"string\",\n        \"string\"\n      ],\n      \"mobilePhone\": \"string\",\n      \"imAddresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"jobTitle\": \"string\",\n      \"companyName\": \"string\",\n      \"department\": \"string\",\n      \"officeLocation\": \"string\",\n      \"profession\": \"string\",\n      \"manager\": \"string\",\n      \"assistantName\": \"string\",\n      \"businessHomePage\": \"string\",\n      \"businessAddress\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"countryOrRegion\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"homeAddress\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"countryOrRegion\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"otherAddress\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"countryOrRegion\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"spouseName\": \"string\",\n      \"birthday\": \"1985-09-30T22:57:01.366Z\",\n      \"children\": [\n        \"string\",\n        \"string\"\n      ],\n      \"personalNotes\": \"string\",\n      \"fileAs\": \"string\",\n      \"categories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"parentFolderId\": \"string\",\n      \"changeKey\": \"string\",\n      \"createdDateTime\": \"1970-04-20T05:21:19.544Z\",\n      \"lastModifiedDateTime\": \"2005-01-08T20:01:20.325Z\",\n      \"yomiGivenName\": \"string\",\n      \"yomiSurname\": \"string\",\n      \"yomiCompanyName\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5fc72383-9eef-4095-8632-42001142bebe",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"2014-01-01T15:33:46.927Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e4024175-79e1-49fe-8643-505be1c7d648",
+          "name": "Microsoft Exchange Create contact",
+          "request": {
+            "name": "Microsoft Exchange Create contact",
+            "description": {
+              "content": "Add a contact to the root contacts folder or the contacts endpoint of another contact folder.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "contacts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"displayName\": \"<string>\",\n  \"givenName\": \"<string>\",\n  \"surname\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"nickName\": \"<string>\",\n  \"title\": \"<string>\",\n  \"initials\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"emailAddresses\": [\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<email>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<email>\"\n    }\n  ],\n  \"businessPhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"homePhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mobilePhone\": \"<string>\",\n  \"imAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"jobTitle\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"department\": \"<string>\",\n  \"officeLocation\": \"<string>\",\n  \"profession\": \"<string>\",\n  \"manager\": \"<string>\",\n  \"assistantName\": \"<string>\",\n  \"businessHomePage\": \"<string>\",\n  \"businessAddress\": {\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"countryOrRegion\": \"<string>\",\n    \"postalCode\": \"<string>\"\n  },\n  \"homeAddress\": {\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"countryOrRegion\": \"<string>\",\n    \"postalCode\": \"<string>\"\n  },\n  \"otherAddress\": {\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"countryOrRegion\": \"<string>\",\n    \"postalCode\": \"<string>\"\n  },\n  \"spouseName\": \"<string>\",\n  \"birthday\": \"<dateTime>\",\n  \"children\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"personalNotes\": \"<string>\",\n  \"fileAs\": \"<string>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"yomiGivenName\": \"<string>\",\n  \"yomiSurname\": \"<string>\",\n  \"yomiCompanyName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "67033dc1-9d19-4bfc-a706-5aba5897f950",
+              "name": "Successfully created contact",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"<string>\",\n  \"givenName\": \"<string>\",\n  \"surname\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"nickName\": \"<string>\",\n  \"title\": \"<string>\",\n  \"initials\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"emailAddresses\": [\n    {\n      \"name\": \"string\",\n      \"address\": \"9vLEUq@UzSr.uksx\"\n    },\n    {\n      \"name\": \"string\",\n      \"address\": \"4znU@QHLoVRvImEqwCRFYvnIaTQburLteURN.kg\"\n    }\n  ],\n  \"businessPhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"homePhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mobilePhone\": \"<string>\",\n  \"imAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"jobTitle\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"department\": \"<string>\",\n  \"officeLocation\": \"<string>\",\n  \"profession\": \"<string>\",\n  \"manager\": \"<string>\",\n  \"assistantName\": \"<string>\",\n  \"businessHomePage\": \"<string>\",\n  \"businessAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"homeAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"otherAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"spouseName\": \"<string>\",\n  \"birthday\": \"<dateTime>\",\n  \"children\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"personalNotes\": \"<string>\",\n  \"fileAs\": \"<string>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"yomiGivenName\": \"<string>\",\n  \"yomiSurname\": \"<string>\",\n  \"yomiCompanyName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"displayName\": \"string\",\n  \"givenName\": \"string\",\n  \"surname\": \"string\",\n  \"middleName\": \"string\",\n  \"nickName\": \"string\",\n  \"title\": \"string\",\n  \"initials\": \"string\",\n  \"generation\": \"string\",\n  \"emailAddresses\": [\n    {\n      \"name\": \"string\",\n      \"address\": \"sYe-W@aGKNrDfMkibPpeAkPxseBwpyA.ensm\"\n    },\n    {\n      \"name\": \"string\",\n      \"address\": \"ZrmVS@RhQymlfjpEnSGVzqKgXEfWwfj.uw\"\n    }\n  ],\n  \"businessPhones\": [\n    \"string\",\n    \"string\"\n  ],\n  \"homePhones\": [\n    \"string\",\n    \"string\"\n  ],\n  \"mobilePhone\": \"string\",\n  \"imAddresses\": [\n    \"string\",\n    \"string\"\n  ],\n  \"jobTitle\": \"string\",\n  \"companyName\": \"string\",\n  \"department\": \"string\",\n  \"officeLocation\": \"string\",\n  \"profession\": \"string\",\n  \"manager\": \"string\",\n  \"assistantName\": \"string\",\n  \"businessHomePage\": \"string\",\n  \"businessAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"homeAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"otherAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"spouseName\": \"string\",\n  \"birthday\": \"2024-05-06T10:25:27.220Z\",\n  \"children\": [\n    \"string\",\n    \"string\"\n  ],\n  \"personalNotes\": \"string\",\n  \"fileAs\": \"string\",\n  \"categories\": [\n    \"string\",\n    \"string\"\n  ],\n  \"parentFolderId\": \"string\",\n  \"changeKey\": \"string\",\n  \"createdDateTime\": \"1999-04-23T13:59:06.520Z\",\n  \"lastModifiedDateTime\": \"1972-01-11T10:56:18.744Z\",\n  \"yomiGivenName\": \"string\",\n  \"yomiSurname\": \"string\",\n  \"yomiCompanyName\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5ed77fc7-cff7-4a93-9718-e3b523992bd1",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"<string>\",\n  \"givenName\": \"<string>\",\n  \"surname\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"nickName\": \"<string>\",\n  \"title\": \"<string>\",\n  \"initials\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"emailAddresses\": [\n    {\n      \"name\": \"string\",\n      \"address\": \"9vLEUq@UzSr.uksx\"\n    },\n    {\n      \"name\": \"string\",\n      \"address\": \"4znU@QHLoVRvImEqwCRFYvnIaTQburLteURN.kg\"\n    }\n  ],\n  \"businessPhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"homePhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mobilePhone\": \"<string>\",\n  \"imAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"jobTitle\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"department\": \"<string>\",\n  \"officeLocation\": \"<string>\",\n  \"profession\": \"<string>\",\n  \"manager\": \"<string>\",\n  \"assistantName\": \"<string>\",\n  \"businessHomePage\": \"<string>\",\n  \"businessAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"homeAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"otherAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"spouseName\": \"<string>\",\n  \"birthday\": \"<dateTime>\",\n  \"children\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"personalNotes\": \"<string>\",\n  \"fileAs\": \"<string>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"yomiGivenName\": \"<string>\",\n  \"yomiSurname\": \"<string>\",\n  \"yomiCompanyName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"2014-01-01T15:33:46.927Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a3473f4-ee91-4dbb-ad85-51680d025b3d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"<string>\",\n  \"givenName\": \"<string>\",\n  \"surname\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"nickName\": \"<string>\",\n  \"title\": \"<string>\",\n  \"initials\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"emailAddresses\": [\n    {\n      \"name\": \"string\",\n      \"address\": \"9vLEUq@UzSr.uksx\"\n    },\n    {\n      \"name\": \"string\",\n      \"address\": \"4znU@QHLoVRvImEqwCRFYvnIaTQburLteURN.kg\"\n    }\n  ],\n  \"businessPhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"homePhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mobilePhone\": \"<string>\",\n  \"imAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"jobTitle\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"department\": \"<string>\",\n  \"officeLocation\": \"<string>\",\n  \"profession\": \"<string>\",\n  \"manager\": \"<string>\",\n  \"assistantName\": \"<string>\",\n  \"businessHomePage\": \"<string>\",\n  \"businessAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"homeAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"otherAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"spouseName\": \"<string>\",\n  \"birthday\": \"<dateTime>\",\n  \"children\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"personalNotes\": \"<string>\",\n  \"fileAs\": \"<string>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"yomiGivenName\": \"<string>\",\n  \"yomiSurname\": \"<string>\",\n  \"yomiCompanyName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"2014-01-01T15:33:46.927Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "118a5d5d-999a-4ccd-82cc-bf1a7581ec4e",
+          "name": "Microsoft Exchange Get contact",
+          "request": {
+            "name": "Microsoft Exchange Get contact",
+            "description": {
+              "content": "Read properties and relationships of a contact object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "contacts",
+                ":contact-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contact-id",
+                  "description": "(Required) The unique identifier of the contact"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6befbd6b-c6df-4f43-a17f-72983277a7e7",
+              "name": "Successfully retrieved contact",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contacts",
+                    ":contact-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contact-id",
+                      "description": "(Required) The unique identifier of the contact"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"displayName\": \"string\",\n  \"givenName\": \"string\",\n  \"surname\": \"string\",\n  \"middleName\": \"string\",\n  \"nickName\": \"string\",\n  \"title\": \"string\",\n  \"initials\": \"string\",\n  \"generation\": \"string\",\n  \"emailAddresses\": [\n    {\n      \"name\": \"string\",\n      \"address\": \"sYe-W@aGKNrDfMkibPpeAkPxseBwpyA.ensm\"\n    },\n    {\n      \"name\": \"string\",\n      \"address\": \"ZrmVS@RhQymlfjpEnSGVzqKgXEfWwfj.uw\"\n    }\n  ],\n  \"businessPhones\": [\n    \"string\",\n    \"string\"\n  ],\n  \"homePhones\": [\n    \"string\",\n    \"string\"\n  ],\n  \"mobilePhone\": \"string\",\n  \"imAddresses\": [\n    \"string\",\n    \"string\"\n  ],\n  \"jobTitle\": \"string\",\n  \"companyName\": \"string\",\n  \"department\": \"string\",\n  \"officeLocation\": \"string\",\n  \"profession\": \"string\",\n  \"manager\": \"string\",\n  \"assistantName\": \"string\",\n  \"businessHomePage\": \"string\",\n  \"businessAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"homeAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"otherAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"spouseName\": \"string\",\n  \"birthday\": \"2024-05-06T10:25:27.220Z\",\n  \"children\": [\n    \"string\",\n    \"string\"\n  ],\n  \"personalNotes\": \"string\",\n  \"fileAs\": \"string\",\n  \"categories\": [\n    \"string\",\n    \"string\"\n  ],\n  \"parentFolderId\": \"string\",\n  \"changeKey\": \"string\",\n  \"createdDateTime\": \"1999-04-23T13:59:06.520Z\",\n  \"lastModifiedDateTime\": \"1972-01-11T10:56:18.744Z\",\n  \"yomiGivenName\": \"string\",\n  \"yomiSurname\": \"string\",\n  \"yomiCompanyName\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a7d8bce4-7615-472b-8c1b-2a94281071ea",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contacts",
+                    ":contact-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contact-id",
+                      "description": "(Required) The unique identifier of the contact"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"2014-01-01T15:33:46.927Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e7548c5c-63ae-482d-8bb8-3f89db460de0",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contacts",
+                    ":contact-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contact-id",
+                      "description": "(Required) The unique identifier of the contact"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"2014-01-01T15:33:46.927Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1c9859d1-9410-40c6-9f10-0a89c51b5be2",
+          "name": "Microsoft Exchange Update contact",
+          "request": {
+            "name": "Microsoft Exchange Update contact",
+            "description": {
+              "content": "Update the properties of a contact object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "contacts",
+                ":contact-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contact-id",
+                  "description": "(Required) The unique identifier of the contact"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"displayName\": \"<string>\",\n  \"givenName\": \"<string>\",\n  \"surname\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"nickName\": \"<string>\",\n  \"title\": \"<string>\",\n  \"initials\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"emailAddresses\": [\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<email>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<email>\"\n    }\n  ],\n  \"businessPhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"homePhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mobilePhone\": \"<string>\",\n  \"imAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"jobTitle\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"department\": \"<string>\",\n  \"officeLocation\": \"<string>\",\n  \"profession\": \"<string>\",\n  \"manager\": \"<string>\",\n  \"assistantName\": \"<string>\",\n  \"businessHomePage\": \"<string>\",\n  \"businessAddress\": {\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"countryOrRegion\": \"<string>\",\n    \"postalCode\": \"<string>\"\n  },\n  \"homeAddress\": {\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"countryOrRegion\": \"<string>\",\n    \"postalCode\": \"<string>\"\n  },\n  \"otherAddress\": {\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"countryOrRegion\": \"<string>\",\n    \"postalCode\": \"<string>\"\n  },\n  \"spouseName\": \"<string>\",\n  \"birthday\": \"<dateTime>\",\n  \"children\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"personalNotes\": \"<string>\",\n  \"fileAs\": \"<string>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"yomiGivenName\": \"<string>\",\n  \"yomiSurname\": \"<string>\",\n  \"yomiCompanyName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bc5ddf0d-82d6-44a7-9dee-eb851fc8fc03",
+              "name": "Successfully updated contact",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contacts",
+                    ":contact-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contact-id",
+                      "description": "(Required) The unique identifier of the contact"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"<string>\",\n  \"givenName\": \"<string>\",\n  \"surname\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"nickName\": \"<string>\",\n  \"title\": \"<string>\",\n  \"initials\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"emailAddresses\": [\n    {\n      \"name\": \"string\",\n      \"address\": \"9vLEUq@UzSr.uksx\"\n    },\n    {\n      \"name\": \"string\",\n      \"address\": \"4znU@QHLoVRvImEqwCRFYvnIaTQburLteURN.kg\"\n    }\n  ],\n  \"businessPhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"homePhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mobilePhone\": \"<string>\",\n  \"imAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"jobTitle\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"department\": \"<string>\",\n  \"officeLocation\": \"<string>\",\n  \"profession\": \"<string>\",\n  \"manager\": \"<string>\",\n  \"assistantName\": \"<string>\",\n  \"businessHomePage\": \"<string>\",\n  \"businessAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"homeAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"otherAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"spouseName\": \"<string>\",\n  \"birthday\": \"<dateTime>\",\n  \"children\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"personalNotes\": \"<string>\",\n  \"fileAs\": \"<string>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"yomiGivenName\": \"<string>\",\n  \"yomiSurname\": \"<string>\",\n  \"yomiCompanyName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"displayName\": \"string\",\n  \"givenName\": \"string\",\n  \"surname\": \"string\",\n  \"middleName\": \"string\",\n  \"nickName\": \"string\",\n  \"title\": \"string\",\n  \"initials\": \"string\",\n  \"generation\": \"string\",\n  \"emailAddresses\": [\n    {\n      \"name\": \"string\",\n      \"address\": \"sYe-W@aGKNrDfMkibPpeAkPxseBwpyA.ensm\"\n    },\n    {\n      \"name\": \"string\",\n      \"address\": \"ZrmVS@RhQymlfjpEnSGVzqKgXEfWwfj.uw\"\n    }\n  ],\n  \"businessPhones\": [\n    \"string\",\n    \"string\"\n  ],\n  \"homePhones\": [\n    \"string\",\n    \"string\"\n  ],\n  \"mobilePhone\": \"string\",\n  \"imAddresses\": [\n    \"string\",\n    \"string\"\n  ],\n  \"jobTitle\": \"string\",\n  \"companyName\": \"string\",\n  \"department\": \"string\",\n  \"officeLocation\": \"string\",\n  \"profession\": \"string\",\n  \"manager\": \"string\",\n  \"assistantName\": \"string\",\n  \"businessHomePage\": \"string\",\n  \"businessAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"homeAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"otherAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"spouseName\": \"string\",\n  \"birthday\": \"2024-05-06T10:25:27.220Z\",\n  \"children\": [\n    \"string\",\n    \"string\"\n  ],\n  \"personalNotes\": \"string\",\n  \"fileAs\": \"string\",\n  \"categories\": [\n    \"string\",\n    \"string\"\n  ],\n  \"parentFolderId\": \"string\",\n  \"changeKey\": \"string\",\n  \"createdDateTime\": \"1999-04-23T13:59:06.520Z\",\n  \"lastModifiedDateTime\": \"1972-01-11T10:56:18.744Z\",\n  \"yomiGivenName\": \"string\",\n  \"yomiSurname\": \"string\",\n  \"yomiCompanyName\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f38ade49-aa9f-4901-a29c-1dea839678cc",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contacts",
+                    ":contact-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contact-id",
+                      "description": "(Required) The unique identifier of the contact"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"<string>\",\n  \"givenName\": \"<string>\",\n  \"surname\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"nickName\": \"<string>\",\n  \"title\": \"<string>\",\n  \"initials\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"emailAddresses\": [\n    {\n      \"name\": \"string\",\n      \"address\": \"9vLEUq@UzSr.uksx\"\n    },\n    {\n      \"name\": \"string\",\n      \"address\": \"4znU@QHLoVRvImEqwCRFYvnIaTQburLteURN.kg\"\n    }\n  ],\n  \"businessPhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"homePhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mobilePhone\": \"<string>\",\n  \"imAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"jobTitle\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"department\": \"<string>\",\n  \"officeLocation\": \"<string>\",\n  \"profession\": \"<string>\",\n  \"manager\": \"<string>\",\n  \"assistantName\": \"<string>\",\n  \"businessHomePage\": \"<string>\",\n  \"businessAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"homeAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"otherAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"spouseName\": \"<string>\",\n  \"birthday\": \"<dateTime>\",\n  \"children\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"personalNotes\": \"<string>\",\n  \"fileAs\": \"<string>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"yomiGivenName\": \"<string>\",\n  \"yomiSurname\": \"<string>\",\n  \"yomiCompanyName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"2014-01-01T15:33:46.927Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cda8c9ae-5dfc-40ac-96c8-c69ade0860cd",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contacts",
+                    ":contact-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contact-id",
+                      "description": "(Required) The unique identifier of the contact"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"<string>\",\n  \"givenName\": \"<string>\",\n  \"surname\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"nickName\": \"<string>\",\n  \"title\": \"<string>\",\n  \"initials\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"emailAddresses\": [\n    {\n      \"name\": \"string\",\n      \"address\": \"9vLEUq@UzSr.uksx\"\n    },\n    {\n      \"name\": \"string\",\n      \"address\": \"4znU@QHLoVRvImEqwCRFYvnIaTQburLteURN.kg\"\n    }\n  ],\n  \"businessPhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"homePhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mobilePhone\": \"<string>\",\n  \"imAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"jobTitle\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"department\": \"<string>\",\n  \"officeLocation\": \"<string>\",\n  \"profession\": \"<string>\",\n  \"manager\": \"<string>\",\n  \"assistantName\": \"<string>\",\n  \"businessHomePage\": \"<string>\",\n  \"businessAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"homeAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"otherAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"spouseName\": \"<string>\",\n  \"birthday\": \"<dateTime>\",\n  \"children\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"personalNotes\": \"<string>\",\n  \"fileAs\": \"<string>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"yomiGivenName\": \"<string>\",\n  \"yomiSurname\": \"<string>\",\n  \"yomiCompanyName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"2014-01-01T15:33:46.927Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eb1ce536-9672-4462-b697-e583345a51cd",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contacts",
+                    ":contact-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contact-id",
+                      "description": "(Required) The unique identifier of the contact"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"<string>\",\n  \"givenName\": \"<string>\",\n  \"surname\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"nickName\": \"<string>\",\n  \"title\": \"<string>\",\n  \"initials\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"emailAddresses\": [\n    {\n      \"name\": \"string\",\n      \"address\": \"9vLEUq@UzSr.uksx\"\n    },\n    {\n      \"name\": \"string\",\n      \"address\": \"4znU@QHLoVRvImEqwCRFYvnIaTQburLteURN.kg\"\n    }\n  ],\n  \"businessPhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"homePhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mobilePhone\": \"<string>\",\n  \"imAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"jobTitle\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"department\": \"<string>\",\n  \"officeLocation\": \"<string>\",\n  \"profession\": \"<string>\",\n  \"manager\": \"<string>\",\n  \"assistantName\": \"<string>\",\n  \"businessHomePage\": \"<string>\",\n  \"businessAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"homeAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"otherAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"spouseName\": \"<string>\",\n  \"birthday\": \"<dateTime>\",\n  \"children\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"personalNotes\": \"<string>\",\n  \"fileAs\": \"<string>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"yomiGivenName\": \"<string>\",\n  \"yomiSurname\": \"<string>\",\n  \"yomiCompanyName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"2014-01-01T15:33:46.927Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6367d410-ad87-4791-9579-3ec4366cf980",
+          "name": "Microsoft Exchange Delete contact",
+          "request": {
+            "name": "Microsoft Exchange Delete contact",
+            "description": {
+              "content": "Delete a contact object. The contact is moved to the Deleted Items folder.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "contacts",
+                ":contact-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contact-id",
+                  "description": "(Required) The unique identifier of the contact"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3e9a1ada-4ab3-4dab-b969-2571d43c8f07",
+              "name": "Successfully deleted contact",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contacts",
+                    ":contact-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contact-id",
+                      "description": "(Required) The unique identifier of the contact"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cd52df41-e328-4d21-8fdf-b0a6ef848d4a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contacts",
+                    ":contact-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contact-id",
+                      "description": "(Required) The unique identifier of the contact"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"2014-01-01T15:33:46.927Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4157b9d8-77d6-48b8-915d-c20bb5eecd97",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contacts",
+                    ":contact-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contact-id",
+                      "description": "(Required) The unique identifier of the contact"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"2014-01-01T15:33:46.927Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "98f2809f-1e66-42b0-9961-d986bfbb37b0",
+          "name": "Microsoft Exchange Get contact delta",
+          "request": {
+            "name": "Microsoft Exchange Get contact delta",
+            "description": {
+              "content": "Get a set of contacts that have been added, deleted, or updated in the user's mailbox. A delta function call for contacts is similar to a GET request, except that by applying state tokens, you can query for incremental changes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "contacts",
+                "delta"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include"
+                },
+                {
+                  "disabled": false,
+                  "key": "$deltatoken",
+                  "value": "<string>",
+                  "description": "The delta token returned from a previous delta call"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skiptoken",
+                  "value": "<string>",
+                  "description": "The skip token for paging through results"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5afbd2cf-fe99-4064-b1b3-6de78feee218",
+              "name": "Successfully retrieved contact delta",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contacts",
+                    "delta"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$deltatoken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$skiptoken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.context\": \"string\",\n  \"@odata.nextLink\": \"https://EEXMO.xdobW084PW8K7\",\n  \"@odata.deltaLink\": \"http://QColsH.hptKIAY\",\n  \"value\": [\n    {\n      \"id\": \"string\",\n      \"displayName\": \"string\",\n      \"givenName\": \"string\",\n      \"surname\": \"string\",\n      \"middleName\": \"string\",\n      \"nickName\": \"string\",\n      \"title\": \"string\",\n      \"initials\": \"string\",\n      \"generation\": \"string\",\n      \"emailAddresses\": [\n        {\n          \"name\": \"string\",\n          \"address\": \"PsliN@svoLxdctqfLKqMJiGhOGmcYK.sdd\"\n        },\n        {\n          \"name\": \"string\",\n          \"address\": \"fgW@uzbfAjTYAIMNJEyMei.lg\"\n        }\n      ],\n      \"businessPhones\": [\n        \"string\",\n        \"string\"\n      ],\n      \"homePhones\": [\n        \"string\",\n        \"string\"\n      ],\n      \"mobilePhone\": \"string\",\n      \"imAddresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"jobTitle\": \"string\",\n      \"companyName\": \"string\",\n      \"department\": \"string\",\n      \"officeLocation\": \"string\",\n      \"profession\": \"string\",\n      \"manager\": \"string\",\n      \"assistantName\": \"string\",\n      \"businessHomePage\": \"string\",\n      \"businessAddress\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"countryOrRegion\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"homeAddress\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"countryOrRegion\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"otherAddress\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"countryOrRegion\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"spouseName\": \"string\",\n      \"birthday\": \"1973-05-21T09:32:25.627Z\",\n      \"children\": [\n        \"string\",\n        \"string\"\n      ],\n      \"personalNotes\": \"string\",\n      \"fileAs\": \"string\",\n      \"categories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"parentFolderId\": \"string\",\n      \"changeKey\": \"string\",\n      \"createdDateTime\": \"2017-01-23T06:29:22.670Z\",\n      \"lastModifiedDateTime\": \"1965-07-03T22:07:46.560Z\",\n      \"yomiGivenName\": \"string\",\n      \"yomiSurname\": \"string\",\n      \"yomiCompanyName\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"displayName\": \"string\",\n      \"givenName\": \"string\",\n      \"surname\": \"string\",\n      \"middleName\": \"string\",\n      \"nickName\": \"string\",\n      \"title\": \"string\",\n      \"initials\": \"string\",\n      \"generation\": \"string\",\n      \"emailAddresses\": [\n        {\n          \"name\": \"string\",\n          \"address\": \"ETE@uNjBjOsP.ir\"\n        },\n        {\n          \"name\": \"string\",\n          \"address\": \"2Bf1AV@xxDRjLYSJgMIwoepv.ymng\"\n        }\n      ],\n      \"businessPhones\": [\n        \"string\",\n        \"string\"\n      ],\n      \"homePhones\": [\n        \"string\",\n        \"string\"\n      ],\n      \"mobilePhone\": \"string\",\n      \"imAddresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"jobTitle\": \"string\",\n      \"companyName\": \"string\",\n      \"department\": \"string\",\n      \"officeLocation\": \"string\",\n      \"profession\": \"string\",\n      \"manager\": \"string\",\n      \"assistantName\": \"string\",\n      \"businessHomePage\": \"string\",\n      \"businessAddress\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"countryOrRegion\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"homeAddress\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"countryOrRegion\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"otherAddress\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"countryOrRegion\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"spouseName\": \"string\",\n      \"birthday\": \"2000-10-27T08:14:11.222Z\",\n      \"children\": [\n        \"string\",\n        \"string\"\n      ],\n      \"personalNotes\": \"string\",\n      \"fileAs\": \"string\",\n      \"categories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"parentFolderId\": \"string\",\n      \"changeKey\": \"string\",\n      \"createdDateTime\": \"1963-01-27T11:51:37.172Z\",\n      \"lastModifiedDateTime\": \"2019-08-29T05:14:09.998Z\",\n      \"yomiGivenName\": \"string\",\n      \"yomiSurname\": \"string\",\n      \"yomiCompanyName\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b692665-fd48-4e9e-ae41-a93b6ff19413",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contacts",
+                    "delta"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$deltatoken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$skiptoken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"2014-01-01T15:33:46.927Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf7efc73-8713-4cf7-a96e-a6732c526689",
+          "name": "Microsoft Exchange List contacts in folder",
+          "request": {
+            "name": "Microsoft Exchange List contacts in folder",
+            "description": {
+              "content": "Get a contact collection from the specified contact folder.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "contactFolders",
+                ":contactFolder-id",
+                "contacts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "The number of items to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "The number of items to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include"
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to sort by"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contactFolder-id",
+                  "description": "(Required) The unique identifier of the contact folder"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9d090316-bdcb-4d6f-83bf-8e2efacac20d",
+              "name": "Successfully retrieved contacts in folder",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contactFolders",
+                    ":contactFolder-id",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactFolder-id",
+                      "description": "(Required) The unique identifier of the contact folder"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.context\": \"string\",\n  \"@odata.nextLink\": \"http://EUUQwEC.zaqVrz9UPkW2IMoXh.ByZGHCAV0luG0JeaXmef,\",\n  \"value\": [\n    {\n      \"id\": \"string\",\n      \"displayName\": \"string\",\n      \"givenName\": \"string\",\n      \"surname\": \"string\",\n      \"middleName\": \"string\",\n      \"nickName\": \"string\",\n      \"title\": \"string\",\n      \"initials\": \"string\",\n      \"generation\": \"string\",\n      \"emailAddresses\": [\n        {\n          \"name\": \"string\",\n          \"address\": \"WoaHfLBqdX@nugfdjaSkEIMUTHxgFCHXGgoUmGpxni.kw\"\n        },\n        {\n          \"name\": \"string\",\n          \"address\": \"FB5bI@mOdEYjxdUaDk.pmql\"\n        }\n      ],\n      \"businessPhones\": [\n        \"string\",\n        \"string\"\n      ],\n      \"homePhones\": [\n        \"string\",\n        \"string\"\n      ],\n      \"mobilePhone\": \"string\",\n      \"imAddresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"jobTitle\": \"string\",\n      \"companyName\": \"string\",\n      \"department\": \"string\",\n      \"officeLocation\": \"string\",\n      \"profession\": \"string\",\n      \"manager\": \"string\",\n      \"assistantName\": \"string\",\n      \"businessHomePage\": \"string\",\n      \"businessAddress\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"countryOrRegion\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"homeAddress\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"countryOrRegion\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"otherAddress\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"countryOrRegion\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"spouseName\": \"string\",\n      \"birthday\": \"1952-11-26T00:14:54.532Z\",\n      \"children\": [\n        \"string\",\n        \"string\"\n      ],\n      \"personalNotes\": \"string\",\n      \"fileAs\": \"string\",\n      \"categories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"parentFolderId\": \"string\",\n      \"changeKey\": \"string\",\n      \"createdDateTime\": \"1971-02-16T18:10:56.468Z\",\n      \"lastModifiedDateTime\": \"1955-11-09T01:39:19.053Z\",\n      \"yomiGivenName\": \"string\",\n      \"yomiSurname\": \"string\",\n      \"yomiCompanyName\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"displayName\": \"string\",\n      \"givenName\": \"string\",\n      \"surname\": \"string\",\n      \"middleName\": \"string\",\n      \"nickName\": \"string\",\n      \"title\": \"string\",\n      \"initials\": \"string\",\n      \"generation\": \"string\",\n      \"emailAddresses\": [\n        {\n          \"name\": \"string\",\n          \"address\": \"ZQQqw@PYDhcf.she\"\n        },\n        {\n          \"name\": \"string\",\n          \"address\": \"u0rBOHea3e0cP@fWTKHCuXYKyRXTq.bd\"\n        }\n      ],\n      \"businessPhones\": [\n        \"string\",\n        \"string\"\n      ],\n      \"homePhones\": [\n        \"string\",\n        \"string\"\n      ],\n      \"mobilePhone\": \"string\",\n      \"imAddresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"jobTitle\": \"string\",\n      \"companyName\": \"string\",\n      \"department\": \"string\",\n      \"officeLocation\": \"string\",\n      \"profession\": \"string\",\n      \"manager\": \"string\",\n      \"assistantName\": \"string\",\n      \"businessHomePage\": \"string\",\n      \"businessAddress\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"countryOrRegion\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"homeAddress\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"countryOrRegion\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"otherAddress\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"countryOrRegion\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"spouseName\": \"string\",\n      \"birthday\": \"1985-09-30T22:57:01.366Z\",\n      \"children\": [\n        \"string\",\n        \"string\"\n      ],\n      \"personalNotes\": \"string\",\n      \"fileAs\": \"string\",\n      \"categories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"parentFolderId\": \"string\",\n      \"changeKey\": \"string\",\n      \"createdDateTime\": \"1970-04-20T05:21:19.544Z\",\n      \"lastModifiedDateTime\": \"2005-01-08T20:01:20.325Z\",\n      \"yomiGivenName\": \"string\",\n      \"yomiSurname\": \"string\",\n      \"yomiCompanyName\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7dd1191a-d1bf-4735-af39-8127032f4fe5",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contactFolders",
+                    ":contactFolder-id",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactFolder-id",
+                      "description": "(Required) The unique identifier of the contact folder"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"2014-01-01T15:33:46.927Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "953e5bef-02c6-44c5-a4eb-90dcf486ba79",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contactFolders",
+                    ":contactFolder-id",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactFolder-id",
+                      "description": "(Required) The unique identifier of the contact folder"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"2014-01-01T15:33:46.927Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "093a0609-343e-4d65-9e65-0d9dc8a12ccf",
+          "name": "Microsoft Exchange Create contact in folder",
+          "request": {
+            "name": "Microsoft Exchange Create contact in folder",
+            "description": {
+              "content": "Add a contact to the specified contact folder.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "contactFolders",
+                ":contactFolder-id",
+                "contacts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contactFolder-id",
+                  "description": "(Required) The unique identifier of the contact folder"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"displayName\": \"<string>\",\n  \"givenName\": \"<string>\",\n  \"surname\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"nickName\": \"<string>\",\n  \"title\": \"<string>\",\n  \"initials\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"emailAddresses\": [\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<email>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<email>\"\n    }\n  ],\n  \"businessPhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"homePhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mobilePhone\": \"<string>\",\n  \"imAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"jobTitle\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"department\": \"<string>\",\n  \"officeLocation\": \"<string>\",\n  \"profession\": \"<string>\",\n  \"manager\": \"<string>\",\n  \"assistantName\": \"<string>\",\n  \"businessHomePage\": \"<string>\",\n  \"businessAddress\": {\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"countryOrRegion\": \"<string>\",\n    \"postalCode\": \"<string>\"\n  },\n  \"homeAddress\": {\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"countryOrRegion\": \"<string>\",\n    \"postalCode\": \"<string>\"\n  },\n  \"otherAddress\": {\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"countryOrRegion\": \"<string>\",\n    \"postalCode\": \"<string>\"\n  },\n  \"spouseName\": \"<string>\",\n  \"birthday\": \"<dateTime>\",\n  \"children\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"personalNotes\": \"<string>\",\n  \"fileAs\": \"<string>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"yomiGivenName\": \"<string>\",\n  \"yomiSurname\": \"<string>\",\n  \"yomiCompanyName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f8beff57-e29a-4ea5-b6cf-35604ba7de71",
+              "name": "Successfully created contact in folder",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contactFolders",
+                    ":contactFolder-id",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactFolder-id",
+                      "description": "(Required) The unique identifier of the contact folder"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"<string>\",\n  \"givenName\": \"<string>\",\n  \"surname\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"nickName\": \"<string>\",\n  \"title\": \"<string>\",\n  \"initials\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"emailAddresses\": [\n    {\n      \"name\": \"string\",\n      \"address\": \"9vLEUq@UzSr.uksx\"\n    },\n    {\n      \"name\": \"string\",\n      \"address\": \"4znU@QHLoVRvImEqwCRFYvnIaTQburLteURN.kg\"\n    }\n  ],\n  \"businessPhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"homePhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mobilePhone\": \"<string>\",\n  \"imAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"jobTitle\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"department\": \"<string>\",\n  \"officeLocation\": \"<string>\",\n  \"profession\": \"<string>\",\n  \"manager\": \"<string>\",\n  \"assistantName\": \"<string>\",\n  \"businessHomePage\": \"<string>\",\n  \"businessAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"homeAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"otherAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"spouseName\": \"<string>\",\n  \"birthday\": \"<dateTime>\",\n  \"children\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"personalNotes\": \"<string>\",\n  \"fileAs\": \"<string>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"yomiGivenName\": \"<string>\",\n  \"yomiSurname\": \"<string>\",\n  \"yomiCompanyName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"displayName\": \"string\",\n  \"givenName\": \"string\",\n  \"surname\": \"string\",\n  \"middleName\": \"string\",\n  \"nickName\": \"string\",\n  \"title\": \"string\",\n  \"initials\": \"string\",\n  \"generation\": \"string\",\n  \"emailAddresses\": [\n    {\n      \"name\": \"string\",\n      \"address\": \"sYe-W@aGKNrDfMkibPpeAkPxseBwpyA.ensm\"\n    },\n    {\n      \"name\": \"string\",\n      \"address\": \"ZrmVS@RhQymlfjpEnSGVzqKgXEfWwfj.uw\"\n    }\n  ],\n  \"businessPhones\": [\n    \"string\",\n    \"string\"\n  ],\n  \"homePhones\": [\n    \"string\",\n    \"string\"\n  ],\n  \"mobilePhone\": \"string\",\n  \"imAddresses\": [\n    \"string\",\n    \"string\"\n  ],\n  \"jobTitle\": \"string\",\n  \"companyName\": \"string\",\n  \"department\": \"string\",\n  \"officeLocation\": \"string\",\n  \"profession\": \"string\",\n  \"manager\": \"string\",\n  \"assistantName\": \"string\",\n  \"businessHomePage\": \"string\",\n  \"businessAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"homeAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"otherAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"spouseName\": \"string\",\n  \"birthday\": \"2024-05-06T10:25:27.220Z\",\n  \"children\": [\n    \"string\",\n    \"string\"\n  ],\n  \"personalNotes\": \"string\",\n  \"fileAs\": \"string\",\n  \"categories\": [\n    \"string\",\n    \"string\"\n  ],\n  \"parentFolderId\": \"string\",\n  \"changeKey\": \"string\",\n  \"createdDateTime\": \"1999-04-23T13:59:06.520Z\",\n  \"lastModifiedDateTime\": \"1972-01-11T10:56:18.744Z\",\n  \"yomiGivenName\": \"string\",\n  \"yomiSurname\": \"string\",\n  \"yomiCompanyName\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8fdcfd23-8253-4576-b77a-26fd6261c9d9",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contactFolders",
+                    ":contactFolder-id",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactFolder-id",
+                      "description": "(Required) The unique identifier of the contact folder"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"<string>\",\n  \"givenName\": \"<string>\",\n  \"surname\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"nickName\": \"<string>\",\n  \"title\": \"<string>\",\n  \"initials\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"emailAddresses\": [\n    {\n      \"name\": \"string\",\n      \"address\": \"9vLEUq@UzSr.uksx\"\n    },\n    {\n      \"name\": \"string\",\n      \"address\": \"4znU@QHLoVRvImEqwCRFYvnIaTQburLteURN.kg\"\n    }\n  ],\n  \"businessPhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"homePhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mobilePhone\": \"<string>\",\n  \"imAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"jobTitle\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"department\": \"<string>\",\n  \"officeLocation\": \"<string>\",\n  \"profession\": \"<string>\",\n  \"manager\": \"<string>\",\n  \"assistantName\": \"<string>\",\n  \"businessHomePage\": \"<string>\",\n  \"businessAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"homeAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"otherAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"spouseName\": \"<string>\",\n  \"birthday\": \"<dateTime>\",\n  \"children\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"personalNotes\": \"<string>\",\n  \"fileAs\": \"<string>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"yomiGivenName\": \"<string>\",\n  \"yomiSurname\": \"<string>\",\n  \"yomiCompanyName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"2014-01-01T15:33:46.927Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e61abd74-c586-4556-a5d6-03376fbe50f7",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "contactFolders",
+                    ":contactFolder-id",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactFolder-id",
+                      "description": "(Required) The unique identifier of the contact folder"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"<string>\",\n  \"givenName\": \"<string>\",\n  \"surname\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"nickName\": \"<string>\",\n  \"title\": \"<string>\",\n  \"initials\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"emailAddresses\": [\n    {\n      \"name\": \"string\",\n      \"address\": \"9vLEUq@UzSr.uksx\"\n    },\n    {\n      \"name\": \"string\",\n      \"address\": \"4znU@QHLoVRvImEqwCRFYvnIaTQburLteURN.kg\"\n    }\n  ],\n  \"businessPhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"homePhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mobilePhone\": \"<string>\",\n  \"imAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"jobTitle\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"department\": \"<string>\",\n  \"officeLocation\": \"<string>\",\n  \"profession\": \"<string>\",\n  \"manager\": \"<string>\",\n  \"assistantName\": \"<string>\",\n  \"businessHomePage\": \"<string>\",\n  \"businessAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"homeAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"otherAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"countryOrRegion\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"spouseName\": \"<string>\",\n  \"birthday\": \"<dateTime>\",\n  \"children\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"personalNotes\": \"<string>\",\n  \"fileAs\": \"<string>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"yomiGivenName\": \"<string>\",\n  \"yomiSurname\": \"<string>\",\n  \"yomiCompanyName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"2014-01-01T15:33:46.927Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://outlook.office365.com/adminapi/v2.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://outlook.office365.com/.default"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2a9a1a7a-f8c3-4a0a-9088-e9437a1d2c7e",
+    "name": "Microsoft Exchange Exchange Online Admin Accepted Domains Contacts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST-based administrative API that enables a focused set of Exchange cmdlets and parameters as POST-only endpoints. Provides access to key tasks previously available through Exchange Web Services (EWS), including organization configuration, accepted domains, mailbox properties, mailbox folder permissions, and distribution group membership. Built as a complementary REST-first surface for specific administrative tasks caused by the EWS deprecation planned for October 2026.\n\nContact Support:\n Name: Microsoft Support\n Email: support@microsoft.com",
+      "type": "text/plain"
+    }
+  }
+}

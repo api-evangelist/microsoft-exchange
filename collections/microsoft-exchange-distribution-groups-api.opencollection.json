@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Exchange Exchange Online Admin Accepted Domains Distribution Groups API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Distribution Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Exchange Get distribution group members",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://outlook.office365.com/adminapi/v2.0/DistributionGroupMember",
+            "headers": [
+              {
+                "name": "X-AnchorMailbox",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve membership details for distribution groups. Returns the list of members for the specified distribution group. Replaces the ExpandDL EWS operation."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Get dynamic distribution group members",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://outlook.office365.com/adminapi/v2.0/DynamicDistributionGroupMember",
+            "headers": [
+              {
+                "name": "X-AnchorMailbox",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve membership details for dynamic distribution groups. Returns the dynamically computed members for the specified group. Replaces the ExpandDL EWS operation for dynamic groups."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

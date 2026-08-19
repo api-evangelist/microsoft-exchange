@@ -1,0 +1,274 @@
+{
+  "item": [
+    {
+      "id": "cc2f654e-4619-4d5c-8873-58222345b53f",
+      "name": "Organization Configuration",
+      "description": {
+        "content": "Retrieve organization-level Exchange configuration",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "55d348c3-8fe7-42a8-ad33-6bd736a3d4a2",
+          "name": "Microsoft Exchange Get organization configuration",
+          "request": {
+            "name": "Microsoft Exchange Get organization configuration",
+            "description": {
+              "content": "Retrieve organization-level Exchange configuration related to MailTips settings. Returns organization settings such as accepted domains, MailTips configuration, and mailbox limits including MaxSendSize. Replaces the GetServiceConfiguration EWS operation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "OrganizationConfig"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                "key": "X-AnchorMailbox",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"<string>\",\n    \"Parameters\": {\n      \"key_0\": false,\n      \"key_1\": \"string\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "00c4c228-7891-464e-8c32-e414156719c6",
+              "name": "Successfully retrieved organization configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "OrganizationConfig"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                    "key": "X-AnchorMailbox",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"Get-OrganizationConfig\",\n    \"Parameters\": {\n      \"key_0\": false\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.context\": \"string\",\n  \"value\": [\n    {\n      \"key_0\": 1915,\n      \"key_1\": 51,\n      \"key_2\": 7900.107174334356,\n      \"key_3\": 5884\n    },\n    {\n      \"key_0\": 4795\n    }\n  ],\n  \"@odata.nextLink\": \"http://MdPelUBPbYSOKgnlxWztAWSeQhAE.aiFAxy714GZHoDPa1nyT+2kMScHNoaHhabN3v\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0a74b28c-9cf5-41db-97d9-cebbd6091a2d",
+              "name": "Unauthorized - authentication token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "OrganizationConfig"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                    "key": "X-AnchorMailbox",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"Get-OrganizationConfig\",\n    \"Parameters\": {\n      \"key_0\": false\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5230ad56-60b8-4e4e-90d2-fbd8c69a2ae0",
+              "name": "Forbidden - insufficient Exchange RBAC permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "OrganizationConfig"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                    "key": "X-AnchorMailbox",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"Get-OrganizationConfig\",\n    \"Parameters\": {\n      \"key_0\": false\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://outlook.office365.com/adminapi/v2.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://outlook.office365.com/.default"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0e5ebfd1-ed09-4bc8-9d68-e4420d71e581",
+    "name": "Microsoft Exchange Exchange Online Admin Accepted Domains Organization Configuration API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST-based administrative API that enables a focused set of Exchange cmdlets and parameters as POST-only endpoints. Provides access to key tasks previously available through Exchange Web Services (EWS), including organization configuration, accepted domains, mailbox properties, mailbox folder permissions, and distribution group membership. Built as a complementary REST-first surface for specific administrative tasks caused by the EWS deprecation planned for October 2026.\n\nContact Support:\n Name: Microsoft Support\n Email: support@microsoft.com",
+      "type": "text/plain"
+    }
+  }
+}

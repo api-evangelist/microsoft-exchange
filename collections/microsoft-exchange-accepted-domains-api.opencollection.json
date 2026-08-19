@@ -1,0 +1,50 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Exchange Exchange Online Admin Accepted Domains API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Accepted Domains",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Exchange Get accepted domains",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://outlook.office365.com/adminapi/v2.0/AcceptedDomain",
+            "headers": [
+              {
+                "name": "X-AnchorMailbox",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "View accepted domains and their configurations for the organization. Returns the list of domains that are configured for the Exchange Online organization. Replaces the GetServiceConfiguration EWS operation."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

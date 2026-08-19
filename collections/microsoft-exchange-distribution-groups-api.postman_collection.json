@@ -1,0 +1,613 @@
+{
+  "item": [
+    {
+      "id": "c139f721-1920-4f13-8328-db7e1cec1ae7",
+      "name": "Distribution Groups",
+      "description": {
+        "content": "Retrieve distribution group and dynamic distribution group membership",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "07c6dd17-b9f8-4b56-bf5a-e97698d342df",
+          "name": "Microsoft Exchange Get distribution group members",
+          "request": {
+            "name": "Microsoft Exchange Get distribution group members",
+            "description": {
+              "content": "Retrieve membership details for distribution groups. Returns the list of members for the specified distribution group. Replaces the ExpandDL EWS operation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "DistributionGroupMember"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                "key": "X-AnchorMailbox",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"<string>\",\n    \"Parameters\": {\n      \"key_0\": \"string\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "841bfe21-a153-424f-bbb7-aa9e87349fbf",
+              "name": "Successfully retrieved distribution group members",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DistributionGroupMember"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                    "key": "X-AnchorMailbox",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"Get-DistributionGroupMember\",\n    \"Parameters\": {\n      \"key_0\": 1099\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.context\": \"string\",\n  \"value\": [\n    {\n      \"key_0\": true\n    },\n    {\n      \"key_0\": 6248,\n      \"key_1\": 9785.173309366226\n    }\n  ],\n  \"@odata.nextLink\": \"http://yGBlYRxjzvyvQnIJOTizzaUS.zeKrJNJo9WdL1AzyyC6NOexfngaJUtHnwl.EEl7XvCJWm4CK15PCg30iV38zBJE4sbUe\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fe52e329-c112-4446-be57-b6fd66c66cd3",
+              "name": "Unauthorized - authentication token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DistributionGroupMember"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                    "key": "X-AnchorMailbox",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"Get-DistributionGroupMember\",\n    \"Parameters\": {\n      \"key_0\": 1099\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e809ff24-2550-44fc-8e33-97a191c186ee",
+              "name": "Forbidden - insufficient Exchange RBAC permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DistributionGroupMember"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                    "key": "X-AnchorMailbox",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"Get-DistributionGroupMember\",\n    \"Parameters\": {\n      \"key_0\": 1099\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "efb3baaa-1b37-46a8-bad1-734d69288f48",
+              "name": "Not found - the specified resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DistributionGroupMember"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                    "key": "X-AnchorMailbox",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"Get-DistributionGroupMember\",\n    \"Parameters\": {\n      \"key_0\": 1099\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8c2bc50c-d268-418f-a240-2e74d5a85e35",
+          "name": "Microsoft Exchange Get dynamic distribution group members",
+          "request": {
+            "name": "Microsoft Exchange Get dynamic distribution group members",
+            "description": {
+              "content": "Retrieve membership details for dynamic distribution groups. Returns the dynamically computed members for the specified group. Replaces the ExpandDL EWS operation for dynamic groups.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "DynamicDistributionGroupMember"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                "key": "X-AnchorMailbox",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"<string>\",\n    \"Parameters\": {\n      \"key_0\": 8569.722517047157,\n      \"key_1\": \"string\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "70c51a11-ab1b-4a4a-9ca7-1762130624e3",
+              "name": "Successfully retrieved dynamic distribution group members",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DynamicDistributionGroupMember"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                    "key": "X-AnchorMailbox",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"Get-DynamicDistributionGroupMember\",\n    \"Parameters\": {\n      \"key_0\": 4342.5686745007115,\n      \"key_1\": 636\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.context\": \"string\",\n  \"value\": [\n    {\n      \"key_0\": true\n    },\n    {\n      \"key_0\": 6248,\n      \"key_1\": 9785.173309366226\n    }\n  ],\n  \"@odata.nextLink\": \"http://yGBlYRxjzvyvQnIJOTizzaUS.zeKrJNJo9WdL1AzyyC6NOexfngaJUtHnwl.EEl7XvCJWm4CK15PCg30iV38zBJE4sbUe\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a8aa6a01-851f-4810-a5ce-0bd37a2b8186",
+              "name": "Unauthorized - authentication token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DynamicDistributionGroupMember"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                    "key": "X-AnchorMailbox",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"Get-DynamicDistributionGroupMember\",\n    \"Parameters\": {\n      \"key_0\": 4342.5686745007115,\n      \"key_1\": 636\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ec0d6318-0adc-4f63-a850-63d4daa2de88",
+              "name": "Forbidden - insufficient Exchange RBAC permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DynamicDistributionGroupMember"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                    "key": "X-AnchorMailbox",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"Get-DynamicDistributionGroupMember\",\n    \"Parameters\": {\n      \"key_0\": 4342.5686745007115,\n      \"key_1\": 636\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d43dd2d-08eb-4eed-9627-dcd0216c33af",
+              "name": "Not found - the specified resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DynamicDistributionGroupMember"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.",
+                    "key": "X-AnchorMailbox",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CmdletInput\": {\n    \"CmdletName\": \"Get-DynamicDistributionGroupMember\",\n    \"Parameters\": {\n      \"key_0\": 4342.5686745007115,\n      \"key_1\": 636\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://outlook.office365.com/adminapi/v2.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://outlook.office365.com/.default"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e1eed806-2fc0-4153-85d3-cb940e2b5365",
+    "name": "Microsoft Exchange Exchange Online Admin Accepted Domains Distribution Groups API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST-based administrative API that enables a focused set of Exchange cmdlets and parameters as POST-only endpoints. Provides access to key tasks previously available through Exchange Web Services (EWS), including organization configuration, accepted domains, mailbox properties, mailbox folder permissions, and distribution group membership. Built as a complementary REST-first surface for specific administrative tasks caused by the EWS deprecation planned for October 2026.\n\nContact Support:\n Name: Microsoft Support\n Email: support@microsoft.com",
+      "type": "text/plain"
+    }
+  }
+}

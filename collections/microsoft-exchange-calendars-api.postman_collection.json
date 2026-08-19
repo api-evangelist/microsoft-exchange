@@ -1,0 +1,1698 @@
+{
+  "item": [
+    {
+      "id": "35189288-0de9-4bf7-bfa5-a3bb9c35ad7d",
+      "name": "Calendars",
+      "description": {
+        "content": "Operations for managing calendars",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c82deea8-9ce7-42be-9e48-76c02a302f92",
+          "name": "Microsoft Exchange List calendars",
+          "request": {
+            "name": "Microsoft Exchange List calendars",
+            "description": {
+              "content": "Get all the user's calendars, or the calendars in the default or other specific calendar group. Returns the calendar collection for the signed-in user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "calendars"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "The number of items to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "The number of items to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include in the response"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6f1273fd-c5b6-412e-a3aa-c96dcb5aa63a",
+              "name": "Successfully retrieved calendars",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendars"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.context\": \"string\",\n  \"@odata.nextLink\": \"http://tzrEBnaxQz.tcNHhEXzvipxsDubTSpFI8FBiT8OxzzS4xuIBYvifwBYsBBe6ZQQtjHvYhqKQYD9SkGtceA.fE7gaJVSVU\",\n  \"value\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"color\": \"lightGray\",\n      \"hexColor\": \"string\",\n      \"isDefaultCalendar\": false,\n      \"changeKey\": \"string\",\n      \"canEdit\": true,\n      \"canShare\": true,\n      \"canViewPrivateItems\": true,\n      \"isRemovable\": false,\n      \"isTallyingResponses\": false,\n      \"owner\": {\n        \"name\": \"string\",\n        \"address\": \"PZk@defndWvDUVROfRbbkCnLRw.aeke\"\n      },\n      \"allowedOnlineMeetingProviders\": [\n        \"unknown\",\n        \"teamsForBusiness\"\n      ],\n      \"defaultOnlineMeetingProvider\": \"unknown\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"color\": \"lightOrange\",\n      \"hexColor\": \"string\",\n      \"isDefaultCalendar\": false,\n      \"changeKey\": \"string\",\n      \"canEdit\": true,\n      \"canShare\": false,\n      \"canViewPrivateItems\": true,\n      \"isRemovable\": false,\n      \"isTallyingResponses\": false,\n      \"owner\": {\n        \"name\": \"string\",\n        \"address\": \"ecYvjk6jJ1gmd8z@bVeJLzCWBvCpcNBAjtKHZwYDHjnsmPrf.utu\"\n      },\n      \"allowedOnlineMeetingProviders\": [\n        \"unknown\",\n        \"teamsForBusiness\"\n      ],\n      \"defaultOnlineMeetingProvider\": \"skypeForConsumer\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "76d6d11c-0d67-43ad-bfce-5bdd51bd865d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendars"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"1963-03-11T21:41:50.704Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f2da7086-1f99-4bf4-9336-8908ebe452c8",
+          "name": "Microsoft Exchange Create calendar",
+          "request": {
+            "name": "Microsoft Exchange Create calendar",
+            "description": {
+              "content": "Create a new calendar in the default calendar group or specified calendar group for the user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "calendars"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"color\": \"<string>\",\n  \"isDefaultCalendar\": \"<boolean>\",\n  \"owner\": {\n    \"name\": \"<string>\",\n    \"address\": \"<email>\"\n  },\n  \"allowedOnlineMeetingProviders\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"defaultOnlineMeetingProvider\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "058d8990-2e59-4850-8c6d-e783e01bae6c",
+              "name": "Successfully created calendar",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendars"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"color\": \"<string>\",\n  \"isDefaultCalendar\": \"<boolean>\",\n  \"owner\": {\n    \"name\": \"string\",\n    \"address\": \"hvKgUoM@sZaXnuHviBZteJgYa.hlyh\"\n  },\n  \"allowedOnlineMeetingProviders\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"defaultOnlineMeetingProvider\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"color\": \"lightGreen\",\n  \"hexColor\": \"string\",\n  \"isDefaultCalendar\": true,\n  \"changeKey\": \"string\",\n  \"canEdit\": true,\n  \"canShare\": false,\n  \"canViewPrivateItems\": true,\n  \"isRemovable\": false,\n  \"isTallyingResponses\": false,\n  \"owner\": {\n    \"name\": \"string\",\n    \"address\": \"nK2kI@oNFdttUaNgAn.nash\"\n  },\n  \"allowedOnlineMeetingProviders\": [\n    \"skypeForBusiness\",\n    \"skypeForBusiness\"\n  ],\n  \"defaultOnlineMeetingProvider\": \"unknown\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1a003e2c-77fc-4a96-9478-fec297425dc8",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendars"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"color\": \"<string>\",\n  \"isDefaultCalendar\": \"<boolean>\",\n  \"owner\": {\n    \"name\": \"string\",\n    \"address\": \"hvKgUoM@sZaXnuHviBZteJgYa.hlyh\"\n  },\n  \"allowedOnlineMeetingProviders\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"defaultOnlineMeetingProvider\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"1963-03-11T21:41:50.704Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7dd15f66-a087-44fa-9311-465dcfd2d052",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendars"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"color\": \"<string>\",\n  \"isDefaultCalendar\": \"<boolean>\",\n  \"owner\": {\n    \"name\": \"string\",\n    \"address\": \"hvKgUoM@sZaXnuHviBZteJgYa.hlyh\"\n  },\n  \"allowedOnlineMeetingProviders\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"defaultOnlineMeetingProvider\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"1963-03-11T21:41:50.704Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3103737d-6491-49b6-99af-9c5e147066e5",
+          "name": "Microsoft Exchange Get calendar",
+          "request": {
+            "name": "Microsoft Exchange Get calendar",
+            "description": {
+              "content": "Get the properties and relationships of a calendar object. The calendar can be one for a user or the default calendar of a Microsoft 365 group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "calendars",
+                ":calendar-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include in the response"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "calendar-id",
+                  "description": "(Required) The unique identifier of the calendar"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a30bc9ac-7875-45e0-9519-6711ed68ef7a",
+              "name": "Successfully retrieved calendar",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendars",
+                    ":calendar-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "calendar-id",
+                      "description": "(Required) The unique identifier of the calendar"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"color\": \"lightGreen\",\n  \"hexColor\": \"string\",\n  \"isDefaultCalendar\": true,\n  \"changeKey\": \"string\",\n  \"canEdit\": true,\n  \"canShare\": false,\n  \"canViewPrivateItems\": true,\n  \"isRemovable\": false,\n  \"isTallyingResponses\": false,\n  \"owner\": {\n    \"name\": \"string\",\n    \"address\": \"nK2kI@oNFdttUaNgAn.nash\"\n  },\n  \"allowedOnlineMeetingProviders\": [\n    \"skypeForBusiness\",\n    \"skypeForBusiness\"\n  ],\n  \"defaultOnlineMeetingProvider\": \"unknown\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "302928ee-631e-4969-9a7d-1e4e38dcb8af",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendars",
+                    ":calendar-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "calendar-id",
+                      "description": "(Required) The unique identifier of the calendar"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"1963-03-11T21:41:50.704Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "865815ad-0179-453f-aa43-408e3ef61141",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendars",
+                    ":calendar-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "calendar-id",
+                      "description": "(Required) The unique identifier of the calendar"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"1963-03-11T21:41:50.704Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2002b44d-1298-49f2-b952-78cc66aa6877",
+          "name": "Microsoft Exchange Update calendar",
+          "request": {
+            "name": "Microsoft Exchange Update calendar",
+            "description": {
+              "content": "Update the properties of a calendar object. The calendar can be one for a user or the default calendar of a Microsoft 365 group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "calendars",
+                ":calendar-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "calendar-id",
+                  "description": "(Required) The unique identifier of the calendar"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"color\": \"<string>\",\n  \"isDefaultCalendar\": \"<boolean>\",\n  \"owner\": {\n    \"name\": \"<string>\",\n    \"address\": \"<email>\"\n  },\n  \"allowedOnlineMeetingProviders\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"defaultOnlineMeetingProvider\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "daa7b7fe-214b-4f40-ba71-77d3f7a13a76",
+              "name": "Successfully updated calendar",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendars",
+                    ":calendar-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "calendar-id",
+                      "description": "(Required) The unique identifier of the calendar"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"color\": \"<string>\",\n  \"isDefaultCalendar\": \"<boolean>\",\n  \"owner\": {\n    \"name\": \"string\",\n    \"address\": \"hvKgUoM@sZaXnuHviBZteJgYa.hlyh\"\n  },\n  \"allowedOnlineMeetingProviders\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"defaultOnlineMeetingProvider\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"color\": \"lightGreen\",\n  \"hexColor\": \"string\",\n  \"isDefaultCalendar\": true,\n  \"changeKey\": \"string\",\n  \"canEdit\": true,\n  \"canShare\": false,\n  \"canViewPrivateItems\": true,\n  \"isRemovable\": false,\n  \"isTallyingResponses\": false,\n  \"owner\": {\n    \"name\": \"string\",\n    \"address\": \"nK2kI@oNFdttUaNgAn.nash\"\n  },\n  \"allowedOnlineMeetingProviders\": [\n    \"skypeForBusiness\",\n    \"skypeForBusiness\"\n  ],\n  \"defaultOnlineMeetingProvider\": \"unknown\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f1ff2787-a67d-49e7-9ed0-668ebb2bfe36",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendars",
+                    ":calendar-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "calendar-id",
+                      "description": "(Required) The unique identifier of the calendar"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"color\": \"<string>\",\n  \"isDefaultCalendar\": \"<boolean>\",\n  \"owner\": {\n    \"name\": \"string\",\n    \"address\": \"hvKgUoM@sZaXnuHviBZteJgYa.hlyh\"\n  },\n  \"allowedOnlineMeetingProviders\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"defaultOnlineMeetingProvider\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"1963-03-11T21:41:50.704Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "15aff26b-7f00-4262-9441-3ec80b5879e0",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendars",
+                    ":calendar-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "calendar-id",
+                      "description": "(Required) The unique identifier of the calendar"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"color\": \"<string>\",\n  \"isDefaultCalendar\": \"<boolean>\",\n  \"owner\": {\n    \"name\": \"string\",\n    \"address\": \"hvKgUoM@sZaXnuHviBZteJgYa.hlyh\"\n  },\n  \"allowedOnlineMeetingProviders\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"defaultOnlineMeetingProvider\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"1963-03-11T21:41:50.704Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b6a1b7d8-beff-4b22-888b-15cbbff76c19",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendars",
+                    ":calendar-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "calendar-id",
+                      "description": "(Required) The unique identifier of the calendar"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"color\": \"<string>\",\n  \"isDefaultCalendar\": \"<boolean>\",\n  \"owner\": {\n    \"name\": \"string\",\n    \"address\": \"hvKgUoM@sZaXnuHviBZteJgYa.hlyh\"\n  },\n  \"allowedOnlineMeetingProviders\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"defaultOnlineMeetingProvider\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"1963-03-11T21:41:50.704Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4a254cc4-7945-43f1-8c15-9ff563ab110f",
+          "name": "Microsoft Exchange Delete calendar",
+          "request": {
+            "name": "Microsoft Exchange Delete calendar",
+            "description": {
+              "content": "Delete a calendar other than the user's default calendar.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "calendars",
+                ":calendar-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "calendar-id",
+                  "description": "(Required) The unique identifier of the calendar"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b5a5f762-b394-419e-8840-079b79ab4394",
+              "name": "Successfully deleted calendar",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendars",
+                    ":calendar-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "calendar-id",
+                      "description": "(Required) The unique identifier of the calendar"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1f094821-029c-407f-a7a8-3dbbc777c69e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendars",
+                    ":calendar-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "calendar-id",
+                      "description": "(Required) The unique identifier of the calendar"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"1963-03-11T21:41:50.704Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "18210da1-becc-4ce4-af18-bffa46a34b8e",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendars",
+                    ":calendar-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "calendar-id",
+                      "description": "(Required) The unique identifier of the calendar"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"1963-03-11T21:41:50.704Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3c39787b-a3db-44bc-a6a7-d75b76f2e08c",
+          "name": "Microsoft Exchange List events in calendar",
+          "request": {
+            "name": "Microsoft Exchange List events in calendar",
+            "description": {
+              "content": "Retrieve a list of events in a specified calendar. The list contains single-instance meetings and series masters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "calendars",
+                ":calendar-id",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "The number of items to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "The number of items to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include in the response"
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to sort by"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "calendar-id",
+                  "description": "(Required) The unique identifier of the calendar"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bc13392e-21a2-44f9-9c0f-bc211e324a5e",
+              "name": "Successfully retrieved events",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendars",
+                    ":calendar-id",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "calendar-id",
+                      "description": "(Required) The unique identifier of the calendar"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.context\": \"string\",\n  \"@odata.nextLink\": \"http://Bv.sbxJh0kwjLrOKRvRa\",\n  \"value\": [\n    {\n      \"id\": \"string\",\n      \"subject\": \"string\",\n      \"body\": {\n        \"contentType\": \"text\",\n        \"content\": \"string\"\n      },\n      \"bodyPreview\": \"string\",\n      \"start\": {\n        \"dateTime\": \"string\",\n        \"timeZone\": \"string\"\n      },\n      \"end\": {\n        \"dateTime\": \"string\",\n        \"timeZone\": \"string\"\n      },\n      \"location\": {\n        \"displayName\": \"string\",\n        \"locationType\": \"restaurant\",\n        \"locationUri\": \"string\",\n        \"locationEmailAddress\": \"string\",\n        \"address\": {\n          \"street\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"string\",\n          \"countryOrRegion\": \"string\",\n          \"postalCode\": \"string\"\n        },\n        \"coordinates\": {\n          \"latitude\": 6491.810946506399,\n          \"longitude\": 2992.731353565641,\n          \"accuracy\": 699.6501681544365,\n          \"altitude\": 8117.115200557724,\n          \"altitudeAccuracy\": 9204.833290660627\n        },\n        \"uniqueId\": \"string\",\n        \"uniqueIdType\": \"private\"\n      },\n      \"locations\": [\n        {\n          \"displayName\": \"string\",\n          \"locationType\": \"geoCoordinates\",\n          \"locationUri\": \"string\",\n          \"locationEmailAddress\": \"string\",\n          \"address\": {\n            \"street\": \"string\",\n            \"city\": \"string\",\n            \"state\": \"string\",\n            \"countryOrRegion\": \"string\",\n            \"postalCode\": \"string\"\n          },\n          \"coordinates\": {\n            \"latitude\": 9309.266822444735,\n            \"longitude\": 3671.7025803788806,\n            \"accuracy\": 8555.472464268121,\n            \"altitude\": 622.7340914723977,\n            \"altitudeAccuracy\": 6959.092811436217\n          },\n          \"uniqueId\": \"string\",\n          \"uniqueIdType\": \"private\"\n        },\n        {\n          \"displayName\": \"string\",\n          \"locationType\": \"geoCoordinates\",\n          \"locationUri\": \"string\",\n          \"locationEmailAddress\": \"string\",\n          \"address\": {\n            \"street\": \"string\",\n            \"city\": \"string\",\n            \"state\": \"string\",\n            \"countryOrRegion\": \"string\",\n            \"postalCode\": \"string\"\n          },\n          \"coordinates\": {\n            \"latitude\": 7539.096470372174,\n            \"longitude\": 6746.117835787295,\n            \"accuracy\": 9930.740152413084,\n            \"altitude\": 7142.724435233472,\n            \"altitudeAccuracy\": 6840.923166697313\n          },\n          \"uniqueId\": \"string\",\n          \"uniqueIdType\": \"unknown\"\n        }\n      ],\n      \"attendees\": [\n        {\n          \"emailAddress\": {\n            \"name\": \"string\",\n            \"address\": \"jf5ZLR@lahUjPcaVaCXYqCiXBPfADn.mqfh\"\n          },\n          \"type\": \"resource\",\n          \"status\": {\n            \"response\": \"notResponded\",\n            \"time\": \"2020-06-08T08:27:01.666Z\"\n          },\n          \"proposedNewTime\": {\n            \"start\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"emailAddress\": {\n            \"name\": \"string\",\n            \"address\": \"O59Nyv@IKJZPXiLbS.ynx\"\n          },\n          \"type\": \"resource\",\n          \"status\": {\n            \"response\": \"none\",\n            \"time\": \"1987-10-18T18:06:22.171Z\"\n          },\n          \"proposedNewTime\": {\n            \"start\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"organizer\": {\n        \"emailAddress\": {\n          \"name\": \"string\",\n          \"address\": \"0ep0@mkIODvxX.qffn\"\n        }\n      },\n      \"isAllDay\": true,\n      \"isCancelled\": false,\n      \"isDraft\": true,\n      \"isOnlineMeeting\": true,\n      \"isOrganizer\": false,\n      \"isReminderOn\": true,\n      \"onlineMeeting\": {\n        \"joinUrl\": \"https://AXpGzCNNqCQra.khgzQgiX4LS\",\n        \"conferenceId\": \"string\",\n        \"tollNumber\": \"string\",\n        \"tollFreeNumbers\": [\n          \"string\",\n          \"string\"\n        ],\n        \"quickDial\": \"string\",\n        \"phones\": [\n          {\n            \"number\": \"string\",\n            \"type\": \"other\"\n          },\n          {\n            \"number\": \"string\",\n            \"type\": \"business\"\n          }\n        ]\n      },\n      \"onlineMeetingProvider\": \"teamsForBusiness\",\n      \"onlineMeetingUrl\": \"string\",\n      \"recurrence\": {\n        \"pattern\": {\n          \"type\": \"weekly\",\n          \"interval\": 7152,\n          \"month\": 5,\n          \"dayOfMonth\": 9983,\n          \"daysOfWeek\": [\n            \"friday\",\n            \"sunday\"\n          ],\n          \"firstDayOfWeek\": \"sunday\",\n          \"index\": \"last\"\n        },\n        \"range\": {\n          \"type\": \"noEnd\",\n          \"startDate\": \"1964-05-04\",\n          \"endDate\": \"1987-04-17\",\n          \"recurrenceTimeZone\": \"string\",\n          \"numberOfOccurrences\": 3934\n        }\n      },\n      \"reminderMinutesBeforeStart\": 55,\n      \"responseRequested\": false,\n      \"responseStatus\": {\n        \"response\": \"tentativelyAccepted\",\n        \"time\": \"2002-12-04T23:42:16.576Z\"\n      },\n      \"sensitivity\": \"private\",\n      \"seriesMasterId\": \"string\",\n      \"showAs\": \"tentative\",\n      \"type\": \"exception\",\n      \"importance\": \"normal\",\n      \"hasAttachments\": true,\n      \"categories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"allowNewTimeProposals\": false,\n      \"iCalUId\": \"string\",\n      \"changeKey\": \"string\",\n      \"createdDateTime\": \"1970-02-07T02:36:01.186Z\",\n      \"lastModifiedDateTime\": \"2009-08-25T20:37:15.170Z\",\n      \"webLink\": \"https://dmkJQJcAFqYdozDv.vbfWWCIKBD\",\n      \"transactionId\": \"string\",\n      \"hideAttendees\": false,\n      \"originalStartTimeZone\": \"string\",\n      \"originalEndTimeZone\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"subject\": \"string\",\n      \"body\": {\n        \"contentType\": \"text\",\n        \"content\": \"string\"\n      },\n      \"bodyPreview\": \"string\",\n      \"start\": {\n        \"dateTime\": \"string\",\n        \"timeZone\": \"string\"\n      },\n      \"end\": {\n        \"dateTime\": \"string\",\n        \"timeZone\": \"string\"\n      },\n      \"location\": {\n        \"displayName\": \"string\",\n        \"locationType\": \"hotel\",\n        \"locationUri\": \"string\",\n        \"locationEmailAddress\": \"string\",\n        \"address\": {\n          \"street\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"string\",\n          \"countryOrRegion\": \"string\",\n          \"postalCode\": \"string\"\n        },\n        \"coordinates\": {\n          \"latitude\": 4627.203310947077,\n          \"longitude\": 1552.8425849438254,\n          \"accuracy\": 4477.503592572729,\n          \"altitude\": 9436.951344725307,\n          \"altitudeAccuracy\": 4536.693546181111\n        },\n        \"uniqueId\": \"string\",\n        \"uniqueIdType\": \"unknown\"\n      },\n      \"locations\": [\n        {\n          \"displayName\": \"string\",\n          \"locationType\": \"localBusiness\",\n          \"locationUri\": \"string\",\n          \"locationEmailAddress\": \"string\",\n          \"address\": {\n            \"street\": \"string\",\n            \"city\": \"string\",\n            \"state\": \"string\",\n            \"countryOrRegion\": \"string\",\n            \"postalCode\": \"string\"\n          },\n          \"coordinates\": {\n            \"latitude\": 6797.650132419192,\n            \"longitude\": 6122.383474154542,\n            \"accuracy\": 6764.922320277161,\n            \"altitude\": 6191.947634746003,\n            \"altitudeAccuracy\": 1673.8681148499613\n          },\n          \"uniqueId\": \"string\",\n          \"uniqueIdType\": \"unknown\"\n        },\n        {\n          \"displayName\": \"string\",\n          \"locationType\": \"hotel\",\n          \"locationUri\": \"string\",\n          \"locationEmailAddress\": \"string\",\n          \"address\": {\n            \"street\": \"string\",\n            \"city\": \"string\",\n            \"state\": \"string\",\n            \"countryOrRegion\": \"string\",\n            \"postalCode\": \"string\"\n          },\n          \"coordinates\": {\n            \"latitude\": 2651.9334091615697,\n            \"longitude\": 18.50905140503123,\n            \"accuracy\": 389.97864784051984,\n            \"altitude\": 8079.252838890993,\n            \"altitudeAccuracy\": 6163.198713467368\n          },\n          \"uniqueId\": \"string\",\n          \"uniqueIdType\": \"directory\"\n        }\n      ],\n      \"attendees\": [\n        {\n          \"emailAddress\": {\n            \"name\": \"string\",\n            \"address\": \"xNfz00H4qnAz7g@BbGFioKrBGWGnxnBM.ebi\"\n          },\n          \"type\": \"resource\",\n          \"status\": {\n            \"response\": \"none\",\n            \"time\": \"1985-07-17T15:34:49.557Z\"\n          },\n          \"proposedNewTime\": {\n            \"start\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"emailAddress\": {\n            \"name\": \"string\",\n            \"address\": \"YvAoadqn8EKC1@qOGBnBOlLYeDVSeybNkhptnpdA.avg\"\n          },\n          \"type\": \"optional\",\n          \"status\": {\n            \"response\": \"none\",\n            \"time\": \"1997-01-22T02:07:19.773Z\"\n          },\n          \"proposedNewTime\": {\n            \"start\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"organizer\": {\n        \"emailAddress\": {\n          \"name\": \"string\",\n          \"address\": \"3-wv9WOHlXeo@S.lj\"\n        }\n      },\n      \"isAllDay\": true,\n      \"isCancelled\": false,\n      \"isDraft\": true,\n      \"isOnlineMeeting\": true,\n      \"isOrganizer\": true,\n      \"isReminderOn\": true,\n      \"onlineMeeting\": {\n        \"joinUrl\": \"https://wpmISkMgRGWtuyuwW.kyfpnJCYlinlOza6XI7TDLEnIfsLwJqf3Cejb-,TIQe\",\n        \"conferenceId\": \"string\",\n        \"tollNumber\": \"string\",\n        \"tollFreeNumbers\": [\n          \"string\",\n          \"string\"\n        ],\n        \"quickDial\": \"string\",\n        \"phones\": [\n          {\n            \"number\": \"string\",\n            \"type\": \"other\"\n          },\n          {\n            \"number\": \"string\",\n            \"type\": \"home\"\n          }\n        ]\n      },\n      \"onlineMeetingProvider\": \"skypeForBusiness\",\n      \"onlineMeetingUrl\": \"string\",\n      \"recurrence\": {\n        \"pattern\": {\n          \"type\": \"weekly\",\n          \"interval\": 7505,\n          \"month\": 4851,\n          \"dayOfMonth\": 3488,\n          \"daysOfWeek\": [\n            \"wednesday\",\n            \"wednesday\"\n          ],\n          \"firstDayOfWeek\": \"monday\",\n          \"index\": \"third\"\n        },\n        \"range\": {\n          \"type\": \"numbered\",\n          \"startDate\": \"1989-05-10\",\n          \"endDate\": \"2001-08-26\",\n          \"recurrenceTimeZone\": \"string\",\n          \"numberOfOccurrences\": 5449\n        }\n      },\n      \"reminderMinutesBeforeStart\": 5237,\n      \"responseRequested\": true,\n      \"responseStatus\": {\n        \"response\": \"none\",\n        \"time\": \"2009-07-20T15:30:09.818Z\"\n      },\n      \"sensitivity\": \"private\",\n      \"seriesMasterId\": \"string\",\n      \"showAs\": \"tentative\",\n      \"type\": \"singleInstance\",\n      \"importance\": \"low\",\n      \"hasAttachments\": false,\n      \"categories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"allowNewTimeProposals\": false,\n      \"iCalUId\": \"string\",\n      \"changeKey\": \"string\",\n      \"createdDateTime\": \"2023-08-22T02:35:20.430Z\",\n      \"lastModifiedDateTime\": \"1957-08-30T20:48:20.874Z\",\n      \"webLink\": \"http://ctKTdtRRZBWgPx.hnunTvX4Bejbt-WptOLMJdjneUvAy6tTBnn2n-EBsCLOuOHFFeY,gz.Tz3OzirMgpNvRDIOQXC,qeJ4eDvbZ-aYSAXt\",\n      \"transactionId\": \"string\",\n      \"hideAttendees\": true,\n      \"originalStartTimeZone\": \"string\",\n      \"originalEndTimeZone\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a13bfae6-de83-4714-b571-5c93069923dd",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendars",
+                    ":calendar-id",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "calendar-id",
+                      "description": "(Required) The unique identifier of the calendar"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"1963-03-11T21:41:50.704Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "55f5ab6e-dcd4-4151-818e-3fa7148ecd0e",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendars",
+                    ":calendar-id",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "calendar-id",
+                      "description": "(Required) The unique identifier of the calendar"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"1963-03-11T21:41:50.704Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d7afdf48-77dd-4c05-b9de-428073ed0d56",
+          "name": "Microsoft Exchange Create event in calendar",
+          "request": {
+            "name": "Microsoft Exchange Create event in calendar",
+            "description": {
+              "content": "Create a new event in the specified calendar.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "calendars",
+                ":calendar-id",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "calendar-id",
+                  "description": "(Required) The unique identifier of the calendar"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"<string>\",\n  \"body\": {\n    \"contentType\": \"<string>\",\n    \"content\": \"<string>\"\n  },\n  \"start\": {\n    \"dateTime\": \"<string>\",\n    \"timeZone\": \"<string>\"\n  },\n  \"end\": {\n    \"dateTime\": \"<string>\",\n    \"timeZone\": \"<string>\"\n  },\n  \"location\": {\n    \"displayName\": \"<string>\",\n    \"locationType\": \"<string>\",\n    \"locationUri\": \"<string>\",\n    \"locationEmailAddress\": \"<string>\",\n    \"address\": {\n      \"street\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"countryOrRegion\": \"<string>\",\n      \"postalCode\": \"<string>\"\n    },\n    \"coordinates\": {\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\",\n      \"accuracy\": \"<double>\",\n      \"altitude\": \"<double>\",\n      \"altitudeAccuracy\": \"<double>\"\n    },\n    \"uniqueId\": \"<string>\",\n    \"uniqueIdType\": \"<string>\"\n  },\n  \"locations\": [\n    {\n      \"displayName\": \"<string>\",\n      \"locationType\": \"<string>\",\n      \"locationUri\": \"<string>\",\n      \"locationEmailAddress\": \"<string>\",\n      \"address\": {\n        \"street\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"countryOrRegion\": \"<string>\",\n        \"postalCode\": \"<string>\"\n      },\n      \"coordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\",\n        \"accuracy\": \"<double>\",\n        \"altitude\": \"<double>\",\n        \"altitudeAccuracy\": \"<double>\"\n      },\n      \"uniqueId\": \"<string>\",\n      \"uniqueIdType\": \"<string>\"\n    },\n    {\n      \"displayName\": \"<string>\",\n      \"locationType\": \"<string>\",\n      \"locationUri\": \"<string>\",\n      \"locationEmailAddress\": \"<string>\",\n      \"address\": {\n        \"street\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"countryOrRegion\": \"<string>\",\n        \"postalCode\": \"<string>\"\n      },\n      \"coordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\",\n        \"accuracy\": \"<double>\",\n        \"altitude\": \"<double>\",\n        \"altitudeAccuracy\": \"<double>\"\n      },\n      \"uniqueId\": \"<string>\",\n      \"uniqueIdType\": \"<string>\"\n    }\n  ],\n  \"attendees\": [\n    {\n      \"emailAddress\": {\n        \"name\": \"<string>\",\n        \"address\": \"<email>\"\n      },\n      \"type\": \"<string>\",\n      \"status\": {\n        \"response\": \"<string>\",\n        \"time\": \"<dateTime>\"\n      },\n      \"proposedNewTime\": {\n        \"start\": {\n          \"dateTime\": \"<string>\",\n          \"timeZone\": \"<string>\"\n        },\n        \"end\": {\n          \"dateTime\": \"<string>\",\n          \"timeZone\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"emailAddress\": {\n        \"name\": \"<string>\",\n        \"address\": \"<email>\"\n      },\n      \"type\": \"<string>\",\n      \"status\": {\n        \"response\": \"<string>\",\n        \"time\": \"<dateTime>\"\n      },\n      \"proposedNewTime\": {\n        \"start\": {\n          \"dateTime\": \"<string>\",\n          \"timeZone\": \"<string>\"\n        },\n        \"end\": {\n          \"dateTime\": \"<string>\",\n          \"timeZone\": \"<string>\"\n        }\n      }\n    }\n  ],\n  \"organizer\": {\n    \"emailAddress\": {\n      \"name\": \"<string>\",\n      \"address\": \"<email>\"\n    }\n  },\n  \"isAllDay\": \"<boolean>\",\n  \"isOnlineMeeting\": \"<boolean>\",\n  \"isReminderOn\": \"<boolean>\",\n  \"onlineMeeting\": {\n    \"joinUrl\": \"<uri>\",\n    \"conferenceId\": \"<string>\",\n    \"tollNumber\": \"<string>\",\n    \"tollFreeNumbers\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"quickDial\": \"<string>\",\n    \"phones\": [\n      {\n        \"number\": \"<string>\",\n        \"type\": \"<string>\"\n      },\n      {\n        \"number\": \"<string>\",\n        \"type\": \"<string>\"\n      }\n    ]\n  },\n  \"onlineMeetingProvider\": \"<string>\",\n  \"recurrence\": {\n    \"pattern\": {\n      \"type\": \"<string>\",\n      \"interval\": \"<integer>\",\n      \"month\": \"<integer>\",\n      \"dayOfMonth\": \"<integer>\",\n      \"daysOfWeek\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"firstDayOfWeek\": \"<string>\",\n      \"index\": \"<string>\"\n    },\n    \"range\": {\n      \"type\": \"<string>\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"recurrenceTimeZone\": \"<string>\",\n      \"numberOfOccurrences\": \"<integer>\"\n    }\n  },\n  \"reminderMinutesBeforeStart\": \"<integer>\",\n  \"responseRequested\": \"<boolean>\",\n  \"responseStatus\": {\n    \"response\": \"<string>\",\n    \"time\": \"<dateTime>\"\n  },\n  \"sensitivity\": \"<string>\",\n  \"showAs\": \"<string>\",\n  \"importance\": \"<string>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"allowNewTimeProposals\": \"<boolean>\",\n  \"transactionId\": \"<string>\",\n  \"hideAttendees\": \"<boolean>\",\n  \"originalStartTimeZone\": \"<string>\",\n  \"originalEndTimeZone\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "278119f4-617b-413c-849f-42ee0dd571fa",
+              "name": "Successfully created event",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendars",
+                    ":calendar-id",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "calendar-id",
+                      "description": "(Required) The unique identifier of the calendar"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"<string>\",\n  \"body\": {\n    \"contentType\": \"html\",\n    \"content\": \"string\"\n  },\n  \"start\": {\n    \"dateTime\": \"string\",\n    \"timeZone\": \"string\"\n  },\n  \"end\": {\n    \"dateTime\": \"string\",\n    \"timeZone\": \"string\"\n  },\n  \"location\": {\n    \"displayName\": \"string\",\n    \"locationType\": \"streetAddress\",\n    \"locationUri\": \"string\",\n    \"locationEmailAddress\": \"string\",\n    \"address\": {\n      \"street\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"countryOrRegion\": \"string\",\n      \"postalCode\": \"string\"\n    },\n    \"coordinates\": {\n      \"latitude\": 8268.183002093476,\n      \"longitude\": 4416.840498393404,\n      \"accuracy\": 6171.584809009857,\n      \"altitude\": 8858.274769139323,\n      \"altitudeAccuracy\": 642.474764755826\n    },\n    \"uniqueId\": \"string\",\n    \"uniqueIdType\": \"bing\"\n  },\n  \"locations\": [\n    {\n      \"displayName\": \"string\",\n      \"locationType\": \"hotel\",\n      \"locationUri\": \"string\",\n      \"locationEmailAddress\": \"string\",\n      \"address\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"countryOrRegion\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"coordinates\": {\n        \"latitude\": 5754.032272621641,\n        \"longitude\": 2256.678773679389,\n        \"accuracy\": 77.33760025851244,\n        \"altitude\": 4507.877713885539,\n        \"altitudeAccuracy\": 6674.402453052484\n      },\n      \"uniqueId\": \"string\",\n      \"uniqueIdType\": \"unknown\"\n    },\n    {\n      \"displayName\": \"string\",\n      \"locationType\": \"geoCoordinates\",\n      \"locationUri\": \"string\",\n      \"locationEmailAddress\": \"string\",\n      \"address\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"countryOrRegion\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"coordinates\": {\n        \"latitude\": 6049.919453512681,\n        \"longitude\": 8816.235115534211,\n        \"accuracy\": 3120.9348074513878,\n        \"altitude\": 4612.189813748621,\n        \"altitudeAccuracy\": 8987.330908144211\n      },\n      \"uniqueId\": \"string\",\n      \"uniqueIdType\": \"unknown\"\n    }\n  ],\n  \"attendees\": [\n    {\n      \"emailAddress\": {\n        \"name\": \"string\",\n        \"address\": \"32ZoGTgJu@Quk.fwxp\"\n      },\n      \"type\": \"required\",\n      \"status\": {\n        \"response\": \"accepted\",\n        \"time\": \"2021-03-30T18:39:36.957Z\"\n      },\n      \"proposedNewTime\": {\n        \"start\": {\n          \"dateTime\": \"string\",\n          \"timeZone\": \"string\"\n        },\n        \"end\": {\n          \"dateTime\": \"string\",\n          \"timeZone\": \"string\"\n        }\n      }\n    },\n    {\n      \"emailAddress\": {\n        \"name\": \"string\",\n        \"address\": \"BdhME5O@oWwuozKGwpBiqjhXkxVvOsHMlSZYgnkZ.ayhi\"\n      },\n      \"type\": \"resource\",\n      \"status\": {\n        \"response\": \"organizer\",\n        \"time\": \"1947-05-04T03:25:21.476Z\"\n      },\n      \"proposedNewTime\": {\n        \"start\": {\n          \"dateTime\": \"string\",\n          \"timeZone\": \"string\"\n        },\n        \"end\": {\n          \"dateTime\": \"string\",\n          \"timeZone\": \"string\"\n        }\n      }\n    }\n  ],\n  \"organizer\": {\n    \"emailAddress\": {\n      \"name\": \"string\",\n      \"address\": \"TzR-Rk17R5H5Ac@VlTWqIroYmkNHazhNwvncjMlkP.valj\"\n    }\n  },\n  \"isAllDay\": \"<boolean>\",\n  \"isOnlineMeeting\": \"<boolean>\",\n  \"isReminderOn\": \"<boolean>\",\n  \"onlineMeeting\": {\n    \"joinUrl\": \"https://ytAlxvAZoWejvKSNSjggWhCnod.wqzqwJpqWIflH2iHdgqeJlKcAEFg,fTdaIedI4yz-Qo+7rL\",\n    \"conferenceId\": \"string\",\n    \"tollNumber\": \"string\",\n    \"tollFreeNumbers\": [\n      \"string\",\n      \"string\"\n    ],\n    \"quickDial\": \"string\",\n    \"phones\": [\n      {\n        \"number\": \"string\",\n        \"type\": \"pager\"\n      },\n      {\n        \"number\": \"string\",\n        \"type\": \"home\"\n      }\n    ]\n  },\n  \"onlineMeetingProvider\": \"<string>\",\n  \"recurrence\": {\n    \"pattern\": {\n      \"type\": \"absoluteMonthly\",\n      \"interval\": 3861,\n      \"month\": 4526,\n      \"dayOfMonth\": 8520,\n      \"daysOfWeek\": [\n        \"friday\",\n        \"monday\"\n      ],\n      \"firstDayOfWeek\": \"saturday\",\n      \"index\": \"second\"\n    },\n    \"range\": {\n      \"type\": \"endDate\",\n      \"startDate\": \"2013-06-19\",\n      \"endDate\": \"1961-07-17\",\n      \"recurrenceTimeZone\": \"string\",\n      \"numberOfOccurrences\": 2343\n    }\n  },\n  \"reminderMinutesBeforeStart\": \"<integer>\",\n  \"responseRequested\": \"<boolean>\",\n  \"responseStatus\": {\n    \"response\": \"none\",\n    \"time\": \"1997-05-09T21:39:39.575Z\"\n  },\n  \"sensitivity\": \"<string>\",\n  \"showAs\": \"<string>\",\n  \"importance\": \"<string>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"allowNewTimeProposals\": \"<boolean>\",\n  \"transactionId\": \"<string>\",\n  \"hideAttendees\": \"<boolean>\",\n  \"originalStartTimeZone\": \"<string>\",\n  \"originalEndTimeZone\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"subject\": \"string\",\n  \"body\": {\n    \"contentType\": \"text\",\n    \"content\": \"string\"\n  },\n  \"bodyPreview\": \"string\",\n  \"start\": {\n    \"dateTime\": \"string\",\n    \"timeZone\": \"string\"\n  },\n  \"end\": {\n    \"dateTime\": \"string\",\n    \"timeZone\": \"string\"\n  },\n  \"location\": {\n    \"displayName\": \"string\",\n    \"locationType\": \"postalAddress\",\n    \"locationUri\": \"string\",\n    \"locationEmailAddress\": \"string\",\n    \"address\": {\n      \"street\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"countryOrRegion\": \"string\",\n      \"postalCode\": \"string\"\n    },\n    \"coordinates\": {\n      \"latitude\": 2308.4901447130624,\n      \"longitude\": 9032.520632337604,\n      \"accuracy\": 7030.2646425376115,\n      \"altitude\": 1808.5485391209,\n      \"altitudeAccuracy\": 6257.786441863169\n    },\n    \"uniqueId\": \"string\",\n    \"uniqueIdType\": \"bing\"\n  },\n  \"locations\": [\n    {\n      \"displayName\": \"string\",\n      \"locationType\": \"streetAddress\",\n      \"locationUri\": \"string\",\n      \"locationEmailAddress\": \"string\",\n      \"address\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"countryOrRegion\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"coordinates\": {\n        \"latitude\": 9574.365654953048,\n        \"longitude\": 9368.148839917209,\n        \"accuracy\": 9519.48869767278,\n        \"altitude\": 4385.387608603825,\n        \"altitudeAccuracy\": 5079.26670587428\n      },\n      \"uniqueId\": \"string\",\n      \"uniqueIdType\": \"unknown\"\n    },\n    {\n      \"displayName\": \"string\",\n      \"locationType\": \"conferenceRoom\",\n      \"locationUri\": \"string\",\n      \"locationEmailAddress\": \"string\",\n      \"address\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"countryOrRegion\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"coordinates\": {\n        \"latitude\": 2427.653317381311,\n        \"longitude\": 3588.3416348446726,\n        \"accuracy\": 1057.6135612005655,\n        \"altitude\": 5690.568817586515,\n        \"altitudeAccuracy\": 3118.2505927931247\n      },\n      \"uniqueId\": \"string\",\n      \"uniqueIdType\": \"unknown\"\n    }\n  ],\n  \"attendees\": [\n    {\n      \"emailAddress\": {\n        \"name\": \"string\",\n        \"address\": \"aBNlh1rX9i2o@YqEiGxfZQxQpKRhJFATwZQWZgsLh.gnk\"\n      },\n      \"type\": \"required\",\n      \"status\": {\n        \"response\": \"notResponded\",\n        \"time\": \"1987-02-25T11:08:04.520Z\"\n      },\n      \"proposedNewTime\": {\n        \"start\": {\n          \"dateTime\": \"string\",\n          \"timeZone\": \"string\"\n        },\n        \"end\": {\n          \"dateTime\": \"string\",\n          \"timeZone\": \"string\"\n        }\n      }\n    },\n    {\n      \"emailAddress\": {\n        \"name\": \"string\",\n        \"address\": \"9dcoezVzrkeM@UfqiKRmjWFIGazvv.fuea\"\n      },\n      \"type\": \"optional\",\n      \"status\": {\n        \"response\": \"notResponded\",\n        \"time\": \"1960-01-06T10:39:13.226Z\"\n      },\n      \"proposedNewTime\": {\n        \"start\": {\n          \"dateTime\": \"string\",\n          \"timeZone\": \"string\"\n        },\n        \"end\": {\n          \"dateTime\": \"string\",\n          \"timeZone\": \"string\"\n        }\n      }\n    }\n  ],\n  \"organizer\": {\n    \"emailAddress\": {\n      \"name\": \"string\",\n      \"address\": \"hTzq@nljMmXCCLrmhEwIvdxsdnGdoTM.yzz\"\n    }\n  },\n  \"isAllDay\": true,\n  \"isCancelled\": false,\n  \"isDraft\": false,\n  \"isOnlineMeeting\": false,\n  \"isOrganizer\": false,\n  \"isReminderOn\": true,\n  \"onlineMeeting\": {\n    \"joinUrl\": \"https://OGOVkcriIUulNd.trkCwHQgL8g13YmgM6.lcW1AzA4FfrWVH0YQi,cFiIF7CaysinzN+tgq6w+1cRmblM+yF,xqoVC8xRAvTGxyZYo\",\n    \"conferenceId\": \"string\",\n    \"tollNumber\": \"string\",\n    \"tollFreeNumbers\": [\n      \"string\",\n      \"string\"\n    ],\n    \"quickDial\": \"string\",\n    \"phones\": [\n      {\n        \"number\": \"string\",\n        \"type\": \"pager\"\n      },\n      {\n        \"number\": \"string\",\n        \"type\": \"mobile\"\n      }\n    ]\n  },\n  \"onlineMeetingProvider\": \"skypeForConsumer\",\n  \"onlineMeetingUrl\": \"string\",\n  \"recurrence\": {\n    \"pattern\": {\n      \"type\": \"relativeMonthly\",\n      \"interval\": 8131,\n      \"month\": 5429,\n      \"dayOfMonth\": 1111,\n      \"daysOfWeek\": [\n        \"thursday\",\n        \"tuesday\"\n      ],\n      \"firstDayOfWeek\": \"friday\",\n      \"index\": \"fourth\"\n    },\n    \"range\": {\n      \"type\": \"noEnd\",\n      \"startDate\": \"1949-12-10\",\n      \"endDate\": \"2001-02-27\",\n      \"recurrenceTimeZone\": \"string\",\n      \"numberOfOccurrences\": 3222\n    }\n  },\n  \"reminderMinutesBeforeStart\": 5919,\n  \"responseRequested\": true,\n  \"responseStatus\": {\n    \"response\": \"organizer\",\n    \"time\": \"1971-12-22T22:26:41.699Z\"\n  },\n  \"sensitivity\": \"normal\",\n  \"seriesMasterId\": \"string\",\n  \"showAs\": \"workingElsewhere\",\n  \"type\": \"seriesMaster\",\n  \"importance\": \"high\",\n  \"hasAttachments\": true,\n  \"categories\": [\n    \"string\",\n    \"string\"\n  ],\n  \"allowNewTimeProposals\": false,\n  \"iCalUId\": \"string\",\n  \"changeKey\": \"string\",\n  \"createdDateTime\": \"1973-08-17T02:57:04.227Z\",\n  \"lastModifiedDateTime\": \"1990-11-14T16:28:41.340Z\",\n  \"webLink\": \"http://QOFllatCLUJkbHQoZm.cxpOzA0pmZMR2nfd+S0fa7v4k1xg16hD-iuIVYgkuXG54bDLFyXhlS9R-v\",\n  \"transactionId\": \"string\",\n  \"hideAttendees\": true,\n  \"originalStartTimeZone\": \"string\",\n  \"originalEndTimeZone\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "225fda3a-a54d-4e71-b8ee-966ae4eecc7d",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendars",
+                    ":calendar-id",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "calendar-id",
+                      "description": "(Required) The unique identifier of the calendar"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"<string>\",\n  \"body\": {\n    \"contentType\": \"html\",\n    \"content\": \"string\"\n  },\n  \"start\": {\n    \"dateTime\": \"string\",\n    \"timeZone\": \"string\"\n  },\n  \"end\": {\n    \"dateTime\": \"string\",\n    \"timeZone\": \"string\"\n  },\n  \"location\": {\n    \"displayName\": \"string\",\n    \"locationType\": \"streetAddress\",\n    \"locationUri\": \"string\",\n    \"locationEmailAddress\": \"string\",\n    \"address\": {\n      \"street\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"countryOrRegion\": \"string\",\n      \"postalCode\": \"string\"\n    },\n    \"coordinates\": {\n      \"latitude\": 8268.183002093476,\n      \"longitude\": 4416.840498393404,\n      \"accuracy\": 6171.584809009857,\n      \"altitude\": 8858.274769139323,\n      \"altitudeAccuracy\": 642.474764755826\n    },\n    \"uniqueId\": \"string\",\n    \"uniqueIdType\": \"bing\"\n  },\n  \"locations\": [\n    {\n      \"displayName\": \"string\",\n      \"locationType\": \"hotel\",\n      \"locationUri\": \"string\",\n      \"locationEmailAddress\": \"string\",\n      \"address\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"countryOrRegion\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"coordinates\": {\n        \"latitude\": 5754.032272621641,\n        \"longitude\": 2256.678773679389,\n        \"accuracy\": 77.33760025851244,\n        \"altitude\": 4507.877713885539,\n        \"altitudeAccuracy\": 6674.402453052484\n      },\n      \"uniqueId\": \"string\",\n      \"uniqueIdType\": \"unknown\"\n    },\n    {\n      \"displayName\": \"string\",\n      \"locationType\": \"geoCoordinates\",\n      \"locationUri\": \"string\",\n      \"locationEmailAddress\": \"string\",\n      \"address\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"countryOrRegion\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"coordinates\": {\n        \"latitude\": 6049.919453512681,\n        \"longitude\": 8816.235115534211,\n        \"accuracy\": 3120.9348074513878,\n        \"altitude\": 4612.189813748621,\n        \"altitudeAccuracy\": 8987.330908144211\n      },\n      \"uniqueId\": \"string\",\n      \"uniqueIdType\": \"unknown\"\n    }\n  ],\n  \"attendees\": [\n    {\n      \"emailAddress\": {\n        \"name\": \"string\",\n        \"address\": \"32ZoGTgJu@Quk.fwxp\"\n      },\n      \"type\": \"required\",\n      \"status\": {\n        \"response\": \"accepted\",\n        \"time\": \"2021-03-30T18:39:36.957Z\"\n      },\n      \"proposedNewTime\": {\n        \"start\": {\n          \"dateTime\": \"string\",\n          \"timeZone\": \"string\"\n        },\n        \"end\": {\n          \"dateTime\": \"string\",\n          \"timeZone\": \"string\"\n        }\n      }\n    },\n    {\n      \"emailAddress\": {\n        \"name\": \"string\",\n        \"address\": \"BdhME5O@oWwuozKGwpBiqjhXkxVvOsHMlSZYgnkZ.ayhi\"\n      },\n      \"type\": \"resource\",\n      \"status\": {\n        \"response\": \"organizer\",\n        \"time\": \"1947-05-04T03:25:21.476Z\"\n      },\n      \"proposedNewTime\": {\n        \"start\": {\n          \"dateTime\": \"string\",\n          \"timeZone\": \"string\"\n        },\n        \"end\": {\n          \"dateTime\": \"string\",\n          \"timeZone\": \"string\"\n        }\n      }\n    }\n  ],\n  \"organizer\": {\n    \"emailAddress\": {\n      \"name\": \"string\",\n      \"address\": \"TzR-Rk17R5H5Ac@VlTWqIroYmkNHazhNwvncjMlkP.valj\"\n    }\n  },\n  \"isAllDay\": \"<boolean>\",\n  \"isOnlineMeeting\": \"<boolean>\",\n  \"isReminderOn\": \"<boolean>\",\n  \"onlineMeeting\": {\n    \"joinUrl\": \"https://ytAlxvAZoWejvKSNSjggWhCnod.wqzqwJpqWIflH2iHdgqeJlKcAEFg,fTdaIedI4yz-Qo+7rL\",\n    \"conferenceId\": \"string\",\n    \"tollNumber\": \"string\",\n    \"tollFreeNumbers\": [\n      \"string\",\n      \"string\"\n    ],\n    \"quickDial\": \"string\",\n    \"phones\": [\n      {\n        \"number\": \"string\",\n        \"type\": \"pager\"\n      },\n      {\n        \"number\": \"string\",\n        \"type\": \"home\"\n      }\n    ]\n  },\n  \"onlineMeetingProvider\": \"<string>\",\n  \"recurrence\": {\n    \"pattern\": {\n      \"type\": \"absoluteMonthly\",\n      \"interval\": 3861,\n      \"month\": 4526,\n      \"dayOfMonth\": 8520,\n      \"daysOfWeek\": [\n        \"friday\",\n        \"monday\"\n      ],\n      \"firstDayOfWeek\": \"saturday\",\n      \"index\": \"second\"\n    },\n    \"range\": {\n      \"type\": \"endDate\",\n      \"startDate\": \"2013-06-19\",\n      \"endDate\": \"1961-07-17\",\n      \"recurrenceTimeZone\": \"string\",\n      \"numberOfOccurrences\": 2343\n    }\n  },\n  \"reminderMinutesBeforeStart\": \"<integer>\",\n  \"responseRequested\": \"<boolean>\",\n  \"responseStatus\": {\n    \"response\": \"none\",\n    \"time\": \"1997-05-09T21:39:39.575Z\"\n  },\n  \"sensitivity\": \"<string>\",\n  \"showAs\": \"<string>\",\n  \"importance\": \"<string>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"allowNewTimeProposals\": \"<boolean>\",\n  \"transactionId\": \"<string>\",\n  \"hideAttendees\": \"<boolean>\",\n  \"originalStartTimeZone\": \"<string>\",\n  \"originalEndTimeZone\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"1963-03-11T21:41:50.704Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5a753c85-80d0-444e-b2b6-217ef84e9333",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendars",
+                    ":calendar-id",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "calendar-id",
+                      "description": "(Required) The unique identifier of the calendar"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"<string>\",\n  \"body\": {\n    \"contentType\": \"html\",\n    \"content\": \"string\"\n  },\n  \"start\": {\n    \"dateTime\": \"string\",\n    \"timeZone\": \"string\"\n  },\n  \"end\": {\n    \"dateTime\": \"string\",\n    \"timeZone\": \"string\"\n  },\n  \"location\": {\n    \"displayName\": \"string\",\n    \"locationType\": \"streetAddress\",\n    \"locationUri\": \"string\",\n    \"locationEmailAddress\": \"string\",\n    \"address\": {\n      \"street\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"countryOrRegion\": \"string\",\n      \"postalCode\": \"string\"\n    },\n    \"coordinates\": {\n      \"latitude\": 8268.183002093476,\n      \"longitude\": 4416.840498393404,\n      \"accuracy\": 6171.584809009857,\n      \"altitude\": 8858.274769139323,\n      \"altitudeAccuracy\": 642.474764755826\n    },\n    \"uniqueId\": \"string\",\n    \"uniqueIdType\": \"bing\"\n  },\n  \"locations\": [\n    {\n      \"displayName\": \"string\",\n      \"locationType\": \"hotel\",\n      \"locationUri\": \"string\",\n      \"locationEmailAddress\": \"string\",\n      \"address\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"countryOrRegion\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"coordinates\": {\n        \"latitude\": 5754.032272621641,\n        \"longitude\": 2256.678773679389,\n        \"accuracy\": 77.33760025851244,\n        \"altitude\": 4507.877713885539,\n        \"altitudeAccuracy\": 6674.402453052484\n      },\n      \"uniqueId\": \"string\",\n      \"uniqueIdType\": \"unknown\"\n    },\n    {\n      \"displayName\": \"string\",\n      \"locationType\": \"geoCoordinates\",\n      \"locationUri\": \"string\",\n      \"locationEmailAddress\": \"string\",\n      \"address\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"countryOrRegion\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"coordinates\": {\n        \"latitude\": 6049.919453512681,\n        \"longitude\": 8816.235115534211,\n        \"accuracy\": 3120.9348074513878,\n        \"altitude\": 4612.189813748621,\n        \"altitudeAccuracy\": 8987.330908144211\n      },\n      \"uniqueId\": \"string\",\n      \"uniqueIdType\": \"unknown\"\n    }\n  ],\n  \"attendees\": [\n    {\n      \"emailAddress\": {\n        \"name\": \"string\",\n        \"address\": \"32ZoGTgJu@Quk.fwxp\"\n      },\n      \"type\": \"required\",\n      \"status\": {\n        \"response\": \"accepted\",\n        \"time\": \"2021-03-30T18:39:36.957Z\"\n      },\n      \"proposedNewTime\": {\n        \"start\": {\n          \"dateTime\": \"string\",\n          \"timeZone\": \"string\"\n        },\n        \"end\": {\n          \"dateTime\": \"string\",\n          \"timeZone\": \"string\"\n        }\n      }\n    },\n    {\n      \"emailAddress\": {\n        \"name\": \"string\",\n        \"address\": \"BdhME5O@oWwuozKGwpBiqjhXkxVvOsHMlSZYgnkZ.ayhi\"\n      },\n      \"type\": \"resource\",\n      \"status\": {\n        \"response\": \"organizer\",\n        \"time\": \"1947-05-04T03:25:21.476Z\"\n      },\n      \"proposedNewTime\": {\n        \"start\": {\n          \"dateTime\": \"string\",\n          \"timeZone\": \"string\"\n        },\n        \"end\": {\n          \"dateTime\": \"string\",\n          \"timeZone\": \"string\"\n        }\n      }\n    }\n  ],\n  \"organizer\": {\n    \"emailAddress\": {\n      \"name\": \"string\",\n      \"address\": \"TzR-Rk17R5H5Ac@VlTWqIroYmkNHazhNwvncjMlkP.valj\"\n    }\n  },\n  \"isAllDay\": \"<boolean>\",\n  \"isOnlineMeeting\": \"<boolean>\",\n  \"isReminderOn\": \"<boolean>\",\n  \"onlineMeeting\": {\n    \"joinUrl\": \"https://ytAlxvAZoWejvKSNSjggWhCnod.wqzqwJpqWIflH2iHdgqeJlKcAEFg,fTdaIedI4yz-Qo+7rL\",\n    \"conferenceId\": \"string\",\n    \"tollNumber\": \"string\",\n    \"tollFreeNumbers\": [\n      \"string\",\n      \"string\"\n    ],\n    \"quickDial\": \"string\",\n    \"phones\": [\n      {\n        \"number\": \"string\",\n        \"type\": \"pager\"\n      },\n      {\n        \"number\": \"string\",\n        \"type\": \"home\"\n      }\n    ]\n  },\n  \"onlineMeetingProvider\": \"<string>\",\n  \"recurrence\": {\n    \"pattern\": {\n      \"type\": \"absoluteMonthly\",\n      \"interval\": 3861,\n      \"month\": 4526,\n      \"dayOfMonth\": 8520,\n      \"daysOfWeek\": [\n        \"friday\",\n        \"monday\"\n      ],\n      \"firstDayOfWeek\": \"saturday\",\n      \"index\": \"second\"\n    },\n    \"range\": {\n      \"type\": \"endDate\",\n      \"startDate\": \"2013-06-19\",\n      \"endDate\": \"1961-07-17\",\n      \"recurrenceTimeZone\": \"string\",\n      \"numberOfOccurrences\": 2343\n    }\n  },\n  \"reminderMinutesBeforeStart\": \"<integer>\",\n  \"responseRequested\": \"<boolean>\",\n  \"responseStatus\": {\n    \"response\": \"none\",\n    \"time\": \"1997-05-09T21:39:39.575Z\"\n  },\n  \"sensitivity\": \"<string>\",\n  \"showAs\": \"<string>\",\n  \"importance\": \"<string>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"allowNewTimeProposals\": \"<boolean>\",\n  \"transactionId\": \"<string>\",\n  \"hideAttendees\": \"<boolean>\",\n  \"originalStartTimeZone\": \"<string>\",\n  \"originalEndTimeZone\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"1963-03-11T21:41:50.704Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://outlook.office365.com/adminapi/v2.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://outlook.office365.com/.default"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3e28d96d-2f1d-4241-b600-877f0911ce29",
+    "name": "Microsoft Exchange Exchange Online Admin Accepted Domains Calendars API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST-based administrative API that enables a focused set of Exchange cmdlets and parameters as POST-only endpoints. Provides access to key tasks previously available through Exchange Web Services (EWS), including organization configuration, accepted domains, mailbox properties, mailbox folder permissions, and distribution group membership. Built as a complementary REST-first surface for specific administrative tasks caused by the EWS deprecation planned for October 2026.\n\nContact Support:\n Name: Microsoft Support\n Email: support@microsoft.com",
+      "type": "text/plain"
+    }
+  }
+}

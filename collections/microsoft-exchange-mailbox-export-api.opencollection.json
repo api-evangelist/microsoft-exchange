@@ -1,0 +1,115 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Exchange Exchange Online Admin Accepted Domains Mailbox Export API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Mailbox Export",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Exchange List folder items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://outlook.office365.com/adminapi/v2.0/users/:user-id/mailboxes/:mailbox-id/folders/:folder-id/items",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier or user principal name"
+              },
+              {
+                "name": "mailbox-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the mailbox"
+              },
+              {
+                "name": "folder-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the folder"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include"
+              }
+            ]
+          },
+          "docs": "List items in a specific mailbox folder for export. Returns items with their metadata for batch export processing. Supports pagination for large folders."
+        },
+        {
+          "info": {
+            "name": "Microsoft Exchange Export item content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://outlook.office365.com/adminapi/v2.0/users/:user-id/mailboxes/:mailbox-id/folders/:folder-id/items/:item-id/content",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier or user principal name"
+              },
+              {
+                "name": "mailbox-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the mailbox"
+              },
+              {
+                "name": "folder-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the folder"
+              },
+              {
+                "name": "item-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the item"
+              }
+            ]
+          },
+          "docs": "Export the full-fidelity content of a specific mailbox item in MIME format. Returns the complete item with all properties, headers, and attachments preserved for migration scenarios."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

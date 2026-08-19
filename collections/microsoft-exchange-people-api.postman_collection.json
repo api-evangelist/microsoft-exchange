@@ -1,0 +1,679 @@
+{
+  "item": [
+    {
+      "id": "d7e677ec-4cff-41e5-94bb-c49152bc9c13",
+      "name": "People",
+      "description": {
+        "content": "Operations for retrieving relevant people",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9ea5a808-9d22-43b4-82c6-1aaa5fa81c58",
+          "name": "Microsoft Exchange List people",
+          "request": {
+            "name": "Microsoft Exchange List people",
+            "description": {
+              "content": "Retrieve a collection of person objects ordered by their relevance to the signed-in user, which is determined by the user's communication and collaboration patterns, and business relationships. People can be local contacts, contacts from social networking or the organization's directory, and people from recent communications such as email.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "people"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of results to skip (not supported with $search)"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include"
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Property to sort by (default is relevance)"
+                },
+                {
+                  "disabled": false,
+                  "key": "$search",
+                  "value": "<string>",
+                  "description": "Search for people by name or alias. Supports fuzzy matching and the topic keyword to find people based on topics extracted from email conversations."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6013b70e-5a6c-4770-b6b1-78be3e10b57c",
+              "name": "Successfully retrieved people",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "people"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.context\": \"string\",\n  \"@odata.nextLink\": \"http://GWSAwzNAaytGEarfpGZb.ggh2lyUnS,RgDEiwJeT6iTAj9v3iWlyxZ.xlrx0vXszlAtmag6gNE\",\n  \"value\": [\n    {\n      \"id\": \"string\",\n      \"displayName\": \"string\",\n      \"givenName\": \"string\",\n      \"surname\": \"string\",\n      \"birthday\": \"string\",\n      \"personNotes\": \"string\",\n      \"isFavorite\": false,\n      \"jobTitle\": \"string\",\n      \"companyName\": \"string\",\n      \"department\": \"string\",\n      \"officeLocation\": \"string\",\n      \"profession\": \"string\",\n      \"userPrincipalName\": \"string\",\n      \"imAddress\": \"string\",\n      \"scoredEmailAddresses\": [\n        {\n          \"address\": \"UErOP6zOLA0Z5@kXOoQRWPQIZorKGyGdANiuce.xxdv\",\n          \"relevanceScore\": 9022.452069607914,\n          \"selectionLikelihood\": \"high\"\n        },\n        {\n          \"address\": \"vEcXW18y@QFCqUigUIrrxlh.jxw\",\n          \"relevanceScore\": 7547.697882945318,\n          \"selectionLikelihood\": \"notSpecified\"\n        }\n      ],\n      \"phones\": [\n        {\n          \"type\": \"assistant\",\n          \"number\": \"string\"\n        },\n        {\n          \"type\": \"businessFax\",\n          \"number\": \"string\"\n        }\n      ],\n      \"postalAddresses\": [\n        {\n          \"displayName\": \"string\",\n          \"locationType\": \"string\",\n          \"locationUri\": \"string\",\n          \"address\": {\n            \"street\": \"string\",\n            \"city\": \"string\",\n            \"state\": \"string\",\n            \"countryOrRegion\": \"string\",\n            \"postalCode\": \"string\"\n          }\n        },\n        {\n          \"displayName\": \"string\",\n          \"locationType\": \"string\",\n          \"locationUri\": \"string\",\n          \"address\": {\n            \"street\": \"string\",\n            \"city\": \"string\",\n            \"state\": \"string\",\n            \"countryOrRegion\": \"string\",\n            \"postalCode\": \"string\"\n          }\n        }\n      ],\n      \"websites\": [\n        {\n          \"type\": \"profile\",\n          \"address\": \"https://YWQqNjqIK.ozunsZQhMw0WH,NXnbXsxUaH2wdtqEuC9lqxqAp\",\n          \"displayName\": \"string\"\n        },\n        {\n          \"type\": \"home\",\n          \"address\": \"https://zOjdLdjLbfOuzSjLeEhvZsaWyJX.niukrFOZEAbCd8OdoEWJt1EiPLw3j.Ha6ezPTHlQ5QT2\",\n          \"displayName\": \"string\"\n        }\n      ],\n      \"personType\": {\n        \"class\": \"string\",\n        \"subclass\": \"string\"\n      },\n      \"yomiCompany\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"displayName\": \"string\",\n      \"givenName\": \"string\",\n      \"surname\": \"string\",\n      \"birthday\": \"string\",\n      \"personNotes\": \"string\",\n      \"isFavorite\": false,\n      \"jobTitle\": \"string\",\n      \"companyName\": \"string\",\n      \"department\": \"string\",\n      \"officeLocation\": \"string\",\n      \"profession\": \"string\",\n      \"userPrincipalName\": \"string\",\n      \"imAddress\": \"string\",\n      \"scoredEmailAddresses\": [\n        {\n          \"address\": \"sox3L4G7Gu@FSbEsgedmpcLsRDJjKOKWuvtOx.lxha\",\n          \"relevanceScore\": 6351.601211986732,\n          \"selectionLikelihood\": \"high\"\n        },\n        {\n          \"address\": \"8WjwvNAD@rrIMjaoz.ox\",\n          \"relevanceScore\": 5007.185963322912,\n          \"selectionLikelihood\": \"notSpecified\"\n        }\n      ],\n      \"phones\": [\n        {\n          \"type\": \"pager\",\n          \"number\": \"string\"\n        },\n        {\n          \"type\": \"businessFax\",\n          \"number\": \"string\"\n        }\n      ],\n      \"postalAddresses\": [\n        {\n          \"displayName\": \"string\",\n          \"locationType\": \"string\",\n          \"locationUri\": \"string\",\n          \"address\": {\n            \"street\": \"string\",\n            \"city\": \"string\",\n            \"state\": \"string\",\n            \"countryOrRegion\": \"string\",\n            \"postalCode\": \"string\"\n          }\n        },\n        {\n          \"displayName\": \"string\",\n          \"locationType\": \"string\",\n          \"locationUri\": \"string\",\n          \"address\": {\n            \"street\": \"string\",\n            \"city\": \"string\",\n            \"state\": \"string\",\n            \"countryOrRegion\": \"string\",\n            \"postalCode\": \"string\"\n          }\n        }\n      ],\n      \"websites\": [\n        {\n          \"type\": \"profile\",\n          \"address\": \"http://gOU.opJ1ppz5VS0i\",\n          \"displayName\": \"string\"\n        },\n        {\n          \"type\": \"work\",\n          \"address\": \"https://nXWjydoyoMglFY.gpyah4oSe\",\n          \"displayName\": \"string\"\n        }\n      ],\n      \"personType\": {\n        \"class\": \"string\",\n        \"subclass\": \"string\"\n      },\n      \"yomiCompany\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "260bf7f9-0d25-4eea-a130-141db016953c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "people"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"1971-08-15T00:45:20.237Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "181122d2-425f-4df4-a1de-30eb24dd8169",
+              "name": "Forbidden - insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "people"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"1971-08-15T00:45:20.237Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b9d2fc9b-dc85-4e28-868c-08e57c2b6783",
+          "name": "Microsoft Exchange List user's people",
+          "request": {
+            "name": "Microsoft Exchange List user's people",
+            "description": {
+              "content": "Retrieve a collection of person objects ordered by their relevance to the specified user. Requires People.Read.All permission. Useful for scenarios where an application needs to retrieve relevant people for a user other than the signed-in user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user-id",
+                "people"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of results to skip (not supported with $search)"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include"
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user-id",
+                  "description": "(Required) The unique identifier or user principal name of the user"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1394cc09-eb46-4b88-a11b-83f65343d43f",
+              "name": "Successfully retrieved people for user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user-id",
+                    "people"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user-id",
+                      "description": "(Required) The unique identifier or user principal name of the user"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.context\": \"string\",\n  \"@odata.nextLink\": \"http://GWSAwzNAaytGEarfpGZb.ggh2lyUnS,RgDEiwJeT6iTAj9v3iWlyxZ.xlrx0vXszlAtmag6gNE\",\n  \"value\": [\n    {\n      \"id\": \"string\",\n      \"displayName\": \"string\",\n      \"givenName\": \"string\",\n      \"surname\": \"string\",\n      \"birthday\": \"string\",\n      \"personNotes\": \"string\",\n      \"isFavorite\": false,\n      \"jobTitle\": \"string\",\n      \"companyName\": \"string\",\n      \"department\": \"string\",\n      \"officeLocation\": \"string\",\n      \"profession\": \"string\",\n      \"userPrincipalName\": \"string\",\n      \"imAddress\": \"string\",\n      \"scoredEmailAddresses\": [\n        {\n          \"address\": \"UErOP6zOLA0Z5@kXOoQRWPQIZorKGyGdANiuce.xxdv\",\n          \"relevanceScore\": 9022.452069607914,\n          \"selectionLikelihood\": \"high\"\n        },\n        {\n          \"address\": \"vEcXW18y@QFCqUigUIrrxlh.jxw\",\n          \"relevanceScore\": 7547.697882945318,\n          \"selectionLikelihood\": \"notSpecified\"\n        }\n      ],\n      \"phones\": [\n        {\n          \"type\": \"assistant\",\n          \"number\": \"string\"\n        },\n        {\n          \"type\": \"businessFax\",\n          \"number\": \"string\"\n        }\n      ],\n      \"postalAddresses\": [\n        {\n          \"displayName\": \"string\",\n          \"locationType\": \"string\",\n          \"locationUri\": \"string\",\n          \"address\": {\n            \"street\": \"string\",\n            \"city\": \"string\",\n            \"state\": \"string\",\n            \"countryOrRegion\": \"string\",\n            \"postalCode\": \"string\"\n          }\n        },\n        {\n          \"displayName\": \"string\",\n          \"locationType\": \"string\",\n          \"locationUri\": \"string\",\n          \"address\": {\n            \"street\": \"string\",\n            \"city\": \"string\",\n            \"state\": \"string\",\n            \"countryOrRegion\": \"string\",\n            \"postalCode\": \"string\"\n          }\n        }\n      ],\n      \"websites\": [\n        {\n          \"type\": \"profile\",\n          \"address\": \"https://YWQqNjqIK.ozunsZQhMw0WH,NXnbXsxUaH2wdtqEuC9lqxqAp\",\n          \"displayName\": \"string\"\n        },\n        {\n          \"type\": \"home\",\n          \"address\": \"https://zOjdLdjLbfOuzSjLeEhvZsaWyJX.niukrFOZEAbCd8OdoEWJt1EiPLw3j.Ha6ezPTHlQ5QT2\",\n          \"displayName\": \"string\"\n        }\n      ],\n      \"personType\": {\n        \"class\": \"string\",\n        \"subclass\": \"string\"\n      },\n      \"yomiCompany\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"displayName\": \"string\",\n      \"givenName\": \"string\",\n      \"surname\": \"string\",\n      \"birthday\": \"string\",\n      \"personNotes\": \"string\",\n      \"isFavorite\": false,\n      \"jobTitle\": \"string\",\n      \"companyName\": \"string\",\n      \"department\": \"string\",\n      \"officeLocation\": \"string\",\n      \"profession\": \"string\",\n      \"userPrincipalName\": \"string\",\n      \"imAddress\": \"string\",\n      \"scoredEmailAddresses\": [\n        {\n          \"address\": \"sox3L4G7Gu@FSbEsgedmpcLsRDJjKOKWuvtOx.lxha\",\n          \"relevanceScore\": 6351.601211986732,\n          \"selectionLikelihood\": \"high\"\n        },\n        {\n          \"address\": \"8WjwvNAD@rrIMjaoz.ox\",\n          \"relevanceScore\": 5007.185963322912,\n          \"selectionLikelihood\": \"notSpecified\"\n        }\n      ],\n      \"phones\": [\n        {\n          \"type\": \"pager\",\n          \"number\": \"string\"\n        },\n        {\n          \"type\": \"businessFax\",\n          \"number\": \"string\"\n        }\n      ],\n      \"postalAddresses\": [\n        {\n          \"displayName\": \"string\",\n          \"locationType\": \"string\",\n          \"locationUri\": \"string\",\n          \"address\": {\n            \"street\": \"string\",\n            \"city\": \"string\",\n            \"state\": \"string\",\n            \"countryOrRegion\": \"string\",\n            \"postalCode\": \"string\"\n          }\n        },\n        {\n          \"displayName\": \"string\",\n          \"locationType\": \"string\",\n          \"locationUri\": \"string\",\n          \"address\": {\n            \"street\": \"string\",\n            \"city\": \"string\",\n            \"state\": \"string\",\n            \"countryOrRegion\": \"string\",\n            \"postalCode\": \"string\"\n          }\n        }\n      ],\n      \"websites\": [\n        {\n          \"type\": \"profile\",\n          \"address\": \"http://gOU.opJ1ppz5VS0i\",\n          \"displayName\": \"string\"\n        },\n        {\n          \"type\": \"work\",\n          \"address\": \"https://nXWjydoyoMglFY.gpyah4oSe\",\n          \"displayName\": \"string\"\n        }\n      ],\n      \"personType\": {\n        \"class\": \"string\",\n        \"subclass\": \"string\"\n      },\n      \"yomiCompany\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0de48ab0-b3b5-4784-ac44-cf23b7bd79b8",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user-id",
+                    "people"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user-id",
+                      "description": "(Required) The unique identifier or user principal name of the user"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"1971-08-15T00:45:20.237Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0e6f88b0-ebd7-43d4-9b1c-7a427e9ff829",
+              "name": "Forbidden - insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user-id",
+                    "people"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user-id",
+                      "description": "(Required) The unique identifier or user principal name of the user"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"1971-08-15T00:45:20.237Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ee2ba5f6-a717-4b2b-9359-fd762bfe6bb1",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user-id",
+                    "people"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user-id",
+                      "description": "(Required) The unique identifier or user principal name of the user"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"request-id\": \"string\",\n      \"date\": \"1971-08-15T00:45:20.237Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://outlook.office365.com/adminapi/v2.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://outlook.office365.com/.default"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0c0e03ab-c3de-439c-ba42-cab7ced20def",
+    "name": "Microsoft Exchange Exchange Online Admin Accepted Domains People API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST-based administrative API that enables a focused set of Exchange cmdlets and parameters as POST-only endpoints. Provides access to key tasks previously available through Exchange Web Services (EWS), including organization configuration, accepted domains, mailbox properties, mailbox folder permissions, and distribution group membership. Built as a complementary REST-first surface for specific administrative tasks caused by the EWS deprecation planned for October 2026.\n\nContact Support:\n Name: Microsoft Support\n Email: support@microsoft.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -2,14 +2,11 @@ generated: '2026-06-20'
 method: derived
 status: candidate
 source: openapi/*.yml
-description: >-
-  Candidate MCP server for Microsoft Exchange derived one-tool-per-operation
-  from the repo's OpenAPI definitions (79 operations across the Graph Mail,
-  Calendar, Contacts, People, Import/Export, and Exchange Online Admin APIs).
-  Microsoft does not publish a dedicated hosted Exchange MCP server; the closest
-  official surface is the Microsoft Graph API itself plus community servers
-  (e.g. Lokka). This is a governance/agent-readiness starting point, not a
-  published server.
+description: Candidate MCP server for Microsoft Exchange derived one-tool-per-operation from the repo's
+  OpenAPI definitions (79 operations across the Graph Mail, Calendar, Contacts, People, Import/Export,
+  and Exchange Online Admin APIs). Microsoft does not publish a dedicated hosted Exchange MCP server;
+  the closest official surface is the Microsoft Graph API itself plus community servers (e.g. Lokka).
+  This is a governance/agent-readiness starting point, not a published server.
 server:
   name: microsoft-exchange
   transport: http
@@ -251,3 +248,9 @@ tools:
 - name: listUserPeople
   description: List user's people
   source_operation: openapi/microsoft-exchange-graph-people-openapi.yml#listUserPeople
+deployment:
+  mode: none
+  verified: derived
+  tools: 79
+  checked: '2026-08-12'
+  source: catalog MCP census
