@@ -359,6 +359,8 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
   baseURL: https://graph.microsoft.com/v1.0
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -646,6 +648,8 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
   baseURL: https://graph.microsoft.com/v1.0
   tags:
+  - Message
+  tags_raw:
   - Messages
   properties:
   - type: OpenAPI
@@ -687,6 +691,8 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
   baseURL: https://graph.microsoft.com/v1.0
   tags:
+  - Organizationconfiguration
+  tags_raw:
   - Organization Configuration
   properties:
   - type: OpenAPI
