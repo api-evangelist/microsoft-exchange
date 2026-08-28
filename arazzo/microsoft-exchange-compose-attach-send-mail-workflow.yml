@@ -11,8 +11,11 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: graphMailApi
-  url: ../openapi/microsoft-exchange-graph-mail-openapi.yml
+- name: attachmentsApi
+  url: ../openapi/microsoft-exchange-attachments-api-openapi.yml
+  type: openapi
+- name: messagesApi
+  url: ../openapi/microsoft-exchange-messages-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: compose-attach-send-mail

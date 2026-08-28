@@ -12,8 +12,8 @@ info:
     flow can be executed without consulting the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: exchangeAdminApi
-  url: ../openapi/microsoft-exchange-admin-api-openapi.yml
+- name: mailboxFolderPermissionsApi
+  url: ../openapi/microsoft-exchange-mailbox-folder-permissions-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: grant-folder-permission

@@ -11,8 +11,8 @@ info:
     OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: graphMailApi
-  url: ../openapi/microsoft-exchange-graph-mail-openapi.yml
+- name: messagesApi
+  url: ../openapi/microsoft-exchange-messages-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: reply-to-latest-from-sender

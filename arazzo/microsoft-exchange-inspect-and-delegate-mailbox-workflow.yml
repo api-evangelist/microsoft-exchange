@@ -12,8 +12,8 @@ info:
     OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: exchangeAdminApi
-  url: ../openapi/microsoft-exchange-admin-api-openapi.yml
+- name: mailboxesApi
+  url: ../openapi/microsoft-exchange-mailboxes-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: inspect-and-delegate-mailbox

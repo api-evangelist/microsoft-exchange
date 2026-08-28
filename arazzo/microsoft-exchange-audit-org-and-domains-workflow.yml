@@ -12,8 +12,11 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: exchangeAdminApi
-  url: ../openapi/microsoft-exchange-admin-api-openapi.yml
+- name: acceptedDomainsApi
+  url: ../openapi/microsoft-exchange-accepted-domains-api-openapi.yml
+  type: openapi
+- name: organizationConfigurationApi
+  url: ../openapi/microsoft-exchange-organization-configuration-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: audit-org-and-domains

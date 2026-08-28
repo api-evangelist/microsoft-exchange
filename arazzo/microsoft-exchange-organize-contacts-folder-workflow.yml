@@ -10,8 +10,11 @@ info:
     OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: graphContactsApi
-  url: ../openapi/microsoft-exchange-graph-contacts-openapi.yml
+- name: contactFoldersApi
+  url: ../openapi/microsoft-exchange-contact-folders-api-openapi.yml
+  type: openapi
+- name: contactsApi
+  url: ../openapi/microsoft-exchange-contacts-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: organize-contacts-folder

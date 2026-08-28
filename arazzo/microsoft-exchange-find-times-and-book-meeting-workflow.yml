@@ -10,8 +10,11 @@ info:
     without consulting the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: graphCalendarApi
-  url: ../openapi/microsoft-exchange-graph-calendar-openapi.yml
+- name: eventsApi
+  url: ../openapi/microsoft-exchange-events-api-openapi.yml
+  type: openapi
+- name: schedulingApi
+  url: ../openapi/microsoft-exchange-scheduling-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: find-times-and-book-meeting
