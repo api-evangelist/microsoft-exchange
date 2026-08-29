@@ -1,8 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Microsoft Exchange Exchange Online Admin Accepted Domains Contacts API
-  description: REST-based administrative API that enables a focused set of Exchange cmdlets and parameters as POST-only endpoints. Provides access to key tasks previously available through Exchange Web Services (EWS), including organization configuration, accepted domains, mailbox properties, mailbox folder permissions, and distribution group membership. Built as a complementary REST-first surface for specific administrative tasks caused by the EWS deprecation planned for October 2026.
-  version: 2.0.0
+  title: Microsoft Exchange Microsoft Graph Contacts API
+  description: Manage Outlook personal contacts and contact folders for Exchange Online users through the Microsoft Graph API. Supports creating, reading, updating, and deleting contacts, organizing them into folders, and assigning categories. Contacts can be organized into a hierarchy of contact folders.
+  version: 1.0.0
   contact:
     name: Microsoft Support
     url: https://support.microsoft.com
@@ -12,8 +12,8 @@ info:
     url: https://www.microsoft.com/en-us/legal/terms-of-use
   x-date-modified: '2026-03-04'
 servers:
-- url: https://outlook.office365.com/adminapi/v2.0
-  description: Exchange Online Admin API v2.0 endpoint
+- url: https://graph.microsoft.com/v1.0
+  description: Microsoft Graph v1.0 production endpoint
 security:
 - oauth2: []
 tags:
@@ -208,139 +208,7 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  parameters:
-    ContactIdParam:
-      name: contact-id
-      in: path
-      required: true
-      description: The unique identifier of the contact
-      schema:
-        type: string
-    SelectParam:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include
-      schema:
-        type: string
-    TopParam:
-      name: $top
-      in: query
-      description: The number of items to return
-      schema:
-        type: integer
-        minimum: 1
-    ContactFolderIdParam:
-      name: contactFolder-id
-      in: path
-      required: true
-      description: The unique identifier of the contact folder
-      schema:
-        type: string
-    SearchParam:
-      name: $search
-      in: query
-      description: Search string to filter results
-      schema:
-        type: string
-    OrderByParam:
-      name: $orderby
-      in: query
-      description: Comma-separated list of properties to sort by
-      schema:
-        type: string
-    FilterParam:
-      name: $filter
-      in: query
-      description: OData filter expression
-      schema:
-        type: string
-    SkipParam:
-      name: $skip
-      in: query
-      description: The number of items to skip
-      schema:
-        type: integer
-        minimum: 0
   schemas:
-    ContactCollectionResponse:
-      type: object
-      description: Collection of contacts
-      properties:
-        '@odata.context':
-          type: string
-        '@odata.nextLink':
-          type: string
-          format: uri
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Contact'
-    PhysicalAddress:
-      type: object
-      description: Physical street address
-      properties:
-        street:
-          type: string
-          description: The street address
-        city:
-          type: string
-          description: The city
-        state:
-          type: string
-          description: The state or province
-        countryOrRegion:
-          type: string
-          description: The country or region
-        postalCode:
-          type: string
-          description: The postal code
-    ODataError:
-      type: object
-      description: OData error response
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
-            innerError:
-              type: object
-              properties:
-                request-id:
-                  type: string
-                date:
-                  type: string
-                  format: date-time
-    EmailAddress:
-      type: object
-      description: Email address of a contact
-      properties:
-        name:
-          type: string
-          description: The display name
-        address:
-          type: string
-          format: email
-          description: The email address
-    ContactDeltaResponse:
-      type: object
-      description: Delta response for contacts
-      properties:
-        '@odata.context':
-          type: string
-        '@odata.nextLink':
-          type: string
-          format: uri
-        '@odata.deltaLink':
-          type: string
-          format: uri
-          description: URL to get the next set of changes
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Contact'
     Contact:
       type: object
       description: A contact is an item in Outlook where you can organize and save information about people and organizations you communicate with. Contacts are contained in contact folders.
@@ -476,15 +344,88 @@ components:
         yomiCompanyName:
           type: string
           description: Phonetic Japanese company name
+    ODataError:
+      type: object
+      description: OData error response
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            innerError:
+              type: object
+              properties:
+                request-id:
+                  type: string
+                date:
+                  type: string
+                  format: date-time
+    EmailAddress:
+      type: object
+      description: Email address of a contact
+      properties:
+        name:
+          type: string
+          description: The display name
+        address:
+          type: string
+          format: email
+          description: The email address
+    ContactCollectionResponse:
+      type: object
+      description: Collection of contacts
+      properties:
+        '@odata.context':
+          type: string
+        '@odata.nextLink':
+          type: string
+          format: uri
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+    PhysicalAddress:
+      type: object
+      description: Physical street address
+      properties:
+        street:
+          type: string
+          description: The street address
+        city:
+          type: string
+          description: The city
+        state:
+          type: string
+          description: The state or province
+        countryOrRegion:
+          type: string
+          description: The country or region
+        postalCode:
+          type: string
+          description: The postal code
+    ContactDeltaResponse:
+      type: object
+      description: Delta response for contacts
+      properties:
+        '@odata.context':
+          type: string
+        '@odata.nextLink':
+          type: string
+          format: uri
+        '@odata.deltaLink':
+          type: string
+          format: uri
+          description: URL to get the next set of changes
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
   responses:
     NotFound:
       description: Not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Unauthorized:
-      description: Unauthorized
       content:
         application/json:
           schema:
@@ -495,12 +436,75 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ODataError'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+  parameters:
+    ContactIdParam:
+      name: contact-id
+      in: path
+      required: true
+      description: The unique identifier of the contact
+      schema:
+        type: string
+    TopParam:
+      name: $top
+      in: query
+      description: The number of items to return
+      schema:
+        type: integer
+        minimum: 1
+    SkipParam:
+      name: $skip
+      in: query
+      description: The number of items to skip
+      schema:
+        type: integer
+        minimum: 0
+    SelectParam:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include
+      schema:
+        type: string
+    SearchParam:
+      name: $search
+      in: query
+      description: Search string to filter results
+      schema:
+        type: string
+    OrderByParam:
+      name: $orderby
+      in: query
+      description: Comma-separated list of properties to sort by
+      schema:
+        type: string
+    ContactFolderIdParam:
+      name: contactFolder-id
+      in: path
+      required: true
+      description: The unique identifier of the contact folder
+      schema:
+        type: string
+    FilterParam:
+      name: $filter
+      in: query
+      description: OData filter expression
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2
       description: OAuth 2.0 authorization with Microsoft identity platform
       flows:
-        clientCredentials:
-          tokenUrl: https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
           scopes:
-            https://outlook.office365.com/.default: Default scope for Exchange Online Admin API
+            Contacts.Read: Read user contacts
+            Contacts.ReadWrite: Read and write user contacts
+            Contacts.Read.Shared: Read shared contacts
+            Contacts.ReadWrite.Shared: Read and write shared contacts

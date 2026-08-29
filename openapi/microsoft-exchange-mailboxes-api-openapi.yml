@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Microsoft Exchange Exchange Online Admin Accepted Domains Mailboxes API
+  title: Microsoft Exchange Exchange Online Admin Mailboxes API
   description: REST-based administrative API that enables a focused set of Exchange cmdlets and parameters as POST-only endpoints. Provides access to key tasks previously available through Exchange Web Services (EWS), including organization configuration, accepted domains, mailbox properties, mailbox folder permissions, and distribution group membership. Built as a complementary REST-first surface for specific administrative tasks caused by the EWS deprecation planned for October 2026.
   version: 2.0.0
   contact:
@@ -62,14 +62,14 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
-    Forbidden:
-      description: Forbidden - insufficient Exchange RBAC permissions
+    NotFound:
+      description: Not found - the specified resource was not found
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ODataError'
-    NotFound:
-      description: Not found - the specified resource was not found
+    Forbidden:
+      description: Forbidden - insufficient Exchange RBAC permissions
       content:
         application/json:
           schema:
