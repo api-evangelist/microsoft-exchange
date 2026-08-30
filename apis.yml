@@ -703,7 +703,7 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
   baseURL: https://graph.microsoft.com/v1.0
   tags:
-  - Organizationconfiguration
+  - Organization Configuration
   tags_raw:
   - Organization Configuration
   properties:
