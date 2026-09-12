@@ -39,7 +39,7 @@ tags:
   - Enterprise
 created: '2024-01-01'
 modified: '2026-06-20'
-url: https://raw.githubusercontent.com/api-evangelist/microsoft-exchange/refs/heads/main/apis.yml
+url: https://www.microsoft.com/en-us/microsoft-365/exchange/email
 specificationVersion: '0.23'
 apis:
 - name: Exchange Web Services (EWS)
@@ -981,5 +981,5 @@ maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
     url: https://apievangelist.com
-x-parent: microsoft
+x-parent: microsoft-365
 x-relationship: product
