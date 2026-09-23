@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Exchange Microsoft Graph Mailbox Import Export Mailbox Discovery API
+  title: Microsoft Exchange Microsoft Graph Mailbox Import Export…
   description: APIs for discovering, importing, and exporting content from Exchange Online mailboxes in full fidelity through the Microsoft Graph beta endpoint. Enables mailbox migration scenarios and content copying as a replacement for EWS-based approaches. Supports importing and exporting mailbox content including messages, calendar events, and contacts while preserving all metadata and properties.
   version: 0.1.0-beta
   contact:
@@ -86,11 +86,11 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   parameters:
-    UserIdParam:
-      name: user-id
+    MailboxIdParam:
+      name: mailbox-id
       in: path
       required: true
-      description: The unique identifier or user principal name
+      description: The unique identifier of the mailbox
       schema:
         type: string
     SkipParam:
@@ -107,33 +107,14 @@ components:
       schema:
         type: integer
         minimum: 1
-    MailboxIdParam:
-      name: mailbox-id
+    UserIdParam:
+      name: user-id
       in: path
       required: true
-      description: The unique identifier of the mailbox
+      description: The unique identifier or user principal name
       schema:
         type: string
   schemas:
-    ODataError:
-      type: object
-      description: OData error response
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
-            innerError:
-              type: object
-              properties:
-                request-id:
-                  type: string
-                date:
-                  type: string
-                  format: date-time
     Mailbox:
       type: object
       description: Represents a user's mailbox
@@ -187,15 +168,34 @@ components:
         unreadItemCount:
           type: integer
           description: Number of unread items
+    ODataError:
+      type: object
+      description: OData error response
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            innerError:
+              type: object
+              properties:
+                request-id:
+                  type: string
+                date:
+                  type: string
+                  format: date-time
   responses:
-    NotFound:
-      description: Not found
+    Forbidden:
+      description: Forbidden
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ODataError'
-    Forbidden:
-      description: Forbidden
+    NotFound:
+      description: Not found
       content:
         application/json:
           schema:

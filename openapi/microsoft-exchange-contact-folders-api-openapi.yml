@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Exchange Microsoft Graph Contacts Contact Folders API
+  title: Microsoft Exchange Microsoft Graph Contacts Contact Folders…
   description: Manage Outlook personal contacts and contact folders for Exchange Online users through the Microsoft Graph API. Supports creating, reading, updating, and deleting contacts, organizing them into folders, and assigning categories. Contacts can be organized into a hierarchy of contact folders.
   version: 1.0.0
   contact:
@@ -224,7 +224,62 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  parameters:
+    OrderByParam:
+      name: $orderby
+      in: query
+      description: Comma-separated list of properties to sort by
+      schema:
+        type: string
+    TopParam:
+      name: $top
+      in: query
+      description: The number of items to return
+      schema:
+        type: integer
+        minimum: 1
+    ContactFolderIdParam:
+      name: contactFolder-id
+      in: path
+      required: true
+      description: The unique identifier of the contact folder
+      schema:
+        type: string
+    FilterParam:
+      name: $filter
+      in: query
+      description: OData filter expression
+      schema:
+        type: string
+    SkipParam:
+      name: $skip
+      in: query
+      description: The number of items to skip
+      schema:
+        type: integer
+        minimum: 0
+    SelectParam:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include
+      schema:
+        type: string
   schemas:
+    ContactFolder:
+      type: object
+      description: A folder that contains contacts
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: The contact folder's unique identifier
+        displayName:
+          type: string
+          description: The folder's display name
+        parentFolderId:
+          type: string
+          readOnly: true
+          description: The ID of the folder's parent folder
     Contact:
       type: object
       description: A contact is an item in Outlook where you can organize and save information about people and organizations you communicate with. Contacts are contained in contact folders.
@@ -360,64 +415,6 @@ components:
         yomiCompanyName:
           type: string
           description: Phonetic Japanese company name
-    ODataError:
-      type: object
-      description: OData error response
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
-            innerError:
-              type: object
-              properties:
-                request-id:
-                  type: string
-                date:
-                  type: string
-                  format: date-time
-    ContactFolderCollectionResponse:
-      type: object
-      description: Collection of contact folders
-      properties:
-        '@odata.context':
-          type: string
-        '@odata.nextLink':
-          type: string
-          format: uri
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContactFolder'
-    ContactFolder:
-      type: object
-      description: A folder that contains contacts
-      properties:
-        id:
-          type: string
-          readOnly: true
-          description: The contact folder's unique identifier
-        displayName:
-          type: string
-          description: The folder's display name
-        parentFolderId:
-          type: string
-          readOnly: true
-          description: The ID of the folder's parent folder
-    EmailAddress:
-      type: object
-      description: Email address of a contact
-      properties:
-        name:
-          type: string
-          description: The display name
-        address:
-          type: string
-          format: email
-          description: The email address
     ContactCollectionResponse:
       type: object
       description: Collection of contacts
@@ -431,6 +428,30 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Contact'
+    EmailAddress:
+      type: object
+      description: Email address of a contact
+      properties:
+        name:
+          type: string
+          description: The display name
+        address:
+          type: string
+          format: email
+          description: The email address
+    ContactFolderCollectionResponse:
+      type: object
+      description: Collection of contact folders
+      properties:
+        '@odata.context':
+          type: string
+        '@odata.nextLink':
+          type: string
+          format: uri
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactFolder'
     PhysicalAddress:
       type: object
       description: Physical street address
@@ -450,6 +471,25 @@ components:
         postalCode:
           type: string
           description: The postal code
+    ODataError:
+      type: object
+      description: OData error response
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            innerError:
+              type: object
+              properties:
+                request-id:
+                  type: string
+                date:
+                  type: string
+                  format: date-time
   responses:
     NotFound:
       description: Not found
@@ -469,46 +509,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ODataError'
-  parameters:
-    TopParam:
-      name: $top
-      in: query
-      description: The number of items to return
-      schema:
-        type: integer
-        minimum: 1
-    SkipParam:
-      name: $skip
-      in: query
-      description: The number of items to skip
-      schema:
-        type: integer
-        minimum: 0
-    SelectParam:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include
-      schema:
-        type: string
-    OrderByParam:
-      name: $orderby
-      in: query
-      description: Comma-separated list of properties to sort by
-      schema:
-        type: string
-    ContactFolderIdParam:
-      name: contactFolder-id
-      in: path
-      required: true
-      description: The unique identifier of the contact folder
-      schema:
-        type: string
-    FilterParam:
-      name: $filter
-      in: query
-      description: OData filter expression
-      schema:
-        type: string
   securitySchemes:
     oauth2:
       type: oauth2

@@ -475,6 +475,12 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   parameters:
+    SearchParam:
+      name: $search
+      in: query
+      description: Search string to filter results
+      schema:
+        type: string
     MessageIdParam:
       name: message-id
       in: path
@@ -482,18 +488,10 @@ components:
       description: The unique identifier of the message
       schema:
         type: string
-    TopParam:
-      name: $top
+    SelectParam:
+      name: $select
       in: query
-      description: The number of items to return in a result set
-      schema:
-        type: integer
-        minimum: 1
-    MailFolderIdParam:
-      name: mailFolder-id
-      in: path
-      required: true
-      description: The unique identifier of the mail folder, or a well-known folder name such as inbox, drafts, sentitems, or deleteditems
+      description: Comma-separated list of properties to include in the response
       schema:
         type: string
     OrderByParam:
@@ -502,10 +500,10 @@ components:
       description: Comma-separated list of properties to sort results by
       schema:
         type: string
-    SelectParam:
-      name: $select
+    FilterParam:
+      name: $filter
       in: query
-      description: Comma-separated list of properties to include in the response
+      description: OData filter expression to filter results
       schema:
         type: string
     SkipParam:
@@ -515,19 +513,86 @@ components:
       schema:
         type: integer
         minimum: 0
-    SearchParam:
-      name: $search
-      in: query
-      description: Search string to filter results
+    MailFolderIdParam:
+      name: mailFolder-id
+      in: path
+      required: true
+      description: The unique identifier of the mail folder, or a well-known folder name such as inbox, drafts, sentitems, or deleteditems
       schema:
         type: string
-    FilterParam:
-      name: $filter
+    TopParam:
+      name: $top
       in: query
-      description: OData filter expression to filter results
+      description: The number of items to return in a result set
       schema:
-        type: string
+        type: integer
+        minimum: 1
   schemas:
+    DateTimeTimeZone:
+      type: object
+      description: Describes the date, time, and time zone of a point in time
+      properties:
+        dateTime:
+          type: string
+          description: A date and time combined in ISO 8601 format
+        timeZone:
+          type: string
+          description: Represents a time zone (e.g. Pacific Standard Time)
+    EmailAddress:
+      type: object
+      description: Represents the name and email address of a contact or message recipient
+      properties:
+        name:
+          type: string
+          description: The display name of the person or entity
+        address:
+          type: string
+          format: email
+          description: The email address of the person or entity
+    ODataError:
+      type: object
+      description: OData error response
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code
+            message:
+              type: string
+              description: The error message
+            innerError:
+              type: object
+              properties:
+                request-id:
+                  type: string
+                date:
+                  type: string
+                  format: date-time
+    InternetMessageHeader:
+      type: object
+      description: A key-value pair representing an Internet message header
+      properties:
+        name:
+          type: string
+          description: The name of the message header
+        value:
+          type: string
+          description: The value of the message header
+    ItemBody:
+      type: object
+      description: Represents the body of a message or event
+      properties:
+        contentType:
+          type: string
+          enum:
+          - text
+          - html
+          description: The type of the content
+        content:
+          type: string
+          description: The content of the item body
     FollowupFlag:
       type: object
       description: Follow-up flag on a message
@@ -559,64 +624,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Message'
-    EmailAddress:
-      type: object
-      description: Represents the name and email address of a contact or message recipient
-      properties:
-        name:
-          type: string
-          description: The display name of the person or entity
-        address:
-          type: string
-          format: email
-          description: The email address of the person or entity
-    DateTimeTimeZone:
-      type: object
-      description: Describes the date, time, and time zone of a point in time
-      properties:
-        dateTime:
-          type: string
-          description: A date and time combined in ISO 8601 format
-        timeZone:
-          type: string
-          description: Represents a time zone (e.g. Pacific Standard Time)
-    InternetMessageHeader:
-      type: object
-      description: A key-value pair representing an Internet message header
-      properties:
-        name:
-          type: string
-          description: The name of the message header
-        value:
-          type: string
-          description: The value of the message header
-    Recipient:
-      type: object
-      description: Represents an email recipient
-      properties:
-        emailAddress:
-          $ref: '#/components/schemas/EmailAddress'
-    ODataError:
-      type: object
-      description: OData error response
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: The error code
-            message:
-              type: string
-              description: The error message
-            innerError:
-              type: object
-              properties:
-                request-id:
-                  type: string
-                date:
-                  type: string
-                  format: date-time
     Message:
       type: object
       description: A message in a mailFolder
@@ -746,40 +753,33 @@ components:
           description: The version of the message
         uniqueBody:
           $ref: '#/components/schemas/ItemBody'
-    ItemBody:
+    Recipient:
       type: object
-      description: Represents the body of a message or event
+      description: Represents an email recipient
       properties:
-        contentType:
-          type: string
-          enum:
-          - text
-          - html
-          description: The type of the content
-        content:
-          type: string
-          description: The content of the item body
+        emailAddress:
+          $ref: '#/components/schemas/EmailAddress'
   responses:
-    Forbidden:
-      description: Forbidden - insufficient permissions
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
     NotFound:
       description: Not found - the specified resource was not found
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ODataError'
-    BadRequest:
-      description: Bad request - the request body or parameters are invalid
+    Unauthorized:
+      description: Unauthorized - authentication is required
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ODataError'
-    Unauthorized:
-      description: Unauthorized - authentication is required
+    Forbidden:
+      description: Forbidden - insufficient permissions
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    BadRequest:
+      description: Bad request - the request body or parameters are invalid
       content:
         application/json:
           schema:

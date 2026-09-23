@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Exchange Exchange Online Admin Organization Configuration API
+  title: Microsoft Exchange Exchange Online Admin Organization…
   description: REST-based administrative API that enables a focused set of Exchange cmdlets and parameters as POST-only endpoints. Provides access to key tasks previously available through Exchange Web Services (EWS), including organization configuration, accepted domains, mailbox properties, mailbox folder permissions, and distribution group membership. Built as a complementary REST-first surface for specific administrative tasks caused by the EWS deprecation planned for October 2026.
   version: 2.0.0
   contact:
@@ -59,20 +59,28 @@ paths:
         '403':
           $ref: '#/components/responses/Forbidden'
 components:
+  parameters:
+    AnchorMailboxHeader:
+      name: X-AnchorMailbox
+      in: header
+      required: true
+      description: Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.
+      schema:
+        type: string
+  responses:
+    Forbidden:
+      description: Forbidden - insufficient Exchange RBAC permissions
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Unauthorized:
+      description: Unauthorized - authentication token is missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
   schemas:
-    ODataError:
-      type: object
-      description: OData error response
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: The error code
-            message:
-              type: string
-              description: The error message
     AdminApiResponse:
       type: object
       description: Response from the Exchange Online Admin API
@@ -90,27 +98,19 @@ components:
           type: string
           format: uri
           description: URL to retrieve the next page of results
-  responses:
-    Forbidden:
-      description: Forbidden - insufficient Exchange RBAC permissions
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Unauthorized:
-      description: Unauthorized - authentication token is missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-  parameters:
-    AnchorMailboxHeader:
-      name: X-AnchorMailbox
-      in: header
-      required: true
-      description: Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.
-      schema:
-        type: string
+    ODataError:
+      type: object
+      description: OData error response
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code
+            message:
+              type: string
+              description: The error message
   securitySchemes:
     oauth2:
       type: oauth2

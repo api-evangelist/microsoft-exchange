@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Exchange Microsoft Graph Mailbox Import Export Mailbox Export API
+  title: Microsoft Exchange Microsoft Graph Mailbox Import Export…
   description: APIs for discovering, importing, and exporting content from Exchange Online mailboxes in full fidelity through the Microsoft Graph beta endpoint. Enables mailbox migration scenarios and content copying as a replacement for EWS-based approaches. Supports importing and exporting mailbox content including messages, calendar events, and contacts while preserving all metadata and properties.
   version: 0.1.0-beta
   contact:
@@ -86,38 +86,11 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   parameters:
-    UserIdParam:
-      name: user-id
+    ItemIdParam:
+      name: item-id
       in: path
       required: true
-      description: The unique identifier or user principal name
-      schema:
-        type: string
-    TopParam:
-      name: $top
-      in: query
-      description: Number of items to return
-      schema:
-        type: integer
-        minimum: 1
-    FolderIdParam:
-      name: folder-id
-      in: path
-      required: true
-      description: The unique identifier of the folder
-      schema:
-        type: string
-    SkipParam:
-      name: $skip
-      in: query
-      description: Number of items to skip
-      schema:
-        type: integer
-        minimum: 0
-    SelectParam:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include
+      description: The unique identifier of the item
       schema:
         type: string
     MailboxIdParam:
@@ -127,52 +100,41 @@ components:
       description: The unique identifier of the mailbox
       schema:
         type: string
-    ItemIdParam:
-      name: item-id
+    FolderIdParam:
+      name: folder-id
       in: path
       required: true
-      description: The unique identifier of the item
+      description: The unique identifier of the folder
       schema:
         type: string
-  responses:
-    NotFound:
-      description: Not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
+    SelectParam:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include
+      schema:
+        type: string
+    SkipParam:
+      name: $skip
+      in: query
+      description: Number of items to skip
+      schema:
+        type: integer
+        minimum: 0
+    TopParam:
+      name: $top
+      in: query
+      description: Number of items to return
+      schema:
+        type: integer
+        minimum: 1
+    UserIdParam:
+      name: user-id
+      in: path
+      required: true
+      description: The unique identifier or user principal name
+      schema:
+        type: string
   schemas:
-    ODataError:
-      type: object
-      description: OData error response
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
-            innerError:
-              type: object
-              properties:
-                request-id:
-                  type: string
-                date:
-                  type: string
-                  format: date-time
     MailboxItem:
       type: object
       description: An item in a mailbox folder
@@ -209,6 +171,44 @@ components:
         hasAttachments:
           type: boolean
           description: Whether the item has attachments
+    ODataError:
+      type: object
+      description: OData error response
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            innerError:
+              type: object
+              properties:
+                request-id:
+                  type: string
+                date:
+                  type: string
+                  format: date-time
+  responses:
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
   securitySchemes:
     oauth2:
       type: oauth2

@@ -67,25 +67,6 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    BadRequest:
-      description: Bad request - the request body or parameters are invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    NotFound:
-      description: Not found - the specified resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Unauthorized:
-      description: Unauthorized - authentication is required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
   schemas:
     AttachmentCollectionResponse:
       type: object
@@ -97,27 +78,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Attachment'
-    ODataError:
-      type: object
-      description: OData error response
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: The error code
-            message:
-              type: string
-              description: The error message
-            innerError:
-              type: object
-              properties:
-                request-id:
-                  type: string
-                date:
-                  type: string
-                  format: date-time
     Attachment:
       type: object
       description: A file or item attached to a message
@@ -154,6 +114,27 @@ components:
         contentId:
           type: string
           description: The ID of the attachment in the Exchange store
+    ODataError:
+      type: object
+      description: OData error response
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code
+            message:
+              type: string
+              description: The error message
+            innerError:
+              type: object
+              properties:
+                request-id:
+                  type: string
+                date:
+                  type: string
+                  format: date-time
   parameters:
     MessageIdParam:
       name: message-id
@@ -168,6 +149,25 @@ components:
       description: Comma-separated list of properties to include in the response
       schema:
         type: string
+  responses:
+    NotFound:
+      description: Not found - the specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    BadRequest:
+      description: Bad request - the request body or parameters are invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Unauthorized:
+      description: Unauthorized - authentication is required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
   securitySchemes:
     oauth2:
       type: oauth2
