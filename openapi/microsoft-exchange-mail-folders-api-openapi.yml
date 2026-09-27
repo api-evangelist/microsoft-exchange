@@ -293,7 +293,66 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    FilterParam:
+      name: $filter
+      in: query
+      description: OData filter expression to filter results
+      schema:
+        type: string
+    MailFolderIdParam:
+      name: mailFolder-id
+      in: path
+      required: true
+      description: The unique identifier of the mail folder, or a well-known folder name such as inbox, drafts, sentitems, or deleteditems
+      schema:
+        type: string
+    TopParam:
+      name: $top
+      in: query
+      description: The number of items to return in a result set
+      schema:
+        type: integer
+        minimum: 1
+    OrderByParam:
+      name: $orderby
+      in: query
+      description: Comma-separated list of properties to sort results by
+      schema:
+        type: string
+    SelectParam:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response
+      schema:
+        type: string
+    SkipParam:
+      name: $skip
+      in: query
+      description: The number of items to skip in a result set
+      schema:
+        type: integer
+        minimum: 0
   schemas:
+    Recipient:
+      type: object
+      description: Represents an email recipient
+      properties:
+        emailAddress:
+          $ref: '#/components/schemas/EmailAddress'
+    MailFolderCollectionResponse:
+      type: object
+      description: Collection of mail folders
+      properties:
+        '@odata.context':
+          type: string
+        '@odata.nextLink':
+          type: string
+          format: uri
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/MailFolder'
     MailFolder:
       type: object
       description: A mail folder in a user's mailbox
@@ -324,61 +383,6 @@ components:
         isHidden:
           type: boolean
           description: Indicates whether the mail folder is hidden
-    DateTimeTimeZone:
-      type: object
-      description: Describes the date, time, and time zone of a point in time
-      properties:
-        dateTime:
-          type: string
-          description: A date and time combined in ISO 8601 format
-        timeZone:
-          type: string
-          description: Represents a time zone (e.g. Pacific Standard Time)
-    EmailAddress:
-      type: object
-      description: Represents the name and email address of a contact or message recipient
-      properties:
-        name:
-          type: string
-          description: The display name of the person or entity
-        address:
-          type: string
-          format: email
-          description: The email address of the person or entity
-    MailFolderCollectionResponse:
-      type: object
-      description: Collection of mail folders
-      properties:
-        '@odata.context':
-          type: string
-        '@odata.nextLink':
-          type: string
-          format: uri
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/MailFolder'
-    ODataError:
-      type: object
-      description: OData error response
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: The error code
-            message:
-              type: string
-              description: The error message
-            innerError:
-              type: object
-              properties:
-                request-id:
-                  type: string
-                date:
-                  type: string
-                  format: date-time
     InternetMessageHeader:
       type: object
       description: A key-value pair representing an Internet message header
@@ -389,19 +393,6 @@ components:
         value:
           type: string
           description: The value of the message header
-    ItemBody:
-      type: object
-      description: Represents the body of a message or event
-      properties:
-        contentType:
-          type: string
-          enum:
-          - text
-          - html
-          description: The type of the content
-        content:
-          type: string
-          description: The content of the item body
     FollowupFlag:
       type: object
       description: Follow-up flag on a message
@@ -562,12 +553,61 @@ components:
           description: The version of the message
         uniqueBody:
           $ref: '#/components/schemas/ItemBody'
-    Recipient:
+    ODataError:
       type: object
-      description: Represents an email recipient
+      description: OData error response
       properties:
-        emailAddress:
-          $ref: '#/components/schemas/EmailAddress'
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code
+            message:
+              type: string
+              description: The error message
+            innerError:
+              type: object
+              properties:
+                request-id:
+                  type: string
+                date:
+                  type: string
+                  format: date-time
+    DateTimeTimeZone:
+      type: object
+      description: Describes the date, time, and time zone of a point in time
+      properties:
+        dateTime:
+          type: string
+          description: A date and time combined in ISO 8601 format
+        timeZone:
+          type: string
+          description: Represents a time zone (e.g. Pacific Standard Time)
+    EmailAddress:
+      type: object
+      description: Represents the name and email address of a contact or message recipient
+      properties:
+        name:
+          type: string
+          description: The display name of the person or entity
+        address:
+          type: string
+          format: email
+          description: The email address of the person or entity
+    ItemBody:
+      type: object
+      description: Represents the body of a message or event
+      properties:
+        contentType:
+          type: string
+          enum:
+          - text
+          - html
+          description: The type of the content
+        content:
+          type: string
+          description: The content of the item body
   responses:
     NotFound:
       description: Not found - the specified resource was not found
@@ -587,46 +627,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ODataError'
-  parameters:
-    SelectParam:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include in the response
-      schema:
-        type: string
-    OrderByParam:
-      name: $orderby
-      in: query
-      description: Comma-separated list of properties to sort results by
-      schema:
-        type: string
-    FilterParam:
-      name: $filter
-      in: query
-      description: OData filter expression to filter results
-      schema:
-        type: string
-    SkipParam:
-      name: $skip
-      in: query
-      description: The number of items to skip in a result set
-      schema:
-        type: integer
-        minimum: 0
-    MailFolderIdParam:
-      name: mailFolder-id
-      in: path
-      required: true
-      description: The unique identifier of the mail folder, or a well-known folder name such as inbox, drafts, sentitems, or deleteditems
-      schema:
-        type: string
-    TopParam:
-      name: $top
-      in: query
-      description: The number of items to return in a result set
-      schema:
-        type: integer
-        minimum: 1
   securitySchemes:
     oauth2:
       type: oauth2

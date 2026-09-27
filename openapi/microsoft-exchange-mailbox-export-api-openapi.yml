@@ -86,6 +86,13 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   parameters:
+    FolderIdParam:
+      name: folder-id
+      in: path
+      required: true
+      description: The unique identifier of the folder
+      schema:
+        type: string
     ItemIdParam:
       name: item-id
       in: path
@@ -93,18 +100,25 @@ components:
       description: The unique identifier of the item
       schema:
         type: string
+    TopParam:
+      name: $top
+      in: query
+      description: Number of items to return
+      schema:
+        type: integer
+        minimum: 1
+    SkipParam:
+      name: $skip
+      in: query
+      description: Number of items to skip
+      schema:
+        type: integer
+        minimum: 0
     MailboxIdParam:
       name: mailbox-id
       in: path
       required: true
       description: The unique identifier of the mailbox
-      schema:
-        type: string
-    FolderIdParam:
-      name: folder-id
-      in: path
-      required: true
-      description: The unique identifier of the folder
       schema:
         type: string
     SelectParam:
@@ -113,20 +127,6 @@ components:
       description: Comma-separated list of properties to include
       schema:
         type: string
-    SkipParam:
-      name: $skip
-      in: query
-      description: Number of items to skip
-      schema:
-        type: integer
-        minimum: 0
-    TopParam:
-      name: $top
-      in: query
-      description: Number of items to return
-      schema:
-        type: integer
-        minimum: 1
     UserIdParam:
       name: user-id
       in: path
@@ -134,7 +134,45 @@ components:
       description: The unique identifier or user principal name
       schema:
         type: string
+  responses:
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
   schemas:
+    ODataError:
+      type: object
+      description: OData error response
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            innerError:
+              type: object
+              properties:
+                request-id:
+                  type: string
+                date:
+                  type: string
+                  format: date-time
     MailboxItem:
       type: object
       description: An item in a mailbox folder
@@ -171,44 +209,6 @@ components:
         hasAttachments:
           type: boolean
           description: Whether the item has attachments
-    ODataError:
-      type: object
-      description: OData error response
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
-            innerError:
-              type: object
-              properties:
-                request-id:
-                  type: string
-                date:
-                  type: string
-                  format: date-time
-  responses:
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    NotFound:
-      description: Not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
   securitySchemes:
     oauth2:
       type: oauth2

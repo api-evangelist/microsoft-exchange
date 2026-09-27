@@ -67,17 +67,40 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    BadRequest:
+      description: Bad request - the request body or parameters are invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    NotFound:
+      description: Not found - the specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Unauthorized:
+      description: Unauthorized - authentication is required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+  parameters:
+    MessageIdParam:
+      name: message-id
+      in: path
+      required: true
+      description: The unique identifier of the message
+      schema:
+        type: string
+    SelectParam:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response
+      schema:
+        type: string
   schemas:
-    AttachmentCollectionResponse:
-      type: object
-      description: Collection of attachments
-      properties:
-        '@odata.context':
-          type: string
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Attachment'
     Attachment:
       type: object
       description: A file or item attached to a message
@@ -135,39 +158,16 @@ components:
                 date:
                   type: string
                   format: date-time
-  parameters:
-    MessageIdParam:
-      name: message-id
-      in: path
-      required: true
-      description: The unique identifier of the message
-      schema:
-        type: string
-    SelectParam:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include in the response
-      schema:
-        type: string
-  responses:
-    NotFound:
-      description: Not found - the specified resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    BadRequest:
-      description: Bad request - the request body or parameters are invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Unauthorized:
-      description: Unauthorized - authentication is required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
+    AttachmentCollectionResponse:
+      type: object
+      description: Collection of attachments
+      properties:
+        '@odata.context':
+          type: string
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
   securitySchemes:
     oauth2:
       type: oauth2

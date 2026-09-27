@@ -55,19 +55,44 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
   parameters:
-    MailboxIdParam:
-      name: mailbox-id
-      in: path
-      required: true
-      description: The unique identifier of the mailbox
-      schema:
-        type: string
     FolderIdParam:
       name: folder-id
       in: path
       required: true
       description: The unique identifier of the folder
+      schema:
+        type: string
+    MailboxIdParam:
+      name: mailbox-id
+      in: path
+      required: true
+      description: The unique identifier of the mailbox
       schema:
         type: string
     UserIdParam:
@@ -78,6 +103,25 @@ components:
       schema:
         type: string
   schemas:
+    ODataError:
+      type: object
+      description: OData error response
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            innerError:
+              type: object
+              properties:
+                request-id:
+                  type: string
+                date:
+                  type: string
+                  format: date-time
     MailboxItem:
       type: object
       description: An item in a mailbox folder
@@ -114,50 +158,6 @@ components:
         hasAttachments:
           type: boolean
           description: Whether the item has attachments
-    ODataError:
-      type: object
-      description: OData error response
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
-            innerError:
-              type: object
-              properties:
-                request-id:
-                  type: string
-                date:
-                  type: string
-                  format: date-time
-  responses:
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    NotFound:
-      description: Not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
   securitySchemes:
     oauth2:
       type: oauth2

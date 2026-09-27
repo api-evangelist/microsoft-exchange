@@ -65,20 +65,20 @@ components:
       description: Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.
       schema:
         type: string
-  responses:
-    Forbidden:
-      description: Forbidden - insufficient Exchange RBAC permissions
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Unauthorized:
-      description: Unauthorized - authentication token is missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
   schemas:
+    ODataError:
+      type: object
+      description: OData error response
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code
+            message:
+              type: string
+              description: The error message
     AdminApiResponse:
       type: object
       description: Response from the Exchange Online Admin API
@@ -96,19 +96,19 @@ components:
           type: string
           format: uri
           description: URL to retrieve the next page of results
-    ODataError:
-      type: object
-      description: OData error response
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: The error code
-            message:
-              type: string
-              description: The error message
+  responses:
+    Unauthorized:
+      description: Unauthorized - authentication token is missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Forbidden:
+      description: Forbidden - insufficient Exchange RBAC permissions
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
   securitySchemes:
     oauth2:
       type: oauth2

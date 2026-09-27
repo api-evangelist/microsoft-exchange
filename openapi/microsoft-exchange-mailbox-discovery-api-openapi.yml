@@ -85,63 +85,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    MailboxIdParam:
-      name: mailbox-id
-      in: path
-      required: true
-      description: The unique identifier of the mailbox
-      schema:
-        type: string
-    SkipParam:
-      name: $skip
-      in: query
-      description: Number of items to skip
-      schema:
-        type: integer
-        minimum: 0
-    TopParam:
-      name: $top
-      in: query
-      description: Number of items to return
-      schema:
-        type: integer
-        minimum: 1
-    UserIdParam:
-      name: user-id
-      in: path
-      required: true
-      description: The unique identifier or user principal name
-      schema:
-        type: string
   schemas:
-    Mailbox:
-      type: object
-      description: Represents a user's mailbox
-      properties:
-        id:
-          type: string
-          readOnly: true
-          description: The mailbox unique identifier
-        mailboxType:
-          type: string
-          enum:
-          - primary
-          - archive
-          description: The type of mailbox
-        displayName:
-          type: string
-          description: Display name of the mailbox
-        primarySmtpAddress:
-          type: string
-          format: email
-          description: The primary SMTP address of the mailbox
-        totalItemCount:
-          type: integer
-          description: Total number of items in the mailbox
-        totalItemSize:
-          type: integer
-          description: Total size of all items in bytes
     MailboxFolder:
       type: object
       description: A folder in a mailbox
@@ -187,13 +131,34 @@ components:
                 date:
                   type: string
                   format: date-time
+    Mailbox:
+      type: object
+      description: Represents a user's mailbox
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: The mailbox unique identifier
+        mailboxType:
+          type: string
+          enum:
+          - primary
+          - archive
+          description: The type of mailbox
+        displayName:
+          type: string
+          description: Display name of the mailbox
+        primarySmtpAddress:
+          type: string
+          format: email
+          description: The primary SMTP address of the mailbox
+        totalItemCount:
+          type: integer
+          description: Total number of items in the mailbox
+        totalItemSize:
+          type: integer
+          description: Total size of all items in bytes
   responses:
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
     NotFound:
       description: Not found
       content:
@@ -206,6 +171,41 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ODataError'
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+  parameters:
+    TopParam:
+      name: $top
+      in: query
+      description: Number of items to return
+      schema:
+        type: integer
+        minimum: 1
+    SkipParam:
+      name: $skip
+      in: query
+      description: Number of items to skip
+      schema:
+        type: integer
+        minimum: 0
+    MailboxIdParam:
+      name: mailbox-id
+      in: path
+      required: true
+      description: The unique identifier of the mailbox
+      schema:
+        type: string
+    UserIdParam:
+      name: user-id
+      in: path
+      required: true
+      description: The unique identifier or user principal name
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2
