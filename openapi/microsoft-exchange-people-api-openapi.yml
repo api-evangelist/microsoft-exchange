@@ -81,63 +81,26 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Forbidden:
+      description: Forbidden - insufficient permissions
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
   schemas:
-    PersonType:
-      type: object
-      description: The type of person
-      properties:
-        class:
-          type: string
-          description: The type of data source such as Person (for directory data) or Group (for unified groups)
-        subclass:
-          type: string
-          description: The sub-type such as OrganizationUser, PersonalContact, ExternalContact, or UnifiedGroup
-    Location:
-      type: object
-      description: Location information
-      properties:
-        displayName:
-          type: string
-          description: The name of the location
-        locationType:
-          type: string
-          description: The type of location
-        locationUri:
-          type: string
-          description: URI for the location
-        address:
-          $ref: '#/components/schemas/PhysicalAddress'
-    ScoredEmailAddress:
-      type: object
-      description: An email address with a relevance score
-      properties:
-        address:
-          type: string
-          format: email
-          description: The email address
-        relevanceScore:
-          type: number
-          format: double
-          description: The relevance score of the email address (0.0 to 100.0)
-        selectionLikelihood:
-          type: string
-          enum:
-          - notSpecified
-          - high
-          description: The likelihood that the email address would be selected
-    PersonCollectionResponse:
-      type: object
-      description: Collection of person objects
-      properties:
-        '@odata.context':
-          type: string
-        '@odata.nextLink':
-          type: string
-          format: uri
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Person'
     ODataError:
       type: object
       description: OData error response
@@ -157,6 +120,19 @@ components:
                 date:
                   type: string
                   format: date-time
+    PersonCollectionResponse:
+      type: object
+      description: Collection of person objects
+      properties:
+        '@odata.context':
+          type: string
+        '@odata.nextLink':
+          type: string
+          format: uri
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Person'
     PhysicalAddress:
       type: object
       description: Physical street address
@@ -171,6 +147,51 @@ components:
           type: string
         postalCode:
           type: string
+    PersonType:
+      type: object
+      description: The type of person
+      properties:
+        class:
+          type: string
+          description: The type of data source such as Person (for directory data) or Group (for unified groups)
+        subclass:
+          type: string
+          description: The sub-type such as OrganizationUser, PersonalContact, ExternalContact, or UnifiedGroup
+    Website:
+      type: object
+      description: A website
+      properties:
+        type:
+          type: string
+          enum:
+          - other
+          - home
+          - work
+          - blog
+          - profile
+          description: The type of website
+        address:
+          type: string
+          format: uri
+          description: The URL of the website
+        displayName:
+          type: string
+          description: The display name of the website
+    Location:
+      type: object
+      description: Location information
+      properties:
+        displayName:
+          type: string
+          description: The name of the location
+        locationType:
+          type: string
+          description: The type of location
+        locationUri:
+          type: string
+          description: URI for the location
+        address:
+          $ref: '#/components/schemas/PhysicalAddress'
     Phone:
       type: object
       description: A phone number
@@ -192,6 +213,24 @@ components:
         number:
           type: string
           description: The phone number
+    ScoredEmailAddress:
+      type: object
+      description: An email address with a relevance score
+      properties:
+        address:
+          type: string
+          format: email
+          description: The email address
+        relevanceScore:
+          type: number
+          format: double
+          description: The relevance score of the email address (0.0 to 100.0)
+        selectionLikelihood:
+          type: string
+          enum:
+          - notSpecified
+          - high
+          description: The likelihood that the email address would be selected
     Person:
       type: object
       description: Represents an aggregation of information about a person from across mail, contacts, and social networks. People can be local contacts, contacts from social networking, the organization's directory, and people from recent communications.
@@ -265,26 +304,6 @@ components:
         yomiCompany:
           type: string
           description: Phonetic Japanese company name
-    Website:
-      type: object
-      description: A website
-      properties:
-        type:
-          type: string
-          enum:
-          - other
-          - home
-          - work
-          - blog
-          - profile
-          description: The type of website
-        address:
-          type: string
-          format: uri
-          description: The URL of the website
-        displayName:
-          type: string
-          description: The display name of the website
   parameters:
     FilterParam:
       name: $filter
@@ -292,13 +311,12 @@ components:
       description: OData filter expression
       schema:
         type: string
-    TopParam:
-      name: $top
+    OrderByParam:
+      name: $orderby
       in: query
-      description: Maximum number of results to return
+      description: Property to sort by (default is relevance)
       schema:
-        type: integer
-        minimum: 1
+        type: string
     SkipParam:
       name: $skip
       in: query
@@ -306,37 +324,19 @@ components:
       schema:
         type: integer
         minimum: 0
-    OrderByParam:
-      name: $orderby
+    TopParam:
+      name: $top
       in: query
-      description: Property to sort by (default is relevance)
+      description: Maximum number of results to return
       schema:
-        type: string
+        type: integer
+        minimum: 1
     SelectParam:
       name: $select
       in: query
       description: Comma-separated list of properties to include
       schema:
         type: string
-  responses:
-    NotFound:
-      description: Not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Forbidden:
-      description: Forbidden - insufficient permissions
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
   securitySchemes:
     oauth2:
       type: oauth2

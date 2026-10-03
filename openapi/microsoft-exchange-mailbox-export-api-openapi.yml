@@ -85,64 +85,9 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    FolderIdParam:
-      name: folder-id
-      in: path
-      required: true
-      description: The unique identifier of the folder
-      schema:
-        type: string
-    ItemIdParam:
-      name: item-id
-      in: path
-      required: true
-      description: The unique identifier of the item
-      schema:
-        type: string
-    TopParam:
-      name: $top
-      in: query
-      description: Number of items to return
-      schema:
-        type: integer
-        minimum: 1
-    SkipParam:
-      name: $skip
-      in: query
-      description: Number of items to skip
-      schema:
-        type: integer
-        minimum: 0
-    MailboxIdParam:
-      name: mailbox-id
-      in: path
-      required: true
-      description: The unique identifier of the mailbox
-      schema:
-        type: string
-    SelectParam:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include
-      schema:
-        type: string
-    UserIdParam:
-      name: user-id
-      in: path
-      required: true
-      description: The unique identifier or user principal name
-      schema:
-        type: string
   responses:
     NotFound:
       description: Not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Unauthorized:
-      description: Unauthorized
       content:
         application/json:
           schema:
@@ -153,6 +98,61 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ODataError'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+  parameters:
+    SelectParam:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include
+      schema:
+        type: string
+    FolderIdParam:
+      name: folder-id
+      in: path
+      required: true
+      description: The unique identifier of the folder
+      schema:
+        type: string
+    MailboxIdParam:
+      name: mailbox-id
+      in: path
+      required: true
+      description: The unique identifier of the mailbox
+      schema:
+        type: string
+    SkipParam:
+      name: $skip
+      in: query
+      description: Number of items to skip
+      schema:
+        type: integer
+        minimum: 0
+    TopParam:
+      name: $top
+      in: query
+      description: Number of items to return
+      schema:
+        type: integer
+        minimum: 1
+    UserIdParam:
+      name: user-id
+      in: path
+      required: true
+      description: The unique identifier or user principal name
+      schema:
+        type: string
+    ItemIdParam:
+      name: item-id
+      in: path
+      required: true
+      description: The unique identifier of the item
+      schema:
+        type: string
   schemas:
     ODataError:
       type: object

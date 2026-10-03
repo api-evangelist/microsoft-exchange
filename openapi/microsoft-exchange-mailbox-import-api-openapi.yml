@@ -56,14 +56,14 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
-    BadRequest:
-      description: Bad request
+    NotFound:
+      description: Not found
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ODataError'
-    NotFound:
-      description: Not found
+    Forbidden:
+      description: Forbidden
       content:
         application/json:
           schema:
@@ -74,8 +74,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ODataError'
-    Forbidden:
-      description: Forbidden
+    BadRequest:
+      description: Bad request
       content:
         application/json:
           schema:

@@ -59,28 +59,7 @@ paths:
         '403':
           $ref: '#/components/responses/Forbidden'
 components:
-  parameters:
-    AnchorMailboxHeader:
-      name: X-AnchorMailbox
-      in: header
-      required: true
-      description: Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.
-      schema:
-        type: string
   schemas:
-    ODataError:
-      type: object
-      description: OData error response
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: The error code
-            message:
-              type: string
-              description: The error message
     AdminApiResponse:
       type: object
       description: Response from the Exchange Online Admin API
@@ -98,15 +77,36 @@ components:
           type: string
           format: uri
           description: URL to retrieve the next page of results
+    ODataError:
+      type: object
+      description: OData error response
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code
+            message:
+              type: string
+              description: The error message
+  parameters:
+    AnchorMailboxHeader:
+      name: X-AnchorMailbox
+      in: header
+      required: true
+      description: Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.
+      schema:
+        type: string
   responses:
-    Unauthorized:
-      description: Unauthorized - authentication token is missing or invalid
+    Forbidden:
+      description: Forbidden - insufficient Exchange RBAC permissions
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ODataError'
-    Forbidden:
-      description: Forbidden - insufficient Exchange RBAC permissions
+    Unauthorized:
+      description: Unauthorized - authentication token is missing or invalid
       content:
         application/json:
           schema:
