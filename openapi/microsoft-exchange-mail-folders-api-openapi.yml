@@ -293,96 +293,39 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    BadRequest:
+      description: Bad request - the request body or parameters are invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    NotFound:
+      description: Not found - the specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Unauthorized:
+      description: Unauthorized - authentication is required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
   schemas:
-    ODataError:
+    ItemBody:
       type: object
-      description: OData error response
+      description: Represents the body of a message or event
       properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: The error code
-            message:
-              type: string
-              description: The error message
-            innerError:
-              type: object
-              properties:
-                request-id:
-                  type: string
-                date:
-                  type: string
-                  format: date-time
-    MessageCollectionResponse:
-      type: object
-      description: Collection of messages
-      properties:
-        '@odata.context':
+        contentType:
           type: string
-        '@odata.nextLink':
+          enum:
+          - text
+          - html
+          description: The type of the content
+        content:
           type: string
-          format: uri
-          description: URL to get the next set of results
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Message'
-    EmailAddress:
-      type: object
-      description: Represents the name and email address of a contact or message recipient
-      properties:
-        name:
-          type: string
-          description: The display name of the person or entity
-        address:
-          type: string
-          format: email
-          description: The email address of the person or entity
-    MailFolderCollectionResponse:
-      type: object
-      description: Collection of mail folders
-      properties:
-        '@odata.context':
-          type: string
-        '@odata.nextLink':
-          type: string
-          format: uri
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/MailFolder'
-    MailFolder:
-      type: object
-      description: A mail folder in a user's mailbox
-      properties:
-        id:
-          type: string
-          readOnly: true
-          description: The mail folder's unique identifier
-        displayName:
-          type: string
-          description: The mail folder's display name
-        parentFolderId:
-          type: string
-          readOnly: true
-          description: The unique identifier for the parent mail folder
-        childFolderCount:
-          type: integer
-          readOnly: true
-          description: The number of immediate child mail folders
-        totalItemCount:
-          type: integer
-          readOnly: true
-          description: The number of items in the mail folder
-        unreadItemCount:
-          type: integer
-          readOnly: true
-          description: The number of unread items in the mail folder
-        isHidden:
-          type: boolean
-          description: Indicates whether the mail folder is hidden
+          description: The content of the item body
     Message:
       type: object
       description: A message in a mailFolder
@@ -512,32 +455,6 @@ components:
           description: The version of the message
         uniqueBody:
           $ref: '#/components/schemas/ItemBody'
-    InternetMessageHeader:
-      type: object
-      description: A key-value pair representing an Internet message header
-      properties:
-        name:
-          type: string
-          description: The name of the message header
-        value:
-          type: string
-          description: The value of the message header
-    Recipient:
-      type: object
-      description: Represents an email recipient
-      properties:
-        emailAddress:
-          $ref: '#/components/schemas/EmailAddress'
-    DateTimeTimeZone:
-      type: object
-      description: Describes the date, time, and time zone of a point in time
-      properties:
-        dateTime:
-          type: string
-          description: A date and time combined in ISO 8601 format
-        timeZone:
-          type: string
-          description: Represents a time zone (e.g. Pacific Standard Time)
     FollowupFlag:
       type: object
       description: Follow-up flag on a message
@@ -555,20 +472,129 @@ components:
           - complete
           - flagged
           description: The status of the follow-up flag
-    ItemBody:
+    EmailAddress:
       type: object
-      description: Represents the body of a message or event
+      description: Represents the name and email address of a contact or message recipient
       properties:
-        contentType:
+        name:
           type: string
-          enum:
-          - text
-          - html
-          description: The type of the content
-        content:
+          description: The display name of the person or entity
+        address:
           type: string
-          description: The content of the item body
+          format: email
+          description: The email address of the person or entity
+    InternetMessageHeader:
+      type: object
+      description: A key-value pair representing an Internet message header
+      properties:
+        name:
+          type: string
+          description: The name of the message header
+        value:
+          type: string
+          description: The value of the message header
+    ODataError:
+      type: object
+      description: OData error response
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code
+            message:
+              type: string
+              description: The error message
+            innerError:
+              type: object
+              properties:
+                request-id:
+                  type: string
+                date:
+                  type: string
+                  format: date-time
+    MailFolder:
+      type: object
+      description: A mail folder in a user's mailbox
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: The mail folder's unique identifier
+        displayName:
+          type: string
+          description: The mail folder's display name
+        parentFolderId:
+          type: string
+          readOnly: true
+          description: The unique identifier for the parent mail folder
+        childFolderCount:
+          type: integer
+          readOnly: true
+          description: The number of immediate child mail folders
+        totalItemCount:
+          type: integer
+          readOnly: true
+          description: The number of items in the mail folder
+        unreadItemCount:
+          type: integer
+          readOnly: true
+          description: The number of unread items in the mail folder
+        isHidden:
+          type: boolean
+          description: Indicates whether the mail folder is hidden
+    MessageCollectionResponse:
+      type: object
+      description: Collection of messages
+      properties:
+        '@odata.context':
+          type: string
+        '@odata.nextLink':
+          type: string
+          format: uri
+          description: URL to get the next set of results
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Message'
+    Recipient:
+      type: object
+      description: Represents an email recipient
+      properties:
+        emailAddress:
+          $ref: '#/components/schemas/EmailAddress'
+    DateTimeTimeZone:
+      type: object
+      description: Describes the date, time, and time zone of a point in time
+      properties:
+        dateTime:
+          type: string
+          description: A date and time combined in ISO 8601 format
+        timeZone:
+          type: string
+          description: Represents a time zone (e.g. Pacific Standard Time)
+    MailFolderCollectionResponse:
+      type: object
+      description: Collection of mail folders
+      properties:
+        '@odata.context':
+          type: string
+        '@odata.nextLink':
+          type: string
+          format: uri
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/MailFolder'
   parameters:
+    SkipParam:
+      name: $skip
+      in: query
+      description: The number of items to skip in a result set
+      schema:
+        type: integer
+        minimum: 0
     TopParam:
       name: $top
       in: query
@@ -576,11 +602,10 @@ components:
       schema:
         type: integer
         minimum: 1
-    MailFolderIdParam:
-      name: mailFolder-id
-      in: path
-      required: true
-      description: The unique identifier of the mail folder, or a well-known folder name such as inbox, drafts, sentitems, or deleteditems
+    SelectParam:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response
       schema:
         type: string
     FilterParam:
@@ -595,38 +620,13 @@ components:
       description: Comma-separated list of properties to sort results by
       schema:
         type: string
-    SkipParam:
-      name: $skip
-      in: query
-      description: The number of items to skip in a result set
-      schema:
-        type: integer
-        minimum: 0
-    SelectParam:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include in the response
+    MailFolderIdParam:
+      name: mailFolder-id
+      in: path
+      required: true
+      description: The unique identifier of the mail folder, or a well-known folder name such as inbox, drafts, sentitems, or deleteditems
       schema:
         type: string
-  responses:
-    Unauthorized:
-      description: Unauthorized - authentication is required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    BadRequest:
-      description: Bad request - the request body or parameters are invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    NotFound:
-      description: Not found - the specified resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
   securitySchemes:
     oauth2:
       type: oauth2

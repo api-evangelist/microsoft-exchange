@@ -99,7 +99,28 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    AnchorMailboxHeader:
+      name: X-AnchorMailbox
+      in: header
+      required: true
+      description: Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.
+      schema:
+        type: string
   schemas:
+    ODataError:
+      type: object
+      description: OData error response
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code
+            message:
+              type: string
+              description: The error message
     AdminApiResponse:
       type: object
       description: Response from the Exchange Online Admin API
@@ -117,20 +138,13 @@ components:
           type: string
           format: uri
           description: URL to retrieve the next page of results
-    ODataError:
-      type: object
-      description: OData error response
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: The error code
-            message:
-              type: string
-              description: The error message
   responses:
+    Unauthorized:
+      description: Unauthorized - authentication token is missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
     NotFound:
       description: Not found - the specified resource was not found
       content:
@@ -143,20 +157,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ODataError'
-    Unauthorized:
-      description: Unauthorized - authentication token is missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-  parameters:
-    AnchorMailboxHeader:
-      name: X-AnchorMailbox
-      in: header
-      required: true
-      description: Routing hint header used to route the request to the correct backend server. Specify the UPN or primary SMTP address of a mailbox in the target tenant.
-      schema:
-        type: string
   securitySchemes:
     oauth2:
       type: oauth2

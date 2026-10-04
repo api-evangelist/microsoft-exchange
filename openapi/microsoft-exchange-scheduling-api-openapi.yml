@@ -155,6 +155,75 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    OutlookGeoCoordinates:
+      type: object
+      description: Geographic coordinates and elevation of a location
+      properties:
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        accuracy:
+          type: number
+          format: double
+        altitude:
+          type: number
+          format: double
+        altitudeAccuracy:
+          type: number
+          format: double
+    ResponseStatus:
+      type: object
+      description: Response status of an attendee or organizer
+      properties:
+        response:
+          type: string
+          enum:
+          - none
+          - organizer
+          - tentativelyAccepted
+          - accepted
+          - declined
+          - notResponded
+          description: The response type
+        time:
+          type: string
+          format: date-time
+          description: The date and time that the response was returned
+    ItemBody:
+      type: object
+      description: Represents the body content of an event
+      properties:
+        contentType:
+          type: string
+          enum:
+          - text
+          - html
+          description: The type of the content
+        content:
+          type: string
+          description: The content of the item body
+    PatternedRecurrence:
+      type: object
+      description: The recurrence pattern and range for an event
+      properties:
+        pattern:
+          $ref: '#/components/schemas/RecurrencePattern'
+        range:
+          $ref: '#/components/schemas/RecurrenceRange'
+    EmailAddress:
+      type: object
+      description: The name and email address of a person
+      properties:
+        name:
+          type: string
+          description: The display name
+        address:
+          type: string
+          format: email
+          description: The email address
     RecurrenceRange:
       type: object
       description: The duration of a recurrence
@@ -179,58 +248,68 @@ components:
         numberOfOccurrences:
           type: integer
           description: Number of times to repeat the event
-    RecurrencePattern:
+    AttendeeBase:
       type: object
-      description: The frequency of an event recurrence
+      description: Attendee information for meeting time suggestions
       properties:
+        emailAddress:
+          $ref: '#/components/schemas/EmailAddress'
         type:
           type: string
           enum:
-          - daily
-          - weekly
-          - absoluteMonthly
-          - relativeMonthly
-          - absoluteYearly
-          - relativeYearly
-        interval:
-          type: integer
-          description: The number of units between occurrences
-        month:
-          type: integer
-          description: The month in which the event occurs (1-12)
-        dayOfMonth:
-          type: integer
-          description: The day of the month on which the event occurs
-        daysOfWeek:
+          - required
+          - optional
+          - resource
+          description: The type of attendee
+    ScheduleItem:
+      type: object
+      description: An item that describes availability
+      properties:
+        start:
+          $ref: '#/components/schemas/DateTimeTimeZone'
+        end:
+          $ref: '#/components/schemas/DateTimeTimeZone'
+        isPrivate:
+          type: boolean
+        status:
+          type: string
+          enum:
+          - free
+          - tentative
+          - busy
+          - oof
+          - workingElsewhere
+          - unknown
+        subject:
+          type: string
+        location:
+          type: string
+    LocationConstraint:
+      type: object
+      description: Conditions for a meeting location
+      properties:
+        isRequired:
+          type: boolean
+        suggestLocation:
+          type: boolean
+        locations:
           type: array
           items:
-            type: string
-            enum:
-            - sunday
-            - monday
-            - tuesday
-            - wednesday
-            - thursday
-            - friday
-            - saturday
-        firstDayOfWeek:
+            $ref: '#/components/schemas/LocationConstraintItem'
+    PhysicalAddress:
+      type: object
+      description: Physical street address
+      properties:
+        street:
           type: string
-          enum:
-          - sunday
-          - monday
-          - tuesday
-          - wednesday
-          - thursday
-          - friday
-          - saturday
-        index:
+        city:
           type: string
-          enum:
-          - first
-          - second
-          - third
-          - fourth
-          - last
+        state:
+          type: string
+        countryOrRegion:
+          type: string
+        postalCode:
+          type: string
     ODataError:
       type: object
       description: OData error response
@@ -250,81 +329,48 @@ components:
                 date:
                   type: string
                   format: date-time
-    PhysicalAddress:
+    WorkingHours:
       type: object
-      description: Physical street address
+      description: Working hours for the user
       properties:
-        street:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        countryOrRegion:
-          type: string
-        postalCode:
-          type: string
-    LocationConstraint:
-      type: object
-      description: Conditions for a meeting location
-      properties:
-        isRequired:
-          type: boolean
-        suggestLocation:
-          type: boolean
-        locations:
+        daysOfWeek:
           type: array
           items:
-            $ref: '#/components/schemas/LocationConstraintItem'
-    MeetingTimeSuggestionsResult:
-      type: object
-      description: A collection of meeting time suggestions
-      properties:
-        '@odata.context':
+            type: string
+            enum:
+            - sunday
+            - monday
+            - tuesday
+            - wednesday
+            - thursday
+            - friday
+            - saturday
+        startTime:
           type: string
-        emptySuggestionsReason:
+          description: The time of the day the work day starts
+        endTime:
           type: string
-          description: Reason for empty suggestions
-        meetingTimeSuggestions:
-          type: array
-          items:
-            $ref: '#/components/schemas/MeetingTimeSuggestion'
-    ScheduleInformation:
-      type: object
-      description: Free/busy information for a user
-      properties:
-        scheduleId:
-          type: string
-          description: SMTP address of the user or resource
-        availabilityView:
-          type: string
-          description: Merged view of availability using single characters (0=free, 1=tentative, 2=busy, 3=oof, 4=workingElsewhere)
-        scheduleItems:
-          type: array
-          items:
-            $ref: '#/components/schemas/ScheduleItem'
-        workingHours:
-          $ref: '#/components/schemas/WorkingHours'
-        error:
+          description: The time of the day the work day ends
+        timeZone:
           type: object
           properties:
-            message:
+            name:
               type: string
-            responseCode:
-              type: string
-    AttendeeBase:
+    TimeConstraint:
       type: object
-      description: Attendee information for meeting time suggestions
+      description: Restricts meeting time suggestions to certain time periods
       properties:
-        emailAddress:
-          $ref: '#/components/schemas/EmailAddress'
-        type:
+        activityDomain:
           type: string
           enum:
-          - required
-          - optional
-          - resource
-          description: The type of attendee
+          - work
+          - personal
+          - unrestricted
+          - unknown
+        timeSlots:
+          type: array
+          items:
+            $ref: '#/components/schemas/TimeSlot'
     EventCollectionResponse:
       type: object
       description: Collection of events
@@ -503,150 +549,6 @@ components:
         originalEndTimeZone:
           type: string
           description: The end time zone set when the event was created
-    TimeConstraint:
-      type: object
-      description: Restricts meeting time suggestions to certain time periods
-      properties:
-        activityDomain:
-          type: string
-          enum:
-          - work
-          - personal
-          - unrestricted
-          - unknown
-        timeSlots:
-          type: array
-          items:
-            $ref: '#/components/schemas/TimeSlot'
-    OutlookGeoCoordinates:
-      type: object
-      description: Geographic coordinates and elevation of a location
-      properties:
-        latitude:
-          type: number
-          format: double
-        longitude:
-          type: number
-          format: double
-        accuracy:
-          type: number
-          format: double
-        altitude:
-          type: number
-          format: double
-        altitudeAccuracy:
-          type: number
-          format: double
-    PatternedRecurrence:
-      type: object
-      description: The recurrence pattern and range for an event
-      properties:
-        pattern:
-          $ref: '#/components/schemas/RecurrencePattern'
-        range:
-          $ref: '#/components/schemas/RecurrenceRange'
-    EmailAddress:
-      type: object
-      description: The name and email address of a person
-      properties:
-        name:
-          type: string
-          description: The display name
-        address:
-          type: string
-          format: email
-          description: The email address
-    ResponseStatus:
-      type: object
-      description: Response status of an attendee or organizer
-      properties:
-        response:
-          type: string
-          enum:
-          - none
-          - organizer
-          - tentativelyAccepted
-          - accepted
-          - declined
-          - notResponded
-          description: The response type
-        time:
-          type: string
-          format: date-time
-          description: The date and time that the response was returned
-    WorkingHours:
-      type: object
-      description: Working hours for the user
-      properties:
-        daysOfWeek:
-          type: array
-          items:
-            type: string
-            enum:
-            - sunday
-            - monday
-            - tuesday
-            - wednesday
-            - thursday
-            - friday
-            - saturday
-        startTime:
-          type: string
-          description: The time of the day the work day starts
-        endTime:
-          type: string
-          description: The time of the day the work day ends
-        timeZone:
-          type: object
-          properties:
-            name:
-              type: string
-    MeetingTimeSuggestion:
-      type: object
-      description: A suggested meeting time
-      properties:
-        confidence:
-          type: number
-          format: double
-          description: Confidence percentage of all attendees attending
-        meetingTimeSlot:
-          $ref: '#/components/schemas/TimeSlot'
-        organizerAvailability:
-          type: string
-          enum:
-          - free
-          - tentative
-          - busy
-          - oof
-          - workingElsewhere
-          - unknown
-        attendeeAvailability:
-          type: array
-          items:
-            type: object
-            properties:
-              attendee:
-                $ref: '#/components/schemas/AttendeeBase'
-              availability:
-                type: string
-        locations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Location'
-        suggestionReason:
-          type: string
-        order:
-          type: integer
-    LocationConstraintItem:
-      type: object
-      description: A location constraint item
-      properties:
-        displayName:
-          type: string
-        locationEmailAddress:
-          type: string
-        resolveAvailability:
-          type: boolean
     OnlineMeetingInfo:
       type: object
       description: Details for joining an online meeting
@@ -685,52 +587,25 @@ components:
                 - mobile
                 - other
                 - pager
-    ScheduleItem:
-      type: object
-      description: An item that describes availability
-      properties:
-        start:
-          $ref: '#/components/schemas/DateTimeTimeZone'
-        end:
-          $ref: '#/components/schemas/DateTimeTimeZone'
-        isPrivate:
-          type: boolean
-        status:
-          type: string
-          enum:
-          - free
-          - tentative
-          - busy
-          - oof
-          - workingElsewhere
-          - unknown
-        subject:
-          type: string
-        location:
-          type: string
-    Attendee:
-      type: object
-      description: An event attendee with response status
-      properties:
-        emailAddress:
-          $ref: '#/components/schemas/EmailAddress'
-        type:
-          type: string
-          enum:
-          - required
-          - optional
-          - resource
-          description: The type of attendee
-        status:
-          $ref: '#/components/schemas/ResponseStatus'
-        proposedNewTime:
-          $ref: '#/components/schemas/TimeSlot'
     Recipient:
       type: object
       description: Represents the recipient of an event
       properties:
         emailAddress:
           $ref: '#/components/schemas/EmailAddress'
+    MeetingTimeSuggestionsResult:
+      type: object
+      description: A collection of meeting time suggestions
+      properties:
+        '@odata.context':
+          type: string
+        emptySuggestionsReason:
+          type: string
+          description: Reason for empty suggestions
+        meetingTimeSuggestions:
+          type: array
+          items:
+            $ref: '#/components/schemas/MeetingTimeSuggestion'
     DateTimeTimeZone:
       type: object
       description: Describes a date, time, and time zone
@@ -741,14 +616,117 @@ components:
         timeZone:
           type: string
           description: A time zone name (e.g. Pacific Standard Time)
-    TimeSlot:
+    ScheduleInformation:
       type: object
-      description: A time period
+      description: Free/busy information for a user
       properties:
-        start:
-          $ref: '#/components/schemas/DateTimeTimeZone'
-        end:
-          $ref: '#/components/schemas/DateTimeTimeZone'
+        scheduleId:
+          type: string
+          description: SMTP address of the user or resource
+        availabilityView:
+          type: string
+          description: Merged view of availability using single characters (0=free, 1=tentative, 2=busy, 3=oof, 4=workingElsewhere)
+        scheduleItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScheduleItem'
+        workingHours:
+          $ref: '#/components/schemas/WorkingHours'
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+            responseCode:
+              type: string
+    RecurrencePattern:
+      type: object
+      description: The frequency of an event recurrence
+      properties:
+        type:
+          type: string
+          enum:
+          - daily
+          - weekly
+          - absoluteMonthly
+          - relativeMonthly
+          - absoluteYearly
+          - relativeYearly
+        interval:
+          type: integer
+          description: The number of units between occurrences
+        month:
+          type: integer
+          description: The month in which the event occurs (1-12)
+        dayOfMonth:
+          type: integer
+          description: The day of the month on which the event occurs
+        daysOfWeek:
+          type: array
+          items:
+            type: string
+            enum:
+            - sunday
+            - monday
+            - tuesday
+            - wednesday
+            - thursday
+            - friday
+            - saturday
+        firstDayOfWeek:
+          type: string
+          enum:
+          - sunday
+          - monday
+          - tuesday
+          - wednesday
+          - thursday
+          - friday
+          - saturday
+        index:
+          type: string
+          enum:
+          - first
+          - second
+          - third
+          - fourth
+          - last
+    MeetingTimeSuggestion:
+      type: object
+      description: A suggested meeting time
+      properties:
+        confidence:
+          type: number
+          format: double
+          description: Confidence percentage of all attendees attending
+        meetingTimeSlot:
+          $ref: '#/components/schemas/TimeSlot'
+        organizerAvailability:
+          type: string
+          enum:
+          - free
+          - tentative
+          - busy
+          - oof
+          - workingElsewhere
+          - unknown
+        attendeeAvailability:
+          type: array
+          items:
+            type: object
+            properties:
+              attendee:
+                $ref: '#/components/schemas/AttendeeBase'
+              availability:
+                type: string
+        locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Location'
+        suggestionReason:
+          type: string
+        order:
+          type: integer
     Location:
       type: object
       description: Represents location information for an event
@@ -791,33 +769,55 @@ components:
           - directory
           - private
           - bing
-    ItemBody:
+    Attendee:
       type: object
-      description: Represents the body content of an event
+      description: An event attendee with response status
       properties:
-        contentType:
+        emailAddress:
+          $ref: '#/components/schemas/EmailAddress'
+        type:
           type: string
           enum:
-          - text
-          - html
-          description: The type of the content
-        content:
+          - required
+          - optional
+          - resource
+          description: The type of attendee
+        status:
+          $ref: '#/components/schemas/ResponseStatus'
+        proposedNewTime:
+          $ref: '#/components/schemas/TimeSlot'
+    TimeSlot:
+      type: object
+      description: A time period
+      properties:
+        start:
+          $ref: '#/components/schemas/DateTimeTimeZone'
+        end:
+          $ref: '#/components/schemas/DateTimeTimeZone'
+    LocationConstraintItem:
+      type: object
+      description: A location constraint item
+      properties:
+        displayName:
           type: string
-          description: The content of the item body
+        locationEmailAddress:
+          type: string
+        resolveAvailability:
+          type: boolean
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
   parameters:
-    TopParam:
-      name: $top
-      in: query
-      description: The number of items to return
-      schema:
-        type: integer
-        minimum: 1
-    FilterParam:
-      name: $filter
-      in: query
-      description: OData filter expression
-      schema:
-        type: string
     SkipParam:
       name: $skip
       in: query
@@ -825,25 +825,25 @@ components:
       schema:
         type: integer
         minimum: 0
+    TopParam:
+      name: $top
+      in: query
+      description: The number of items to return
+      schema:
+        type: integer
+        minimum: 1
     SelectParam:
       name: $select
       in: query
       description: Comma-separated list of properties to include in the response
       schema:
         type: string
-  responses:
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
+    FilterParam:
+      name: $filter
+      in: query
+      description: OData filter expression
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2

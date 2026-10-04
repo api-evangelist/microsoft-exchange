@@ -85,26 +85,52 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    NotFound:
-      description: Not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
   schemas:
+    MailboxFolder:
+      type: object
+      description: A folder in a mailbox
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: The folder unique identifier
+        displayName:
+          type: string
+          description: Display name of the folder
+        parentFolderId:
+          type: string
+          description: The ID of the parent folder
+        folderType:
+          type: string
+          description: The type of folder (e.g. inbox, calendar, contacts)
+        childFolderCount:
+          type: integer
+          description: Number of child folders
+        totalItemCount:
+          type: integer
+          description: Total items in the folder
+        unreadItemCount:
+          type: integer
+          description: Number of unread items
+    ODataError:
+      type: object
+      description: OData error response
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            innerError:
+              type: object
+              properties:
+                request-id:
+                  type: string
+                date:
+                  type: string
+                  format: date-time
     Mailbox:
       type: object
       description: Represents a user's mailbox
@@ -132,59 +158,7 @@ components:
         totalItemSize:
           type: integer
           description: Total size of all items in bytes
-    ODataError:
-      type: object
-      description: OData error response
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
-            innerError:
-              type: object
-              properties:
-                request-id:
-                  type: string
-                date:
-                  type: string
-                  format: date-time
-    MailboxFolder:
-      type: object
-      description: A folder in a mailbox
-      properties:
-        id:
-          type: string
-          readOnly: true
-          description: The folder unique identifier
-        displayName:
-          type: string
-          description: Display name of the folder
-        parentFolderId:
-          type: string
-          description: The ID of the parent folder
-        folderType:
-          type: string
-          description: The type of folder (e.g. inbox, calendar, contacts)
-        childFolderCount:
-          type: integer
-          description: Number of child folders
-        totalItemCount:
-          type: integer
-          description: Total items in the folder
-        unreadItemCount:
-          type: integer
-          description: Number of unread items
   parameters:
-    MailboxIdParam:
-      name: mailbox-id
-      in: path
-      required: true
-      description: The unique identifier of the mailbox
-      schema:
-        type: string
     SkipParam:
       name: $skip
       in: query
@@ -206,6 +180,32 @@ components:
       description: The unique identifier or user principal name
       schema:
         type: string
+    MailboxIdParam:
+      name: mailbox-id
+      in: path
+      required: true
+      description: The unique identifier of the mailbox
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
   securitySchemes:
     oauth2:
       type: oauth2

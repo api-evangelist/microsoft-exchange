@@ -224,39 +224,47 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    NotFound:
-      description: Not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
+  parameters:
+    OrderByParam:
+      name: $orderby
+      in: query
+      description: Comma-separated list of properties to sort by
+      schema:
+        type: string
+    SkipParam:
+      name: $skip
+      in: query
+      description: The number of items to skip
+      schema:
+        type: integer
+        minimum: 0
+    ContactFolderIdParam:
+      name: contactFolder-id
+      in: path
+      required: true
+      description: The unique identifier of the contact folder
+      schema:
+        type: string
+    TopParam:
+      name: $top
+      in: query
+      description: The number of items to return
+      schema:
+        type: integer
+        minimum: 1
+    FilterParam:
+      name: $filter
+      in: query
+      description: OData filter expression
+      schema:
+        type: string
+    SelectParam:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include
+      schema:
+        type: string
   schemas:
-    ContactFolderCollectionResponse:
-      type: object
-      description: Collection of contact folders
-      properties:
-        '@odata.context':
-          type: string
-        '@odata.nextLink':
-          type: string
-          format: uri
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContactFolder'
     ContactCollectionResponse:
       type: object
       description: Collection of contacts
@@ -289,36 +297,6 @@ components:
                 date:
                   type: string
                   format: date-time
-    PhysicalAddress:
-      type: object
-      description: Physical street address
-      properties:
-        street:
-          type: string
-          description: The street address
-        city:
-          type: string
-          description: The city
-        state:
-          type: string
-          description: The state or province
-        countryOrRegion:
-          type: string
-          description: The country or region
-        postalCode:
-          type: string
-          description: The postal code
-    EmailAddress:
-      type: object
-      description: Email address of a contact
-      properties:
-        name:
-          type: string
-          description: The display name
-        address:
-          type: string
-          format: email
-          description: The email address
     Contact:
       type: object
       description: A contact is an item in Outlook where you can organize and save information about people and organizations you communicate with. Contacts are contained in contact folders.
@@ -454,6 +432,17 @@ components:
         yomiCompanyName:
           type: string
           description: Phonetic Japanese company name
+    EmailAddress:
+      type: object
+      description: Email address of a contact
+      properties:
+        name:
+          type: string
+          description: The display name
+        address:
+          type: string
+          format: email
+          description: The email address
     ContactFolder:
       type: object
       description: A folder that contains contacts
@@ -469,46 +458,57 @@ components:
           type: string
           readOnly: true
           description: The ID of the folder's parent folder
-  parameters:
-    ContactFolderIdParam:
-      name: contactFolder-id
-      in: path
-      required: true
-      description: The unique identifier of the contact folder
-      schema:
-        type: string
-    FilterParam:
-      name: $filter
-      in: query
-      description: OData filter expression
-      schema:
-        type: string
-    OrderByParam:
-      name: $orderby
-      in: query
-      description: Comma-separated list of properties to sort by
-      schema:
-        type: string
-    SkipParam:
-      name: $skip
-      in: query
-      description: The number of items to skip
-      schema:
-        type: integer
-        minimum: 0
-    TopParam:
-      name: $top
-      in: query
-      description: The number of items to return
-      schema:
-        type: integer
-        minimum: 1
-    SelectParam:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include
-      schema:
-        type: string
+    ContactFolderCollectionResponse:
+      type: object
+      description: Collection of contact folders
+      properties:
+        '@odata.context':
+          type: string
+        '@odata.nextLink':
+          type: string
+          format: uri
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactFolder'
+    PhysicalAddress:
+      type: object
+      description: Physical street address
+      properties:
+        street:
+          type: string
+          description: The street address
+        city:
+          type: string
+          description: The city
+        state:
+          type: string
+          description: The state or province
+        countryOrRegion:
+          type: string
+          description: The country or region
+        postalCode:
+          type: string
+          description: The postal code
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
   securitySchemes:
     oauth2:
       type: oauth2

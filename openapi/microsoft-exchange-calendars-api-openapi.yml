@@ -178,6 +178,75 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    OutlookGeoCoordinates:
+      type: object
+      description: Geographic coordinates and elevation of a location
+      properties:
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        accuracy:
+          type: number
+          format: double
+        altitude:
+          type: number
+          format: double
+        altitudeAccuracy:
+          type: number
+          format: double
+    ResponseStatus:
+      type: object
+      description: Response status of an attendee or organizer
+      properties:
+        response:
+          type: string
+          enum:
+          - none
+          - organizer
+          - tentativelyAccepted
+          - accepted
+          - declined
+          - notResponded
+          description: The response type
+        time:
+          type: string
+          format: date-time
+          description: The date and time that the response was returned
+    ItemBody:
+      type: object
+      description: Represents the body content of an event
+      properties:
+        contentType:
+          type: string
+          enum:
+          - text
+          - html
+          description: The type of the content
+        content:
+          type: string
+          description: The content of the item body
+    PatternedRecurrence:
+      type: object
+      description: The recurrence pattern and range for an event
+      properties:
+        pattern:
+          $ref: '#/components/schemas/RecurrencePattern'
+        range:
+          $ref: '#/components/schemas/RecurrenceRange'
+    EmailAddress:
+      type: object
+      description: The name and email address of a person
+      properties:
+        name:
+          type: string
+          description: The display name
+        address:
+          type: string
+          format: email
+          description: The email address
     RecurrenceRange:
       type: object
       description: The duration of a recurrence
@@ -202,58 +271,20 @@ components:
         numberOfOccurrences:
           type: integer
           description: Number of times to repeat the event
-    RecurrencePattern:
+    PhysicalAddress:
       type: object
-      description: The frequency of an event recurrence
+      description: Physical street address
       properties:
-        type:
+        street:
           type: string
-          enum:
-          - daily
-          - weekly
-          - absoluteMonthly
-          - relativeMonthly
-          - absoluteYearly
-          - relativeYearly
-        interval:
-          type: integer
-          description: The number of units between occurrences
-        month:
-          type: integer
-          description: The month in which the event occurs (1-12)
-        dayOfMonth:
-          type: integer
-          description: The day of the month on which the event occurs
-        daysOfWeek:
-          type: array
-          items:
-            type: string
-            enum:
-            - sunday
-            - monday
-            - tuesday
-            - wednesday
-            - thursday
-            - friday
-            - saturday
-        firstDayOfWeek:
+        city:
           type: string
-          enum:
-          - sunday
-          - monday
-          - tuesday
-          - wednesday
-          - thursday
-          - friday
-          - saturday
-        index:
+        state:
           type: string
-          enum:
-          - first
-          - second
-          - third
-          - fourth
-          - last
+        countryOrRegion:
+          type: string
+        postalCode:
+          type: string
     ODataError:
       type: object
       description: OData error response
@@ -273,20 +304,6 @@ components:
                 date:
                   type: string
                   format: date-time
-    PhysicalAddress:
-      type: object
-      description: Physical street address
-      properties:
-        street:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        countryOrRegion:
-          type: string
-        postalCode:
-          type: string
     EventCollectionResponse:
       type: object
       description: Collection of events
@@ -465,33 +482,184 @@ components:
         originalEndTimeZone:
           type: string
           description: The end time zone set when the event was created
-    OutlookGeoCoordinates:
+    OnlineMeetingInfo:
       type: object
-      description: Geographic coordinates and elevation of a location
+      description: Details for joining an online meeting
       properties:
-        latitude:
-          type: number
-          format: double
-        longitude:
-          type: number
-          format: double
-        accuracy:
-          type: number
-          format: double
-        altitude:
-          type: number
-          format: double
-        altitudeAccuracy:
-          type: number
-          format: double
-    PatternedRecurrence:
+        joinUrl:
+          type: string
+          format: uri
+          description: The URL to join the online meeting
+        conferenceId:
+          type: string
+          description: The ID of the conference
+        tollNumber:
+          type: string
+          description: The toll number for the online meeting
+        tollFreeNumbers:
+          type: array
+          items:
+            type: string
+          description: Toll-free numbers for the online meeting
+        quickDial:
+          type: string
+          description: Quick dial number for the online meeting
+        phones:
+          type: array
+          items:
+            type: object
+            properties:
+              number:
+                type: string
+              type:
+                type: string
+                enum:
+                - unknown
+                - home
+                - business
+                - mobile
+                - other
+                - pager
+    Recipient:
       type: object
-      description: The recurrence pattern and range for an event
+      description: Represents the recipient of an event
       properties:
-        pattern:
-          $ref: '#/components/schemas/RecurrencePattern'
-        range:
-          $ref: '#/components/schemas/RecurrenceRange'
+        emailAddress:
+          $ref: '#/components/schemas/EmailAddress'
+    DateTimeTimeZone:
+      type: object
+      description: Describes a date, time, and time zone
+      properties:
+        dateTime:
+          type: string
+          description: A date and time in ISO 8601 format
+        timeZone:
+          type: string
+          description: A time zone name (e.g. Pacific Standard Time)
+    CalendarCollectionResponse:
+      type: object
+      description: Collection of calendars
+      properties:
+        '@odata.context':
+          type: string
+        '@odata.nextLink':
+          type: string
+          format: uri
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Calendar'
+    RecurrencePattern:
+      type: object
+      description: The frequency of an event recurrence
+      properties:
+        type:
+          type: string
+          enum:
+          - daily
+          - weekly
+          - absoluteMonthly
+          - relativeMonthly
+          - absoluteYearly
+          - relativeYearly
+        interval:
+          type: integer
+          description: The number of units between occurrences
+        month:
+          type: integer
+          description: The month in which the event occurs (1-12)
+        dayOfMonth:
+          type: integer
+          description: The day of the month on which the event occurs
+        daysOfWeek:
+          type: array
+          items:
+            type: string
+            enum:
+            - sunday
+            - monday
+            - tuesday
+            - wednesday
+            - thursday
+            - friday
+            - saturday
+        firstDayOfWeek:
+          type: string
+          enum:
+          - sunday
+          - monday
+          - tuesday
+          - wednesday
+          - thursday
+          - friday
+          - saturday
+        index:
+          type: string
+          enum:
+          - first
+          - second
+          - third
+          - fourth
+          - last
+    Location:
+      type: object
+      description: Represents location information for an event
+      properties:
+        displayName:
+          type: string
+          description: The name associated with the location
+        locationType:
+          type: string
+          enum:
+          - default
+          - conferenceRoom
+          - homeAddress
+          - businessAddress
+          - geoCoordinates
+          - streetAddress
+          - hotel
+          - restaurant
+          - localBusiness
+          - postalAddress
+          description: The type of location
+        locationUri:
+          type: string
+          description: URI representing the location
+        locationEmailAddress:
+          type: string
+          description: Email address of the location
+        address:
+          $ref: '#/components/schemas/PhysicalAddress'
+        coordinates:
+          $ref: '#/components/schemas/OutlookGeoCoordinates'
+        uniqueId:
+          type: string
+          description: An internal identifier for the location
+        uniqueIdType:
+          type: string
+          enum:
+          - unknown
+          - locationStore
+          - directory
+          - private
+          - bing
+    Attendee:
+      type: object
+      description: An event attendee with response status
+      properties:
+        emailAddress:
+          $ref: '#/components/schemas/EmailAddress'
+        type:
+          type: string
+          enum:
+          - required
+          - optional
+          - resource
+          description: The type of attendee
+        status:
+          $ref: '#/components/schemas/ResponseStatus'
+        proposedNewTime:
+          $ref: '#/components/schemas/TimeSlot'
     Calendar:
       type: object
       description: A container for event resources. Can be a user calendar or a group calendar.
@@ -569,119 +737,6 @@ components:
           - skypeForConsumer
           - teamsForBusiness
           description: Default online meeting provider for this calendar
-    CalendarCollectionResponse:
-      type: object
-      description: Collection of calendars
-      properties:
-        '@odata.context':
-          type: string
-        '@odata.nextLink':
-          type: string
-          format: uri
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Calendar'
-    EmailAddress:
-      type: object
-      description: The name and email address of a person
-      properties:
-        name:
-          type: string
-          description: The display name
-        address:
-          type: string
-          format: email
-          description: The email address
-    ResponseStatus:
-      type: object
-      description: Response status of an attendee or organizer
-      properties:
-        response:
-          type: string
-          enum:
-          - none
-          - organizer
-          - tentativelyAccepted
-          - accepted
-          - declined
-          - notResponded
-          description: The response type
-        time:
-          type: string
-          format: date-time
-          description: The date and time that the response was returned
-    OnlineMeetingInfo:
-      type: object
-      description: Details for joining an online meeting
-      properties:
-        joinUrl:
-          type: string
-          format: uri
-          description: The URL to join the online meeting
-        conferenceId:
-          type: string
-          description: The ID of the conference
-        tollNumber:
-          type: string
-          description: The toll number for the online meeting
-        tollFreeNumbers:
-          type: array
-          items:
-            type: string
-          description: Toll-free numbers for the online meeting
-        quickDial:
-          type: string
-          description: Quick dial number for the online meeting
-        phones:
-          type: array
-          items:
-            type: object
-            properties:
-              number:
-                type: string
-              type:
-                type: string
-                enum:
-                - unknown
-                - home
-                - business
-                - mobile
-                - other
-                - pager
-    Attendee:
-      type: object
-      description: An event attendee with response status
-      properties:
-        emailAddress:
-          $ref: '#/components/schemas/EmailAddress'
-        type:
-          type: string
-          enum:
-          - required
-          - optional
-          - resource
-          description: The type of attendee
-        status:
-          $ref: '#/components/schemas/ResponseStatus'
-        proposedNewTime:
-          $ref: '#/components/schemas/TimeSlot'
-    Recipient:
-      type: object
-      description: Represents the recipient of an event
-      properties:
-        emailAddress:
-          $ref: '#/components/schemas/EmailAddress'
-    DateTimeTimeZone:
-      type: object
-      description: Describes a date, time, and time zone
-      properties:
-        dateTime:
-          type: string
-          description: A date and time in ISO 8601 format
-        timeZone:
-          type: string
-          description: A time zone name (e.g. Pacific Standard Time)
     TimeSlot:
       type: object
       description: A time period
@@ -690,62 +745,33 @@ components:
           $ref: '#/components/schemas/DateTimeTimeZone'
         end:
           $ref: '#/components/schemas/DateTimeTimeZone'
-    Location:
-      type: object
-      description: Represents location information for an event
-      properties:
-        displayName:
-          type: string
-          description: The name associated with the location
-        locationType:
-          type: string
-          enum:
-          - default
-          - conferenceRoom
-          - homeAddress
-          - businessAddress
-          - geoCoordinates
-          - streetAddress
-          - hotel
-          - restaurant
-          - localBusiness
-          - postalAddress
-          description: The type of location
-        locationUri:
-          type: string
-          description: URI representing the location
-        locationEmailAddress:
-          type: string
-          description: Email address of the location
-        address:
-          $ref: '#/components/schemas/PhysicalAddress'
-        coordinates:
-          $ref: '#/components/schemas/OutlookGeoCoordinates'
-        uniqueId:
-          type: string
-          description: An internal identifier for the location
-        uniqueIdType:
-          type: string
-          enum:
-          - unknown
-          - locationStore
-          - directory
-          - private
-          - bing
-    ItemBody:
-      type: object
-      description: Represents the body content of an event
-      properties:
-        contentType:
-          type: string
-          enum:
-          - text
-          - html
-          description: The type of the content
-        content:
-          type: string
-          description: The content of the item body
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
   parameters:
+    SkipParam:
+      name: $skip
+      in: query
+      description: The number of items to skip
+      schema:
+        type: integer
+        minimum: 0
     TopParam:
       name: $top
       in: query
@@ -753,6 +779,12 @@ components:
       schema:
         type: integer
         minimum: 1
+    SelectParam:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response
+      schema:
+        type: string
     CalendarIdParam:
       name: calendar-id
       in: path
@@ -772,38 +804,6 @@ components:
       description: Comma-separated list of properties to sort by
       schema:
         type: string
-    SkipParam:
-      name: $skip
-      in: query
-      description: The number of items to skip
-      schema:
-        type: integer
-        minimum: 0
-    SelectParam:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include in the response
-      schema:
-        type: string
-  responses:
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    NotFound:
-      description: Not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
   securitySchemes:
     oauth2:
       type: oauth2
