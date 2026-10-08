@@ -825,6 +825,12 @@ apis:
     url: >-
       https://learn.microsoft.com/en-us/graph/api/resources/mailbox-import-export-api-overview?view=graph-rest-beta
 common:
+  - type: Plans
+    url: plans/microsoft-exchange-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/microsoft-exchange-rate-limits.yml
+  - type: FinOps
+    url: finops/microsoft-exchange-finops.yml
   - type: Overlay
     url: overlays/microsoft-exchange-admin-api-overlay.yaml
   - type: AgenticAccess
