@@ -168,3 +168,48 @@ plans:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - subscription
+  units:
+  - data
+  - seat
+  plans:
+  - name: Exchange Online (Plan 1)
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - data
+    - seat
+    periods:
+    - month
+    - per-use
+  - name: Exchange Online (Plan 2)
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - data
+    - seat
+    periods:
+    - month
+    - per-use
+  - name: Exchange Online via Microsoft 365 Business
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+  - name: Exchange Online via Microsoft 365 Enterprise
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
