@@ -85,6 +85,74 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    MailboxIdParam:
+      name: mailbox-id
+      in: path
+      required: true
+      description: The unique identifier of the mailbox
+      schema:
+        type: string
+    SelectParam:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include
+      schema:
+        type: string
+    SkipParam:
+      name: $skip
+      in: query
+      description: Number of items to skip
+      schema:
+        type: integer
+        minimum: 0
+    FolderIdParam:
+      name: folder-id
+      in: path
+      required: true
+      description: The unique identifier of the folder
+      schema:
+        type: string
+    TopParam:
+      name: $top
+      in: query
+      description: Number of items to return
+      schema:
+        type: integer
+        minimum: 1
+    UserIdParam:
+      name: user-id
+      in: path
+      required: true
+      description: The unique identifier or user principal name
+      schema:
+        type: string
+    ItemIdParam:
+      name: item-id
+      in: path
+      required: true
+      description: The unique identifier of the item
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
   schemas:
     MailboxItem:
       type: object
@@ -141,74 +209,6 @@ components:
                 date:
                   type: string
                   format: date-time
-  parameters:
-    SkipParam:
-      name: $skip
-      in: query
-      description: Number of items to skip
-      schema:
-        type: integer
-        minimum: 0
-    ItemIdParam:
-      name: item-id
-      in: path
-      required: true
-      description: The unique identifier of the item
-      schema:
-        type: string
-    FolderIdParam:
-      name: folder-id
-      in: path
-      required: true
-      description: The unique identifier of the folder
-      schema:
-        type: string
-    SelectParam:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include
-      schema:
-        type: string
-    TopParam:
-      name: $top
-      in: query
-      description: Number of items to return
-      schema:
-        type: integer
-        minimum: 1
-    UserIdParam:
-      name: user-id
-      in: path
-      required: true
-      description: The unique identifier or user principal name
-      schema:
-        type: string
-    MailboxIdParam:
-      name: mailbox-id
-      in: path
-      required: true
-      description: The unique identifier of the mailbox
-      schema:
-        type: string
-  responses:
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    NotFound:
-      description: Not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
   securitySchemes:
     oauth2:
       type: oauth2

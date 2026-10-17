@@ -209,6 +209,25 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   parameters:
+    FilterParam:
+      name: $filter
+      in: query
+      description: OData filter expression
+      schema:
+        type: string
+    SkipParam:
+      name: $skip
+      in: query
+      description: The number of items to skip
+      schema:
+        type: integer
+        minimum: 0
+    SelectParam:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include
+      schema:
+        type: string
     OrderByParam:
       name: $orderby
       in: query
@@ -222,13 +241,13 @@ components:
       description: The unique identifier of the contact folder
       schema:
         type: string
-    SkipParam:
-      name: $skip
-      in: query
-      description: The number of items to skip
+    ContactIdParam:
+      name: contact-id
+      in: path
+      required: true
+      description: The unique identifier of the contact
       schema:
-        type: integer
-        minimum: 0
+        type: string
     TopParam:
       name: $top
       in: query
@@ -242,39 +261,37 @@ components:
       description: Search string to filter results
       schema:
         type: string
-    FilterParam:
-      name: $filter
-      in: query
-      description: OData filter expression
-      schema:
-        type: string
-    ContactIdParam:
-      name: contact-id
-      in: path
-      required: true
-      description: The unique identifier of the contact
-      schema:
-        type: string
-    SelectParam:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include
-      schema:
-        type: string
+  responses:
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
   schemas:
-    ContactCollectionResponse:
+    EmailAddress:
       type: object
-      description: Collection of contacts
+      description: Email address of a contact
       properties:
-        '@odata.context':
+        name:
           type: string
-        '@odata.nextLink':
+          description: The display name
+        address:
           type: string
-          format: uri
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Contact'
+          format: email
+          description: The email address
     ODataError:
       type: object
       description: OData error response
@@ -294,6 +311,23 @@ components:
                 date:
                   type: string
                   format: date-time
+    ContactDeltaResponse:
+      type: object
+      description: Delta response for contacts
+      properties:
+        '@odata.context':
+          type: string
+        '@odata.nextLink':
+          type: string
+          format: uri
+        '@odata.deltaLink':
+          type: string
+          format: uri
+          description: URL to get the next set of changes
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
     Contact:
       type: object
       description: A contact is an item in Outlook where you can organize and save information about people and organizations you communicate with. Contacts are contained in contact folders.
@@ -429,34 +463,19 @@ components:
         yomiCompanyName:
           type: string
           description: Phonetic Japanese company name
-    ContactDeltaResponse:
+    ContactCollectionResponse:
       type: object
-      description: Delta response for contacts
+      description: Collection of contacts
       properties:
         '@odata.context':
           type: string
         '@odata.nextLink':
           type: string
           format: uri
-        '@odata.deltaLink':
-          type: string
-          format: uri
-          description: URL to get the next set of changes
         value:
           type: array
           items:
             $ref: '#/components/schemas/Contact'
-    EmailAddress:
-      type: object
-      description: Email address of a contact
-      properties:
-        name:
-          type: string
-          description: The display name
-        address:
-          type: string
-          format: email
-          description: The email address
     PhysicalAddress:
       type: object
       description: Physical street address
@@ -476,25 +495,6 @@ components:
         postalCode:
           type: string
           description: The postal code
-  responses:
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    NotFound:
-      description: Not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
   securitySchemes:
     oauth2:
       type: oauth2

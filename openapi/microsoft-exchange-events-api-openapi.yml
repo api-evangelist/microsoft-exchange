@@ -445,143 +445,54 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  parameters:
+    FilterParam:
+      name: $filter
+      in: query
+      description: OData filter expression
+      schema:
+        type: string
+    EventIdParam:
+      name: event-id
+      in: path
+      required: true
+      description: The unique identifier of the event
+      schema:
+        type: string
+    TopParam:
+      name: $top
+      in: query
+      description: The number of items to return
+      schema:
+        type: integer
+        minimum: 1
+    SkipParam:
+      name: $skip
+      in: query
+      description: The number of items to skip
+      schema:
+        type: integer
+        minimum: 0
+    OrderByParam:
+      name: $orderby
+      in: query
+      description: Comma-separated list of properties to sort by
+      schema:
+        type: string
+    SelectParam:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response
+      schema:
+        type: string
+    CalendarIdParam:
+      name: calendar-id
+      in: path
+      required: true
+      description: The unique identifier of the calendar
+      schema:
+        type: string
   schemas:
-    OutlookGeoCoordinates:
-      type: object
-      description: Geographic coordinates and elevation of a location
-      properties:
-        latitude:
-          type: number
-          format: double
-        longitude:
-          type: number
-          format: double
-        accuracy:
-          type: number
-          format: double
-        altitude:
-          type: number
-          format: double
-        altitudeAccuracy:
-          type: number
-          format: double
-    ResponseStatus:
-      type: object
-      description: Response status of an attendee or organizer
-      properties:
-        response:
-          type: string
-          enum:
-          - none
-          - organizer
-          - tentativelyAccepted
-          - accepted
-          - declined
-          - notResponded
-          description: The response type
-        time:
-          type: string
-          format: date-time
-          description: The date and time that the response was returned
-    ItemBody:
-      type: object
-      description: Represents the body content of an event
-      properties:
-        contentType:
-          type: string
-          enum:
-          - text
-          - html
-          description: The type of the content
-        content:
-          type: string
-          description: The content of the item body
-    PatternedRecurrence:
-      type: object
-      description: The recurrence pattern and range for an event
-      properties:
-        pattern:
-          $ref: '#/components/schemas/RecurrencePattern'
-        range:
-          $ref: '#/components/schemas/RecurrenceRange'
-    EmailAddress:
-      type: object
-      description: The name and email address of a person
-      properties:
-        name:
-          type: string
-          description: The display name
-        address:
-          type: string
-          format: email
-          description: The email address
-    RecurrenceRange:
-      type: object
-      description: The duration of a recurrence
-      properties:
-        type:
-          type: string
-          enum:
-          - endDate
-          - noEnd
-          - numbered
-        startDate:
-          type: string
-          format: date
-          description: The start date of the recurring series
-        endDate:
-          type: string
-          format: date
-          description: The end date of the recurring series
-        recurrenceTimeZone:
-          type: string
-          description: Time zone for the start and end dates
-        numberOfOccurrences:
-          type: integer
-          description: Number of times to repeat the event
-    AttachmentCollectionResponse:
-      type: object
-      description: Collection of attachments
-      properties:
-        '@odata.context':
-          type: string
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Attachment'
-    PhysicalAddress:
-      type: object
-      description: Physical street address
-      properties:
-        street:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        countryOrRegion:
-          type: string
-        postalCode:
-          type: string
-    ODataError:
-      type: object
-      description: OData error response
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
-            innerError:
-              type: object
-              properties:
-                request-id:
-                  type: string
-                date:
-                  type: string
-                  format: date-time
     Attachment:
       type: object
       description: A file or item attached to an event
@@ -607,6 +518,30 @@ components:
         contentBytes:
           type: string
           format: byte
+    RecurrenceRange:
+      type: object
+      description: The duration of a recurrence
+      properties:
+        type:
+          type: string
+          enum:
+          - endDate
+          - noEnd
+          - numbered
+        startDate:
+          type: string
+          format: date
+          description: The start date of the recurring series
+        endDate:
+          type: string
+          format: date
+          description: The end date of the recurring series
+        recurrenceTimeZone:
+          type: string
+          description: Time zone for the start and end dates
+        numberOfOccurrences:
+          type: integer
+          description: Number of times to repeat the event
     EventCollectionResponse:
       type: object
       description: Collection of events
@@ -785,6 +720,58 @@ components:
         originalEndTimeZone:
           type: string
           description: The end time zone set when the event was created
+    ItemBody:
+      type: object
+      description: Represents the body content of an event
+      properties:
+        contentType:
+          type: string
+          enum:
+          - text
+          - html
+          description: The type of the content
+        content:
+          type: string
+          description: The content of the item body
+    PhysicalAddress:
+      type: object
+      description: Physical street address
+      properties:
+        street:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        countryOrRegion:
+          type: string
+        postalCode:
+          type: string
+    OutlookGeoCoordinates:
+      type: object
+      description: Geographic coordinates and elevation of a location
+      properties:
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        accuracy:
+          type: number
+          format: double
+        altitude:
+          type: number
+          format: double
+        altitudeAccuracy:
+          type: number
+          format: double
+    Recipient:
+      type: object
+      description: Represents the recipient of an event
+      properties:
+        emailAddress:
+          $ref: '#/components/schemas/EmailAddress'
     OnlineMeetingInfo:
       type: object
       description: Details for joining an online meeting
@@ -823,22 +810,14 @@ components:
                 - mobile
                 - other
                 - pager
-    Recipient:
+    TimeSlot:
       type: object
-      description: Represents the recipient of an event
+      description: A time period
       properties:
-        emailAddress:
-          $ref: '#/components/schemas/EmailAddress'
-    DateTimeTimeZone:
-      type: object
-      description: Describes a date, time, and time zone
-      properties:
-        dateTime:
-          type: string
-          description: A date and time in ISO 8601 format
-        timeZone:
-          type: string
-          description: A time zone name (e.g. Pacific Standard Time)
+        start:
+          $ref: '#/components/schemas/DateTimeTimeZone'
+        end:
+          $ref: '#/components/schemas/DateTimeTimeZone'
     RecurrencePattern:
       type: object
       description: The frequency of an event recurrence
@@ -891,6 +870,51 @@ components:
           - third
           - fourth
           - last
+    ResponseStatus:
+      type: object
+      description: Response status of an attendee or organizer
+      properties:
+        response:
+          type: string
+          enum:
+          - none
+          - organizer
+          - tentativelyAccepted
+          - accepted
+          - declined
+          - notResponded
+          description: The response type
+        time:
+          type: string
+          format: date-time
+          description: The date and time that the response was returned
+    ODataError:
+      type: object
+      description: OData error response
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            innerError:
+              type: object
+              properties:
+                request-id:
+                  type: string
+                date:
+                  type: string
+                  format: date-time
+    PatternedRecurrence:
+      type: object
+      description: The recurrence pattern and range for an event
+      properties:
+        pattern:
+          $ref: '#/components/schemas/RecurrencePattern'
+        range:
+          $ref: '#/components/schemas/RecurrenceRange'
     Location:
       type: object
       description: Represents location information for an event
@@ -950,23 +974,40 @@ components:
           $ref: '#/components/schemas/ResponseStatus'
         proposedNewTime:
           $ref: '#/components/schemas/TimeSlot'
-    TimeSlot:
+    EmailAddress:
       type: object
-      description: A time period
+      description: The name and email address of a person
       properties:
-        start:
-          $ref: '#/components/schemas/DateTimeTimeZone'
-        end:
-          $ref: '#/components/schemas/DateTimeTimeZone'
+        name:
+          type: string
+          description: The display name
+        address:
+          type: string
+          format: email
+          description: The email address
+    AttachmentCollectionResponse:
+      type: object
+      description: Collection of attachments
+      properties:
+        '@odata.context':
+          type: string
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+    DateTimeTimeZone:
+      type: object
+      description: Describes a date, time, and time zone
+      properties:
+        dateTime:
+          type: string
+          description: A date and time in ISO 8601 format
+        timeZone:
+          type: string
+          description: A time zone name (e.g. Pacific Standard Time)
   responses:
     BadRequest:
       description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    NotFound:
-      description: Not found
       content:
         application/json:
           schema:
@@ -977,53 +1018,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ODataError'
-  parameters:
-    EventIdParam:
-      name: event-id
-      in: path
-      required: true
-      description: The unique identifier of the event
-      schema:
-        type: string
-    SkipParam:
-      name: $skip
-      in: query
-      description: The number of items to skip
-      schema:
-        type: integer
-        minimum: 0
-    TopParam:
-      name: $top
-      in: query
-      description: The number of items to return
-      schema:
-        type: integer
-        minimum: 1
-    SelectParam:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include in the response
-      schema:
-        type: string
-    CalendarIdParam:
-      name: calendar-id
-      in: path
-      required: true
-      description: The unique identifier of the calendar
-      schema:
-        type: string
-    FilterParam:
-      name: $filter
-      in: query
-      description: OData filter expression
-      schema:
-        type: string
-    OrderByParam:
-      name: $orderby
-      in: query
-      description: Comma-separated list of properties to sort by
-      schema:
-        type: string
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
   securitySchemes:
     oauth2:
       type: oauth2
