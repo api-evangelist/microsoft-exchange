@@ -1,4 +1,4 @@
-# Microsoft Exchange (microsoft-exchange)
+# Microsoft Exchange
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,316 +66,269 @@
 
 A comprehensive API collection for Microsoft Exchange Server and Exchange Online, providing programmatic access to email, calendars, contacts, and other mailbox resources through Microsoft Graph, EWS, PowerShell, Autodiscover, and the Exchange Online Admin API.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/microsoft-exchange/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/microsoft-exchange/refs/heads/main/apis.yml)
+**Areas:** Calendar · Collaboration · Contacts · Email · Enterprise
+
+## Microsoft Exchange on APIs.io
+
+Everything profiled for Microsoft Exchange is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/microsoft-exchange/](https://apis.io/providers/microsoft-exchange/)** — or go straight to one of the APIs or properties below.
+
+### APIs (20)
+
+- [Exchange Web Services (EWS)](https://apis.io/apis/microsoft-exchange/exchange-web-services-ews/) — Legacy SOAP-based API for Exchange Server providing comprehensive access to mailbox data and operations. Planned for deprecation in Exchange Online in…
+- [Exchange Online PowerShell API](https://apis.io/apis/microsoft-exchange/exchange-online-powershell-api/) — PowerShell module for managing Exchange Online through REST-based cmdlets. Provides the complete Exchange management surface for administrative tasks…
+- [Exchange Autodiscover API](https://apis.io/apis/microsoft-exchange/exchange-autodiscover-api/) — Service that enables client applications to automatically configure themselves for Exchange connectivity using minimal user input. Supports SOAP and POX…
+- [Microsoft Exchange Accepted Domains API](https://apis.io/apis/microsoft-exchange/microsoft-exchange-accepted-domains-api/) — View accepted domains and their configurations
+- [Microsoft Exchange Attachments API](https://apis.io/apis/microsoft-exchange/microsoft-exchange-attachments-api/) — Operations for managing message attachments
+- [Microsoft Exchange Calendars API](https://apis.io/apis/microsoft-exchange/microsoft-exchange-calendars-api/) — Operations for managing calendars
+- [Microsoft Exchange Contact Folders API](https://apis.io/apis/microsoft-exchange/microsoft-exchange-contact-folders-api/) — Operations for managing contact folders
+- [Microsoft Exchange Contacts API](https://apis.io/apis/microsoft-exchange/microsoft-exchange-contacts-api/) — Operations for managing personal contacts
+- [Microsoft Exchange Distribution Groups API](https://apis.io/apis/microsoft-exchange/microsoft-exchange-distribution-groups-api/) — Retrieve distribution group and dynamic distribution group membership
+- [Microsoft Exchange Events API](https://apis.io/apis/microsoft-exchange/microsoft-exchange-events-api/) — Operations for managing calendar events
+- [Microsoft Exchange Mail Folders API](https://apis.io/apis/microsoft-exchange/microsoft-exchange-mail-folders-api/) — Operations for managing mail folders
+- [Microsoft Exchange Mailbox Discovery API](https://apis.io/apis/microsoft-exchange/microsoft-exchange-mailbox-discovery-api/) — Operations for discovering mailbox structure and content
+- [Microsoft Exchange Mailbox Export API](https://apis.io/apis/microsoft-exchange/microsoft-exchange-mailbox-export-api/) — Operations for exporting content from mailboxes
+- [Microsoft Exchange Mailbox Folder Permissions API](https://apis.io/apis/microsoft-exchange/microsoft-exchange-mailbox-folder-permissions-api/) — View and manage mailbox folder permissions
+- [Microsoft Exchange Mailbox Import API](https://apis.io/apis/microsoft-exchange/microsoft-exchange-mailbox-import-api/) — Operations for importing content into mailboxes
+- [Microsoft Exchange Mailboxes API](https://apis.io/apis/microsoft-exchange/microsoft-exchange-mailboxes-api/) — View and update mailbox properties and delegation
+- [Microsoft Exchange Messages API](https://apis.io/apis/microsoft-exchange/microsoft-exchange-messages-api/) — Operations for managing email messages
+- [Microsoft Exchange Organization Configuration API](https://apis.io/apis/microsoft-exchange/microsoft-exchange-organization-configuration-api/) — Retrieve organization-level Exchange configuration
+- [Microsoft Exchange People API](https://apis.io/apis/microsoft-exchange/microsoft-exchange-people-api/) — Operations for retrieving relevant people
+- [Microsoft Exchange Scheduling API](https://apis.io/apis/microsoft-exchange/microsoft-exchange-scheduling-api/) — Operations for scheduling and free/busy information
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Arazzo workflows (17)
+
+Multi-step workflows that chain operations into a business task.
+
+- [Microsoft Exchange Audit Message Attachments](https://apis.io/arazzos/microsoft-exchange/microsoft-exchange-audit-message-attachments-workflow/)
+- [Microsoft Exchange Audit Organization and Domains](https://apis.io/arazzos/microsoft-exchange/microsoft-exchange-audit-org-and-domains-workflow/)
+- [Microsoft Exchange Compose, Attach, and Send Mail](https://apis.io/arazzos/microsoft-exchange/microsoft-exchange-compose-attach-send-mail-workflow/)
+- [Microsoft Exchange Discover Mailbox Content](https://apis.io/arazzos/microsoft-exchange/microsoft-exchange-discover-mailbox-content-workflow/)
+- [Microsoft Exchange Find Times and Book a Meeting](https://apis.io/arazzos/microsoft-exchange/microsoft-exchange-find-times-and-book-meeting-workflow/)
+- [Microsoft Exchange Grant a Mailbox Folder Permission](https://apis.io/arazzos/microsoft-exchange/microsoft-exchange-grant-folder-permission-workflow/)
+- [Microsoft Exchange Inspect and Delegate a Mailbox](https://apis.io/arazzos/microsoft-exchange/microsoft-exchange-inspect-and-delegate-mailbox-workflow/)
+- [Microsoft Exchange Migrate a Mailbox Item](https://apis.io/arazzos/microsoft-exchange/microsoft-exchange-migrate-mailbox-item-workflow/)
+- [Microsoft Exchange Organize a Contacts Folder](https://apis.io/arazzos/microsoft-exchange/microsoft-exchange-organize-contacts-folder-workflow/)
+- [Microsoft Exchange Organize a Folder and File a Message](https://apis.io/arazzos/microsoft-exchange/microsoft-exchange-organize-folder-and-file-message-workflow/)
+- [Microsoft Exchange Prepare and Send a Forward](https://apis.io/arazzos/microsoft-exchange/microsoft-exchange-prepare-and-send-forward-workflow/)
+- [Microsoft Exchange Provision a Calendar and Add an Event](https://apis.io/arazzos/microsoft-exchange/microsoft-exchange-provision-calendar-and-add-event-workflow/)
+- [Microsoft Exchange Reply to Latest Message from a Sender](https://apis.io/arazzos/microsoft-exchange/microsoft-exchange-reply-to-latest-from-sender-workflow/)
+- [Microsoft Exchange Review and Respond to an Invite](https://apis.io/arazzos/microsoft-exchange/microsoft-exchange-review-and-respond-to-invite-workflow/)
+- [Microsoft Exchange Schedule an Event with an Attachment](https://apis.io/arazzos/microsoft-exchange/microsoft-exchange-schedule-event-with-attachment-workflow/)
+- [Microsoft Exchange Triage and Move a Message](https://apis.io/arazzos/microsoft-exchange/microsoft-exchange-triage-and-move-message-workflow/)
+- [Microsoft Exchange Upsert a Contact](https://apis.io/arazzos/microsoft-exchange/microsoft-exchange-upsert-contact-workflow/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [microsoft-exchange](https://apis.io/servers/microsoft-exchange/microsoft-exchange/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Microsoft Exchange Agentic Access](https://apis.io/agentic-access/microsoft-exchange/microsoft-exchange-agentic-access/)
+
+#### JSON Schema (52)
+
+The data models the API reads and writes.
+
+- [AdminApiResponse](https://apis.io/schemas/microsoft-exchange/microsoft-exchange-adminapiresponse/)
+- [Attachment](https://apis.io/schemas/microsoft-exchange/microsoft-exchange-attachment/)
+- [AttachmentCollectionResponse](https://apis.io/schemas/microsoft-exchange/microsoft-exchange-attachmentcollectionresponse/)
+- [Attendee](https://apis.io/schemas/microsoft-exchange/microsoft-exchange-attendee/)
+- [AttendeeBase](https://apis.io/schemas/microsoft-exchange/microsoft-exchange-attendeebase/)
+- [Microsoft Exchange Calendar](https://apis.io/schemas/microsoft-exchange/microsoft-exchange-calendar/)
+- [CalendarCollectionResponse](https://apis.io/schemas/microsoft-exchange/microsoft-exchange-calendarcollectionresponse/)
+- [Microsoft Exchange Contact](https://apis.io/schemas/microsoft-exchange/microsoft-exchange-contact/)
+- [ContactCollectionResponse](https://apis.io/schemas/microsoft-exchange/microsoft-exchange-contactcollectionresponse/)
+- [ContactDeltaResponse](https://apis.io/schemas/microsoft-exchange/microsoft-exchange-contactdeltaresponse/)
+- [ContactFolder](https://apis.io/schemas/microsoft-exchange/microsoft-exchange-contactfolder/)
+- [ContactFolderCollectionResponse](https://apis.io/schemas/microsoft-exchange/microsoft-exchange-contactfoldercollectionresponse/)
+- [DateTimeTimeZone](https://apis.io/schemas/microsoft-exchange/microsoft-exchange-datetimetimezone/)
+- [EmailAddress](https://apis.io/schemas/microsoft-exchange/microsoft-exchange-emailaddress/)
+- [Microsoft Exchange Calendar Event](https://apis.io/schemas/microsoft-exchange/microsoft-exchange-event/)
+- [EventCollectionResponse](https://apis.io/schemas/microsoft-exchange/microsoft-exchange-eventcollectionresponse/)
+- [FollowupFlag](https://apis.io/schemas/microsoft-exchange/microsoft-exchange-followupflag/)
+- [InternetMessageHeader](https://apis.io/schemas/microsoft-exchange/microsoft-exchange-internetmessageheader/)
+- [ItemBody](https://apis.io/schemas/microsoft-exchange/microsoft-exchange-itembody/)
+- [Location](https://apis.io/schemas/microsoft-exchange/microsoft-exchange-location/)
+- [LocationConstraint](https://apis.io/schemas/microsoft-exchange/microsoft-exchange-locationconstraint/)
+- [LocationConstraintItem](https://apis.io/schemas/microsoft-exchange/microsoft-exchange-locationconstraintitem/)
+- [Microsoft Exchange Mail Folder](https://apis.io/schemas/microsoft-exchange/microsoft-exchange-mail-folder/)
+- [Mailbox](https://apis.io/schemas/microsoft-exchange/microsoft-exchange-mailbox/)
+- [MailboxFolder](https://apis.io/schemas/microsoft-exchange/microsoft-exchange-mailboxfolder/)
+- …and 27 more published on APIs.io
 
-## Scope
+#### JSON Structure (1)
 
-- **Type:** Index
+Data models expressed in JSON Structure.
 
-## Tags
+- [Microsoft Exchange Structure](https://apis.io/json-structure/microsoft-exchange/microsoft-exchange-structure/)
 
-- Calendar
-- Collaboration
-- Contacts
-- Email
-- Enterprise
+#### JSON-LD (1)
 
-## Timestamps
+Linked-data contexts for the provider's vocabulary.
 
-- **Created:** 2024-01-01
-- **Modified:** 2026-05-19
+- [Microsoft Exchange Context](https://apis.io/jsonld/microsoft-exchange/microsoft-exchange-context/)
 
-## APIs
+#### Vocabulary (1)
 
-### Microsoft Graph Mail API
+The provider's domain terms, defined.
 
-Access Exchange Online mailboxes through the Microsoft Graph API, providing modern REST endpoints for reading, sending, and managing email messages, drafts, attachments, and mail folders.
+- [Microsoft Exchange Domain Vocabulary](https://apis.io/vocabularies/microsoft-exchange/microsoft-exchange-vocabulary/)
 
-- **Human URL:** [https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview](https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview)
-- **Base URL:** `https://graph.microsoft.com/v1.0`
+#### Collections (29)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- Email
-- Mail
-- Messaging
-- Microsoft Graph
-- REST
+- [Microsoft Exchange Exchange Online Admin Accepted Domains API](https://apis.io/collections/microsoft-exchange/open-microsoft-exchange-accepted-domains-api/)
+- [Microsoft Exchange Exchange Online Admin API](https://apis.io/collections/microsoft-exchange/open-microsoft-exchange-admin-api/)
+- [Microsoft Exchange Exchange Online Admin Accepted Domains Attachments API](https://apis.io/collections/microsoft-exchange/open-microsoft-exchange-attachments-api/)
+- [Microsoft Exchange Exchange Online Admin Accepted Domains Calendars API](https://apis.io/collections/microsoft-exchange/open-microsoft-exchange-calendars-api/)
+- [Microsoft Exchange Exchange Online Admin Accepted Domains Contact Folders API](https://apis.io/collections/microsoft-exchange/open-microsoft-exchange-contact-folders-api/)
+- [Microsoft Exchange Exchange Online Admin Accepted Domains Contacts API](https://apis.io/collections/microsoft-exchange/open-microsoft-exchange-contacts-api/)
+- [Microsoft Exchange Exchange Online Admin Accepted Domains Distribution Groups API](https://apis.io/collections/microsoft-exchange/open-microsoft-exchange-distribution-groups-api/)
+- [Microsoft Exchange Exchange Online Admin Accepted Domains Events API](https://apis.io/collections/microsoft-exchange/open-microsoft-exchange-events-api/)
+- [Microsoft Exchange Microsoft Graph Calendar API](https://apis.io/collections/microsoft-exchange/open-microsoft-exchange-graph-calendar/)
+- [Microsoft Exchange Microsoft Graph Contacts API](https://apis.io/collections/microsoft-exchange/open-microsoft-exchange-graph-contacts/)
+- [Microsoft Exchange Microsoft Graph Mailbox Import Export API](https://apis.io/collections/microsoft-exchange/open-microsoft-exchange-graph-import-export/)
+- [Microsoft Exchange Microsoft Graph Mail API](https://apis.io/collections/microsoft-exchange/open-microsoft-exchange-graph-mail/)
+- [Microsoft Exchange Microsoft Graph People API](https://apis.io/collections/microsoft-exchange/open-microsoft-exchange-graph-people/)
+- [Microsoft Exchange Exchange Online Admin Accepted Domains Mail Folders API](https://apis.io/collections/microsoft-exchange/open-microsoft-exchange-mail-folders-api/)
+- [Microsoft Exchange Exchange Online Admin Accepted Domains Mailbox Discovery API](https://apis.io/collections/microsoft-exchange/open-microsoft-exchange-mailbox-discovery-api/)
+- [Microsoft Exchange Exchange Online Admin Accepted Domains Mailbox Export API](https://apis.io/collections/microsoft-exchange/open-microsoft-exchange-mailbox-export-api/)
+- [Microsoft Exchange Exchange Online Admin Accepted Domains Mailbox Folder Permissions API](https://apis.io/collections/microsoft-exchange/open-microsoft-exchange-mailbox-folder-permissions-api/)
+- [Microsoft Exchange Exchange Online Admin Accepted Domains Mailbox Import API](https://apis.io/collections/microsoft-exchange/open-microsoft-exchange-mailbox-import-api/)
+- [Microsoft Exchange Exchange Online Admin Accepted Domains Mailboxes API](https://apis.io/collections/microsoft-exchange/open-microsoft-exchange-mailboxes-api/)
+- [Microsoft Exchange Exchange Online Admin Accepted Domains Messages API](https://apis.io/collections/microsoft-exchange/open-microsoft-exchange-messages-api/)
+- [Microsoft Exchange Exchange Online Admin Accepted Domains Organization Configuration API](https://apis.io/collections/microsoft-exchange/open-microsoft-exchange-organization-configuration-api/)
+- [Microsoft Exchange Exchange Online Admin Accepted Domains People API](https://apis.io/collections/microsoft-exchange/open-microsoft-exchange-people-api/)
+- [Microsoft Exchange Exchange Online Admin Accepted Domains Scheduling API](https://apis.io/collections/microsoft-exchange/open-microsoft-exchange-scheduling-api/)
+- [Microsoft Exchange Exchange Online Admin API](https://apis.io/collections/microsoft-exchange/postman-microsoft-exchange-admin-api/)
+- [Microsoft Exchange Microsoft Graph Calendar API](https://apis.io/collections/microsoft-exchange/postman-microsoft-exchange-graph-calendar/)
+- …and 4 more published on APIs.io
 
-#### Properties
+#### Overlays (6)
 
-- [Documentation](https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview)
-- [OpenAPI](openapi/microsoft-exchange-graph-mail-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/microsoft-exchange-graph-mail.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-exchange-graph-mail.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [OpenAPI](https://raw.githubusercontent.com/microsoftgraph/msgraph-metadata/master/openapi/v1.0/openapi.yaml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Authentication](https://learn.microsoft.com/en-us/graph/auth/)
-- [Getting Started](https://developer.microsoft.com/en-us/graph/quick-start)
-- [S D Ks](https://learn.microsoft.com/en-us/graph/sdks/sdks-overview)
-- [Changelog](https://developer.microsoft.com/en-us/graph/changelog)
+OpenAPI overlays, including conversational phrasing for each operation.
 
-### Microsoft Graph Calendar API
+- [Microsoft Exchange Admin Api Overlay](https://apis.io/overlays/microsoft-exchange/microsoft-exchange-admin-api-overlay/)
+- [Microsoft Exchange Graph Calendar Overlay](https://apis.io/overlays/microsoft-exchange/microsoft-exchange-graph-calendar-overlay/)
+- [Microsoft Exchange Graph Contacts Overlay](https://apis.io/overlays/microsoft-exchange/microsoft-exchange-graph-contacts-overlay/)
+- [Microsoft Exchange Graph Import Export Overlay](https://apis.io/overlays/microsoft-exchange/microsoft-exchange-graph-import-export-overlay/)
+- [Microsoft Exchange Graph Mail Overlay](https://apis.io/overlays/microsoft-exchange/microsoft-exchange-graph-mail-overlay/)
+- [Microsoft Exchange Graph People Overlay](https://apis.io/overlays/microsoft-exchange/microsoft-exchange-graph-people-overlay/)
 
-Manage calendar events, meetings, and scheduling for Exchange Online users. Provides endpoints for creating, updating, and deleting events, managing attendees, and handling recurring meetings.
+#### Governance rules (1)
 
-- **Human URL:** [https://learn.microsoft.com/en-us/graph/api/resources/calendar](https://learn.microsoft.com/en-us/graph/api/resources/calendar)
-- **Base URL:** `https://graph.microsoft.com/v1.0`
+Spectral rulesets for the provider's contracts.
 
-#### Tags
+- [Microsoft Exchange — jsonschema rules](https://apis.io/rules/microsoft-exchange/microsoft-exchange-jsonschema-spectral-rules/)
 
-- Calendar
-- Events
-- Meetings
-- Microsoft Graph
-- Scheduling
+#### Security (3)
 
-#### Properties
+Authentication, trust centre, and vulnerability disclosure.
 
-- [Documentation](https://learn.microsoft.com/en-us/graph/api/resources/calendar)
-- [OpenAPI](openapi/microsoft-exchange-graph-calendar-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/microsoft-exchange-graph-calendar.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-exchange-graph-calendar.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [OpenAPI](https://raw.githubusercontent.com/microsoftgraph/msgraph-metadata/master/openapi/v1.0/openapi.yaml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Authentication](https://learn.microsoft.com/en-us/graph/auth/)
-- [Getting Started](https://developer.microsoft.com/en-us/graph/quick-start)
-- [S D Ks](https://learn.microsoft.com/en-us/graph/sdks/sdks-overview)
-- [Changelog](https://developer.microsoft.com/en-us/graph/changelog)
+- [Microsoft Exchange Authentication](https://apis.io/security/microsoft-exchange/microsoft-exchange-authentication/)
+- [Microsoft Exchange Domain Security](https://apis.io/security/microsoft-exchange/microsoft-exchange-domain-security/)
+- [Microsoft Exchange Vulnerability Disclosure](https://apis.io/security/microsoft-exchange/microsoft-exchange-vulnerability-disclosure/)
 
-### Microsoft Graph Contacts API
+#### OAuth scopes (1)
 
-Manage Outlook personal contacts and contact folders for Exchange Online users. Supports creating, reading, updating, and deleting contacts, organizing them into folders, and assigning categories.
+The permissions the API asks for.
 
-- **Human URL:** [https://learn.microsoft.com/en-us/graph/outlook-contacts-concept-overview](https://learn.microsoft.com/en-us/graph/outlook-contacts-concept-overview)
-- **Base URL:** `https://graph.microsoft.com/v1.0`
+- [Microsoft Exchange Scopes](https://apis.io/scopes/microsoft-exchange/microsoft-exchange-scopes/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Address Book
-- Contacts
-- Microsoft Graph
-- Outlook
-- People
+Published plans, tiers and prices.
 
-#### Properties
+- [Microsoft Exchange Plans Pricing](https://apis.io/plans/microsoft-exchange/microsoft-exchange-plans-pricing/)
 
-- [Documentation](https://learn.microsoft.com/en-us/graph/outlook-contacts-concept-overview)
-- [Reference](https://learn.microsoft.com/en-us/graph/api/resources/contact?view=graph-rest-1.0)
-- [OpenAPI](openapi/microsoft-exchange-graph-contacts-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/microsoft-exchange-graph-contacts.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-exchange-graph-contacts.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [OpenAPI](https://raw.githubusercontent.com/microsoftgraph/msgraph-metadata/master/openapi/v1.0/openapi.yaml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Authentication](https://learn.microsoft.com/en-us/graph/auth/)
-- [S D Ks](https://learn.microsoft.com/en-us/graph/sdks/sdks-overview)
+#### Rate limits (1)
 
-### Microsoft Graph People API
-
-Retrieve people most relevant to a user based on communication and collaboration patterns, business relationships, and contacts. Useful for people-picking scenarios and social intelligence features.
-
-- **Human URL:** [https://learn.microsoft.com/en-us/graph/people-insights-overview](https://learn.microsoft.com/en-us/graph/people-insights-overview)
-- **Base URL:** `https://graph.microsoft.com/v1.0`
-
-#### Tags
-
-- Collaboration
-- Contacts
-- Microsoft Graph
-- People
-- Social Intelligence
-
-#### Properties
-
-- [Documentation](https://learn.microsoft.com/en-us/graph/people-insights-overview)
-- [Reference](https://learn.microsoft.com/en-us/graph/api/user-list-people?view=graph-rest-1.0)
-- [OpenAPI](openapi/microsoft-exchange-graph-people-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/microsoft-exchange-graph-people.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-exchange-graph-people.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [OpenAPI](https://raw.githubusercontent.com/microsoftgraph/msgraph-metadata/master/openapi/v1.0/openapi.yaml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Authentication](https://learn.microsoft.com/en-us/graph/auth/)
-- [S D Ks](https://learn.microsoft.com/en-us/graph/sdks/sdks-overview)
-
-### Exchange Web Services (EWS)
-
-Legacy SOAP-based API for Exchange Server providing comprehensive access to mailbox data and operations. Planned for deprecation in Exchange Online in October 2026, with Microsoft Graph recommended for new development.
-
-- **Human URL:** [https://learn.microsoft.com/en-us/exchange/client-developer/exchange-web-services/explore-the-ews-managed-api-ews-and-web-services-in-exchange](https://learn.microsoft.com/en-us/exchange/client-developer/exchange-web-services/explore-the-ews-managed-api-ews-and-web-services-in-exchange)
-- **Base URL:** `https://outlook.office365.com/EWS/Exchange.asmx`
-
-#### Tags
-
-- Exchange Server
-- Legacy
-- Mailbox
-- SOAP
-- Web Services
-
-#### Properties
-
-- [Documentation](https://learn.microsoft.com/en-us/exchange/client-developer/web-service-reference/web-services-reference-for-exchange)
-- [W S D L](https://outlook.office365.com/EWS/Exchange.asmx?wsdl)
-- [SDK](https://github.com/officedev/ews-managed-api)
-- [Reference](https://learn.microsoft.com/en-us/exchange/client-developer/exchange-web-services/explore-the-ews-managed-api-ews-and-web-services-in-exchange)
-- [Getting Started](https://learn.microsoft.com/en-us/exchange/client-developer/exchange-server-development)
-- [Postman Collection](collections/microsoft-exchange-admin-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-exchange-admin-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/microsoft-exchange-graph-calendar.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-exchange-graph-calendar.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/microsoft-exchange-graph-contacts.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-exchange-graph-contacts.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/microsoft-exchange-graph-import-export.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-exchange-graph-import-export.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/microsoft-exchange-graph-mail.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-exchange-graph-mail.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/microsoft-exchange-graph-people.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-exchange-graph-people.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Exchange Online PowerShell API
-
-PowerShell module for managing Exchange Online through REST-based cmdlets. Provides the complete Exchange management surface for administrative tasks including mailbox management, mail flow rules, and organization configuration.
-
-- **Human URL:** [https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell](https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell)
-- **Base URL:** `https://outlook.office365.com/powershell-liveid/`
-
-#### Tags
-
-- Administration
-- Automation
-- Exchange Online
-- Management
-- PowerShell
-
-#### Properties
-
-- [Documentation](https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell-v2)
-- [Installation  Guide](https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell-v2#install-and-maintain-the-exchange-online-powershell-module)
-- [Authentication](https://learn.microsoft.com/en-us/powershell/exchange/connect-to-exchange-online-powershell)
-- [Reference](https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell)
-- [Postman Collection](collections/microsoft-exchange-admin-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-exchange-admin-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/microsoft-exchange-graph-calendar.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-exchange-graph-calendar.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/microsoft-exchange-graph-contacts.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-exchange-graph-contacts.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/microsoft-exchange-graph-import-export.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-exchange-graph-import-export.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/microsoft-exchange-graph-mail.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-exchange-graph-mail.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/microsoft-exchange-graph-people.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-exchange-graph-people.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Exchange Autodiscover API
-
-Service that enables client applications to automatically configure themselves for Exchange connectivity using minimal user input. Supports SOAP and POX protocols for discovering EWS endpoint URLs and other Exchange service settings.
-
-- **Human URL:** [https://learn.microsoft.com/en-us/exchange/client-developer/exchange-web-services/autodiscover-for-exchange](https://learn.microsoft.com/en-us/exchange/client-developer/exchange-web-services/autodiscover-for-exchange)
-- **Base URL:** `https://outlook.office365.com/autodiscover/autodiscover.svc`
-
-#### Tags
-
-- Autodiscover
-- Configuration
-- Exchange Server
-- Service Discovery
-- SOAP
-
-#### Properties
-
-- [Documentation](https://learn.microsoft.com/en-us/exchange/client-developer/exchange-web-services/autodiscover-for-exchange)
-- [Reference](https://learn.microsoft.com/en-us/exchange/client-developer/web-service-reference/soap-autodiscover-web-service-reference-for-exchange)
-- [SDK](https://github.com/officedev/ews-managed-api)
-- [Postman Collection](collections/microsoft-exchange-admin-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-exchange-admin-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/microsoft-exchange-graph-calendar.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-exchange-graph-calendar.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/microsoft-exchange-graph-contacts.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-exchange-graph-contacts.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/microsoft-exchange-graph-import-export.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-exchange-graph-import-export.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/microsoft-exchange-graph-mail.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-exchange-graph-mail.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/microsoft-exchange-graph-people.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-exchange-graph-people.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Exchange Online Admin API
-
-REST-based administrative API that provides cmdlet-style endpoints for Exchange Online management tasks previously available through EWS. Supports organization configuration, mailbox folder permissions, distribution group membership, and delegation management.
-
-- **Human URL:** [https://learn.microsoft.com/en-us/exchange/reference/admin-api-overview](https://learn.microsoft.com/en-us/exchange/reference/admin-api-overview)
-- **Base URL:** `https://outlook.office365.com/adminapi/v2.0`
-
-#### Tags
-
-- Administration
-- Exchange Online
-- Management
-- Permissions
-- REST
-
-#### Properties
-
-- [Documentation](https://learn.microsoft.com/en-us/exchange/reference/admin-api-overview)
-- [OpenAPI](openapi/microsoft-exchange-admin-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/microsoft-exchange-admin-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-exchange-admin-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Getting Started](https://learn.microsoft.com/en-us/exchange/reference/admin-api-get-started)
-- [Authentication](https://learn.microsoft.com/en-us/exchange/reference/admin-api-authentication)
-
-### Microsoft Graph Mailbox Import Export API
-
-APIs for discovering, importing, and exporting content from Exchange Online mailboxes in full fidelity. Enables mailbox migration scenarios and content copying as a replacement for EWS-based approaches.
-
-- **Human URL:** [https://learn.microsoft.com/en-us/graph/mailbox-import-export-concept-overview](https://learn.microsoft.com/en-us/graph/mailbox-import-export-concept-overview)
-- **Base URL:** `https://graph.microsoft.com/beta`
-
-#### Tags
-
-- Export
-- Import
-- Mailbox
-- Microsoft Graph
-- Migration
-
-#### Properties
-
-- [Documentation](https://learn.microsoft.com/en-us/graph/mailbox-import-export-concept-overview)
-- [OpenAPI](openapi/microsoft-exchange-graph-import-export-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/microsoft-exchange-graph-import-export.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-exchange-graph-import-export.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Reference](https://learn.microsoft.com/en-us/graph/api/resources/mailbox-import-export-api-overview?view=graph-rest-beta)
-- [Authentication](https://learn.microsoft.com/en-us/graph/auth/)
-- [S D Ks](https://learn.microsoft.com/en-us/graph/sdks/sdks-overview)
-
-## Common Properties
-
-- [Arazzo Workflows](arazzo/) — [Arazzo Specification](https://spec.openapis.org/arazzo/latest.html)
-- [Portal](https://developer.microsoft.com/en-us/graph)
-- [Documentation](https://learn.microsoft.com/en-us/exchange/client-developer/exchange-server-development)
-- [Getting Started](https://developer.microsoft.com/en-us/graph/quick-start)
-- [Authentication](https://learn.microsoft.com/en-us/graph/auth/)
-- [Blog](https://devblogs.microsoft.com/microsoft365dev/tag/exchange/)
-- [Status Page](https://status.office365.com/)
-- [Support](https://support.microsoft.com/en-us/office)
-- [Terms of Service](https://www.microsoft.com/en-us/legal/terms-of-use)
-- [Privacy Policy](https://privacy.microsoft.com/en-us/privacystatement)
-- [GitHub Organization](https://github.com/OfficeDev)
-- [Community](https://techcommunity.microsoft.com/category/exchange)
+Published request limits.
+
+- [Microsoft Exchange Rate Limits](https://apis.io/rate-limits/microsoft-exchange/microsoft-exchange-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Microsoft Exchange Finops](https://apis.io/finops/microsoft-exchange/microsoft-exchange-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.microsoft.com/en-us/microsoft-365/exchange/email)
-- [Login](https://admin.exchange.microsoft.com)
-- [Sign Up](https://signup.azure.com/)
-- [Changelog](https://developer.microsoft.com/en-us/graph/changelog)
-- [S D Ks](https://learn.microsoft.com/en-us/graph/sdks/sdks-overview)
+- [Documentation](https://learn.microsoft.com/en-us/exchange/client-developer/exchange-server-development)
+- [Getting started](https://developer.microsoft.com/en-us/graph/quick-start)
 - [Pricing](https://www.microsoft.com/en-us/microsoft-365/exchange/compare-microsoft-exchange-online-plans)
-- [Graph  Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer)
-- [J S O N- L D  Context](json-ld/microsoft-exchange-context.jsonld)
-- [J S O N  Schema](json-schema/microsoft-exchange-message-schema.json)
-- [J S O N  Schema](json-schema/microsoft-exchange-event-schema.json)
-- [J S O N  Schema](json-schema/microsoft-exchange-contact-schema.json)
-- [J S O N  Schema](json-schema/microsoft-exchange-calendar-schema.json)
-- [J S O N  Schema](json-schema/microsoft-exchange-mail-folder-schema.json)
-- [J S O N  Schema](json-schema/microsoft-exchange-person-schema.json)
-- [Integrations](https://www.microsoft.com/en-us/marketplace)
+- [Support](https://support.microsoft.com/en-us/office)
+- [Changelog](https://developer.microsoft.com/en-us/graph/changelog)
+- [Blog](https://devblogs.microsoft.com/microsoft365dev/tag/exchange/)
+- [Terms of service](https://www.microsoft.com/en-us/legal/terms-of-use)
+- [Privacy policy](https://privacy.microsoft.com/en-us/privacystatement)
+- [GitHub](https://github.com/OfficeDev)
+- [Status](https://status.office365.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
-**URL:** https://apievangelist.com
+**Kin Score 58.7** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 78.6 |
+| Contract quality | 64.6 |
+| Contract governance | 14.4 |
+| Operational transparency | 44.7 |
+| Developer ergonomics | 79.8 |
+| Access clarity | 40.8 |
+
+**Agent readiness 30.5** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | documented (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 40.2** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/microsoft-exchange/](https://apis.io/providers/microsoft-exchange/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Microsoft Exchange: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/microsoft-exchange/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
